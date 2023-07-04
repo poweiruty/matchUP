@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class DBManager {
 	public static Connection getConnection() {
 		Connection conn = null;
-		String url = "jdbc:mysql://database-1.c44jadddyzoj.ap-northeast-2.rds.amazonaws.com:3306/MatchUP?serverTimeZone=UTC";
+		String url = "jdbc:mysql://database-1.c44jadddyzoj.ap-northeast-2.rds.amazonaws.com:3306/matchup?serverTimeZone=UTC";
 		String username = "admin";
 		String password = "4seiCcEF9Ec5pPWwaDLu";
 		
