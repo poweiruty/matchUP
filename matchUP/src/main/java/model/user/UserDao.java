@@ -113,7 +113,7 @@ public class UserDao {
 		this.conn = DBManager.getConnection();
 		
 		if(this.conn != null) {
-			String sql = "SELECT * FROM pusers_db WHERE id = ?";
+			String sql = "SELECT * FROM pusers_tb WHERE pid = ?";
 			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
@@ -132,7 +132,7 @@ public class UserDao {
 					
 				}
 			}catch (Exception e) {
-				
+				e.printStackTrace();
 			}finally {
 				DBManager.close(this.conn, this.pstmt, this.rs);
 			}
@@ -148,7 +148,7 @@ public class UserDao {
 		this.conn = DBManager.getConnection();
 		
 		if(this.conn != null) {
-			String sql = "SELECT * FROM pusers_db";
+			String sql = "SELECT * FROM pusers_tb";
 			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
@@ -181,7 +181,7 @@ public class UserDao {
 	public void updateUser(UserRequestDto dto, String id) {
 		this.conn = DBManager.getConnection();
 		if(this.conn != null) {			
-			String sql = "UPDATE pusers_db SET ppassword=?, pname=?, birth=?, tel=?, email=?, user_address=? WHERE id=?";
+			String sql = "UPDATE pusers_tb SET ppassword=?, pname=?, birth=?, tel=?, email=?, user_address=? WHERE id=?";
 			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
@@ -205,7 +205,7 @@ public class UserDao {
 	public void updateUserPwd(UserRequestDto dto, String password) {
 		this.conn = DBManager.getConnection();
 		if(this.conn != null) {			
-			String sql = "UPDATE pusers_db SET ppassword=? WHERE pid=? AND ppassword=?";			
+			String sql = "UPDATE pusers_tb SET ppassword=? WHERE pid=? AND ppassword=?";			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
 				this.pstmt.setString(1, dto.getPpassword());
@@ -224,7 +224,7 @@ public class UserDao {
 	public void updateUserName(UserRequestDto dto, String password) {
 		this.conn = DBManager.getConnection();
 		if(this.conn != null) {			
-			String sql = "UPDATE pusers_db SET pname=? WHERE id=? AND ppassword=?";			
+			String sql = "UPDATE pusers_tb SET pname=? WHERE id=? AND ppassword=?";			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
 				this.pstmt.setString(1, dto.getPname());
@@ -243,7 +243,7 @@ public class UserDao {
 	public void updateUserBirth(UserRequestDto dto, String password) {
 		this.conn = DBManager.getConnection();
 		if(this.conn != null) {			
-			String sql = "UPDATE pusers_db SET birth=DATE(?) WHERE id=? AND ppassword=?";			
+			String sql = "UPDATE pusers_tb SET birth=DATE(?) WHERE id=? AND ppassword=?";			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
 				this.pstmt.setInt(1, dto.getBirth());
@@ -262,7 +262,7 @@ public class UserDao {
 	public void updateUserTel(UserRequestDto dto, String password) {
 		this.conn = DBManager.getConnection();
 		if(this.conn != null) {			
-			String sql = "UPDATE pusers_db SET tel=? WHERE id=? AND ppassword=?";			
+			String sql = "UPDATE pusers_tb SET tel=? WHERE id=? AND ppassword=?";			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
 				this.pstmt.setString(1, dto.getTel());
@@ -281,7 +281,7 @@ public class UserDao {
 	public void updateUserEmail(UserRequestDto dto, String password) {
 		this.conn = DBManager.getConnection();
 		if(this.conn != null) {			
-			String sql = "UPDATE pusers_db SET email=? WHERE id=?";			
+			String sql = "UPDATE pusers_tb SET email=? WHERE id=?";			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
 				this.pstmt.setString(1, dto.getEmail());
@@ -299,7 +299,7 @@ public class UserDao {
 	public void updateUserAddress(UserRequestDto dto, String password) {
 		this.conn = DBManager.getConnection();
 		if(this.conn != null) {			
-			String sql = "UPDATE pusers_db SET user_address=? WHERE id=? AND ppassword=?";			
+			String sql = "UPDATE pusers_tb SET user_address=? WHERE id=? AND ppassword=?";			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
 				this.pstmt.setString(1, dto.getUser_address());
@@ -319,7 +319,7 @@ public class UserDao {
 		boolean check = true;
 		
 		if(this.conn != null) {
-			String sql = "DELETE FROM pusers_db WHERE pid=? AND ppassword=?";
+			String sql = "DELETE FROM pusers_tb WHERE pid=? AND ppassword=?";
 			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
