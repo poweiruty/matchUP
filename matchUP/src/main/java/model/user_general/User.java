@@ -1,22 +1,22 @@
-package model.user;
+package model.user_general;
 
 public class User {
 	private String pid;
 	private String ppassword;
 	private String pname;
 	private int birth;
-	private String tel;
+	private int tel;
 	private String email;
 	private String user_address;
 	
-	public User(String pid, String ppassword, String pname, int birth, String tel) {
+	public User(String pid, String ppassword, String pname, int birth, int tel) {
 		this.pid = pid;
 		this.ppassword = ppassword;
 		this.pname = pname;
 		this.birth = birth;
 		this.tel = tel;
 	}
-	public User(String pid, String ppassword, String pname, int birth, String tel, String email) {
+	public User(String pid, String ppassword, String pname, int birth, int tel, String email) {
 		this.pid = pid;
 		this.ppassword = ppassword;
 		this.pname = pname;
@@ -24,7 +24,7 @@ public class User {
 		this.tel = tel;
 		this.email = email;
 	}
-	public User(String pid, String ppassword, String pname, int birth, String tel, String email,
+	public User(String pid, String ppassword, String pname, int birth, int tel, String email,
 			String user_address) {		
 		this.pid = pid;
 		this.ppassword = ppassword;
@@ -46,7 +46,7 @@ public class User {
 	public int getBirth() {
 		return birth;
 	}
-	public String getTel() {
+	public int getTel() {
 		return tel;
 	}
 	public String getEmail() {
@@ -58,7 +58,7 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return String.format("id : %s\npassword : %s\nname; : %s\nbirth : %d\ntel : %s\nemail : %s\naddress : %s", this.pid, this.ppassword, this.pname, this.birth, this.tel, this.email, this.user_address);
+		return String.format("id : %s\npassword : %s\nname; : %s\nbirth : %d\ntel : %d\nemail : %s\naddress : %s", this.pid, this.ppassword, this.pname, this.birth, this.tel, this.email, this.user_address);
 	}
 	
 }	

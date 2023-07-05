@@ -2,70 +2,31 @@ package model.corp;
 
 public class Corp {
 	private String cid;
-	private String cpassword;
-	private String cname;
-	private int cnum;
-	private String mgr_name;
-	private int mgr_tel;
-	private String mgr_email;
-	private String caddress;
+	private int staffs;
+	private String ceo;
 	
-	public Corp(String cid, String cpassword, String cname, int cnum, String mgr_name, int mgr_tel) {
+	public Corp(String cid,  int staffs, String ceo) {
+		super();
 		this.cid = cid;
-		this.cpassword = cpassword;
-		this.cname = cname;
-		this.cnum = cnum;
-		this.mgr_name = mgr_name;
-		this.mgr_tel = mgr_tel;
+		this.staffs = staffs;
+		this.ceo = ceo;
 	}
-	public Corp(String cid, String cpassword, String cname, int cnum, String mgr_name, int mgr_tel,
-			String mgr_email) {
-		this.cid = cid;
-		this.cpassword = cpassword;
-		this.cname = cname;
-		this.cnum = cnum;
-		this.mgr_name = mgr_name;
-		this.mgr_tel = mgr_tel;
-		this.mgr_email = mgr_email;
-	}
-	public Corp(String cid, String cpassword, String cname, int cnum, String mgr_name, int mgr_tel, String mgr_email,
-			String caddress) {
-		this.cid = cid;
-		this.cpassword = cpassword;
-		this.cname = cname;
-		this.cnum = cnum;
-		this.mgr_name = mgr_name;
-		this.mgr_tel = mgr_tel;
-		this.mgr_email = mgr_email;
-		this.caddress = caddress;
-	}
+
 	public String getCid() {
 		return cid;
 	}
-	public String getCpassword() {
-		return cpassword;
+	
+	public int getStaffs() {
+		return staffs;
 	}
-	public String getCname() {
-		return cname;
-	}
-	public int getCnum() {
-		return cnum;
-	}
-	public String getMgr_name() {
-		return mgr_name;
-	}
-	public int getMgr_tel() {
-		return mgr_tel;
-	}
-	public String getMgr_email() {
-		return mgr_email;
-	}
-	public String getCaddress() {
-		return caddress;
+
+	public String getCeo() {
+		return ceo;
 	}
 	
 	@Override
 	public String toString() {	
-		return String.format("id : %s\npassword : %s\nname; : %s\nnum : %d\nmgr_name : %s\nmgr_tel : %d\nmgr_email : %s\naddress : %s", this.cid, this.cpassword, this.cname, this.cnum, this.mgr_tel, this.mgr_email, this.caddress);
-	}
+		return String.format("cid : %s\nstaffs : %d\nceo : %s", this.cid, this.staffs, this.ceo);
+	}	
+	
 }

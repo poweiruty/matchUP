@@ -1,15 +1,15 @@
-package model.user;
+package model.user_general;
 
 public class UserRequestDto {
 	private String pid;
 	private String ppassword;
 	private String pname;
 	private int birth;
-	private String tel;
+	private int tel;
 	private String email;
 	private String user_address;
 
-	public UserRequestDto(String pid, String ppassword, String pname, int birth, String tel) {
+	public UserRequestDto(String pid, String ppassword, String pname, int birth, int tel) {
 		this.pid = pid;
 		this.ppassword = ppassword;
 		this.pname = pname;
@@ -17,7 +17,7 @@ public class UserRequestDto {
 		this.tel = tel;
 	}
 
-	public UserRequestDto(String pid, String ppassword, String pname, int birth, String tel, String email) {
+	public UserRequestDto(String pid, String ppassword, String pname, int birth, int tel, String email) {
 		this.pid = pid;
 		this.ppassword = ppassword;
 		this.pname = pname;
@@ -26,7 +26,7 @@ public class UserRequestDto {
 		this.email = email;
 	}
 
-	public UserRequestDto(String pid, String ppassword, String pname, int birth, String tel, String email,
+	public UserRequestDto(String pid, String ppassword, String pname, int birth, int tel, String email,
 			String user_address) {
 		this.pid = pid;
 		this.ppassword = ppassword;
@@ -69,11 +69,11 @@ public class UserRequestDto {
 		this.birth = birth;
 	}
 
-	public String getTel() {
+	public int getTel() {
 		return this.tel;
 	}
 
-	public void setTel(String tel) {
+	public void setTel(int tel) {
 		this.tel = tel;
 	}
 
