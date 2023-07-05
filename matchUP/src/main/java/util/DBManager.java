@@ -1,12 +1,11 @@
 package main.java.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
 
 public class DBManager {
 	public static Connection getConnection() {
 		Connection conn = null;
-		String url = "jdbc:mysql://database-1.c44jadddyzoj.ap-northeast-2.rds.amazonaws.com:3306/MatchUP?serverTimeZone=UTC";
+		String url = "jdbc:mysql://database-1.c44jadddyzoj.ap-northeast-2.rds.amazonaws.com:3306/matchup?serverTimeZone=UTC";
 		String username = "admin";
 		String password = "4seiCcEF9Ec5pPWwaDLu";
 		
@@ -20,5 +19,24 @@ public class DBManager {
 		}
 		
 		return conn;
+	}
+	
+	public static void close(Connection conn, PreparedStatement pstmt) {
+		try {
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
+		try {
+			rs.close();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
