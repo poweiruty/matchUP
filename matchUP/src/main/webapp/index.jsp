@@ -1,5 +1,10 @@
-<%@page import="model.user.User"%>
-<%@page import="model.user.UserDao"%>
+
+<%@page import="model.user_general.UserRequestDto"%>
+<%@page import="model.user_general.User"%>
+<%@page import="model.user_corp.CorpUser"%>
+<%@page import="model.user_corp.CorpUserRequestDto"%>
+<%@page import="model.user_corp.CorpUserDao"%>
+<%@page import="model.user_general.UserDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="util.DBManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -16,13 +21,13 @@ test #1
 I got you
 
 <%	
-	UserDao userDao = UserDao.getInstance();
+	UserDao userDao = UserDao.getInstance();	
+	User user = userDao.getUserbyId("qkrrb0032");
+	UserRequestDto dto = new UserRequestDto(user.getPid(), "qweqwe123", user.getPname(), user.getBirth(), 1065502899, user.getEmail(), user.getUser_address());
+	//boolean res = userDao.createUser(dto);		
 	
-	ArrayList<User> list = userDao.getUserAll();
-	for(User user : list){
-		System.out.println("-------------------------");
-		System.out.println(user);
-	}
+	userDao.updateUser(dto, "qwe123");
+	System.out.println(user);
 %>
 
 + #2 Plus
