@@ -13,15 +13,15 @@ public class Corp {
 	}
 
 	public String getCid() {
-		return cid;
+		return this.cid;
 	}
 	
 	public int getStaffs() {
-		return staffs;
+		return this.staffs;
 	}
 
 	public String getCeo() {
-		return ceo;
+		return this.ceo;
 	}
 	
 	@Override

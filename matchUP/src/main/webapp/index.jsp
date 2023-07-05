@@ -22,11 +22,12 @@ I got you
 
 <%	
 	UserDao userDao = UserDao.getInstance();	
-	UserRequestDto dto = new UserRequestDto("qkrrb0032", "qweasdzxc123", "박규태", 20001120, 1065502899,"qkrrb0032@naver.com", "서울 중랑구");
-	//boolean res = userDao.createUser(dto);
-	userDao.updateUser(dto, dto.getPpassword());
+	User user = userDao.getUserbyId("qkrrb0032");
+	UserRequestDto dto = new UserRequestDto(user.getPid(), "qweqwe123", user.getPname(), user.getBirth(), 1065502899, user.getEmail(), user.getUser_address());
+	//boolean res = userDao.createUser(dto);		
 	
-		
+	userDao.updateUser(dto, "qwe123");
+	System.out.println(user);
 %>
 
 + #2 Plus

@@ -177,16 +177,45 @@ public class CorpUserDao {
 
 	// 비밀번호, 담당자 요소3개, 회사주소
 	public void updateCorpUser(CorpUserRequestDto dto, String cpassword) {
+		CorpUser cuser = getCorpUserbyId(dto.getCid());
 		this.conn = DBManager.getConnection();
 		if(this.conn != null) {
-			String sql = "UPDATE cusers_tb SET cpassword=?, mgr_name=? WHERE cid=? AND cpassword=?";
-			CorpUser cuser = getCorpUserbyId(dto.getCid());			
+			String sql = "UPDATE cusers_tb SET cpassword=?, mgr_name=?, mgr_tel=?, mgr_email=?, caddress WHERE cid=? AND cpassword=?";						
 			try {				
 				this.pstmt = this.conn.prepareStatement(sql);
-				this.pstmt.setString(1, cuser.getCpassword());				
-				this.pstmt.setString(2, dto.getMgr_name());			
-				this.pstmt.setString(3, dto.getCid());
-				this.pstmt.setString(4, cpassword);
+				if(dto.getCpassword().equals(cpassword)) {
+					this.pstmt.setString(1, cpassword);				
+				}else {
+					this.pstmt.setString(1, dto.getCpassword());
+				}
+				
+				if(cuser.getMgr_name().equals(dto.getMgr_name())) {
+					this.pstmt.setString(2, cuser.getMgr_name());						
+				}else {
+					this.pstmt.setString(2, dto.getMgr_name());
+				}
+				
+				if(cuser.getMgr_tel() == dto.getMgr_tel()) {
+					this.pstmt.setInt(3, cuser.getMgr_tel());
+				}else {
+					this.pstmt.setInt(3, dto.getMgr_tel());
+				}
+				
+				if(cuser.getMgr_email().equals(dto.getMgr_email())) {
+					this.pstmt.setString(4, cuser.getMgr_email());
+				}else {
+					this.pstmt.setString(4, dto.getMgr_email());
+				}
+				
+				if(cuser.getCaddress().equals(dto.getCaddress())) {
+					this.pstmt.setString(5, cuser.getCaddress());
+				}else {
+					this.pstmt.setString(5, dto.getCaddress());					
+				}
+				
+				
+				this.pstmt.setString(6, dto.getCid());
+				this.pstmt.setString(7, cpassword);
 				
 				this.pstmt.execute();
 				
@@ -210,7 +239,7 @@ public class CorpUserDao {
 				this.pstmt = this.conn.prepareStatement(sql);
 				this.pstmt.setString(1, id);
 				this.pstmt.setString(2, password);
-
+				
 				this.pstmt.execute();
 			} catch (Exception e) {
 				e.printStackTrace();

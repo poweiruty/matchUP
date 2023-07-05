@@ -8,6 +8,14 @@ public class UserRequestDto {
 	private int tel;
 	private String email;
 	private String user_address;
+	
+	
+	public UserRequestDto(String ppassword, int tel, String email, String user_address) {	
+		this.ppassword = ppassword;
+		this.tel = tel;
+		this.email = email;
+		this.user_address = user_address;
+	}
 
 	public UserRequestDto(String pid, String ppassword, String pname, int birth, int tel) {
 		this.pid = pid;

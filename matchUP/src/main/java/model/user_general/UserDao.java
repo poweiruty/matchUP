@@ -178,21 +178,42 @@ public class UserDao {
 	
 	
 	public void updateUser(UserRequestDto dto, String password) {
-		this.conn = DBManager.getConnection();
+		User user = getUserbyId(dto.getPid());
+		
+		this.conn = DBManager.getConnection();		
 		if(this.conn != null) {			
-			String sql = "UPDATE pusers_tb SET ppassword=?, tel=?, email=?, user_address=? WHERE pid=? AND ppassword=?";
+			String sql = "UPDATE pusers_tb SET ppassword=?, tel=?, email=?, user_address=? WHERE pid=? AND ppassword=?";					
 			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
-				this.pstmt.setString(1, dto.getPpassword());
-				this.pstmt.setInt(2, dto.getTel());
-				this.pstmt.setString(3, dto.getEmail());
-				this.pstmt.setString(4, dto.getUser_address());
+				if(dto.getPpassword().equals(password)) {
+					this.pstmt.setString(1, password);						
+				}else {
+					this.pstmt.setString(1, dto.getPpassword());
+				}
+				
+				if(user.getTel() == dto.getTel()) {	
+					this.pstmt.setInt(2, user.getTel());
+				}else {
+					this.pstmt.setInt(2, dto.getTel());
+				}
+				
+				if(user.getEmail().equals(dto.getEmail())) {
+					this.pstmt.setString(3, user.getEmail());
+				}else {
+					this.pstmt.setString(3, dto.getEmail());
+				}
+				
+				if(user.getUser_address().equals(dto.getUser_address())) {
+					this.pstmt.setString(4, user.getUser_address());
+				}else {
+					this.pstmt.setString(4, dto.getUser_address());
+				}
+				
 				this.pstmt.setString(5, dto.getPid());
 				this.pstmt.setString(6, password);
 				
-				this.pstmt.execute();
-				
+				this.pstmt.execute();				
 				
 			}catch (Exception e) {
 				e.printStackTrace();
@@ -202,82 +223,6 @@ public class UserDao {
 		}
 	}
 	
-	/*
-	public void updateUserPwd(UserRequestDto dto, String password) {
-		this.conn = DBManager.getConnection();
-		if(this.conn != null) {			
-			String sql = "UPDATE pusers_tb SET ppassword=? WHERE pid=? AND ppassword=?";			
-			try {
-				this.pstmt = this.conn.prepareStatement(sql);
-				this.pstmt.setString(1, dto.getPpassword());
-				this.pstmt.setString(2, dto.getPid());
-				this.pstmt.setString(3, password);
-				
-				this.pstmt.execute();
-			}catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-				DBManager.close(this.conn, this.pstmt);
-			}			
-		}
-	}
-	
-	public void updateUserTel(UserRequestDto dto, String password) {
-		this.conn = DBManager.getConnection();
-		if(this.conn != null) {			
-			String sql = "UPDATE pusers_tb SET tel=? WHERE id=? AND ppassword=?";			
-			try {
-				this.pstmt = this.conn.prepareStatement(sql);
-				this.pstmt.setInt(1, dto.getTel());
-				this.pstmt.setString(2, dto.getPid());
-				this.pstmt.setString(3, password);
-				
-				this.pstmt.execute();
-			}catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-				DBManager.close(this.conn, this.pstmt);
-			}			
-		}
-	}
-	
-	public void updateUserEmail(UserRequestDto dto, String password) {
-		this.conn = DBManager.getConnection();
-		if(this.conn != null) {			
-			String sql = "UPDATE pusers_tb SET email=? WHERE id=?";			
-			try {
-				this.pstmt = this.conn.prepareStatement(sql);
-				this.pstmt.setString(1, dto.getEmail());
-				this.pstmt.setString(2, dto.getPid());
-				this.pstmt.setString(3, password);
-				
-				this.pstmt.execute();
-			}catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-				DBManager.close(this.conn, this.pstmt);
-			}			
-		}
-	}
-	public void updateUserAddress(UserRequestDto dto, String password) {
-		this.conn = DBManager.getConnection();
-		if(this.conn != null) {			
-			String sql = "UPDATE pusers_tb SET user_address=? WHERE id=? AND ppassword=?";			
-			try {
-				this.pstmt = this.conn.prepareStatement(sql);
-				this.pstmt.setString(1, dto.getUser_address());
-				this.pstmt.setString(2, dto.getPid());		
-				this.pstmt.setString(3, password);
-				
-				this.pstmt.execute();
-			}catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-				DBManager.close(this.conn, this.pstmt);
-			}			
-		}
-	}
-	*/
 	public boolean deleteUser(String id, String password) {
 		this.conn = DBManager.getConnection();
 		boolean check = true;
