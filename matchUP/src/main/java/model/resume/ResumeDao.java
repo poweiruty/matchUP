@@ -3,6 +3,7 @@ package model.resume;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import util.DBManager;
 
@@ -12,128 +13,52 @@ public class ResumeDao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 
-	private ResumeDao() { }
+	private ResumeDao() {}
 	
 	private static ResumeDao instance = new ResumeDao();
 	public static ResumeDao getInstance() {
 		return instance;
 	}
 	
+	// CREATE
 	public boolean createResume(ResumeRequestDto dto) {
-		Resume resume = getResumebyId(dto.getPid());
-		if(resume != null) 
-			return false;		
 		
+		Resume resume = getResumeById(dto.getPid());
+		
+		if(resume != null) {
+			return false;
+		} 
+					
 		String id = dto.getPid();
-		String name = dto.getResume_name();
-		int tel = dto.getResume_tel();
-		String email = dto.getResume_email();
-		String address = dto.getResume_address();
+		int jobId=dto.getJob_id();
+		String career=dto.getCareer();
+		String degree=dto.getDegree();
+		String activity=dto.getActivity();
+		String certificate=dto.getCertificate();
+			
+		this.conn = DBManager.getConnection();
 		
-		
-		boolean check = true;
-		
-		if(id != null && name != null && tel != 0 && address != null) {
-			this.conn = DBManager.getConnection();
-			if(this.conn != null) {
-				if(!email.equals("")) {
-					String resumeSql = "INSERT INTO(pid,resume_name,resume_tel,resume_email) resume VALUES(?,?,?,?,?)";				
-					//String resume_semiSql = "INSERT INTO resume_semi VALUES(?,?,?,?,?)";
-					try {
-						this.pstmt = this.conn.prepareStatement(resumeSql);
-						this.pstmt.setString(1, id);
-						this.pstmt.setString(2, name);
-						this.pstmt.setInt(3, tel);
-						this.pstmt.setString(4, email);
-						this.pstmt.setString(5, address);
-					}catch (Exception e) {
-						e.printStackTrace();
-					}finally {
-						DBManager.close(this.conn, this.pstmt);
-					}
-				}else {
-					String resumeSql = "INSERT INTO resume(pid,resume_name,resume_tel) VALUES(?,?,?,?,)";			
-					try {
-						this.pstmt = this.conn.prepareStatement(resumeSql);
-						this.pstmt.setString(1, id);
-						this.pstmt.setString(2, name);
-						this.pstmt.setInt(3, tel);
-						this.pstmt.setString(4, address);
-					}catch (Exception e) {
-						e.printStackTrace();
-					}finally {
-						DBManager.close(this.conn, this.pstmt);
-					}
-				}
-			}
+		String resumeSql = "INSERT INTO resume(pid,job_id,career,degree,activity,certificate) VALUES(?,?,?,?,?,?)";			
+			
+		try{
+			this.pstmt=this.conn.prepareStatement(resumeSql);
+			this.pstmt.setString(2, id);
+			this.pstmt.setInt(3, jobId);
+			this.pstmt.setString(4, career);
+			this.pstmt.setString(5, degree);
+			this.pstmt.setString(6, activity);
+			this.pstmt.setString(7, certificate);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(this.conn, this.pstmt);
 		}
-		return check;
+		return true;
 	}
 	
-	public boolean createResume_semi(ResumeRequestDto dto) {
-		Resume_semi resume = getResume_semibyId(dto.getPid());
-		if(resume != null) 
-			return false;	
 		
-		String id = dto.getPid();
-		String education = dto.getResume_education();
-		String career = dto.getResume_career();
-		String certificate = dto.getResume_certificate();
-		String hope = dto.getResume_hope();
-		
-		if(hope != null) {
-			this.conn = DBManager.getConnection();
-			if(this.conn != null) {
-				String sql = "INSERT INTO resume_semi VALUES(?,?,?,?,?)";
-				try {
-					this.pstmt = this.conn.prepareStatement(sql);
-					this.pstmt.setString(1, id);
-					this.pstmt.setString(2, education);
-					this.pstmt.setString(3, career);
-					this.pstmt.setString(4, certificate);
-					this.pstmt.setString(5, hope);
-				}catch (Exception e) {
-					e.printStackTrace();
-				}finally {
-					DBManager.close(this.conn, this.pstmt);
-				}				
-			}
-		}
-		
-		return true;
-	} 
-
-	public Resume_semi getResume_semibyId(String pid) {
-		Resume_semi resume_semi = null;
-
-		this.conn = DBManager.getConnection();
-
-		if (this.conn != null) {
-			String sql = "SELECT * FROM resume WHERE pid=?";
-			try {
-				this.pstmt = this.conn.prepareStatement(sql);
-				this.pstmt.setString(1, pid);
-				this.rs = this.pstmt.executeQuery();
-
-				if (this.rs.next()) {
-					String name = this.rs.getString(3);
-					int tel = this.rs.getInt(4);
-					String email = this.rs.getString(5);
-					String address = this.rs.getString(6);
-
-				
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				DBManager.close(this.conn, this.pstmt, this.rs);
-			}
-		}
-
-		return null;
-	}
-
-	public Resume getResumebyId(String pid) {
+	// READ
+	public Resume getResumeById(String id) {
 		Resume resume = null;
 		
 		this.conn = DBManager.getConnection();
@@ -142,25 +67,134 @@ public class ResumeDao {
 			String sql = "SELECT * FROM resume WHERE pid=?";
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
-				this.pstmt.setString(1, pid);
+				this.pstmt.setString(2, id);
 				this.rs = this.pstmt.executeQuery();
 				
 				if(this.rs.next()) {
-					String name = this.rs.getString(3);
-					int tel = this.rs.getInt(4);
-					String email = this.rs.getString(5);
-					String address = this.rs.getString(6);
+					int jobId=this.rs.getInt(3);
+					String career=this.rs.getString(4);
+					String degree=this.rs.getString(5);
+					String activity = this.rs.getString(6);
+					String certificate = this.rs.getString(7);
 					
-					resume = new Resume(pid, name, tel, email, address);
+					resume = new Resume(id, jobId, career, degree, activity, certificate);
 				}
 			}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
 				DBManager.close(this.conn, this.pstmt, this.rs);
 			}
+		}		
+		return resume;
+	}
+	
+	public ArrayList<Resume> getResumeAll(){
+		ArrayList<Resume> list = new ArrayList<Resume>();
+		
+		this.conn = DBManager.getConnection();
+		
+		if(this.conn != null) {
+			String sql = "SELECT * FROM resume_tb";
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.rs = this.pstmt.executeQuery();
+				
+				while(this.rs.next()) {
+					String id = this.rs.getString(2);
+					int jobId = this.rs.getInt(3);
+					String career = this.rs.getString(4);
+					String degree = this.rs.getString(5);
+					String activity = this.rs.getString(6);
+					String certificate = this.rs.getString(7);
+					
+					Resume resume = new Resume(id,jobId,career,degree,activity,certificate);
+					
+					list.add(resume);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(this.conn, this.pstmt, this.rs);
+			}
+		}		
+		return list;
+	}
+	
+
+	// Update
+	public void updateResume(ResumeRequestDto dto) {
+		Resume resume=getResumeById(dto.getPid());
+		
+		this.conn = DBManager.getConnection();		
+		if(this.conn != null) {			
+			String sql = "update resume_tb rs inner join pusers_tb pu on rs.pid=pu.pid set job_id=?, rs.career=?, rs.degree=?,rs.activity=?,rs.certificate=? where rs.pid=?;";					
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				
+				if(resume.getJob_id()==dto.getJob_id()) {
+					this.pstmt.setInt(1, resume.getJob_id());						
+				}else {
+					this.pstmt.setInt(1, dto.getJob_id());
+				}
+				if(resume.getCareer().equals(dto.getCareer())) {	
+					this.pstmt.setString(2, resume.getCareer());
+				}else {
+					this.pstmt.setString(2, dto.getCareer());
+				}
+				if(resume.getDegree().equals(dto.getDegree())) {
+					this.pstmt.setString(3, resume.getDegree());
+				}else {
+					this.pstmt.setString(3, dto.getDegree());
+				}
+				if(resume.getActivity().equals(dto.getActivity())) {
+					this.pstmt.setString(4, resume.getActivity());
+				}else {
+					this.pstmt.setString(4, dto.getActivity());
+				}
+				if(resume.getCertificate().equals(dto.getCertificate())){
+					this.pstmt.setString(5, resume.getCertificate());
+				}else {
+					this.pstmt.setString(5, dto.getCertificate());
+				}
+				
+				this.pstmt.setString(6, dto.getPid());
+				
+				this.pstmt.execute();				
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBManager.close(this.conn, this.pstmt);
+			}			
+		}
+	}
+	
+	// DELETE
+	public boolean deleteResume(String id, String password) {
+		this.conn = DBManager.getConnection();
+		boolean check = true;
+		
+		if(this.conn != null) {
+			String sql = "DELETE rs FROM resume_tb AS rs JOIN pusers_tb AS pu ON rs.pid=pu.pid WHERE pu.pid=? AND pu.ppassword=?;";
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setString(1, id);
+				this.pstmt.setString(2, password);
+				
+				this.pstmt.execute();
+			}catch (Exception e) {
+				e.printStackTrace();
+				check = false;
+			}finally {
+				DBManager.close(this.conn, this.pstmt);
+			}
+		}else{
+			check = false;
 		}
 		
-		return resume;
-	} 
-	
+		return check;
+	}
 }

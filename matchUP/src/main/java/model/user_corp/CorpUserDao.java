@@ -36,7 +36,7 @@ public class CorpUserDao {
 
 		boolean check = true;
 
-		if (id != null && password != null && name != null && num != 0 && mgr_tel != 0) {
+		if (id != null && password != null && name != null && num != 0 && mgr_name !=null && mgr_tel != 0) {	// 이 부분 수정
 			this.conn = DBManager.getConnection();
 			if (this.conn != null) {
 				if (!mgr_email.equals("") && address.equals("")) {
