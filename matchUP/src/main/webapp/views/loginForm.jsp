@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
-    <link rel="stylesheet" href="../resources/style/reset_form.css">
-    <link rel="stylesheet" href="../resources/style/grid2.css">
-    <link rel="stylesheet" href="../resources/style/login.css">
+    <link rel="stylesheet" href="resources/style/reset_form.css">
+    <link rel="stylesheet" href="resources/style/grid.css">
+    <link rel="stylesheet" href="resources/style/login.css">
 </head>
 
 <body>
@@ -74,10 +74,10 @@
             <div class="loginTitle">
                 <h1>로그인</h1>
             </div>
-            <form action="" method="post" name="login" class="login_form" enctype="multipart/form-data">
+            <form action="Login" method="post" name="login" class="login_form" enctype="multipart/form-data">            
                 <div class="login_box">
                     <input type="text" name="id" id="id" placeholder="아이디" required>
-                    <input type="password" name="pwd" id="pwd" placeholder="비밀번호" required>
+                    <input type="password" name="password" id="password" placeholder="비밀번호" required>
                 </div>
                 <!-- 유효성 체크 
                 <script>

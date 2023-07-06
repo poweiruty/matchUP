@@ -1,4 +1,4 @@
-package controller;
+package controller.User;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,18 +6,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.user_general.User;
+import model.user_general.UserDao;
 
 /**
- * Servlet implementation class JoinFormAction
+ * Servlet implementation class LoginFormAction
  */
-//@WebServlet("/Join")
-public class JoinFormAction extends HttpServlet {
+//@WebServlet("/LoginFormAction")
+public class LoginFormAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JoinFormAction() {
+    public LoginFormAction() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,11 +38,25 @@ public class JoinFormAction extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
 		String id = request.getParameter("id");
+		String password = request.getParameter("pwd");
 		
-		System.out.println("id : " + id);
+		UserDao userDao = UserDao.getInstance();
+		User user = userDao.getUserbyId(id);
+		
+		String url = "login";
+		
+		if(user != null && user.getPpassword().equals(password)) {
+			url = "main";
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("log", id);
+			
+			System.out.println(session.getAttribute("log"));
+		}
+		
+		
+		
+		response.sendRedirect(url);
 	}
-
 }

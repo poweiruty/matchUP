@@ -10,7 +10,7 @@
     <!-- 초기화 css -->
     <link rel="stylesheet" href="../resources/style/reset.css">
     <!-- header css -->
-    <link rel="stylesheet" href="../resources/style/grid2.css">
+    <link rel="stylesheet" href="../resources/style/grid.css">
     <link rel="stylesheet" href="../resources/style/corpReview.css">
 </head>
 
@@ -18,7 +18,7 @@
     <!-- header 시작 -->
     <header id="header">
         <div class="index">
-            <a href="index.html">
+            <a href="index.jsp">
                 Match-UP
             </a>
         </div>

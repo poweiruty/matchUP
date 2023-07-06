@@ -7,7 +7,7 @@ create table `cusers_tb`(
     cname varchar(20) NOT NULL,     -- 기업 이름
     cnum int(20) NOT NULL unique key, -- 사업자 번호
     mgr_name varchar(10) NOT NULL,    -- 담당자 이름
-    mgr_tel int(11) NOT NULL unique key,   -- 담당자 전화번호
+    mgr_tel varchar(11) NOT NULL unique key,   -- 담당자 전화번호
     mgr_email varchar(50) unique key,      -- 담당자 이메일
     caddress varchar(100)                  -- 기업 주소
 );

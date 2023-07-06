@@ -5,7 +5,7 @@ create table `pusers_tb`(
     ppassword varchar(20) NOT NULL,         -- 개인유저 패스워드
     pname varchar(10) NOT NULL,            -- 개인유저 이름
     birth date NOT NULL,               -- 개인유저 생일
-    tel int(11) NOT NULL unique key,       -- 개인유저 전화번호      
+    tel varchar(11) NOT NULL unique key,       -- 개인유저 전화번호      
     `email` varchar(50) unique key,         -- 개인유저 이메일
     user_address varchar(100)             -- 개인유저 주소
 );
@@ -32,7 +32,6 @@ insert into `pusers_tb` values('5green','a1234','곽라다','19911013','01051112
 insert into `pusers_tb` values('7green','a1234','김벤츠','19911015','01051112217','7green@naver.com','대전광역시 동구 원동');
    
 select * from `pusers_tb`;
-
 
 
 
