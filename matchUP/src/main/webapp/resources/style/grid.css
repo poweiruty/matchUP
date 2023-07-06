@@ -1,112 +1,45 @@
 @charset "UTF-8";
 
 * {
-	padding: 0;
-	margin: 0;
-	font-family: 'Orbit', sans-serif;
+    padding : 0;
+    margin : 0;
+    font-family: 'Orbit', sans-serif;
+}
+/* header */
+a{
+    color: black;
+    text-decoration: none;
 }
 
-#root {
-	display: grid;
-	grid-template-rows: 120px minmax(60vh, 1fr) 200px;
-	grid-template-columns: 150px auto 150px;
-	grid-template-areas: "header header header" "nav section aside"
-		"foot foot foot";
+a:hover{
+    color: gray;
 }
 
-header {
-	grid-area: header;
-	text-align: center;
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
-nav {
-	grid-area: nav;
-	padding: 10px;
+.index{
+    font-size: 1.7rem;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-section#main-section {
-	/* min-height: 65vh; */
-	grid-area: section;
-	padding: 10px 10px 50px 10px;
+header{
+    padding: 10px;
+    margin-bottom: 50px;
+    border-bottom: solid 1px gray;
 }
 
-aside {
-	grid-area: aside;
+/* footer */
+.footer_box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-top: solid 1px gray;
+    padding: 20px 0;
+    margin-top: 10%;
 }
 
-footer {
-	grid-area: foot;
-	background-color: whitesmoke;
-	padding: 20px;
-	font-size: 0.8em;
-	color: grey;
-}
-
-#contents-container {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 10px;
-}
-
-.book {
-	text-align: center;
-	width: 200px;
-	height: 300px;
-}
-
-.book-price {
-	color: red;
-}
-
-h1 {
-	margin-top: 30px;
-	text-align: center;
-}
-
-h2 {
-	margin: 0 0 30px 0px;
-}
-
-a {
-	color: black;
-	text-decoration: none;
-}
-
-a:hover {
-	color: gray;
-}
-
-ul {
-	list-style: none;
-}
-
-li {
-	color: grey;
-	padding: 5px;
-	cursor: pointer;
-}
-
-p:not(.book-title) {
-	color: grey;
-}
-
-input {
-	border: solid 1px whitesmoke;
-	outline: none;
-}
-
-input[type="text"] {
-	padding: 5px 10px;
-}
-
-button {
-	color: grey;
-	border: solid 1px whitesmoke;
-	cursor: pointer;
-	padding: 5px;
-}
-
-#search-bar {
-	margin-bottom: 30px;
-	margin: 0 0 30px 0px;
-}
