@@ -30,13 +30,17 @@ public class CorpUserDao {
 		String name = dto.getCname();
 		int num = dto.getCnum();
 		String mgr_name = dto.getMgr_name();
-		int mgr_tel = dto.getMgr_tel();
+		String mgr_tel = dto.getMgr_tel();
 		String mgr_email = dto.getMgr_email();
 		String address = dto.getCaddress();
 
 		boolean check = true;
 
+<<<<<<< HEAD
 		if (id != null && password != null && name != null && num != 0 && mgr_name !=null && mgr_tel != 0) {	// 이 부분 수정
+=======
+		if (id != null && password != null && name != null && num != 0 && mgr_tel != null) {
+>>>>>>> refs/remotes/origin/main
 			this.conn = DBManager.getConnection();
 			if (this.conn != null) {
 				if (!mgr_email.equals("") && address.equals("")) {
@@ -49,7 +53,7 @@ public class CorpUserDao {
 						this.pstmt.setString(3, name);
 						this.pstmt.setInt(4, num);
 						this.pstmt.setString(5, mgr_name);
-						this.pstmt.setInt(6, mgr_tel);
+						this.pstmt.setString(6, mgr_tel);
 						this.pstmt.setString(7, mgr_email);
 
 						this.pstmt.execute();
@@ -68,7 +72,7 @@ public class CorpUserDao {
 						this.pstmt.setString(3, name);
 						this.pstmt.setInt(4, num);
 						this.pstmt.setString(5, mgr_name);
-						this.pstmt.setInt(6, mgr_tel);
+						this.pstmt.setString(6, mgr_tel);
 						this.pstmt.setString(7, address);
 
 						this.pstmt.execute();
@@ -87,7 +91,7 @@ public class CorpUserDao {
 						this.pstmt.setString(3, name);
 						this.pstmt.setInt(4, num);
 						this.pstmt.setString(5, mgr_name);
-						this.pstmt.setInt(6, mgr_tel);
+						this.pstmt.setString(6, mgr_tel);
 						this.pstmt.setString(7, mgr_email);
 						this.pstmt.setString(8, address);
 
@@ -123,7 +127,7 @@ public class CorpUserDao {
 					String name = this.rs.getString(3);
 					int num = this.rs.getInt(4);
 					String mgr_name = this.rs.getString(5);
-					int mgr_tel = this.rs.getInt(6);
+					String mgr_tel = this.rs.getString(6);
 					String mgr_email = this.rs.getString(7);
 					String address = this.rs.getString(8);
 
@@ -157,7 +161,7 @@ public class CorpUserDao {
 					String name = this.rs.getString(3);
 					int num = this.rs.getInt(4);
 					String mgr_name = this.rs.getString(5);
-					int mgr_tel = this.rs.getInt(6);
+					String mgr_tel = this.rs.getString(6);
 					String mgr_email = this.rs.getString(7);
 					String address = this.rs.getString(8);
 
@@ -180,7 +184,7 @@ public class CorpUserDao {
 		CorpUser cuser = getCorpUserbyId(dto.getCid());
 		this.conn = DBManager.getConnection();
 		if(this.conn != null) {
-			String sql = "UPDATE cusers_tb SET cpassword=?, mgr_name=?, mgr_tel=?, mgr_email=?, caddress WHERE cid=? AND cpassword=?";						
+			String sql = "UPDATE cusers_tb SET cpassword=?, mgr_name=?, mgr_tel=?, mgr_email=?, caddress=? WHERE cid=? AND cpassword=?";						
 			try {				
 				this.pstmt = this.conn.prepareStatement(sql);
 				if(dto.getCpassword().equals(cpassword)) {
@@ -196,9 +200,9 @@ public class CorpUserDao {
 				}
 				
 				if(cuser.getMgr_tel() == dto.getMgr_tel()) {
-					this.pstmt.setInt(3, cuser.getMgr_tel());
+					this.pstmt.setString(3, cuser.getMgr_tel());
 				}else {
-					this.pstmt.setInt(3, dto.getMgr_tel());
+					this.pstmt.setString(3, dto.getMgr_tel());
 				}
 				
 				if(cuser.getMgr_email().equals(dto.getMgr_email())) {
@@ -228,12 +232,16 @@ public class CorpUserDao {
 	}
 	
 	public boolean deleteCorpUser(String id, String password) {
-
+		CorpUser cuser = getCorpUserbyId(id);				
+		
+		if(!cuser.getCpassword().equals(password)) {
+			return false;
+		}
+		
 		this.conn = DBManager.getConnection();
-		boolean check = true;
-
+		boolean check = true;		
 		if (this.conn != null) {
-			String sql = "DELETE FORM cusers_tb WHERE cid=? AND cpassword=?";
+			String sql = "DELETE FROM cusers_tb WHERE cid=? AND cpassword=?";
 
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
@@ -250,7 +258,6 @@ public class CorpUserDao {
 		} else {
 			check = false;
 		}
-
 		return check;
 	}
 

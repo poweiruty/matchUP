@@ -1,8 +1,11 @@
 package model.resume;
 
 import java.sql.Timestamp;
+<<<<<<< HEAD
 //import java.text.SimpleDateFormat;
 //import java.util.Date;
+=======
+>>>>>>> refs/remotes/origin/main
 
 public class Resume {
 	private String pid;

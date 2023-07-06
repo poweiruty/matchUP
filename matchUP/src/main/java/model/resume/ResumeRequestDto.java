@@ -99,4 +99,8 @@ public class ResumeRequestDto {
 			this.resume_modified = resume_modified;
 		}
 		
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> refs/remotes/origin/main

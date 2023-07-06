@@ -4,8 +4,8 @@ public class CorpRequestDto {
 	private String cid;
 	private int staffs;
 	private String ceo;
+	
 	public CorpRequestDto(String cid, int staffs, String ceo) {
-		super();
 		this.cid = cid;
 		this.staffs = staffs;
 		this.ceo = ceo;

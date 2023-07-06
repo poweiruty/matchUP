@@ -6,7 +6,6 @@ public class Corp {
 	private String ceo;
 	
 	public Corp(String cid,  int staffs, String ceo) {
-		super();
 		this.cid = cid;
 		this.staffs = staffs;
 		this.ceo = ceo;

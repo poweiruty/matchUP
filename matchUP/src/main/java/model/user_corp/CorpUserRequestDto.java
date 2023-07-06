@@ -6,11 +6,11 @@ public class CorpUserRequestDto {
 	private String cname;
 	private int cnum;
 	private String mgr_name;
-	private int mgr_tel;
+	private String mgr_tel;
 	private String mgr_email;
 	private String caddress;
 	
-	public CorpUserRequestDto(String cid, String cpassword, String cname, int cnum, String mgr_name, int mgr_tel) {
+	public CorpUserRequestDto(String cid, String cpassword, String cname, int cnum, String mgr_name, String mgr_tel) {
 		this.cid = cid;
 		this.cpassword = cpassword;
 		this.cname = cname;
@@ -18,7 +18,7 @@ public class CorpUserRequestDto {
 		this.mgr_name = mgr_name;
 		this.mgr_tel = mgr_tel;
 	}
-	public CorpUserRequestDto(String cid, String cpassword, String cname, int cnum, String mgr_name, int mgr_tel,
+	public CorpUserRequestDto(String cid, String cpassword, String cname, int cnum, String mgr_name, String mgr_tel,
 			String mgr_email) {
 		this.cid = cid;
 		this.cpassword = cpassword;
@@ -28,7 +28,7 @@ public class CorpUserRequestDto {
 		this.mgr_tel = mgr_tel;
 		this.mgr_email = mgr_email;
 	}
-	public CorpUserRequestDto(String cid, String cpassword, String cname, int cnum, String mgr_name, int mgr_tel, String mgr_email,
+	public CorpUserRequestDto(String cid, String cpassword, String cname, int cnum, String mgr_name, String mgr_tel, String mgr_email,
 			String caddress) {
 		this.cid = cid;
 		this.cpassword = cpassword;
@@ -69,10 +69,10 @@ public class CorpUserRequestDto {
 	public void setMgr_name(String mgr_name) {
 		this.mgr_name = mgr_name;
 	}
-	public int getMgr_tel() {
+	public String getMgr_tel() {
 		return mgr_tel;
 	}
-	public void setMgr_tel(int mgr_tel) {
+	public void setMgr_tel(String mgr_tel) {
 		this.mgr_tel = mgr_tel;
 	}
 	public String getMgr_email() {
