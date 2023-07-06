@@ -55,8 +55,6 @@ public class LoginFormAction extends HttpServlet {
 			System.out.println(session.getAttribute("log"));
 		}
 		
-		
-		
 		response.sendRedirect(url);
 	}
 }
