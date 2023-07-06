@@ -1,0 +1,81 @@
+.msg, .main_con{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.msg_title, .resume_title{
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.resume_title{
+    margin-bottom: 20px;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+}
+
+.main_con{
+    height: 800px;
+    border: solid 1px gray;
+    margin: 5% 10%;
+}
+
+li{
+    margin: 10px;
+}
+
+input, textarea{
+    border: solid 1px gray;
+    border-radius: 10px;   
+    width: 20%;
+    padding: 4px;
+}
+
+.bottom{
+    margin-top: 5%;
+}
+
+.bottom>span{
+    border: solid 1px gray;
+    border-radius: 10px;
+    padding: 0 5%;
+}
+
+.bottom a:hover, .bottom>span:hover{
+    background-color: gray;
+    cursor: pointer;
+    color: black;
+}
+
+select{
+    border-radius: 10px;
+}
+
+label{
+    font-weight: 700;
+}
+
+/* 주소 */
+
+#address{
+    width: 20%;
+}
+
+#address_btn{
+    width: 10%;
+    height: 20px;
+}
+
+#address_btn:hover{
+    cursor: pointer;
+    color: #fff;
+    background-color: gray;
+}
+
+#address_detail{
+    width: 30%;
+}
+

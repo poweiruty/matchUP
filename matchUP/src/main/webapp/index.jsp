@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="resources/style/grid.css">
     <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-</head>
+
 
 <body>
     <!-- header 시작 -->
@@ -49,10 +49,10 @@
                     <h3>회원가입</h3>
                 </a>
             </div>
-            <!-- 스크랩 -->
-            <div class="scrap">
+            <!-- 관심채용정보(스크랩) -->
+            <div class="scrap">              
                 <a href="scrap">
-                    <h3>스크랩</h3>
+                    <h3>관심채용정보</h3>
                 </a>
             </div>
             <!-- 이력서 -->
@@ -72,11 +72,22 @@
     <!-- header 끝 -->
 
     <!-- main 시작 -->
-
+    <section class="container">
+        <!-- <p>body 부분</p> -->
+    </section>
     <!-- main 끝 -->
 
     <!-- footer 시작 -->
-
+    <footer>
+        <div class="footer_box">
+            <span><a href="index.jsp">© 2023 MatchUP</a></span>
+            <span><a href="#">회사소개</a></span>
+            <span><a href="#">고객센터</a></span>
+            <span><a href="term">이용약관</a></span>
+            <span><a href="term2">개인정보 취급방침</a></span>
+            <span><a href="#">오류신고</a></span>
+        </div>
+    </footer>
     <!-- footer 끝 -->
 </body>
 
