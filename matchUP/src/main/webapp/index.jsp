@@ -18,7 +18,7 @@
     <!-- header 시작 -->
     <header id="header">
         <div class="index">
-            <a href="index.html">
+            <a href="index.jsp">
                 Match-UP
             </a>
         </div>
@@ -26,7 +26,7 @@
         <!-- 검색 -->
         <div class="nav">
             <div class="corpSearch">
-                <a href="corpSearch.html">
+                <a href="corpSearch.jsp">
                     <h3>기업검색</h3>
                 </a>
             </div>
@@ -44,7 +44,7 @@
             </div>
             <!-- 회원가입 -->
             <div class="login">
-                <a href="join.html">
+                <a href="views/joinForm.jsp">
                     <h3>회원가입</h3>
                 </a>
             </div>

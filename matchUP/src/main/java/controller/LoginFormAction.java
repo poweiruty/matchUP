@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class JoinFormAction
+ * Servlet implementation class LoginFormAction
  */
-//@WebServlet("/Join")
-public class JoinFormAction extends HttpServlet {
+@WebServlet("/LoginFormAction")
+public class LoginFormAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JoinFormAction() {
+    public LoginFormAction() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,11 +34,8 @@ public class JoinFormAction extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
-		String id = request.getParameter("id");
-		
-		System.out.println("id : " + id);
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
