@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import model.user_corp.CorpUser;
+import model.user_corp.CorpUserDao;
 import util.DBManager;
 
 public class CorpDao {
@@ -20,10 +22,12 @@ public class CorpDao {
 	
 	// create
 	public boolean createCorp(CorpRequestDto dto) {
-		Corp corp = getCorpbyId(dto.getCid());
+		CorpUserDao cuserDao = CorpUserDao.getInstance();		
+		CorpUser cuser = cuserDao.getCorpUserbyId(dto.getCid());
+		Corp dupl = getCorpbyId(dto.getCid());
 		
-		if(corp != null)
-			return false;
+		if(cuser == null || dupl != null)
+			return false;		
 		
 		String cid = dto.getCid();
 		int staffs = dto.getStaffs();
@@ -64,15 +68,15 @@ public class CorpDao {
 		
 		this.conn = DBManager.getConnection();
 		if(this.conn != null) {
-			String sql = "SELECT * FROM corporation_tb WHERE cid=?";
+			String sql = "SELECT corporation_tb.* FROM corporation_tb JOIN cusers_tb ON corporation_tb.cid = cusers_tb.cid WHERE corporation_tb.cid=?";
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
 				this.pstmt.setString(1, cid);
 				this.rs = this.pstmt.executeQuery();
 				
-				if(this.rs.next()) {
-					int staffs = this.rs.getInt(2);
-					String ceo = this.rs.getString(3);
+				if(this.rs.next()) {					
+					int staffs = this.rs.getInt(4);
+					String ceo = this.rs.getString(5);
 					
 					corp = new Corp(cid, staffs, ceo);
 				}
@@ -111,18 +115,83 @@ public class CorpDao {
 			}finally {
 				DBManager.close(this.conn, this.pstmt, this.rs);
 			}
-		}
-		
-		return list;
+		}		
+		return list;		
 	}
 	
-	// update
-	public void updateCorp() {
+	// update staffs, ceo
+	public boolean updateCorp(CorpRequestDto dto, String cpassword) {
+		CorpUserDao cuserDao = CorpUserDao.getInstance();		
+		CorpUser cuser = cuserDao.getCorpUserbyId(dto.getCid());
+		Corp corp = getCorpbyId(dto.getCid());		
+		this.conn = DBManager.getConnection();
 		
+		if(cuser == null) {
+			return false;
+		}
+		
+		boolean check = true;
+		if(this.conn != null) {
+			String sql = "UPDATE corporation_tb b JOIN cusers_tb a ON b.cid = a.cid SET b.staffs=?, b.ceo=? WHERE b.cid=? AND a.cpassword=?";
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				
+				if(corp.getStaffs() == dto.getStaffs()) {
+					this.pstmt.setInt(1, corp.getStaffs());
+				}else {
+					this.pstmt.setInt(1, dto.getStaffs());
+				}
+				
+				if(corp.getCeo().equals(dto.getCeo())){
+					this.pstmt.setString(2, corp.getCeo());
+				}else {
+					this.pstmt.setString(2, dto.getCeo());
+				}
+			
+				this.pstmt.setString(3, dto.getCid());
+				this.pstmt.setString(4, cpassword);
+				
+				this.pstmt.execute();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBManager.close(this.conn, this.pstmt);
+			}
+		}else {
+			check = false;
+		}
+		
+		return check;
 	}
 	// delete
-	public void deleteCorp() {
+	public boolean deleteCorp(String cid, String cpassword) {
+		CorpUserDao cuserDao = CorpUserDao.getInstance();
+		CorpUser cuser = cuserDao.getCorpUserbyId(cid);
 		
+		if(!cuser.getCpassword().equals(cpassword)) {
+			return false;
+		}
+		
+		this.conn = DBManager.getConnection();
+		boolean check = true;
+		
+		if(this.conn != null) {
+			String sql = "DELETE b FROM corporation_tb b JOIN cusers_tb a ON b.cid=a.cid WHERE b.cid=? AND a.cpassword=?";
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setString(1, cid);
+				this.pstmt.setString(2, cpassword);				
+				
+				this.pstmt.execute();				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBManager.close(this.conn, this.pstmt);
+			}
+		}else {
+			check = false;
+		}
+		return check;
 	}
  }
 

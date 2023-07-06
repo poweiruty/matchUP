@@ -180,7 +180,7 @@ public class CorpUserDao {
 		CorpUser cuser = getCorpUserbyId(dto.getCid());
 		this.conn = DBManager.getConnection();
 		if(this.conn != null) {
-			String sql = "UPDATE cusers_tb SET cpassword=?, mgr_name=?, mgr_tel=?, mgr_email=?, caddress WHERE cid=? AND cpassword=?";						
+			String sql = "UPDATE cusers_tb SET cpassword=?, mgr_name=?, mgr_tel=?, mgr_email=?, caddress=? WHERE cid=? AND cpassword=?";						
 			try {				
 				this.pstmt = this.conn.prepareStatement(sql);
 				if(dto.getCpassword().equals(cpassword)) {
@@ -228,12 +228,16 @@ public class CorpUserDao {
 	}
 	
 	public boolean deleteCorpUser(String id, String password) {
-
+		CorpUser cuser = getCorpUserbyId(id);				
+		
+		if(!cuser.getCpassword().equals(password)) {
+			return false;
+		}
+		
 		this.conn = DBManager.getConnection();
-		boolean check = true;
-
+		boolean check = true;		
 		if (this.conn != null) {
-			String sql = "DELETE FORM cusers_tb WHERE cid=? AND cpassword=?";
+			String sql = "DELETE FROM cusers_tb WHERE cid=? AND cpassword=?";
 
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
@@ -250,7 +254,6 @@ public class CorpUserDao {
 		} else {
 			check = false;
 		}
-
 		return check;
 	}
 

@@ -186,6 +186,7 @@ public class UserDao {
 			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
+				
 				if(dto.getPpassword().equals(password)) {
 					this.pstmt.setString(1, password);						
 				}else {
