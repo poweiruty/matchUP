@@ -55,12 +55,6 @@
                     </form>
                 </div>
             </div>
-            <div class="check_box">
-                <input type="checkbox" name="check" id="box"> 
-                    <label for="check">아이디 저장</label> 
-                    <input type="checkbox" name="auto" id="box"> 
-                    <label for="auto_login">자동 로그인</label> 
-            </div>
         </form>
         
         <!-- 회원가입 연결 -->
