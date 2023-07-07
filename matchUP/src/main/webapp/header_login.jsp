@@ -10,15 +10,27 @@
     <link rel="stylesheet" href="resources/style/reset.css">
     <!-- header css -->
     <link rel="stylesheet" href="resources/style/grid.css">
+    <link rel="stylesheet" href="resources/style/login.css">
+    
     <!-- js -->
     <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    
+     <script>
+    $(document).ready(function () {
+        $(".login_tab li").click(function () {
+            var idx = $(this).index();
+            $(".login_tab li").removeClass("on");
+            $(".login_tab li").eq(idx).addClass("on");
+            $(".tab_cont .tab").hide();
+            $(".tab_cont .tab").eq(idx).show();
+        });
+    });
+</script>
 </head>
 <body>
   <!-- header 시작 -->
     <header id="header">
         <div class="index">
-            <a href="index.jsp">
+            <a href="index">
                 Match-UP
             </a>
         </div>
@@ -69,5 +81,8 @@
         </div>
     </header>
     <!-- header 끝 -->
+</body>
+</html>
+
 </body>
 </html>

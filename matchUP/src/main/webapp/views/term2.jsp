@@ -6,10 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-     <!-- 초기화 css -->
-     <link rel="stylesheet" href="../resources/style/reset.css">
-     <!-- header css -->
-     <link rel="stylesheet" href="../resources/style/grid.css">
+    
 </head>
 <body>
      <!-- header 시작 -->

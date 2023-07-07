@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>footer</title>
 </head>
 <body>
 <!-- footer 시작 -->
     <footer>
         <div class="footer_box">
-            <span><a href="index.jsp">© 2023 MatchUP</a></span>
+            <span><a href="index">© 2023 MatchUP</a></span>
             <span><a href="#">회사소개</a></span>
             <span><a href="#">고객센터</a></span>
             <span><a href="term">이용약관</a></span>

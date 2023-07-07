@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -7,29 +8,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
-    <link rel="stylesheet" href="resources/style/reset_form.css">
-    <link rel="stylesheet" href="resources/style/grid.css">
-    <link rel="stylesheet" href="resources/style/login.css">
+    
 </head>
 
 <body>
    <!-- header 시작 -->
-        <jsp:include page="header"></jsp:include>
-
+    <jsp:include page="header_login"></jsp:include>
     <!-- header 끝 -->
 
     <!-- body 시작 -->
-    <!-- 로그인 -->
-    <div class="container">
-        <div id="login">
-            <div class="loginTitle">
-                <h1>로그인</h1>
-            </div>
-            <form action="Login" method="post" name="login" class="login_form" enctype="multipart/form-data">            
-                <div class="login_box">
-                    <input type="text" name="id" id="id" placeholder="아이디" required>
-                    <input type="password" name="password" id="password" placeholder="비밀번호" required>
+
+    <div class="containerwrap">
+        <div class="login_box">
+            <ul class="login_tab">
+                <li class="login_person on"><a href="#">개인 로그인</a></li>
+                <li class="login_corp"><a href="#">기업 로그인</a></li>
+            </ul>
+            <div class="tab_cont">
+                <div class="tab on">
+                    <!-- form -->
+                    <form action="" class="index_form" method="post">
+                        <h2>아이디</h2>
+                        <div class="id">
+                            <input type="text" class="id" name="id" id="id" placeholder="아이디">
+                        </div>
+                        <h2>비밀번호</h2>
+                        <div class="pwd">
+                            <input type="text" class="pwd" name="pwd" placeholder="비밀번호">
+                        </div>
+                        <input type="submit" name="login_btn" id="login_btn" value="로그인">
+                    </form>
                 </div>
+                <div class="tab">
+                    <!-- form -->
+                    <form action="" class="index_form" method="post">
+                        <h2>아이디</h2>
+                        <div class="id">
+                            <input type="text" class="id" name="id" id="id" placeholder="아이디">
+                        </div>
+                        <h2>비밀번호</h2>
+                        <div class="pwd">
+                            <input type="text" class="pwd" name="pwd" placeholder="비밀번호">
+                        </div>
+                        
+                        <input type="submit" name="login_btn" id="login_btn" value="로그인">
+                    </form>
+                </div>
+            </div>
+            <div class="check_box">
+                <input type="checkbox" name="check" id="box"> 
+                    <label for="check">아이디 저장</label> 
+                    <input type="checkbox" name="auto" id="box"> 
+                    <label for="auto_login">자동 로그인</label> 
+            </div>
+        </form>
+        
+        <!-- 회원가입 연결 -->
+        <div class="join_box">
+            <a href="join">
+                <button class="btn_join">회원가입</button>
+            </a>
+        </div>
+        <!-- 아이디 비밀 번호 찾기 -->
+        <div class="find_box">
+            <h1>로그인 정보가 생각나지 않으세요?</h1>
+            <p>아이디 또는 비밀번호를 찾으실 수 있습니다.</p>
+            <a href="#"><button class="btn_find">아이디 찾기</button></a> <a href="#"><button
+                    class="btn_find">비밀번호 찾기</button></a>
+        </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    <!-- body 끝 -->
                 <!-- 유효성 체크 
 	<div class="container">
 		<div id="login">
@@ -75,30 +126,7 @@
                         // }
                     // }
                  </script>-->
-				<div class="check_box">
-					<input type="checkbox" name="check" id="box"> <label
-						for="check">아이디 저장</label> <input type="checkbox" name="auto"
-						id="box"> <label for="auto_login">자동 로그인</label> <a
-						href="#"><button class="btn_login">로그인</button></a>
-				</div>
-			</form>
-
-			<!-- 회원가입 연결 -->
-			<div class="join_box">
-				<a href="join.html">
-					<button class="btn_join">회원가입</button>
-				</a>
-			</div>
-			<!-- 아이디 비밀 번호 찾기 -->
-			<div class="find_box">
-				<h1>로그인 정보가 생각나지 않으세요?</h1>
-				<p>아이디 또는 비밀번호를 찾으실 수 있습니다.</p>
-				<a href="#"><button class="btn_find">아이디 찾기</button></a> <a href="#"><button
-						class="btn_find">비밀번호 찾기</button></a>
-			</div>
-		</div>
-	</div>
-	<!-- body 끝 -->
+				
   <!-- footer 시작 -->
       	<jsp:include page="footer"></jsp:include>
 

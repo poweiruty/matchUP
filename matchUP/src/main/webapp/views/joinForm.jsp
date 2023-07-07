@@ -5,17 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<link rel="stylesheet" href="resources/style/reset_form.css">
-<!-- header css -->
-<link rel="stylesheet" href="resources/style/grid.css">
+
 <link rel="stylesheet" href="resources/style/join.css">
 </head>
 
 <body>
      <!-- header 시작 -->
-       <jsp:include page="header"></jsp:include>
+       <jsp:include page="header_form"></jsp:include>
 	<!-- header 끝 -->  
 	<div id="wrap">
 		<div class="section">
@@ -221,17 +217,17 @@
 									<div class="agree">
 										<p>
 										<h2>약관동의</h2>
-										<input type="checkbox" name="chk3" id="chk" required><a
-											href="term.jsp">이용약관</a> 동의 (필수) <br /> <input
-											type="checkbox" name="chk4" id="chk" required><a
-											href="term2.jsp">개인정보처리방침</a> 동의 (필수) <br />
+										<input type="checkbox" name="chk3" id="chk" required>
+										<a href="term">이용약관</a> 동의 (필수) <br /> 
+										<input type="checkbox" name="chk4" id="chk" required>
+										<a href="term2">개인정보처리방침</a> 동의 (필수) <br />
 										</p>
 									</div>
 								</div>
 							</li>
 							<!-- 가입하기 부분 -->
 							<li class="sub"><input type="submit" name="submit" id="submit" value="가입하기"> <!-- 메인 페이지로 돌아가기 부분 --> 
-							<a href="../index.jsp"> <!-- 초기 화면으로 돌아감 -->
+							<a href="index"> <!-- 초기 화면으로 돌아감 -->
 									<div id="index">메인 페이지로 돌아가기</div>
 							</a></li>
 						</div>

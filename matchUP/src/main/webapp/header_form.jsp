@@ -1,18 +1,19 @@
+<!-- form 태그를 사용하는 회원가입, 로그인, 이력서, 채용관리 페이지 전용 header -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Header</title>
+<title>Header_form</title>
 
 <!-- 초기화 css -->
-    <link rel="stylesheet" href="resources/style/reset.css">
+    <link rel="stylesheet" href="resources/style/reset_form.css">
     <!-- header css -->
     <link rel="stylesheet" href="resources/style/grid.css">
     <!-- js -->
     <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    
 </head>
 <body>
   <!-- header 시작 -->
