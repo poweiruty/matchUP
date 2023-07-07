@@ -13,7 +13,7 @@
 
 <body>
     <!-- header 시작 -->
-         <jsp:include page="header"></jsp:include>
+        <jsp:include page="header"></jsp:include>
 
     <!-- header 끝 -->
     <!-- body 시작 -->
@@ -25,20 +25,16 @@
         <form action="" method="post" name="corpSearch" enctype="multipart/form-data">
             <div id="tab_search">
                 <ul class="search">
-                	<li>
-	                    <label for="search_bar">
-	                        <h2>검색어</h2>
-	                    </label>
-	                    <input type="text" id="search_bar" placeholder="업종, 직무 및 회사명">
-	            	</li>
+                    <label for="search_bar">
+                        <h2>검색어</h2>
+                    </label>
+                    <input type="text" id="search_bar" placeholder="업종, 직무 및 회사명">
                 </ul>
                 <ul class="region">
-                	<li>
-	                    <label for="region_bar">
-	                        <h2>지역</h2>
-	                    </label>
-	                    <input type="text" id="region_bar" placeholder="근무지(도, 시, 군, 구, 동)" required>
-                    </li>
+                    <label for="region_bar">
+                        <h2>지역</h2>
+                    </label>
+                    <input type="text" id="region_bar" placeholder="근무지(도, 시, 군, 구, 동)" required>
                 </ul>
                 <ul>
                     <li class="search_btn">

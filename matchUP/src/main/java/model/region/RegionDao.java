@@ -3,7 +3,6 @@ package model.region;
 import java.sql.*;
 import java.util.*;
 import util.DBManager;
-import model.region.*;
 
 
 public class RegionDao {
@@ -23,14 +22,18 @@ public class RegionDao {
 		
 		this.conn=DBManager.getConnection();
 		if(this.conn!=null) {
-			String sql="select * from main_region_tb";
+			String sql="select * from main_region_tb where main_region=?";
 			
 			try {
 				this.pstmt=this.conn.prepareStatement(sql);
-				this.pstmt.setString(2, Mr);
+				this.pstmt.setString(1, Mr);
 				this.rs=this.pstmt.executeQuery();
 				
-				region=new Region(Mr);
+				if(this.rs.next()) {
+					String temp = this.rs.getString(2);
+					
+					region = new Region(temp);
+				}
 			}catch(Exception e) {
 				e.printStackTrace();
 			}finally {

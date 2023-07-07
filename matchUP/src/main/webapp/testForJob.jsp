@@ -1,3 +1,6 @@
+<%@page import="model.region.Region"%>
+<%@page import="model.region.RegionDao"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.job.Job"%>
 <%@page import="model.job.JobDao"%>
 <%@page import="model.job.JobRequestDto"%>
@@ -11,10 +14,13 @@
 </head>
 <body>
 <% 
-	JobDao dao = JobDao.getInstance();
-	Job job = dao.getJob("디자인");
+	RegionDao dao = RegionDao.getInstance();
+	//Region re = dao.getMainRegion("서울특별시");
+	ArrayList<Region> list = dao.getMainRegionAll();	
 	
-	System.out.println(job);	
+	for(Region region : list){
+		System.out.println(region);
+	}
 %>
 </body>
 </html>

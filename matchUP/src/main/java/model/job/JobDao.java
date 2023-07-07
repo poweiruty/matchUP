@@ -46,7 +46,7 @@ public class JobDao {
 		this.conn = DBManager.getConnection();
 		
 		if(this.conn != null) {
-			String sql="select * from job_tb";;
+			String sql="select * from job_tb";
 			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);

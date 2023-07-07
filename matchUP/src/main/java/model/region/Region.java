@@ -34,8 +34,7 @@ public class Region {
 	
 	@Override
 	public String toString() {	
-		return String.format("Main Region : %s \nMain Region ID : %d \nSemi Region : %s",
-							  this.main_region, this.main_region_id,this.semi_region);
+		return String.format("Main Region : %s", this.main_region);
 	}
 }
 	
