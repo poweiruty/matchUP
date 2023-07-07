@@ -88,6 +88,4 @@ public class CorpUserRequestDto {
 		this.caddress = caddress;
 	}
 	
-
-
 }

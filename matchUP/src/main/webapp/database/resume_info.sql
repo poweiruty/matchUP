@@ -22,3 +22,7 @@ insert into resume_tb(pid,job_id,career,degree,activity,certificate) values('1gr
 -- UPDATE resume_tb SET certificate='교원자격증' WHERE resume_id=2;
 
 select * from resume_tb;
+<<<<<<< HEAD
+
+=======
+>>>>>>> refs/remotes/origin/main

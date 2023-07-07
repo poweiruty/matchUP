@@ -163,6 +163,7 @@ public class CorpDao {
 		
 		return check;
 	}
+	
 	// delete
 	public boolean deleteCorp(String cid, String cpassword) {
 		CorpUserDao cuserDao = CorpUserDao.getInstance();
