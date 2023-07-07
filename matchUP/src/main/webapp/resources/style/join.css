@@ -167,7 +167,7 @@ li#add{
 }
 
 #address{
-    width: 70%;
+    width: 100%;
 }
 
 #address_btn{
@@ -181,8 +181,8 @@ li#add{
     background-color: gray;
 }
 
-#address_detail{
-    width: 100%;
+#detailAddress, #extraAddress{
+    width: 49.24%;
 }
 
 /* 하단 약관 부분(마케팅 정보 수신동의, 약관동의) */
@@ -224,7 +224,11 @@ li#add{
 }
 
 }
-
+.error {
+	display: none;
+	color: red;
+	font-size: 0.7em;
+}
 /* PC ver. */
 @media(min-width:1024px){
     #wrap{

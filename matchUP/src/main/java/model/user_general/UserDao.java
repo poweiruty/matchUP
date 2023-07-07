@@ -249,4 +249,15 @@ public class UserDao {
 		
 		return check;
 	}
+	
+	public boolean idCheck(String id) {
+		User user = getUserbyId(id);
+		boolean check = false;
+			
+		if(user != null) {
+			check = true;			
+		}
+		
+		return check;	
+	}
 }	

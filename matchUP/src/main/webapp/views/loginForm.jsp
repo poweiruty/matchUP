@@ -75,7 +75,7 @@
             <div class="loginTitle">
                 <h1>로그인</h1>
             </div>
-            <form action="Login" method="post" name="login" class="login_form" enctype="multipart/form-data">            
+            <form action="Login" method="POST" class="login_form" >            
                 <div class="login_box">
                     <input type="text" name="id" id="id" placeholder="아이디" required>
                     <input type="password" name="password" id="password" placeholder="비밀번호" required>
@@ -126,10 +126,14 @@
                     // }
                  </script>-->
 				<div class="check_box">
-					<input type="checkbox" name="check" id="box"> <label
-						for="check">아이디 저장</label> <input type="checkbox" name="auto"
-						id="box"> <label for="auto_login">자동 로그인</label> <a
-						href="#"><button class="btn_login">로그인</button></a>
+					<input type="checkbox" name="check" id="box"> 
+					<label for="check">아이디 저장</label> 
+					<input type="checkbox" name="auto" id="box"> 
+					<label for="auto_login">자동 로그인</label> 
+					<!-- <a href="#">
+						<button class="btn_login">로그인</button>
+					</a> -->
+					<input type="submit" class="btn_login" name="submit" id="submit" value="로그인">
 				</div>
 			</form>
 

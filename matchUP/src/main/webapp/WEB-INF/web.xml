@@ -14,9 +14,10 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 	<!-- 1. 서블릿 페이지 맵핑 -->
+	<!-- Join -->
 	<servlet>
 		<servlet-name>JoinFormAction</servlet-name>
-		<servlet-class>controller.User.JoinFormAction</servlet-class>
+		<servlet-class>controller.user.JoinFormAction</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -24,9 +25,10 @@
 		<url-pattern>/Join</url-pattern>
 	</servlet-mapping>
 	
+	<!-- Login -->
 	<servlet>
 		<servlet-name>LoginFormAction</servlet-name>
-		<servlet-class>controller.User.LoginFormAction</servlet-class>
+		<servlet-class>controller.user.LoginFormAction</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -82,6 +84,7 @@
 		<servlet-name>joinForm</servlet-name>
 		<url-pattern>/join</url-pattern>
 	</servlet-mapping>
+	
 	<!-- login -->
 	<servlet>
 		<servlet-name>loginForm</servlet-name>
@@ -91,6 +94,17 @@
 	<servlet-mapping>
 		<servlet-name>loginForm</servlet-name>
 		<url-pattern>/login</url-pattern>
+	</servlet-mapping>	
+	
+	<!-- main -->
+	<servlet>
+		<servlet-name>main</servlet-name>
+		<jsp-file>/views/main.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>main</servlet-name>
+		<url-pattern>/main</url-pattern>
 	</servlet-mapping>	
 	
 	<!-- resume -->

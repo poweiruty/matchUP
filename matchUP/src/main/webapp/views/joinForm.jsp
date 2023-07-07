@@ -7,6 +7,7 @@
 <title>회원가입</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <link rel="stylesheet" href="resources/style/reset_form.css">
 <!-- header css -->
 <link rel="stylesheet" href="resources/style/grid.css">
@@ -79,13 +80,17 @@
 								<h2>회원정보입력</h2>
 							</li>
 							<!-- 아이디 부분 -->
-							<li><label for="id">
-									<h2>아이디</h2>
-							</label></li>
-							<li class="id"><input type="text" name="id" id="id"
-								placeholder="길이 4-12자 이내" required> <input type="button"
-								name="btn1" id="btn1" value="중복확인"><br /></li>
-
+							<li>
+								<label for="id">
+										<h2>아이디</h2>
+								</label>
+							</li>
+							<li class="id">
+								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" required> 
+								<input type="button" name="btn1" id="btn1" value="중복확인" onclick="winopen()"><br/>								
+							</li>
+							<li class="error" id="error-duplId">* 이미 사용 중인 아이디입니다.</li>								
+							<li class="error" id="error-noneId">* 아이디는 필수 정보입니다.</li>
 							<!-- 비밀번호 부분 -->
 							<li>
 								<label for="pwd1">
@@ -97,7 +102,7 @@
 							</li>
 							<li class="pwd">
 								<input type="password" name="password" id="password" placeholder="4-10자의 영문, 특수문자, 숫자 조합" required>
-								<input type="password" name="password_chk" id="password_chk" placeholder="비밀번호 확인" required>
+								<input type="password" name="password_chk" id="password_chk" placeholder="비밀번호 확인" required>								
 								<span id="chkNotice" size="1"></span>
 							</li>
 							
@@ -213,50 +218,69 @@
 								</select> 
 								<span>-</span> 
 								<input type="text" name="phone1" id="phone1" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-								<span>-</span> <input type="text" name="phone2" id="phone2"
-								maxlength="4"
-								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+								<span>-</span> 
+								<input type="text" name="phone2" id="phone2" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
 							</li>
-<!-- 인증번호 전송 부분 -->
-<li><input type="button" name="btn2" id="btn2" value="인증번호 전송">
-</li>
-<!-- 인증번호 입력 부분 -->
-<li class="number"><input type="text" name="num" id="num"
-	maxlength="5"
-	oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-	<input type="button" name="btn3" id="btn3" value="인증번호 확인"></li>
-<!-- 이메일 부분 -->
-<li><label for="email">
-		<h2>이메일</h2>
-</label></li>
-<li class="email"><input type="text" name="email" id="email">
-	@ <input type="text" name="email2" id="email2" value="naver.com"></li>
-<select name="selectEmail" id="selectEmail">
-	<option value="1">직접입력</option>
-	<option value="@naver.com" selected>naver.com</option>
-	<option value="@hanmail.net">hanmail.net</option>
-	<option value="@gmail.com">gmail.com</option>
-	<option value="@nate.com">nate.com</option>
-	<option value="@hotmail.com">hotmail.com</option>
-	<option value="@yahoo.co.kr">yahoo.co.kr</option>
-	<option value="@empas.com">empas.com</option>
-	<option value="@dreamwiz.com">dreamwiz.com</option>
-	<option value="@freechal.com">freechal.com</option>
-	<option value="@lycos.co.kr">lycos.co.kr</option>
-	<option value="@korea.com">korea.com</option>
-	<option value="@hanmir.com">hanmir.com</option>
-	<option value="@paran.com">paran.com</option>
-</select>
+							<!-- 인증번호 전송 부분 -->
+							<li>
+								<input type="button" name="btn2" id="btn2" value="인증번호 전송">
+							</li>
+							<!-- 인증번호 입력 부분 -->
+							<li class="number">
+								<input type="text" name="num" id="num" maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+								<input type="button" name="btn3" id="btn3" value="인증번호 확인">
+							</li>
+							<!-- 이메일 부분 -->
+							<li>
+								<label for="email">
+									<h2>이메일</h2>
+								</label>
+							</li>
+							<li class="email">
+								<input type="text" name="email" id="email">@ 
+								<input type="text" name="email2" id="email2" value="naver.com">
+							</li>
+							<select name="selectEmail" id="selectEmail">
+								<option value="1">직접입력</option>
+								<option value="@naver.com" selected>naver.com</option>
+								<option value="@hanmail.net">hanmail.net</option>
+								<option value="@gmail.com">gmail.com</option>
+								<option value="@nate.com">nate.com</option>
+								<option value="@hotmail.com">hotmail.com</option>
+								<option value="@yahoo.co.kr">yahoo.co.kr</option>
+								<option value="@empas.com">empas.com</option>
+								<option value="@dreamwiz.com">dreamwiz.com</option>
+								<option value="@freechal.com">freechal.com</option>
+								<option value="@lycos.co.kr">lycos.co.kr</option>
+								<option value="@korea.com">korea.com</option>
+								<option value="@hanmir.com">hanmir.com</option>
+								<option value="@paran.com">paran.com</option>
+							</select>
 						</div>
 						<div class="hr">
 							<hr class="pc_line">
 						</div>
 
 						<div class="pc_2">
-							<li><label for="address">
+							<li>
+								<label for="address">
 									<h2>주소</h2>
-							</label></li>
-							<li class="address"><input></li>
+								</label>
+							</li>
+							<li class="address">
+								<input type="text" name="postcode" id="postcode" placeholder="우편번호">
+								<input type="button" onclick="daumPostCode()" value="우편번호 찾기">								
+							</li>
+							<li>
+								<input type="text" name="address" id="address" placeholder="주소">
+							</li>
+							<li>
+								<input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소">
+								<input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목">
+							</li>							
+							<!-- <li>							
+								<input type="text" id="extraAddress" placeholder="참고항목">
+							</li>							 -->
 							<!-- 마케팅 정보 수신동의 부분 -->
 							<li>
 								<div class="marketing_wrap">
@@ -282,7 +306,8 @@
 								</div>
 							</li>
 							<!-- 가입하기 부분 -->
-							<li class="sub"><input type="submit" name="submit" id="submit" value="가입하기"> <!-- 메인 페이지로 돌아가기 부분 --> 
+							<li class="sub">
+							<input type="submit" name="submit" id="submit" value="가입하기" onclick="checkValue(form)"> <!-- 메인 페이지로 돌아가기 부분 --> 
 							<a href="../index.jsp"> <!-- 초기 화면으로 돌아감 -->
 									<div id="index">메인 페이지로 돌아가기</div>
 							</a></li>
@@ -291,8 +316,9 @@
 				</form>
 			</div>
 		</div>
-	</div>
-                     
+	</div>     
+	<script src="resources/script/postcode.js"></script>   
+	<script src="resources/script/validation_join.js"></script>                
 </body>
 <!-- footer 시작 -->
       <footer>
@@ -305,5 +331,5 @@
             <span><a href="#">오류신고</a></span>
         </div>
     </footer>
-    <!-- footer 끝 -->
+<!-- footer 끝 -->
 </html>
