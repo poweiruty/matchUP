@@ -67,3 +67,154 @@ input{
 #id, #pwd{
     height: 30px;
 }
+
+#wrap {
+    min-width: 360px;
+}
+
+.containerwrap {
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 120px;
+
+}
+
+/* form 공통 */
+form.index_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 30px 10px;
+}
+
+.index_form input {
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 40px;
+}
+
+.index_form select {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 40px;
+}
+
+form span {
+    width: 60px;
+    display: inline-block;
+    text-align: center;
+    line-height: 34px;
+    font-size: 30px;
+}
+
+.id, .pwd , .name, .text_memo {
+    width: 100%;
+}
+
+form.index_form>div.number {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.memo {
+    padding-top: 10px;
+    height: 150px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+
+/* 버튼공통 */
+
+#login_btn {
+    padding: 10px 0px;
+    border-radius: 50px;
+    border: 1px solid black;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+    color: #061f5c;
+    width: 100%;
+}
+
+#login_btn:hover{
+    background-color: gray;
+    cursor: pointer;
+}
+
+/* 아이디 비밀번호 찾기 전체 박스 */
+.login_box {
+    width: 100%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+/* 탭메뉴 */
+.login_tab {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10px;
+    /* 박스안에 넣기 */
+    box-sizing: border-box;
+}
+
+
+
+/* 탭메뉴왼쪽 */
+.login_person {
+    text-align: center;
+    width: 100%;
+    border: 1px solid black;
+    border-right: none;
+    border-top: none;
+}
+
+.login_person a {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* 탭메뉴오른쪽 */
+.login_corp {
+    text-align: center;
+    width: 100%;
+    border: 1px solid black;
+    border-top: none;
+
+}
+
+.login_corp a {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.login_tab .on {
+    border-top: 1px solid black;
+    border-bottom: none;
+}
+
+.tab_cont .tab {
+    display: none;
+}
+
+.tab_cont .on {
+    display: block;
+}
+
+/* 왼쪽정렬 */
+form.index_form {
+    display: flex;
+    align-items: flex-start;
+}

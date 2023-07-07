@@ -39,6 +39,18 @@
 	
 	<!-- 2. JSP 페이지 맵핑 -->
 	
+	
+	<!-- index -->
+	<servlet>
+		<servlet-name>index</servlet-name>
+		<jsp-file>/index.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>index</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
+	
 	<!-- header -->
 	<servlet>
 		<servlet-name>header</servlet-name>
@@ -48,6 +60,28 @@
 	<servlet-mapping>
 		<servlet-name>header</servlet-name>
 		<url-pattern>/header</url-pattern>
+	</servlet-mapping>
+	
+	<!-- header_login -->
+	<servlet>
+		<servlet-name>headerLogin</servlet-name>
+		<jsp-file>/header_login.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>headerLogin</servlet-name>
+		<url-pattern>/header_login</url-pattern>
+	</servlet-mapping>
+	
+	<!-- header_form -->
+	<servlet>
+		<servlet-name>headerForm</servlet-name>
+		<jsp-file>/header_form.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>headerForm</servlet-name>
+		<url-pattern>/header_form</url-pattern>
 	</servlet-mapping>
 
 	<!-- footer -->

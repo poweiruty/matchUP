@@ -7,10 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- 초기화 css -->
-    <link rel="stylesheet" href="resources/style/reset.css">
-    <!-- header css -->
-    <link rel="stylesheet" href="resources/style/grid.css">
+
     <link rel="stylesheet" href="resources/style/corpSearch.css">
 </head>
 
@@ -28,16 +25,20 @@
         <form action="" method="post" name="corpSearch" enctype="multipart/form-data">
             <div id="tab_search">
                 <ul class="search">
-                    <label for="search_bar">
-                        <h2>검색어</h2>
-                    </label>
-                    <input type="text" id="search_bar" placeholder="업종, 직무 및 회사명">
+                	<li>
+	                    <label for="search_bar">
+	                        <h2>검색어</h2>
+	                    </label>
+	                    <input type="text" id="search_bar" placeholder="업종, 직무 및 회사명">
+	            	</li>
                 </ul>
                 <ul class="region">
-                    <label for="region_bar">
-                        <h2>지역</h2>
-                    </label>
-                    <input type="text" id="region_bar" placeholder="근무지(도, 시, 군, 구, 동)" required>
+                	<li>
+	                    <label for="region_bar">
+	                        <h2>지역</h2>
+	                    </label>
+	                    <input type="text" id="region_bar" placeholder="근무지(도, 시, 군, 구, 동)" required>
+                    </li>
                 </ul>
                 <ul>
                     <li class="search_btn">
