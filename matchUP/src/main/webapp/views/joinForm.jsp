@@ -14,19 +14,22 @@
 </head>
 
 <body>
-	<!-- header 시작 -->
-	<header id="header">
-		<div class="index">
-			<a href="../index.jsp"> Match-UP </a>
-		</div>
-
-		<!-- 검색 -->
+     <!-- header 시작 -->
+     <header id="header">
+        <div class="index">
+            <a href="../index.jsp">
+                Match-UP
+            </a>
+        </div>
 		<div class="nav">
+		
+			<!-- 검색 -->
 			<div class="corpSearch">
 				<a href="corpSearch.jsp">
 					<h3>기업검색</h3>
 				</a>
 			</div>
+			
 			<!-- 기업리뷰 -->
 			<div class="corpReview">
 				<a href="corpReview.jsp">
@@ -65,8 +68,7 @@
 			</div>
 		</div>
 	</header>
-	<!-- header 끝 -->
-
+	<!-- header 끝 -->  
 	<div id="wrap">
 		<div class="section">
 			<div class="section_box">
@@ -290,5 +292,18 @@
 			</div>
 		</div>
 	</div>
+                     
 </body>
+<!-- footer 시작 -->
+      <footer>
+        <div class="footer_box">
+            <span><a href="../index.jsp">© 2023 MatchUP</a></span>
+            <span><a href="#">회사소개</a></span>
+            <span><a href="#">고객센터</a></span>
+            <span><a href="term.jsp">이용약관</a></span>
+            <span><a href="term2.jsp">개인정보 취급방침</a></span>
+            <span><a href="#">오류신고</a></span>
+        </div>
+    </footer>
+    <!-- footer 끝 -->
 </html>
