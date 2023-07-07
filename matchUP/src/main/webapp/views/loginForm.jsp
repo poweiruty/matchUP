@@ -6,70 +6,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../resources/style/reset_form.css">
-    <link rel="stylesheet" href="../resources/style/grid.css">
-    <link rel="stylesheet" href="../resources/style/login.css">
+    <title>로그인</title>
+    <link rel="stylesheet" href="resources/style/reset_form.css">
+    <link rel="stylesheet" href="resources/style/grid.css">
+    <link rel="stylesheet" href="resources/style/login.css">
 </head>
 
 <body>
    <!-- header 시작 -->
-     <header id="header">
-        <div class="index">
-            <a href="../index.jsp">
-                Match-UP
-            </a>
-        </div>
+        <jsp:include page="header"></jsp:include>
 
-        <!-- 검색 -->
-        <div class="nav">
-            <div class="corpSearch">
-                <a href="corpSearch.jsp">
-                    <h3>기업검색</h3>
-                </a>
-            </div>
-            <!-- 기업리뷰 -->
-            <div class="corpReview">
-                <a href="corpReview.jsp">
-                    <h3>기업리뷰</h3>
-                </a>
-            </div>
-            <!-- 로그인 & 마이페이지 -->
-            <div class="login">
-                <a href="loginForm.jsp">
-                    <h3>로그인</h3>
-                </a>
-            </div>
-            <!-- 회원가입 -->
-            <div class="login">
-                <a href="joinForm.jsp">
-                    <h3>회원가입</h3>
-                </a>
-            </div>
-            <!-- 관심채용정보(스크랩) -->
-            <div class="scrap">
-                <a href="scrapForm.jsp">
-                    <h3>관심채용정보</h3>
-                </a>
-            </div>
-            <!-- 이력서 -->
-            <div class="resumeForm">
-                <a href="resumeForm.jsp">
-                    <h3>이력서 관리</h3>
-                </a>
-            </div>
-            <!-- 채용 관리 -->
-            <div class="jobPostForm">
-                <a href="jobPostForm.jsp">
-                    <h3>채용 관리</h3>
-                </a>
-            </div>
-        </div>
-    </header>
     <!-- header 끝 -->
 
     <!-- body 시작 -->
     <!-- 로그인 -->
+    <div class="container">
+        <div id="login">
+            <div class="loginTitle">
+                <h1>로그인</h1>
+            </div>
+            <form action="Login" method="post" name="login" class="login_form" enctype="multipart/form-data">            
+                <div class="login_box">
+                    <input type="text" name="id" id="id" placeholder="아이디" required>
+                    <input type="password" name="password" id="password" placeholder="비밀번호" required>
+                </div>
+                <!-- 유효성 체크 
 	<div class="container">
 		<div id="login">
 			<div class="loginTitle">
@@ -83,6 +44,7 @@
 						required>
 				</div>
 				<!-- 유효성 체크 
+>>>>>>> refs/remotes/origin/#2-LeeTaewoo
                 <script>
                     // 비밀번호 체크
                     // function checklogin() {
@@ -138,16 +100,8 @@
 	</div>
 	<!-- body 끝 -->
   <!-- footer 시작 -->
-      <footer>
-        <div class="footer_box">
-            <span><a href="../index.jsp">© 2023 MatchUP</a></span>
-            <span><a href="#">회사소개</a></span>
-            <span><a href="#">고객센터</a></span>
-            <span><a href="term.jsp">이용약관</a></span>
-            <span><a href="term2.jsp">개인정보 취급방침</a></span>
-            <span><a href="#">오류신고</a></span>
-        </div>
-    </footer>
+      	<jsp:include page="footer"></jsp:include>
+
     <!-- footer 끝 -->
 </body>
 

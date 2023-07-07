@@ -1,44 +1,68 @@
 package model.resume;
 
+import java.sql.Timestamp;
+
 public class Resume {
 	private String pid;
-	private String resume_name;
-	private int resume_tel;
-	private String resume_email;
-	private String resume_address;
+	private int job_id;
+	private String career;
+	private String degree;
+	private String activity;
+	private String certificate;
+	private Timestamp resume_created;
+	private Timestamp resume_modified;
 	
-	public Resume(String pid, String resume_name, int resume_tel, String resume_address) {
-		this.pid = pid;
-		this.resume_name = resume_name;
-		this.resume_tel = resume_tel;
-		this.resume_address = resume_address;
+	
+	public Resume(String pid, int job_id, String career, String degree, 
+				  String activity, String certificate) {
+		this.pid=pid;
+		this.job_id=job_id;
+		this.career=career;
+		this.degree=degree;
+		this.activity=activity;
+		this.certificate=certificate;
 	}
-	public Resume(String pid, String resume_name, int resume_tel, String resume_email, String resume_address) {
+	public Resume(String pid, int job_id, String career, 
+				  String degree, String activity, String certificate, 
+				  Timestamp resume_created, Timestamp resume_modified) {
 		this.pid = pid;
-		this.resume_name = resume_name;
-		this.resume_tel = resume_tel;
-		this.resume_email = resume_email;
-		this.resume_address = resume_address;
+		this.job_id=job_id;
+		this.career=career;
+		this.degree=degree;
+		this.activity=activity;
+		this.certificate=certificate;
+		this.resume_created=resume_created;
+		this.resume_modified=resume_modified;
 	}
 	
 	public String getPid() {
 		return pid;
 	}
-	public String getResume_name() {
-		return resume_name;
+	public int getJob_id() {
+		return job_id;
 	}
-	public int getResume_tel() {
-		return resume_tel;
+	public String getCareer() {
+		return career;
 	}
-	public String getResume_email() {
-		return resume_email;
+	public String getDegree() {
+		return degree;
 	}
-	public String getResume_address() {
-		return resume_address;
+	public String getActivity() {
+		return activity;
+	}
+	public String getCertificate() {
+		return certificate;
+	}
+	public Timestamp getResume_created() {
+		return resume_created;
+	}
+	public Timestamp getResume_modified() {
+		return resume_modified;
 	}
 	
 	@Override
 	public String toString() {	
-		return String.format("id : %s\nresume_name : %s\nresumt_tel : %d\nresume_email : %s\nresume_address : %S", this.pid, this.resume_name, this.resume_tel, this.resume_email, this.resume_address);
+		return String.format("id : %s\njob_id : %d\ncareer : %s\ndegree : %s\nactivity : %s\ncertificate : %s\n", 
+				this.pid, this.job_id, this.career, this.degree, this.activity);
 	}	
 }

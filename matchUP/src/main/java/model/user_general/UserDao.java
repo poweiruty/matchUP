@@ -31,16 +31,16 @@ public class UserDao {
 		String password = dto.getPpassword();
 		String name = dto.getPname();
 		int birth = dto.getBirth();
-		int tel = dto.getTel();
+		String tel = dto.getTel();
 		String email = dto.getEmail();
 		String address = dto.getUser_address();
 		
 		boolean check = true;
 		
-		if(id != null && password != null && name != null && birth != 0 && tel != 0) {
+		if(id != null && password != null && name != null && birth != 0 && tel != null) {
 			this.conn = DBManager.getConnection();
 			if(this.conn != null) {
-				if(!email.equals("") && address.equals("")) {
+				if(!email.equals("")) {
 					String sql = "INSERT INTO pusers_tb (pid,ppassword,pname,birth,tel,email) VALUES(?, ?, ?, DATE(?), ?, ?)";
 					try {
 						this.pstmt = this.conn.prepareStatement(sql);
@@ -48,7 +48,7 @@ public class UserDao {
 						this.pstmt.setString(2, password);
 						this.pstmt.setString(3, name);
 						this.pstmt.setInt(4, birth);
-						this.pstmt.setInt(5, tel);
+						this.pstmt.setString(5, tel);
 						this.pstmt.setString(6, email);
 						
 						this.pstmt.execute();
@@ -58,7 +58,7 @@ public class UserDao {
 					}finally {
 						DBManager.close(this.conn, this.pstmt);
 					}
-				}else if(!address.equals("") && email.equals("")){
+				}else if(!address.equals("")){
 					String sql = "INSERT INTO pusers_tb (pid,ppassword,pname,birth,tel,user_address) VALUES(?, ?, ?, DATE(?), ?, ?)";
 					try {
 						this.pstmt = this.conn.prepareStatement(sql);
@@ -66,7 +66,7 @@ public class UserDao {
 						this.pstmt.setString(2, password);
 						this.pstmt.setString(3, name);
 						this.pstmt.setInt(4, birth);
-						this.pstmt.setInt(5, tel);
+						this.pstmt.setString(5, tel);
 						this.pstmt.setString(6, address);
 						
 						this.pstmt.execute();
@@ -84,7 +84,7 @@ public class UserDao {
 						this.pstmt.setString(2, password);
 						this.pstmt.setString(3, name);
 						this.pstmt.setInt(4, birth);
-						this.pstmt.setInt(5, tel);
+						this.pstmt.setString(5, tel);
 						this.pstmt.setString(6, email);
 						this.pstmt.setString(7, address);
 						
@@ -122,13 +122,13 @@ public class UserDao {
 					String password = this.rs.getString(2);
 					String name = this.rs.getString(3);
 					Date birth = this.rs.getDate(4);
-					int birthNum = Integer.parseInt(sdf.format(birth));
-					int tel = this.rs.getInt(5);
+					int birthNum = Integer.parseInt(sdf.format(birth));					
+					String tel = this.rs.getString(5);					
 					String email = this.rs.getString(6);
 					String address = this.rs.getString(7);					
+										
 					
-					user = new User(id, password, name, birthNum, tel, email, address);
-					
+					user = new User(id, password, name, birthNum, tel, email, address);					
 				}
 			}catch (Exception e) {
 				e.printStackTrace();
@@ -159,7 +159,7 @@ public class UserDao {
 					String name = this.rs.getString(3);
 					Date birth = this.rs.getDate(4);
 					int birthNum = Integer.parseInt(sdf.format(birth));
-					int tel = this.rs.getInt(5);
+					String tel = this.rs.getString(5);
 					String email = this.rs.getString(6);
 					String address = this.rs.getString(7);
 					
@@ -194,9 +194,9 @@ public class UserDao {
 				}
 				
 				if(user.getTel() == dto.getTel()) {	
-					this.pstmt.setInt(2, user.getTel());
+					this.pstmt.setString(2, user.getTel());
 				}else {
-					this.pstmt.setInt(2, dto.getTel());
+					this.pstmt.setString(2, dto.getTel());
 				}
 				
 				if(user.getEmail().equals(dto.getEmail())) {

@@ -5,19 +5,19 @@ public class UserRequestDto {
 	private String ppassword;
 	private String pname;
 	private int birth;
-	private int tel;
+	private String tel;
 	private String email;
 	private String user_address;
 	
 	
-	public UserRequestDto(String ppassword, int tel, String email, String user_address) {	
+	public UserRequestDto(String ppassword, String tel, String email, String user_address) {	
 		this.ppassword = ppassword;
 		this.tel = tel;
 		this.email = email;
 		this.user_address = user_address;
 	}
 
-	public UserRequestDto(String pid, String ppassword, String pname, int birth, int tel) {
+	public UserRequestDto(String pid, String ppassword, String pname, int birth, String tel) {
 		this.pid = pid;
 		this.ppassword = ppassword;
 		this.pname = pname;
@@ -25,7 +25,7 @@ public class UserRequestDto {
 		this.tel = tel;
 	}
 
-	public UserRequestDto(String pid, String ppassword, String pname, int birth, int tel, String email) {
+	public UserRequestDto(String pid, String ppassword, String pname, int birth, String tel, String email) {
 		this.pid = pid;
 		this.ppassword = ppassword;
 		this.pname = pname;
@@ -34,7 +34,7 @@ public class UserRequestDto {
 		this.email = email;
 	}
 
-	public UserRequestDto(String pid, String ppassword, String pname, int birth, int tel, String email,
+	public UserRequestDto(String pid, String ppassword, String pname, int birth, String tel, String email,
 			String user_address) {
 		this.pid = pid;
 		this.ppassword = ppassword;
@@ -77,11 +77,11 @@ public class UserRequestDto {
 		this.birth = birth;
 	}
 
-	public int getTel() {
+	public String getTel() {
 		return this.tel;
 	}
 
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 
