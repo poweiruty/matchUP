@@ -197,8 +197,7 @@ public class ResumeDao {
 		
 		return check;
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> refs/remotes/origin/main
+
+
+

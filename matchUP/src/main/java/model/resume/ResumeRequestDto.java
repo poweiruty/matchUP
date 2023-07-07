@@ -98,9 +98,6 @@ public class ResumeRequestDto {
 		public void setResume_modified(Timestamp resume_modified) {
 			this.resume_modified = resume_modified;
 		}
-		
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> refs/remotes/origin/main
+	}
+
+

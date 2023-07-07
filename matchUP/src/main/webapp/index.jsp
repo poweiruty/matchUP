@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-
 <%@page import="model.resume.ResumeRequestDto" %>
 <%@page import="model.resume.ResumeDao"%>
 <%@page import="model.resume.Resume"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="util.DBManager"%>
-=======
->>>>>>> refs/remotes/origin/main
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -34,7 +30,6 @@
             </a>
         </div>
 
-<<<<<<< HEAD
 <%-- <%	
 	UserDao userDao = UserDao.getInstance();	
 	User user = userDao.getUserbyId("qkrrb0032");
@@ -44,7 +39,7 @@
 	userDao.updateUser(dto, "qwe123");
 	System.out.println(user);
 %> --%>
-=======
+
         <!-- 검색 -->
         <div class="nav">
             <div class="corpSearch">
@@ -91,7 +86,7 @@
         </div>
     </header>
     <!-- header 끝 -->
->>>>>>> refs/remotes/origin/main
+
 
     <!-- main 시작 -->
 
