@@ -1,11 +1,17 @@
 @charset "UTF-8";
 
 * {
-	padding: 0;
-	margin: 0;
-	font-family: 'Orbit', sans-serif;
+    padding : 0;
+    margin : 0;
+    font-family: 'Orbit', sans-serif;
+}
+/* header */
+a{
+    color: black;
+    text-decoration: none;
 }
 
+<<<<<<< HEAD
 a {
 	color: black;
 	text-decoration: none;
@@ -32,3 +38,37 @@ header {
 	margin-bottom: 50px;
 	border-bottom: solid 1px gray;
 }
+=======
+a:hover{
+    color: gray;
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.index{
+    font-size: 1.7rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header{
+    padding: 10px;
+    margin-bottom: 50px;
+    border-bottom: solid 1px gray;
+}
+
+/* footer */
+.footer_box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-top: solid 1px gray;
+    padding: 20px 0;
+    margin-top: 10%;
+}
+
+>>>>>>> refs/remotes/origin/#2-LeeTaewoo

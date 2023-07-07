@@ -36,6 +36,8 @@
 	
 	
 	<!-- 2. JSP 페이지 맵핑 -->
+	
+	<!-- review -->
 	<servlet>
 		<servlet-name>corpReview</servlet-name>
 		<jsp-file>/views/corpReview.jsp</jsp-file>
@@ -46,6 +48,7 @@
 		<url-pattern>/review</url-pattern>
 	</servlet-mapping>
 	
+	<!-- search -->
 	<servlet>
 		<servlet-name>corpSearch</servlet-name>
 		<jsp-file>/views/corpSearch.jsp</jsp-file>
@@ -56,6 +59,8 @@
 		<url-pattern>/search</url-pattern>
 	</servlet-mapping>
 	
+	
+	<!-- jobPost -->
 	<servlet>
 		<servlet-name>jobPostForm</servlet-name>
 		<jsp-file>/views/jobPostForm.jsp</jsp-file>
@@ -66,16 +71,18 @@
 		<url-pattern>/jobPost</url-pattern>
 	</servlet-mapping>
 	
+	
+	<!-- join -->
 	<servlet>
 		<servlet-name>joinForm</servlet-name>
 		<jsp-file>/views/joinForm.jsp</jsp-file>
 	</servlet>
-
+	
 	<servlet-mapping>
 		<servlet-name>joinForm</servlet-name>
 		<url-pattern>/join</url-pattern>
 	</servlet-mapping>
-	
+	<!-- login -->
 	<servlet>
 		<servlet-name>loginForm</servlet-name>
 		<jsp-file>/views/loginForm.jsp</jsp-file>
@@ -86,6 +93,7 @@
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>	
 	
+	<!-- resume -->
 	<servlet>
 		<servlet-name>resumeForm</servlet-name>
 		<jsp-file>/views/resumeForm.jsp</jsp-file>
@@ -96,6 +104,7 @@
 		<url-pattern>/resume</url-pattern>
 	</servlet-mapping>	
 	
+	<!-- scrap -->
 	<servlet>
 		<servlet-name>scrapForm</servlet-name>
 		<jsp-file>/views/scrapForm.jsp</jsp-file>
@@ -106,7 +115,8 @@
 		<url-pattern>/scrap</url-pattern>
 	</servlet-mapping>	
 	
-		<servlet>
+	<!-- term -->
+	<servlet>
 		<servlet-name>term</servlet-name>
 		<jsp-file>/views/term.jsp</jsp-file>
 	</servlet>
@@ -116,7 +126,8 @@
 		<url-pattern>/term</url-pattern>
 	</servlet-mapping>	
 	
-		<servlet>
+	<!-- term2 -->
+	<servlet>
 		<servlet-name>term2</servlet-name>
 		<jsp-file>/views/term2.jsp</jsp-file>
 	</servlet>

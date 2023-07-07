@@ -13,10 +13,10 @@
 </head>
 
 <body>
-    <!-- header 시작 -->
-    <header id="header">
+   <!-- header 시작 -->
+     <header id="header">
         <div class="index">
-            <a href="index.html">
+            <a href="../index.jsp">
                 Match-UP
             </a>
         </div>
@@ -24,43 +24,43 @@
         <!-- 검색 -->
         <div class="nav">
             <div class="corpSearch">
-                <a href="corpSearch.html">
+                <a href="corpSearch.jsp">
                     <h3>기업검색</h3>
                 </a>
             </div>
             <!-- 기업리뷰 -->
             <div class="corpReview">
-                <a href="corpReview.html">
+                <a href="corpReview.jsp">
                     <h3>기업리뷰</h3>
                 </a>
             </div>
             <!-- 로그인 & 마이페이지 -->
             <div class="login">
-                <a href="login.html">
+                <a href="loginForm.jsp">
                     <h3>로그인</h3>
                 </a>
             </div>
             <!-- 회원가입 -->
             <div class="login">
-                <a href="join.html">
+                <a href="joinForm.jsp">
                     <h3>회원가입</h3>
                 </a>
             </div>
-            <!-- 스크랩 -->
+            <!-- 관심채용정보(스크랩) -->
             <div class="scrap">
-                <a href="scrap.html">
-                    <h3>스크랩</h3>
+                <a href="scrapForm.jsp">
+                    <h3>관심채용정보</h3>
                 </a>
             </div>
             <!-- 이력서 -->
             <div class="resumeForm">
-                <a href="resume.html">
+                <a href="resumeForm.jsp">
                     <h3>이력서 관리</h3>
                 </a>
             </div>
             <!-- 채용 관리 -->
             <div class="jobPostForm">
-                <a href="jobPost.html">
+                <a href="jobPostForm.jsp">
                     <h3>채용 관리</h3>
                 </a>
             </div>
@@ -68,6 +68,7 @@
     </header>
     <!-- header 끝 -->
 
+    <!-- body 시작 -->
     <!-- 로그인 -->
     <div class="container">
         <div id="login">
@@ -80,6 +81,20 @@
                     <input type="password" name="password" id="password" placeholder="비밀번호" required>
                 </div>
                 <!-- 유효성 체크 
+	<div class="container">
+		<div id="login">
+			<div class="loginTitle">
+				<h1>로그인</h1>
+			</div>
+			<form action="" method="post" name="login" class="login_form"
+				enctype="multipart/form-data">
+				<div class="login_box">
+					<input type="text" name="id" id="id" placeholder="아이디" required>
+					<input type="password" name="pwd" id="pwd" placeholder="비밀번호"
+						required>
+				</div>
+				<!-- 유효성 체크 
+>>>>>>> refs/remotes/origin/#2-LeeTaewoo
                 <script>
                     // 비밀번호 체크
                     // function checklogin() {
@@ -110,28 +125,42 @@
                         // }
                     // }
                  </script>-->
-                <div class="check_box">
-                    <input type="checkbox" name="check" id="box">
-                    <label for="check">아이디 저장</label>
-                    <input type="checkbox" name="auto" id="box">
-                    <label for="auto_login">자동 로그인</label>
-                    <a href="#"><button class="btn_login">로그인</button></a>
-            </form>
+				<div class="check_box">
+					<input type="checkbox" name="check" id="box"> <label
+						for="check">아이디 저장</label> <input type="checkbox" name="auto"
+						id="box"> <label for="auto_login">자동 로그인</label> <a
+						href="#"><button class="btn_login">로그인</button></a>
+				</div>
+			</form>
+
+			<!-- 회원가입 연결 -->
+			<div class="join_box">
+				<a href="join.html">
+					<button class="btn_join">회원가입</button>
+				</a>
+			</div>
+			<!-- 아이디 비밀 번호 찾기 -->
+			<div class="find_box">
+				<h1>로그인 정보가 생각나지 않으세요?</h1>
+				<p>아이디 또는 비밀번호를 찾으실 수 있습니다.</p>
+				<a href="#"><button class="btn_find">아이디 찾기</button></a> <a href="#"><button
+						class="btn_find">비밀번호 찾기</button></a>
+			</div>
+		</div>
+	</div>
+	<!-- body 끝 -->
+  <!-- footer 시작 -->
+      <footer>
+        <div class="footer_box">
+            <span><a href="../index.jsp">© 2023 MatchUP</a></span>
+            <span><a href="#">회사소개</a></span>
+            <span><a href="#">고객센터</a></span>
+            <span><a href="term.jsp">이용약관</a></span>
+            <span><a href="term2.jsp">개인정보 취급방침</a></span>
+            <span><a href="#">오류신고</a></span>
         </div>
-
-        <!-- 회원가입 연결 -->
-        <a href="join.html">
-            <button class="btn_join">회원가입</button></a>
-        <!-- 아이디 비밀 번호 찾기 -->
-        <h1>로그인 정보가 생각나지 않으세요?</h1>
-        <p>아이디 또는 비밀번호를 찾으실 수 있습니다.</p>
-        <a href="#"><button class="btn_find">아이디 찾기</button></a>
-        <a href="#"><button class="btn_find">비밀번호 찾기</button></a>
-
-    </div>
-    </div>
-
-    </div>
+    </footer>
+    <!-- footer 끝 -->
 </body>
 
 </html>
