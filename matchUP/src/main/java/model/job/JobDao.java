@@ -14,6 +14,7 @@ public class JobDao {
 	public static JobDao getInstance() {
 		return instance;
 	}
+		
 	
 	public Job getJob(String job) {
 		Job jobs = null;
@@ -21,14 +22,15 @@ public class JobDao {
 		this.conn=DBManager.getConnection();
 		
 		if(this.conn!=null) {
-			String sql="select * from job_tb";
+			String sql="select * from job_tb where job=?";
 			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
-				this.pstmt.setString(2,job);
+				this.pstmt.setString(1,job);
 				this.rs = this.pstmt.executeQuery();
 				if(this.rs.next()) {
-					jobs = new Job(job);					
+					String jobss = this.rs.getString(2);
+					jobs = new Job(jobss);					
 				}
 			}catch (Exception e) {
 				e.printStackTrace();
@@ -45,7 +47,7 @@ public class JobDao {
 		this.conn = DBManager.getConnection();
 		
 		if(this.conn != null) {
-			String sql="select * from job_tb";;
+			String sql="select * from job_tb";
 			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
