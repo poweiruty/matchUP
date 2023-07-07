@@ -39,8 +39,7 @@
 			opener.document.getElementById('id').readonly = true;
 			
 			window.close();
-		}	
-	
+		}		
 	</script>
 </body>
 </html>

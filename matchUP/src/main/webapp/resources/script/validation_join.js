@@ -1,12 +1,12 @@
-$('#id').on('change', e => {
+/*$('#id').on('change', e => {
 	if($('#id').val() !== "") {
 		$('#error-id').hide();
 		$('#id').parent().css('border-color', 'lightgrey');
 	}
-});
+});*/
 
-function winopen(){
-	if(document.getElementById('id').value() === '' || document.getElementById('id').value().length() < 0){
+function winOpen(){
+	if(document.getElementById('id').val() === '' || document.getElementById('id').value().length < 0){
 		$('#error-noneId').show();	
 		document.getElementById('id').focus();
 	}else{

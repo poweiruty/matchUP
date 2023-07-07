@@ -16,59 +16,7 @@
 
 <body>
      <!-- header 시작 -->
-     <header id="header">
-        <div class="index">
-            <a href="../index.jsp">
-                Match-UP
-            </a>
-        </div>
-		<div class="nav">
-		
-			<!-- 검색 -->
-			<div class="corpSearch">
-				<a href="corpSearch.jsp">
-					<h3>기업검색</h3>
-				</a>
-			</div>
-			
-			<!-- 기업리뷰 -->
-			<div class="corpReview">
-				<a href="corpReview.jsp">
-					<h3>기업리뷰</h3>
-				</a>
-			</div>
-			<!-- 로그인 & 마이페이지 -->
-			<div class="login">
-				<a href="login.jsp">
-					<h3>로그인</h3>
-				</a>
-			</div>
-			<!-- 회원가입 -->
-			<div class="login">
-				<a href="join.jsp">
-					<h3>회원가입</h3>
-				</a>
-			</div>
-			<!-- 스크랩 -->
-			<div class="scrap">
-				<a href="scrap.jsp">
-					<h3>스크랩</h3>
-				</a>
-			</div>
-			<!-- 이력서 -->
-			<div class="resumeForm">
-				<a href="resume.jsp">
-					<h3>이력서 관리</h3>
-				</a>
-			</div>
-			<!-- 채용 관리 -->
-			<div class="jobPostForm">
-				<a href="jobPost.jsp">
-					<h3>채용 관리</h3>
-				</a>
-			</div>
-		</div>
-	</header>
+       <jsp:include page="header"></jsp:include>
 	<!-- header 끝 -->  
 	<div id="wrap">
 		<div class="section">
@@ -87,7 +35,7 @@
 							</li>
 							<li class="id">
 								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" required> 
-								<input type="button" name="btn1" id="btn1" value="중복확인" onclick="winopen()"><br/>								
+								<input type="button" name="btn1" id="btn1" value="중복확인" onclick="winOpen(id)"><br/>								
 							</li>
 							<li class="error" id="error-duplId">* 이미 사용 중인 아이디입니다.</li>								
 							<li class="error" id="error-noneId">* 아이디는 필수 정보입니다.</li>
@@ -321,15 +269,7 @@
 	<script src="resources/script/validation_join.js"></script>                
 </body>
 <!-- footer 시작 -->
-      <footer>
-        <div class="footer_box">
-            <span><a href="../index.jsp">© 2023 MatchUP</a></span>
-            <span><a href="#">회사소개</a></span>
-            <span><a href="#">고객센터</a></span>
-            <span><a href="term.jsp">이용약관</a></span>
-            <span><a href="term2.jsp">개인정보 취급방침</a></span>
-            <span><a href="#">오류신고</a></span>
-        </div>
-    </footer>
+<jsp:include page="footer"></jsp:include>
 <!-- footer 끝 -->
+
 </html>

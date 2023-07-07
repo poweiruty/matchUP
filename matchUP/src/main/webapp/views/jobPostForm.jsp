@@ -9,88 +9,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <!-- 초기화 css -->
-<link rel="stylesheet" href="../resources/style/reset.css">
+<link rel="stylesheet" href="resources/style/reset.css">
 <!-- header css -->
-<link rel="stylesheet" href="../resources/style/grid.css">
-<link rel="stylesheet" href="../resources/style/jobPost.css">
+<link rel="stylesheet" href="resources/style/grid.css">
+<link rel="stylesheet" href="resources/style/jobPost.css">
 </head>
 
 <body>
 	<!-- header 시작 -->
-	<header id="header">
-		<div class="index">
-			<a href="../index.jsp"> Match-UP </a>
-		</div>
-
-		<!-- 검색 -->
-		<div class="nav">
-			<div class="corpSearch">
-				<a href="corpSearch.jsp">
-					<h3>기업검색</h3>
-				</a>
-			</div>
-			<!-- 기업리뷰 -->
-			<div class="corpReview">
-				<a href="corpReview.jsp">
-					<h3>기업리뷰</h3>
-				</a>
-			</div>
-			<!-- 로그인 & 마이페이지 -->
-			<div class="login">
-				<a href="loginForm.jsp">
-					<h3>로그인</h3>
-				</a>
-			</div>
-			<!-- 회원가입 -->
-			<div class="login">
-				<a href="joinForm.jsp">
-					<h3>회원가입</h3>
-				</a>
-			</div>
-			<!-- 관심채용정보(스크랩) -->
-			<div class="scrap">
-				<a href="scrapForm.jsp">
-					<h3>관심채용정보</h3>
-				</a>
-			</div>
-			<!-- 이력서 -->
-			<div class="resumeForm">
-				<a href="resumeForm.jsp">
-					<h3>이력서 관리</h3>
-				</a>
-			</div>
-			<!-- 채용 관리 -->
-			<div class="jobPostForm">
-				<a href="jobPostForm.jsp">
-					<h3>채용 관리</h3>
-				</a>
-			</div>
-		</div>
-	</header>
+    <jsp:include page="header"></jsp:include>
 	<!-- header 끝 -->
 
-	<!-- 
-        채용공고
-    
-    직무 (필)
-    채용공고 인원수 (필)
-    광고 지역 (필)
-    
-    세부사항(어떤 종류의 직업?)(필)
-    - 정규직, 아르바이트, 임시직, 계약직, 인턴, 신입공채, 병역특례
-    
-    급여 및 복지 
-    
-    급여 - (최소 - 최대) (연봉, 시급, 일급, 주급)
-    
-    직무내용 상세설명 (최소 글자 설정)
-     
-    채용공고 일정 (필)
-    
-    필수/우대 자격 설정
-    (경력, 교대근무 가능, 자격증, 가능 언어, 학력, 사용자 지정 질문)
-    면접 가능한 날짜 설정 
-    -->
 	<!-- body 시작 -->
 	<section class="container">
 		<div class="jobPost_wrap">
@@ -201,17 +130,8 @@
 		</div>
 			<!-- body 끝 -->
 			<!-- footer 시작 -->
-			<footer>
-				<div class="footer_box">
-					<span>
-					<a href="../index.jsp">© 2023 MatchUP</a></span> 
-					<span><a href="#">회사소개</a></span> 
-					<span><a href="#">고객센터</a></span> 
-					<span><a href="term.jsp">이용약관</a></span> 
-					<span><a href="term2.jsp">개인정보취급방침</a></span> 
-					<span><a href="#">오류신고</a></span>
-				</div>
-			</footer>
+				<jsp:include page="footer"></jsp:include>
+
 			<!-- footer 끝 -->
 </body>
 

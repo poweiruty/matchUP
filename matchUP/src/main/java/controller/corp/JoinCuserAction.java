@@ -46,6 +46,7 @@ public class JoinCuserAction extends HttpServlet {
 		String mgr_tel = request.getParameter("mgr_tel");
 		String mgr_email = request.getParameter("mgr_email");
 		String address = request.getParameter("caddress");
+		// 이거 왜이러냐
 		
 		CorpUserRequestDto cuser = new CorpUserRequestDto(id, password, name, num, mgr_name, mgr_tel, mgr_email, address);
 		

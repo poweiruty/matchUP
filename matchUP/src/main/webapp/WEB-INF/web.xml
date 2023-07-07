@@ -39,6 +39,28 @@
 	
 	<!-- 2. JSP 페이지 맵핑 -->
 	
+	<!-- header -->
+	<servlet>
+		<servlet-name>header</servlet-name>
+		<jsp-file>/header.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>header</servlet-name>
+		<url-pattern>/header</url-pattern>
+	</servlet-mapping>
+
+	<!-- footer -->
+	<servlet>
+		<servlet-name>footer</servlet-name>
+		<jsp-file>/footer.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>footer</servlet-name>
+		<url-pattern>/footer</url-pattern>
+	</servlet-mapping>
+	
 	<!-- review -->
 	<servlet>
 		<servlet-name>corpReview</servlet-name>
