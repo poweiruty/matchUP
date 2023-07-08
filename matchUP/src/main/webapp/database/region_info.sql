@@ -32,8 +32,6 @@ create table semi_region_tb(
     main_region_id int(10),									-- 광역자치 인덱스(외래키)
     semi_region varchar(50) unique key NOT NULL,			-- 지역자치 분류
     foreign key (main_region_id) references main_region_tb(main_region_id) on delete cascade
-		-- 광역자치 항목 삭제 시, 지역자치도 같이 삭제
-        -- 광역자치 업데이트 시, 지역자치도 같이 업데이트
 );
 
 insert into semi_region_tb(main_region_id, semi_region) values (1,'서초구');
@@ -58,8 +56,3 @@ insert into semi_region_tb(main_region_id, semi_region) values (17,'제주시');
 insert into semi_region_tb(main_region_id, semi_region) values (17,'서귀포시');
 
 select * from semi_region_tb order by semi_region_id ASC;
-
--- delete 구문
--- delete from main_region_tb where main_region_id=1;
-
--- update 구문

@@ -27,12 +27,3 @@ insert into job_posting_tb (corp_id, job_id, semi_region_id, recruit_people, rec
 values(4,10,8,1,20230730,'4000만원','허브관리자 1명 급하게 채용');
 
 select * from job_posting_tb;
-
--- delete 
--- delete from cusers_tb where cid='white0815';
--- delete from corporatino_tb where corp_id='2';
--- delete from job_tb where job_id='11';
--- delete from semi_region_tb where semi_region_id='8'; 
-
-
-
