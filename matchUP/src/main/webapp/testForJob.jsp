@@ -25,7 +25,7 @@
 	}
 	
 	// 출력구문 2
-	System.out.println("데이터 전체 불러오기>>");
+	System.out.println("\n데이터 전체 불러오기>>");
 	ArrayList<Job> list = dao.getJobAll();
 	for(Job jobs:list){
 		System.out.println(jobs);

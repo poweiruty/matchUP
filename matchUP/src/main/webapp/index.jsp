@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@page import="model.resume.ResumeRequestDto" %>
 <%@page import="model.resume.ResumeDao"%>
 <%@page import="model.resume.Resume"%>
@@ -6,8 +5,7 @@
 <%@page import="util.DBManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-=======
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>

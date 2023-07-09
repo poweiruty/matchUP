@@ -3,20 +3,30 @@
 package model.region;
 
 public class SemiRegionRequestDto {
-	private String main_region;
+	private int main_region_id;
+	private String semi_region;
 	
 	// Constructor
-	public SemiRegionRequestDto(String mainRegion){
-		this.main_region=mainRegion;
+	public SemiRegionRequestDto(int mainRegionId, String semiRegion){
+		this.main_region_id=mainRegionId;
+		this.semi_region=semiRegion;
 	}
 
 	// Getter, Setter
-	public String getMain_region() {
-		return main_region;
+	public int getMain_region_id() {
+		return main_region_id;
 	}
 
-	public void setMain_region(String main_region) {
-		this.main_region = main_region;
+	public void setMain_region_id(int mainRegionId) {
+		this.main_region_id = mainRegionId;
+	}
+	
+	public String getSemi_region() {
+		return semi_region;
+	}
+
+	public void setSemi_region(String semiRegion) {
+		this.semi_region=semiRegion;
 	}
 	
 }
