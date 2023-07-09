@@ -15,6 +15,8 @@ public class RegionDao {
 		return instance;
 	}
 	
+	
+	// 광역자치 Read
 	public MainRegion getMainRegion(String mainRegion) {
 		MainRegion mainRegions = null;
 		
@@ -68,4 +70,61 @@ public class RegionDao {
 		}		
 		return list;
 	}
+	
+	// 지역자치 Read
+		public SemiRegion getSemiRegion(String semiRegion) {
+			SemiRegion semiRegions = null;
+			
+			this.conn=DBManager.getConnection();
+			
+			if(this.conn!=null) {
+				String sql="select * from main_region_tb where semi_region=?";
+				
+				try {
+					this.pstmt = this.conn.prepareStatement(sql);
+					this.pstmt.setString(1,semiRegion);
+					this.rs = this.pstmt.executeQuery();
+					if(this.rs.next()) {
+						int mRegionId = this.rs.getInt(2); 
+						String sRegion = this.rs.getString(3);
+						semiRegions = new SemiRegion(mRegionId,sRegion);					
+					}
+				}catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					DBManager.close(this.conn, this.pstmt, this.rs);
+				}
+			}
+			return semiRegions;
+		}
+		
+		
+		public ArrayList<SemiRegion> getSemiRegionAll(){
+			ArrayList<SemiRegion> list = new ArrayList<SemiRegion>();
+			
+			this.conn = DBManager.getConnection();
+			
+			if(this.conn != null) {
+				String sql="select * from semi_region_tb";
+				
+				try {
+					this.pstmt = this.conn.prepareStatement(sql);
+					this.rs = this.pstmt.executeQuery();
+					
+					while(this.rs.next()) {
+						int mainRegionId=this.rs.getInt(2);
+						String semiRegion = this.rs.getString(3);
+						
+						SemiRegion semiRegions = new SemiRegion(mainRegionId,semiRegion);
+						
+						list.add(semiRegions);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					DBManager.close(this.conn, this.pstmt, this.rs);
+				}
+			}		
+			return list;
+		}
 }

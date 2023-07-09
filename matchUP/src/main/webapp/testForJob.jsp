@@ -12,7 +12,7 @@
 </head>
 <body>
 <% 
-	// 출력구문 1 : 왜 안나올까요 시부랄거
+ 	// 출력구문 1 : 왜 안나올까요 시부랄거
 	//  ㄴ 해결 : clean -> 이제 나옵니다 시부랄거
 	JobDao dao = JobDao.getInstance();
 	Job job = dao.getJob("디자인");
