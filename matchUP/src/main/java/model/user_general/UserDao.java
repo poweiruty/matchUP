@@ -77,7 +77,7 @@ public class UserDao {
 						DBManager.close(this.conn, this.pstmt);
 					}
 				}else {
-					String sql = "INSERT INTO pusers_tb VALUES(?, ?, ?, DATE(?), ?, ?, ?)";
+					String sql = "INSERT INTO pusers_tb(pid,ppassword,pname,birth,tel,email,user_address) VALUES(?, ?, ?, DATE(?), ?, ?, ?)";
 					try {
 						this.pstmt = this.conn.prepareStatement(sql);
 						this.pstmt.setString(1, id);
@@ -112,21 +112,20 @@ public class UserDao {
 		this.conn = DBManager.getConnection();
 		
 		if(this.conn != null) {
-			String sql = "SELECT * FROM pusers_tb WHERE pid = ?";
+			String sql = "SELECT * FROM pusers_tb WHERE pid=?";
 			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
 				this.pstmt.setString(1,id);
 				this.rs = this.pstmt.executeQuery();
 				if(this.rs.next()) {
-					String password = this.rs.getString(2);
-					String name = this.rs.getString(3);
-					Date birth = this.rs.getDate(4);
+					String password = this.rs.getString(3);
+					String name = this.rs.getString(4);
+					Date birth = this.rs.getDate(5);
 					int birthNum = Integer.parseInt(sdf.format(birth));					
-					String tel = this.rs.getString(5);					
-					String email = this.rs.getString(6);
-					String address = this.rs.getString(7);					
-										
+					String tel = this.rs.getString(6);					
+					String email = this.rs.getString(7);
+					String address = this.rs.getString(8);										
 					
 					user = new User(id, password, name, birthNum, tel, email, address);					
 				}
@@ -154,14 +153,14 @@ public class UserDao {
 				this.rs = this.pstmt.executeQuery();
 				
 				while(this.rs.next()) {
-					String id = this.rs.getString(1);
-					String password = this.rs.getString(2);
-					String name = this.rs.getString(3);
-					Date birth = this.rs.getDate(4);
+					String id = this.rs.getString(2);
+					String password = this.rs.getString(3);
+					String name = this.rs.getString(4);
+					Date birth = this.rs.getDate(5);
 					int birthNum = Integer.parseInt(sdf.format(birth));
-					String tel = this.rs.getString(5);
-					String email = this.rs.getString(6);
-					String address = this.rs.getString(7);
+					String tel = this.rs.getString(6);
+					String email = this.rs.getString(7);
+					String address = this.rs.getString(8);
 					
 					User user = new User(id,password,name,birthNum,tel,email,address);
 					

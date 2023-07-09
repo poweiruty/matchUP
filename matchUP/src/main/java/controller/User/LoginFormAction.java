@@ -37,15 +37,17 @@ public class LoginFormAction extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-		String password = request.getParameter("password");
-		
+		String password = request.getParameter("pwd");
+				
 		UserDao userDao = UserDao.getInstance();
 		User user = userDao.getUserbyId(id);
+		
+		
 		
 		String url = "login";
 		
 		if(user != null && user.getPpassword().equals(password)) {
-			url = "main";
+			url = "index";
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("log", id);

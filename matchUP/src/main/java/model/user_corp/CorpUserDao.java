@@ -41,7 +41,7 @@ public class CorpUserDao {
 
 			this.conn = DBManager.getConnection();
 			if (this.conn != null) {
-				if (!mgr_email.equals("") && address.equals("")) {
+				if (!mgr_email.equals("")) {
 					String sql = "INSERT INTO cusers_tb (cid, cpassword, cname, cnum, mgr_name, mgr_tel, mgr_email) VALUES(?,?,?,?,?,?,?)";
 
 					try {
@@ -60,7 +60,7 @@ public class CorpUserDao {
 					} finally {
 						DBManager.close(this.conn, this.pstmt);
 					}
-				} else if (!address.equals("") && mgr_email.equals("")) {
+				} else if (!address.equals("")) {
 					String sql = "INSERT INTO cusers_tb (cid, cpassword, cname, cnum, mgr_name, mgr_tel, caddress) VALUES(?,?,?,?,?,?,?)";
 
 					try {
@@ -80,7 +80,7 @@ public class CorpUserDao {
 						DBManager.close(this.conn, this.pstmt);
 					}
 				} else {
-					String sql = "INSERT INTO cusers_tb VALUES(?,?,?,?,?,?,?,?)";
+					String sql = "INSERT INTO cusers_tb (cid, cpassword, cname, cnum, mgr_name, mgr_tel, mgr_email, caddress) VALUES(?,?,?,?,?,?,?,?)";
 
 					try {
 						this.pstmt = this.conn.prepareStatement(sql);
