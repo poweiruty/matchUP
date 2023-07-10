@@ -1,3 +1,5 @@
+// MissingFormatException 발생
+
 package model.resume;
 
 public class Resume {
@@ -61,8 +63,9 @@ public class Resume {
 	
 	@Override
 	public String toString() {	
-		return String.format("개인유저 인덱스 : %d\n직무/직종 인덱스 : %d\n경력 : %s\n학력 : %s\n활동 : %s\n자격증 : %s\n작성시간 : %d\n수정시간 : %d", 
-				this.pusers_id, this.job_id, this.career, this.degree, this.activity,this.resume_created,this.resume_modified);
+		return String.format(
+				"개인유저 인덱스:%d \n직업 인덱스:%d \n경력:%s \n학력:%s \n활동:%s \n자격증:%s \n작성시간:%s \n수정시간:%s",
+				this.pusers_id,this.job_id,this.career,this.degree,this.activity,this.certificate,this.resume_created,this.resume_modified);
 	}
 	
 }
