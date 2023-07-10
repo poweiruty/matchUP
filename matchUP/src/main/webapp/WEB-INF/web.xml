@@ -36,9 +36,18 @@
 		<url-pattern>/Login</url-pattern>
 	</servlet-mapping>
 	
+	<!-- Login -->
+	<servlet>
+		<servlet-name>JobPostFormAction</servlet-name>
+		<servlet-class>controller.corp.JobPostFormAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>JobPostFormAction</servlet-name>
+		<url-pattern>/JobPost</url-pattern>
+	</servlet-mapping>
 	
 	<!-- 2. JSP 페이지 맵핑 -->
-	
 	
 	<!-- index -->
 	<servlet>
