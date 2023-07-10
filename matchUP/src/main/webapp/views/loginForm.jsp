@@ -27,7 +27,7 @@
 			<div class="tab_cont">
 				<div class="tab on">
 					<!-- form -->
-					<form action="Login" class="index_form" method="POST">
+					<form action="PLogin" class="index_form" method="POST">
 						<h2>아이디</h2>
 						<div class="id">
 							<input type="text" class="id" name="id" id="id" placeholder="아이디">
@@ -36,6 +36,21 @@
 						<div class="pwd">
 							<input type="text" class="pwd" name="pwd" placeholder="비밀번호">
 						</div>
+						<input type="submit" name="login_btn" id="login_btn" value="로그인">
+					</form>
+				</div>
+				<div class="tab">
+					<!-- form -->
+					<form action="CLogin" class="index_form" method="POST">
+						<h2>아이디</h2>
+						<div class="id">
+							<input type="text" class="id" name="id" id="id" placeholder="아이디">
+						</div>
+						<h2>비밀번호</h2>
+						<div class="pwd">
+							<input type="text" class="pwd" name="pwd" placeholder="비밀번호">
+						</div>
+
 						<input type="submit" name="login_btn" id="login_btn" value="로그인">
 					</form>
 				</div>

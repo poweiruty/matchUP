@@ -259,4 +259,8 @@ public class UserDao {
 		
 		return check;	
 	}
+	
+	public void emailCheck(String id) {
+		
+	}
 }	

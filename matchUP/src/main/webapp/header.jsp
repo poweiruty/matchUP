@@ -35,13 +35,7 @@
                 <a href="review">
                     <h3>기업리뷰</h3>
                 </a>
-            </div>
-            <!-- 로그인 & 마이페이지 -->
-         <!--    <div class="login">
-                <a href="login">
-                    <h3>로그인</h3>
-                </a>
-            </div> -->
+            </div>       
             <c:choose>
             	<c:when test="${not empty sessionScope.log }">
             		<a href="mypage">
