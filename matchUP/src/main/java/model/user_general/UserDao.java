@@ -249,18 +249,67 @@ public class UserDao {
 		return check;
 	}
 	
-	public boolean idCheck(String id) {
-		User user = getUserbyId(id);
-		boolean check = false;
-			
-		if(user != null) {
-			check = true;			
-		}
-		
-		return check;	
-	}
+	/*
+	 * public boolean idCheck(String id) { User user = getUserbyId(id); boolean
+	 * check = false;
+	 * 
+	 * if(user != null) { check = true; }
+	 * 
+	 * return check; }
+	 */
 	
 	public void emailCheck(String id) {
 		
+		this.conn = DBManager.getConnection();
+		if(this.conn != null) {
+			String sql = "UPDATE pusers_tb SET userEmailCheck=1 WHERE pid=?";
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setString(1, id);
+				this.pstmt.execute();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBManager.close(this.conn, this.pstmt);
+			}
+		}		
+	}
+	
+	public String idCheck(String email) {
+		this.conn = DBManager.getConnection();
+		String id = null;
+		if(this.conn != null) {
+			String sql = "SELECT pid from pusers_tb WHERE email=?";
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setString(1, email);
+				this.rs = this.pstmt.executeQuery();
+				if(this.rs.next()) {
+					id = this.rs.getString(2);
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBManager.close(this.conn, this.pstmt, this.rs);
+			}
+		}	
+		
+		return id;
 	}
 }	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

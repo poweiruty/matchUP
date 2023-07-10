@@ -1,47 +1,49 @@
+// MissingFormatException 발생
+
 package model.resume;
 
-import java.sql.Timestamp;
-//import java.text.SimpleDateFormat;
-//import java.util.Date;
-
-
 public class Resume {
-	private String pid;
+	private int resume_id;
+	private int pusers_id;
 	private int job_id;
 	private String career;
 	private String degree;
 	private String activity;
 	private String certificate;
-	private Timestamp resume_created;
-	private Timestamp resume_modified;
+	private int resume_created;
+	private int resume_modified;
 	
-	
-	public Resume(String pid, int job_id, String career, String degree, 
+	public Resume(int pusersId, int jobId, String career, String degree, 
 				  String activity, String certificate) {
-		this.pid=pid;
-		this.job_id=job_id;
+		this.job_id=jobId;
 		this.career=career;
 		this.degree=degree;
 		this.activity=activity;
 		this.certificate=certificate;
 	}
-	public Resume(String pid, int job_id, String career, 
+	public Resume(int resumeId, int pusersId, int jobId, String career, 
 				  String degree, String activity, String certificate, 
-				  Timestamp resume_created, Timestamp resume_modified) {
-		this.pid = pid;
-		this.job_id=job_id;
+				  int resumeCreated, int resumeModified) {
+		this.resume_id=resumeId;
+		this.pusers_id = pusersId;
+		this.job_id=jobId;
 		this.career=career;
 		this.degree=degree;
 		this.activity=activity;
 		this.certificate=certificate;
-		this.resume_created=resume_created;
-		this.resume_modified=resume_modified;
+		this.resume_created=resumeCreated;
+		this.resume_modified=resumeModified;
 	}
 	
-	public String getPid() {
-		return pid;
+	
+	// getter
+	public int getResumeId() {
+		return resume_id;
 	}
-	public int getJob_id() {
+	public int getPusersId() {
+		return pusers_id;
+	}
+	public int getJobId() {
 		return job_id;
 	}
 	public String getCareer() {
@@ -56,16 +58,18 @@ public class Resume {
 	public String getCertificate() {
 		return certificate;
 	}
-	public Timestamp getResume_created() {
+	public int getResumeCreated() {
 		return resume_created;
 	}
-	public Timestamp getResume_modified() {
+	public int getResumeModified() {
 		return resume_modified;
 	}
 	
 	@Override
 	public String toString() {	
-		return String.format("id : %s\njob_id : %d\ncareer : %s\ndegree : %s\nactivity : %s\ncertificate : %s\n", 
-				this.pid, this.job_id, this.career, this.degree, this.activity);
-	}	
+		return String.format(
+				"이력서 인덱스:%d\n개인유저 인덱스:%d \n직업 인덱스:%d \n경력:%s \n학력:%s \n활동:%s \n자격증:%s \n작성시간:%s \n수정시간:%s\n",
+				this.resume_id,this.pusers_id,this.job_id,this.career,this.degree,this.activity,this.certificate,this.resume_created,this.resume_modified);
+	}
+	
 }

@@ -68,6 +68,42 @@ function daumPostCode(){
 }
 
 
+/*function emailAuthentication(){	
+	if(!emailValCheck()){
+		return false;
+	}
+	var url = "confirmEmail.jsp?email=" + document.joinForm.email.value;
+	var condition = "toolbar=no, location=no, menubar=no, scrollbars=no,resizable=no,width=300,height=200";
+	open(url, "confirm", condition);
+
+}
+
+const form = document.joinForm;
+function emailValCheck(){
+	var emailPattern= /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	
+	var email = form.email.value;
+	if(form.selectEmail.value === "1"){
+		email += form.email2.value;
+	}else{
+		email += form.selectEmail.value;
+	}
+	
+	if(!check(emailPattern, email, "유효하지 않은 이메일 주소입니다.")) {
+		return false;
+	}
+    return true;
+}
+
+function check(pattern, target, message){
+	if(pattern.test(target)){
+		return true;
+	}
+	alert(message);
+	target.focus();
+	return false;
+}*/
+var isAuth = false;
 function sendEmail(){	
 	var email = document.getElementById('email').value;
 	if(document.getElementById('selectEmail').value === '1'){

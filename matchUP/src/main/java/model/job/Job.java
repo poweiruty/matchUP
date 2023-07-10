@@ -16,5 +16,3 @@ public class Job {
 		return String.format("Job : %s", this.job);
 	}
 }
-
-

@@ -218,3 +218,9 @@ form.index_form {
     display: flex;
     align-items: flex-start;
 }
+
+.error {
+	display: none;
+	color: red;
+	font-size: 0.7em;
+}
