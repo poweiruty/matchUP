@@ -1,7 +1,5 @@
 package model.resume;
 
-import java.sql.Timestamp;
-
 public class ResumeRequestDto {
 	private int pusers_id;
 	private int job_id;
@@ -9,8 +7,8 @@ public class ResumeRequestDto {
 	private String degree;
 	private String activity;
 	private String certificate;
-	private Timestamp resume_created;
-	private Timestamp resume_modified;
+	private int resume_created;
+	private int resume_modified;
 	
 		public ResumeRequestDto(int pusersId, String career, String degree, 
 								String activity, String certificate) {
@@ -31,15 +29,15 @@ public class ResumeRequestDto {
 		}
 		public ResumeRequestDto(int pusersId, int jobId, String career, 
 								String degree, String activity, String certificate, 
-								Timestamp resume_created, Timestamp resume_modified) {
+								int resumeCreated, int resumeModified) {
 				this.pusers_id=pusersId;
 				this.job_id=jobId;
 				this.career=career;
 				this.degree=degree;
 				this.activity=activity;
 				this.certificate=certificate;
-				this.resume_created=resume_created;
-				this.resume_modified=resume_modified;
+				this.resume_created=resumeCreated;
+				this.resume_modified=resumeModified;
 		}
 		
 		// Getter, Setter
@@ -85,17 +83,17 @@ public class ResumeRequestDto {
 			this.certificate = certificate;
 		}
 		
-		public Timestamp getResumeCreated() {
+		public int getResumeCreated() {
 			return resume_created;
 		}
-		public void setResumeCreated(Timestamp resumeCreated) {
+		public void setResumeCreated(int resumeCreated) {
 			this.resume_created = resumeCreated;
 		}
 		
-		public Timestamp getResumeModified() {
+		public int getResumeModified() {
 			return resume_modified;
 		}
-		public void setResumeModified(Timestamp resumeModified) {
+		public void setResumeModified(int resumeModified) {
 			this.resume_modified = resumeModified;
 		}
 	}

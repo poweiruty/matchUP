@@ -1,10 +1,5 @@
 package model.resume;
 
-import java.sql.Timestamp;
-//import java.text.SimpleDateFormat;
-//import java.util.Date;
-
-
 public class Resume {
 	private int pusers_id;
 	private int job_id;
@@ -12,9 +7,8 @@ public class Resume {
 	private String degree;
 	private String activity;
 	private String certificate;
-	private Timestamp resume_created;
-	private Timestamp resume_modified;
-	
+	private int resume_created;
+	private int resume_modified;
 	
 	public Resume(int pusersId, int jobId, String career, String degree, 
 				  String activity, String certificate) {
@@ -27,7 +21,7 @@ public class Resume {
 	}
 	public Resume(int pusersId, int jobId, String career, 
 				  String degree, String activity, String certificate, 
-				  Timestamp resumeCreated, Timestamp resumeModified) {
+				  int resumeCreated, int resumeModified) {
 		this.pusers_id = pusersId;
 		this.job_id=jobId;
 		this.career=career;
@@ -58,16 +52,17 @@ public class Resume {
 	public String getCertificate() {
 		return certificate;
 	}
-	public Timestamp getResumeCreated() {
+	public int getResumeCreated() {
 		return resume_created;
 	}
-	public Timestamp getResumeModified() {
+	public int getResumeModified() {
 		return resume_modified;
 	}
 	
 	@Override
 	public String toString() {	
-		return String.format("id : %d\njob_id : %d\ncareer : %s\ndegree : %s\nactivity : %s\ncertificate : %s\n", 
-				this.pusers_id, this.job_id, this.career, this.degree, this.activity);
-	}	
+		return String.format("개인유저 인덱스 : %d\n직무/직종 인덱스 : %d\n경력 : %s\n학력 : %s\n활동 : %s\n자격증 : %s\n작성시간 : %d\n수정시간 : %d", 
+				this.pusers_id, this.job_id, this.career, this.degree, this.activity,this.resume_created,this.resume_modified);
+	}
+	
 }

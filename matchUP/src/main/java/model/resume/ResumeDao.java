@@ -1,6 +1,7 @@
 package model.resume;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import util.DBManager;
@@ -10,6 +11,8 @@ public class ResumeDao {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
+	
+	private SimpleDateFormat sdf=new SimpleDateFormat("YYYYMMdd");
 
 	private ResumeDao() {}
 	
@@ -75,10 +78,12 @@ public class ResumeDao {
 					String degree=this.rs.getString(5);
 					String activity = this.rs.getString(6);
 					String certificate = this.rs.getString(7);
-					Timestamp createdTime =this.rs.getTimestamp(8); 
+					Timestamp createdTime =this.rs.getTimestamp(8);
+					int createdTimeNum=Integer.parseInt(sdf.format(createdTime));
 					Timestamp modifiedTime =this.rs.getTimestamp(9); 
+					int modifiedTimeNum=Integer.parseInt(sdf.format(modifiedTime));
 					
-					resume = new Resume(pusersId, jobId, career, degree, activity, certificate, createdTime, modifiedTime);
+					resume = new Resume(pusersId, jobId, career, degree, activity, certificate, createdTimeNum, modifiedTimeNum);
 				}
 			}catch (Exception e) {
 				e.printStackTrace();
