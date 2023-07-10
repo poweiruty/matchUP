@@ -36,7 +36,7 @@
 	
 	// 출력구문 1 : 지역자치 1개
 	RegionDao daoSemi = RegionDao.getInstance();
-	SemiRegion semiRegion = daoSemi.getSemiRegion("청주시");
+	SemiRegion semiRegion = daoSemi.getSemiRegion("수원시");
 		
 	System.out.println("데이터 1개 불러오기>>");
 	if (semiRegion != null) {
@@ -48,7 +48,7 @@
 	// 출력구문 2 : 지역자치 전체
 	System.out.println("\n데이터 전체 불러오기>>");
 	ArrayList<SemiRegion> listSemi = daoSemi.getSemiRegionAll();
-	for(SemiRegion semiRegions:listSemi){
+	for(SemiRegion semiRegions : listSemi){
 		System.out.println(semiRegions);
 	}
 %>

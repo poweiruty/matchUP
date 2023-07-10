@@ -78,7 +78,7 @@ public class RegionDao {
 			this.conn=DBManager.getConnection();
 			
 			if(this.conn!=null) {
-				String sql="select * from main_region_tb where semi_region=?";
+				String sql="select * from semi_region_tb where semi_region=?";
 				
 				try {
 					this.pstmt = this.conn.prepareStatement(sql);
