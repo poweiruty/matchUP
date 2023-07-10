@@ -27,10 +27,10 @@ public class ResumeDao {
 		
 		Resume resume = getResumeByPusersId(dto.getPusersId());
 		
-		if(resume != null) {
+		if (resume != null) {
 			return false;
-		} 
-					
+	    }
+		  
 		int pusersId = dto.getPusersId();
 		int jobId=dto.getJobId();
 		String career=dto.getCareer();
@@ -50,15 +50,17 @@ public class ResumeDao {
 			this.pstmt.setString(4, degree);
 			this.pstmt.setString(5, activity);
 			this.pstmt.setString(6, certificate);
+			
+			this.pstmt.execute();
+			
 		}catch (Exception e) {
+			System.out.println("데이터 추가실패 : CATCH");
 			e.printStackTrace();
 		}finally {
 			DBManager.close(this.conn, this.pstmt);
 		}
 		return true;
 	}
-	
-		
 	
 	// READ
 	public Resume getResumeByPusersId(int pusersIdx) {
