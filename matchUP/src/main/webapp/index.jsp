@@ -15,8 +15,8 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>matchUP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>matchUP</title>
 </head>
 <body>
 	<!-- header -->
@@ -26,9 +26,8 @@
     
 
     <!-- main 시작 -->
-
     <section class="container">
-        <!-- <p>body 부분</p> -->
+    <!-- <p>body 부분</p> -->
     </section>
     <!-- body 끝 -->
     

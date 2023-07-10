@@ -106,11 +106,11 @@ li.phone{
     width: 30%;
 }
 /* 인증번호 전송 부분 */
-#btn2{
+#phoneChk1{
     width: 100%;
     cursor: pointer;
 }
-#btn2:hover{
+#phoneChk1:hover{
     color: #fff;
     background-color: gray;
 }
