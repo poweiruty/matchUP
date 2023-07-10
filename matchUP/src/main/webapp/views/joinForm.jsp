@@ -6,8 +6,6 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <link rel="stylesheet" href="resources/style/reset_form.css">
 <!-- header css -->
@@ -37,7 +35,7 @@
 							</li>
 							<li class="id">
 								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" required> 
-								<input type="button" name="btn1" id="btn1" value="중복확인" onclick="winOpen(id)"><br/>								
+								<input type="button" name="btn1" id="btn1" value="중복확인"><br/>								
 							</li>
 							<li class="error" id="error-duplId">* 이미 사용 중인 아이디입니다.</li>								
 							<li class="error" id="error-noneId">* 아이디는 필수 정보입니다.</li>
@@ -170,16 +168,7 @@
 								<input type="text" name="phone1" id="phone1" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
 								<span>-</span> 
 								<input type="text" name="phone2" id="phone2" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-							</li>
-							<!-- 인증번호 전송 부분 -->
-							<li>
-								<input type="button" name="btn2" id="btn2" value="인증번호 전송">
-							</li>
-							<!-- 인증번호 입력 부분 -->
-							<li class="number">
-								<input type="text" name="num" id="num" maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-								<input type="button" name="btn3" id="btn3" value="인증번호 확인">
-							</li>
+							</li>					
 							<!-- 이메일 부분 -->
 							<li>
 								<label for="email">
@@ -206,6 +195,15 @@
 								<option value="@hanmir.com">hanmir.com</option>
 								<option value="@paran.com">paran.com</option>
 							</select>
+							<!-- 인증번호 전송 부분 -->
+							<li>
+								<input type="button" name="btn2" id="btn2" value="인증메일 전송" onclick="sendEmail()">
+							</li>
+							<!-- 인증번호 입력 부분 -->
+							<li class="number">
+								<input type="text" name="num" id="num" maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+								<input type="button" name="btn3" id="btn3" value="인증번호 확인">
+							</li>
 						</div>
 						<div class="hr">
 							<hr class="pc_line">
@@ -268,8 +266,7 @@
 				</form>
 			</div>
 		</div>
-	</div>     
-	<script src="resources/script/postcode.js"></script>   
+	</div>       
 	<script src="resources/script/validation_join.js"></script>                
 </body>
 <!-- footer 시작 -->
