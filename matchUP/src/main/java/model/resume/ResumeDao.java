@@ -31,7 +31,6 @@ public class ResumeDao {
 			return false;
 	    }
 		  
-		int pusersId = dto.getPusersId();
 		int jobId=dto.getJobId();
 		String career=dto.getCareer();
 		String degree=dto.getDegree();
@@ -40,16 +39,15 @@ public class ResumeDao {
 			
 		this.conn = DBManager.getConnection();
 		
-		String sql = "INSERT INTO resume_tb(pusers_id,job_id,career,degree,activity,certificate) VALUES(?,?,?,?,?,?)";			
+		String sql = "INSERT INTO resume_tb(job_id,career,degree,activity,certificate) VALUES(?,?,?,?,?)";			
 			
 		try{
 			this.pstmt=this.conn.prepareStatement(sql);
-			this.pstmt.setInt(1, pusersId);
-			this.pstmt.setInt(2, jobId);
-			this.pstmt.setString(3, career);
-			this.pstmt.setString(4, degree);
-			this.pstmt.setString(5, activity);
-			this.pstmt.setString(6, certificate);
+			this.pstmt.setInt(1, jobId);
+			this.pstmt.setString(2, career);
+			this.pstmt.setString(3, degree);
+			this.pstmt.setString(4, activity);
+			this.pstmt.setString(5, certificate);
 			
 			this.pstmt.execute();
 			
