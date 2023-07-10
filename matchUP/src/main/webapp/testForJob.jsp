@@ -1,5 +1,3 @@
-<%@page import="model.region.Region"%>
-<%@page import="model.region.RegionDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.job.Job"%>
 <%@page import="model.job.JobDao"%>

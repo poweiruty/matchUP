@@ -16,6 +16,7 @@
 	ResumeDao dao = ResumeDao.getInstance();
 	Resume resume = dao.getResumeByPusersId(1);
 	
+	
 	System.out.println("데이터 1개 불러오기>>");
 	if (resume != null) {
 		System.out.println(resume);
@@ -28,7 +29,7 @@
 	ArrayList<Resume> list = dao.getResumeAll();
 	for(Resume resumes:list){
 		System.out.println(resumes);
-	} 
+	}
 %>
 </body>
 </html>

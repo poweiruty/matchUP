@@ -3,6 +3,7 @@
 package model.resume;
 
 public class Resume {
+	private int resume_id;
 	private int pusers_id;
 	private int job_id;
 	private String career;
@@ -14,16 +15,16 @@ public class Resume {
 	
 	public Resume(int pusersId, int jobId, String career, String degree, 
 				  String activity, String certificate) {
-		this.pusers_id=pusersId;
 		this.job_id=jobId;
 		this.career=career;
 		this.degree=degree;
 		this.activity=activity;
 		this.certificate=certificate;
 	}
-	public Resume(int pusersId, int jobId, String career, 
+	public Resume(int resumeId, int pusersId, int jobId, String career, 
 				  String degree, String activity, String certificate, 
 				  int resumeCreated, int resumeModified) {
+		this.resume_id=resumeId;
 		this.pusers_id = pusersId;
 		this.job_id=jobId;
 		this.career=career;
@@ -36,6 +37,9 @@ public class Resume {
 	
 	
 	// getter
+	public int getResumeId() {
+		return resume_id;
+	}
 	public int getPusersId() {
 		return pusers_id;
 	}
@@ -64,8 +68,8 @@ public class Resume {
 	@Override
 	public String toString() {	
 		return String.format(
-				"개인유저 인덱스:%d \n직업 인덱스:%d \n경력:%s \n학력:%s \n활동:%s \n자격증:%s \n작성시간:%s \n수정시간:%s",
-				this.pusers_id,this.job_id,this.career,this.degree,this.activity,this.certificate,this.resume_created,this.resume_modified);
+				"이력서 인덱스:%d\n개인유저 인덱스:%d \n직업 인덱스:%d \n경력:%s \n학력:%s \n활동:%s \n자격증:%s \n작성시간:%s \n수정시간:%s\n",
+				this.resume_id,this.pusers_id,this.job_id,this.career,this.degree,this.activity,this.certificate,this.resume_created,this.resume_modified);
 	}
 	
 }
