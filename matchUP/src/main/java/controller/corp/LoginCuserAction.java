@@ -1,6 +1,7 @@
 package controller.corp;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,19 +46,40 @@ public class LoginCuserAction extends HttpServlet {
 		
 		CorpUserDao dao = CorpUserDao.getInstance();
 		CorpUser cuser = dao.getCorpUserbyId(id);
-		
+		 
+	        
 		String url="login";
 		if(cuser != null && cuser.getCpassword().equals(pwd)) {
 			url = "index";
 			HttpSession session = request.getSession();
 			session.setAttribute("log", id);
 			session.setAttribute("cname", cuser.getCname());
-
+			session.setAttribute("phone", cuser.getMgr_tel());
+			session.setAttribute("cname", cuser.getCname());
+			session.setAttribute("email", cuser.getMgr_email());
+			session.setAttribute("map", cuser.getCaddress());
+			// 확인용
 			System.out.println(session.getAttribute("log"));
 			System.out.println(session.getAttribute("cname"));
+			System.out.println(session.getAttribute("phone"));
+			System.out.println(session.getAttribute("cname"));
+			System.out.println(session.getAttribute("email"));
+			System.out.println(session.getAttribute("map"));
 		}
-		
+
 		response.sendRedirect(url);
 		
 	}
 }
+
+
+//			Corp corp = corp.getCorporation();
+//			if (corp != null) {
+//				session.setAttribute("corpId", corp.getCid());
+//				session.setAttribute("staffs", corp.getStaffs());
+//				session.setAttribute("ceo", corp.getCeo());
+//				
+//				System.out.println(session.getAttribute("corpId"));
+//				System.out.println(session.getAttribute("staffs"));
+//				System.out.println(session.getAttribute("ceo"));
+//			}

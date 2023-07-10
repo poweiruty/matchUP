@@ -28,9 +28,30 @@
 				<form action="JobPost" method="post">
 					<ul>
 						<li>
-							<label for="corp_id">회사명</label> 
+							<span class="corp_id">회사명: </span> 
 							<span>${sessionScope.cname }</span>
 						</li>
+						<li>
+							<span class="phone">담당자 연락처: </span> 
+							<span>0${sessionScope.phone }</span>
+						</li>
+						<li>
+							<span class="phone">담당자 이메일: </span> 
+							<span>${sessionScope.email }</span>
+						</li>
+						<li>
+							<span class="phone">본사 소재지: </span> 
+							<span>${sessionScope.map }</span>
+						</li>
+						<li>
+							<span class="ceo">대표자명: </span>
+							<span>${sessionScope.cname }</span>
+						</li>
+						<!-- 수정필요 -->
+						<%-- <li> 
+							<span class="staffs">총 사원 수: </span>
+							<span>${sessionScope.staffs }</span> 
+						</li> --%>
 						<li>
 							<label for="job">직종</label> 
 							<select name="job" id="job" required>
