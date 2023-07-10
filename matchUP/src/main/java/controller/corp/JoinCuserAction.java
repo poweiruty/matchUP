@@ -1,25 +1,25 @@
-package controller.User;
+package controller.corp;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import model.user_general.User;
-import model.user_general.UserDao;
+import model.user_corp.CorpUserRequestDto;
 
 /**
- * Servlet implementation class LoginFormAction
+ * Servlet implementation class JoinCuserAction
  */
-public class LoginFormAction extends HttpServlet {
+@WebServlet("/JoinCuserAction")
+public class JoinCuserAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginFormAction() {
+    public JoinCuserAction() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,25 +36,19 @@ public class LoginFormAction extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
+		request.setCharacterEncoding("UTF-8");
 		
-		UserDao userDao = UserDao.getInstance();
-		User user = userDao.getUserbyId(id);
+		String id = request.getParameter("cid");
+		String password = request.getParameter("cpassword");
+		String name = request.getParameter("cname");
+		int num = Integer.parseInt(request.getParameter("cnum"));
+		String mgr_name = request.getParameter("mgr_name");
+		String mgr_tel = request.getParameter("mgr_tel");
+		String mgr_email = request.getParameter("mgr_email");
+		String address = request.getParameter("caddress");		
 		
-		String url = "login";
-		
-		if(user != null && user.getPpassword().equals(password)) {
-			url = "main";
-			
-			HttpSession session = request.getSession();
-			session.setAttribute("log", id);
-			
-			System.out.println(session.getAttribute("log"));
-		}
+		CorpUserRequestDto cuser = new CorpUserRequestDto(id, password, name, num, mgr_name, mgr_tel, mgr_email, address);
 		
 		
-		
-		response.sendRedirect(url);
 	}
 }

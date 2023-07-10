@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.*;
 import util.DBManager;
 
+
 public class RegionDao {
 	private Connection conn;
 	private PreparedStatement pstmt;
@@ -14,7 +15,6 @@ public class RegionDao {
 	public static RegionDao getInstance() {
 		return instance;
 	}
-	
 	
 	// 광역자치 Read
 	public MainRegion getMainRegion(String mainRegion) {

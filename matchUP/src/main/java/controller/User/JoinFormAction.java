@@ -15,29 +15,33 @@ import model.user_general.UserRequestDto;
 //@WebServlet("/Join")
 public class JoinFormAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public JoinFormAction() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public JoinFormAction() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
@@ -45,35 +49,36 @@ public class JoinFormAction extends HttpServlet {
 		int birthNum = Integer.parseInt(birth);
 		String tel = request.getParameter("phone") + request.getParameter("phone1") + request.getParameter("phone2");
 		String email = request.getParameter("email");
-		if(request.getParameter("selectEmail").equals("1")) {
+		if (request.getParameter("selectEmail").equals("1")) {
 			email += request.getParameter("email2");
-		}else {
+		} else {
 			email += request.getParameter("selectEmail");
 		}
-//		String address = request.getParameter("address");
-		
+		String address = request.getParameter("address") + " " + request.getParameter("detailAddress")
+				+ request.getParameter("extraAddress");
+
 		System.out.println("id : " + id);
 		System.out.println("password : " + password);
 		System.out.println("name : " + name);
 		System.out.println("birthNum : " + birthNum);
 		System.out.println("tel : " + tel);
 		System.out.println("email : " + email);
-		
-		UserRequestDto user = new UserRequestDto(id, password, name, birthNum, tel, email);
-		
+		System.out.println("address : " + address);
+
+		UserRequestDto user = new UserRequestDto(id, password, name, birthNum, tel, email, address);
+
 		UserDao userDao = UserDao.getInstance();
 		boolean result = userDao.createUser(user);
-		
+
 		String url = "";
-		
-		if(result) {
+
+		if (result) {
 			url = "login";
-		}else {
-			url = "join";
+		} else {
+			url = "join";			
 		}
-		
+
 		response.sendRedirect(url);
-		
 	}
 
 }

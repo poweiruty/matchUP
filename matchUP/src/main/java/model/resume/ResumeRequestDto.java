@@ -3,7 +3,7 @@ package model.resume;
 import java.sql.Timestamp;
 
 public class ResumeRequestDto {
-	private String pid;
+	private int pusers_id;
 	private int job_id;
 	private String career;
 	private String degree;
@@ -12,28 +12,28 @@ public class ResumeRequestDto {
 	private Timestamp resume_created;
 	private Timestamp resume_modified;
 	
-		public ResumeRequestDto(String pid, String career, String degree, 
+		public ResumeRequestDto(int pusersId, String career, String degree, 
 								String activity, String certificate) {
-				this.pid=pid;
+				this.pusers_id=pusersId;
 				this.career=career;
 				this.degree=degree;
 				this.activity=activity;
 				this.certificate=certificate;
 		}
-		public ResumeRequestDto(String pid, int job_id, String career, String degree, 
+		public ResumeRequestDto(int pusersId, int jobId, String career, String degree, 
 								String activity, String certificate) {
-				this.pid=pid;
-				this.job_id=job_id;
+				this.pusers_id=pusersId;
+				this.job_id=jobId;
 				this.career=career;
 				this.degree=degree;
 				this.activity=activity;
 				this.certificate=certificate;
 		}
-		public ResumeRequestDto(String pid, int job_id, String career, 
+		public ResumeRequestDto(int pusersId, int jobId, String career, 
 								String degree, String activity, String certificate, 
 								Timestamp resume_created, Timestamp resume_modified) {
-				this.pid = pid;
-				this.job_id=job_id;
+				this.pusers_id=pusersId;
+				this.job_id=jobId;
 				this.career=career;
 				this.degree=degree;
 				this.activity=activity;
@@ -43,18 +43,18 @@ public class ResumeRequestDto {
 		}
 		
 		// Getter, Setter
-		public String getPid() {
-			return pid;
+		public int getPusersId() {
+			return pusers_id;
 		}
-		public void setPid(String pid) {
-			this.pid = pid;
+		public void setPusersId(int pusersId) {
+			this.pusers_id = pusersId;
 		}
 		
-		public int getJob_id() {
+		public int getJobId() {
 			return job_id;
 		}
-		public void setJob_id(int job_id) {
-			this.job_id = job_id;
+		public void setJobId(int jobId) {
+			this.job_id = jobId;
 		}
 		
 		public String getCareer() {
@@ -85,18 +85,18 @@ public class ResumeRequestDto {
 			this.certificate = certificate;
 		}
 		
-		public Timestamp getResume_created() {
+		public Timestamp getResumeCreated() {
 			return resume_created;
 		}
-		public void setResume_created(Timestamp resume_created) {
-			this.resume_created = resume_created;
+		public void setResumeCreated(Timestamp resumeCreated) {
+			this.resume_created = resumeCreated;
 		}
 		
-		public Timestamp getResume_modified() {
+		public Timestamp getResumeModified() {
 			return resume_modified;
 		}
-		public void setResume_modified(Timestamp resume_modified) {
-			this.resume_modified = resume_modified;
+		public void setResumeModified(Timestamp resumeModified) {
+			this.resume_modified = resumeModified;
 		}
 	}
 
