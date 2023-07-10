@@ -25,7 +25,7 @@
 				<p>채용 관리</p>
 			</div>
 			<div class="main_con">
-				<form action="JobPost" method="post" name="jobPost" class="jobPostForm" enctype="multipart/form-data">
+				<form action="JobPost" method="post">
 					<ul>
 						<li>
 							<label for="job">직종</label> 
