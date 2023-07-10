@@ -16,4 +16,3 @@ public class JobRequestDto {
 		this.job = job;
 	}
 }
-
