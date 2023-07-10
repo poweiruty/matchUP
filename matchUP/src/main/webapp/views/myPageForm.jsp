@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- header -->
+    <jsp:include page="header"></jsp:include>
+    
 	${sessionScope.log}
+	
+	<!-- footer -->
+	<jsp:include page="footer"></jsp:include>  
 </body>
 </html>

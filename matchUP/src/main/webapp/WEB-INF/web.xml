@@ -14,26 +14,37 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 	<!-- 1. 서블릿 페이지 맵핑 -->
-	<!-- Join -->
+	<!-- Puser_Join -->
 	<servlet>
 		<servlet-name>JoinFormAction</servlet-name>
-		<servlet-class>controller.user.JoinFormAction</servlet-class>
+		<servlet-class>controller.User.JoinFormAction</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>JoinFormAction</servlet-name>
-		<url-pattern>/Join</url-pattern>
+		<url-pattern>/PJoin</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Cuser_Join -->
+	<servlet>
+		<servlet-name>JoinCuserAction</servlet-name>
+		<servlet-class>controller.corp.JoinCuserAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>JoinCuserAction</servlet-name>
+		<url-pattern>/CJoin</url-pattern>
 	</servlet-mapping>
 	
 	<!-- Login -->
 	<servlet>
 		<servlet-name>LoginFormAction</servlet-name>
-		<servlet-class>controller.user.LoginFormAction</servlet-class>
+		<servlet-class>controller.User.LoginFormAction</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>LoginFormAction</servlet-name>
-		<url-pattern>/Login</url-pattern>
+		<url-pattern>/PLogin</url-pattern>
 	</servlet-mapping>
 	
 	<!-- Login -->
@@ -46,6 +57,18 @@
 		<servlet-name>JobPostFormAction</servlet-name>
 		<url-pattern>/JobPost</url-pattern>
 	</servlet-mapping>
+	<!-- Cuser_Login -->
+	<servlet>
+		<servlet-name>LoginCuserAction</servlet-name>
+		<servlet-class>controller.corp.LoginCuserAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LoginCuserAction</servlet-name>
+		<url-pattern>/CLogin</url-pattern>
+	</servlet-mapping>
+	
+	
 	
 	<!-- 2. JSP 페이지 맵핑 -->
 	
@@ -163,13 +186,13 @@
 	
 	<!-- main -->
 	<servlet>
-		<servlet-name>main</servlet-name>
-		<jsp-file>/views/main.jsp</jsp-file>
+		<servlet-name>myPageForm</servlet-name>
+		<jsp-file>/views/myPageForm.jsp</jsp-file>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>main</servlet-name>
-		<url-pattern>/main</url-pattern>
+		<servlet-name>myPageForm</servlet-name>
+		<url-pattern>/mypage</url-pattern>
 	</servlet-mapping>	
 	
 	<!-- resume -->

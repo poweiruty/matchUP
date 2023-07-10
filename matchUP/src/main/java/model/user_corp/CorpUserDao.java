@@ -41,7 +41,7 @@ public class CorpUserDao {
 
 			this.conn = DBManager.getConnection();
 			if (this.conn != null) {
-				if (!mgr_email.equals("") && address.equals("")) {
+				if (!mgr_email.equals("")) {
 					String sql = "INSERT INTO cusers_tb (cid, cpassword, cname, cnum, mgr_name, mgr_tel, mgr_email) VALUES(?,?,?,?,?,?,?)";
 
 					try {
@@ -60,7 +60,7 @@ public class CorpUserDao {
 					} finally {
 						DBManager.close(this.conn, this.pstmt);
 					}
-				} else if (!address.equals("") && mgr_email.equals("")) {
+				} else if (!address.equals("")) {
 					String sql = "INSERT INTO cusers_tb (cid, cpassword, cname, cnum, mgr_name, mgr_tel, caddress) VALUES(?,?,?,?,?,?,?)";
 
 					try {
@@ -80,7 +80,7 @@ public class CorpUserDao {
 						DBManager.close(this.conn, this.pstmt);
 					}
 				} else {
-					String sql = "INSERT INTO cusers_tb VALUES(?,?,?,?,?,?,?,?)";
+					String sql = "INSERT INTO cusers_tb (cid, cpassword, cname, cnum, mgr_name, mgr_tel, mgr_email, caddress) VALUES(?,?,?,?,?,?,?,?)";
 
 					try {
 						this.pstmt = this.conn.prepareStatement(sql);
@@ -121,13 +121,13 @@ public class CorpUserDao {
 				this.rs = this.pstmt.executeQuery();
 
 				if (this.rs.next()) {
-					String password = this.rs.getString(2);
-					String name = this.rs.getString(3);
-					int num = this.rs.getInt(4);
-					String mgr_name = this.rs.getString(5);
-					String mgr_tel = this.rs.getString(6);
-					String mgr_email = this.rs.getString(7);
-					String address = this.rs.getString(8);
+					String password = this.rs.getString(3);
+					String name = this.rs.getString(4);
+					int num = this.rs.getInt(5);
+					String mgr_name = this.rs.getString(6);
+					String mgr_tel = this.rs.getString(7);
+					String mgr_email = this.rs.getString(8);
+					String address = this.rs.getString(9);
 
 					corp = new CorpUser(cid, password, name, num, mgr_name, mgr_tel, mgr_email, address);
 				}
@@ -154,14 +154,14 @@ public class CorpUserDao {
 				this.rs = this.pstmt.executeQuery();
 
 				while (this.rs.next()) {
-					String id = this.rs.getString(1);
-					String password = this.rs.getString(2);
-					String name = this.rs.getString(3);
-					int num = this.rs.getInt(4);
-					String mgr_name = this.rs.getString(5);
-					String mgr_tel = this.rs.getString(6);
-					String mgr_email = this.rs.getString(7);
-					String address = this.rs.getString(8);
+					String id = this.rs.getString(2);
+					String password = this.rs.getString(3);
+					String name = this.rs.getString(4);
+					int num = this.rs.getInt(5);
+					String mgr_name = this.rs.getString(6);
+					String mgr_tel = this.rs.getString(7);
+					String mgr_email = this.rs.getString(8);
+					String address = this.rs.getString(9);
 
 					CorpUser corp = new CorpUser(id, password, name, num, mgr_name, mgr_tel, mgr_email, address);
 

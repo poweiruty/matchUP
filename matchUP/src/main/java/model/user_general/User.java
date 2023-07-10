@@ -8,6 +8,7 @@ public class User {
 	private String tel;
 	private String email;
 	private String user_address;
+	private int emailCheck;
 	
 	public User(String pid, String ppassword, String pname, int birth, String tel) {
 		this.pid = pid;

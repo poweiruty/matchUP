@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.resume.Resume"%>
 <%@page import="model.resume.ResumeDao"%>
 <%@page import="model.user_general.UserRequestDto"%>
@@ -13,8 +14,16 @@
 </head>
 <body>
 	<%
-	ResumeDao dao = ResumeDao.getInstance();
-	Resume res = dao.getResumeById("");
+	UserDao dao = UserDao.getInstance();
+	User res = dao.getUserbyId("green");
+	ArrayList<User> list = dao.getUserAll();
+	
+/* 	for(User user : list){
+		System.out.println(user);
+	} */
+	System.out.println(res);
+	
+	
 
 	%>
 </body>
