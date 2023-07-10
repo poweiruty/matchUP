@@ -45,13 +45,12 @@
 						</li>
 						<li>
 							<span class="ceo">대표자명: </span>
-							<span>${sessionScope.cname }</span>
+							<span>${sessionScope.ceo }</span>
 						</li>
-						<!-- 수정필요 -->
-						<%-- <li> 
+						<li> 
 							<span class="staffs">총 사원 수: </span>
 							<span>${sessionScope.staffs }</span> 
-						</li> --%>
+						</li>
 						<li>
 							<label for="job">직종</label> 
 							<select name="job" id="job" required>

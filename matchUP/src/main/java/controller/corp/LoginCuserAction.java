@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.corp.Corp;
+import model.corp.CorpDao;
 import model.user_corp.CorpUser;
 import model.user_corp.CorpUserDao;
 
@@ -58,6 +60,19 @@ public class LoginCuserAction extends HttpServlet {
 			session.setAttribute("cname", cuser.getCname());
 			session.setAttribute("email", cuser.getMgr_email());
 			session.setAttribute("map", cuser.getCaddress());
+			
+			 // corporation_tb에서 staffs 값 가져오기
+	        CorpDao corpDao = CorpDao.getInstance();
+	        Corp corp = corpDao.getCorpbyId(id);
+	        if (corp != null) {
+	            int staffs = corp.getStaffs();
+	            String ceo = corp.getCeo();
+	            
+	            session.setAttribute("ceo", ceo);
+	            session.setAttribute("staffs", staffs);
+	        }
+	        
+	
 			// 확인용
 			System.out.println(session.getAttribute("log"));
 			System.out.println(session.getAttribute("cname"));
