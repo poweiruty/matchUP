@@ -51,8 +51,10 @@ public class LoginCuserAction extends HttpServlet {
 			url = "index";
 			HttpSession session = request.getSession();
 			session.setAttribute("log", id);
-			
+			session.setAttribute("cname", cuser.getCname());
+
 			System.out.println(session.getAttribute("log"));
+			System.out.println(session.getAttribute("cname"));
 		}
 		
 		response.sendRedirect(url);

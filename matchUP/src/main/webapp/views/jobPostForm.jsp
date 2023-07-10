@@ -28,6 +28,10 @@
 				<form action="JobPost" method="post">
 					<ul>
 						<li>
+							<label for="corp_id">회사명</label> 
+							<span>${sessionScope.cname }</span>
+						</li>
+						<li>
 							<label for="job">직종</label> 
 							<select name="job" id="job" required>
 								<option value="">옵션 선택</option>
