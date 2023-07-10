@@ -21,8 +21,8 @@
 <body>
 <%
 
-	String email = request.getParameter("email");		
-	
+	String email = request.getParameter("email");
+	PrintWriter script = null;
 	System.out.println(email);
 	
 	String host = "http://localhost:8081/";
@@ -57,10 +57,15 @@
 		msg.addRecipient(Message.RecipientType.TO, toAddr);
 		msg.setContent(content, "text/html;charset=UTF-8");
 		Transport.send(msg);
+		script = response.getWriter();
+		script.println("<script>");			
+		script.println("location.href = 'javascript:history.back();'");
+		script.println("</script>");
+		script.close();
 		
 	}catch (Exception e) {
 		e.printStackTrace();
-		PrintWriter script = response.getWriter();
+		script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('잘못된 이메일 주소입니다.');");
 		script.println("location.href = 'index'");

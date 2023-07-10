@@ -21,7 +21,7 @@
 	<div id="wrap">
 		<div class="section">
 			<div class="section_box">
-				<form action="Join" method="POST">
+				<form action="Join" method="POST" name="joinForm">		
 					<ul>
 						<div class="pc_1">
 							<li class="start">
@@ -198,10 +198,11 @@
 							<!-- 인증번호 전송 부분 -->
 							<li>
 								<input type="button" name="btn2" id="btn2" value="인증메일 전송" onclick="sendEmail()">
+								<input type="hidden" name="emailchk" id="emailchk" value="">							
 							</li>
 							<!-- 인증번호 입력 부분 -->
 							<li class="number">
-								<input type="text" name="num" id="num" maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+								<input type="text" name="num" id="num" maxlength="6" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
 								<input type="button" name="btn3" id="btn3" value="인증번호 확인">
 							</li>
 						</div>
@@ -242,6 +243,7 @@
 									</div>
 								</div> <!-- 약관동의 부분 -->
 								<div class="agree_wrap">
+								
 									<div class="agree">
 										<p>
 										<h2>약관동의</h2>
@@ -259,7 +261,7 @@
 								<input type="submit" name="submit" id="submit" value="가입하기" onclick="checkValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
 								<a href="index"> <!-- 초기 화면으로 돌아감 -->
 									<div id="index">메인 페이지로 돌아가기</div>
-								</a>
+								</a>							
 							</li>
 						</div>
 					</ul>

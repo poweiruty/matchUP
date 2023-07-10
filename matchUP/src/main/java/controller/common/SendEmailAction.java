@@ -43,19 +43,20 @@ public class SendEmailAction extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");		
-		
+		String url = "join";
+		PrintWriter script = null;
 		System.out.println(email);
 		
-		String host = "http://localhost:8081/index.jsp";
+		String host = "http://localhost:8081/";
 		String from = "rbxo0032@gmail.com";
 		String to = email;
 		String subject = "Match-UP 이메일인증 메일";
 		new SHA256();
 		String content = "링크에 접속해 이메일인증을 진행해주세요." + 
-					"<a href='" + host + "emailCheck?code=" + SHA256.getSHA256(to) +"'>이메일 인증하기 </a>";
+					"<a href='" + host + "views/emailCheckAction.jsp?code=" + SHA256.getSHA256(to) +"&email=" + email + "'>이메일 인증하기 </a>";
 		Properties p = new Properties();
 		p.put("mail.smtp.user", from);
-		p.put("mail.smtp.host", "smtp.google.com");
+		p.put("mail.smtp.host", "smtp.gmail.com");
 		p.put("mail.smtp.port", "465");
 		p.put("mail.smtp.starttls.enable", "true");
 		p.put("mail.smtp.auth", "true");
@@ -68,26 +69,32 @@ public class SendEmailAction extends HttpServlet {
 		
 		try {
 			Authenticator auth = new Gmail();
-			Session session = Session.getInstance(p,auth);
-			session.setDebug(true);
-			MimeMessage msg = new MimeMessage(session);			
+			Session ses = Session.getInstance(p,auth);
+			ses.setDebug(true);
+			MimeMessage msg = new MimeMessage(ses);			
 			msg.setSubject(subject);
 			Address fromAddr = new InternetAddress(from);
 			msg.setFrom(fromAddr);
 			Address toAddr = new InternetAddress(to);
 			msg.addRecipient(Message.RecipientType.TO, toAddr);
-			msg.setContent(content, "text/html;charset=UTF-8");
-			Transport.send(msg);
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("alert('잘못된 이메일 주소입니다.');");
-			script.println("location.href = 'index'");
+			msg.setContent(content, "text/html;charset=UTF-8");			
+			Transport.send(msg);		
+			script = response.getWriter();
+			script.println("<script>");			
+			script.println("location.href = 'history.back()'");
 			script.println("</script>");
 			script.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+			script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('잘못된 이메일 주소입니다.');");
+			script.println("location.href = 'history.back()'");
+			script.println("</script>");			
+			script.close();
 		}
+		
+		
 	}
 
 	/**
