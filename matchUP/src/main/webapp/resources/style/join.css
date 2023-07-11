@@ -57,7 +57,7 @@ li{
 .id_warning{
     display: none;
 }
-.id_warning, .pwd_warning , .birth_warning{
+.id_warning, .pwd_warning , .birth_warning, .corp_warning{
     font-size: 0.8rem;
     color: red;
 }
@@ -80,7 +80,7 @@ li{
     margin: 3px 0;
 }
 /* 이름 부분 */
-.name{
+.name, .corp_name{
     display: flex;
     flex-direction: column;
 } /* TS: width:98.5%로 위아래 너비를 맞췄었는데 플렉스 태그로 간격이 자동으로 맞추어 짐 */
@@ -106,11 +106,11 @@ li.phone{
     width: 30%;
 }
 /* 인증번호 전송 부분 */
-#phoneChk1{
+#btn2{
     width: 100%;
     cursor: pointer;
 }
-#phoneChk1:hover{
+#btn2:hover{
     color: #fff;
     background-color: gray;
 }
@@ -167,7 +167,7 @@ li#add{
 }
 
 #address{
-    width: 100%;
+    width: 70%;
 }
 
 #address_btn{
@@ -181,8 +181,8 @@ li#add{
     background-color: gray;
 }
 
-#detailAddress, #extraAddress{
-    width: 49.24%;
+#address_detail{
+    width: 100%;
 }
 
 /* 하단 약관 부분(마케팅 정보 수신동의, 약관동의) */
@@ -223,12 +223,34 @@ li#add{
     font-family: "Pretendard-Regular";
 }
 
+/* join 메인 페이지 부분 */
+p.title{
+    font-size: 1.8rem;
+    text-align: center;
 }
-.error {
-	display: none;
-	color: red;
-	font-size: 0.7em;
+
+.join_sub_btn{
+    border: solid 1px black;
+    border-radius: 5px;
 }
+
+.join_sub_btn:hover{
+    background-color: gainsboro;
+    color: black;
+}
+
+.join_main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.join_main>li{
+    padding: 5px;
+}
+
+}
+
 /* PC ver. */
 @media(min-width:1024px){
     #wrap{

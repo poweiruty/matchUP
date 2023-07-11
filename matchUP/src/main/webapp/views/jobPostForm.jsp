@@ -27,6 +27,7 @@
 			<div class="main_con">
 				<form action="JobPost" method="post">
 					<ul>
+					
 						<li>
 							<span class="corp_id">회사명: </span> 
 							<span>${sessionScope.cname }</span>

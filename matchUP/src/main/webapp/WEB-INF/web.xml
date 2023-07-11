@@ -162,7 +162,7 @@
 	</servlet-mapping>
 	
 	
-	<!-- join -->
+	<!-- join main 페이지 -->
 	<servlet>
 		<servlet-name>joinForm</servlet-name>
 		<jsp-file>/views/joinForm.jsp</jsp-file>
@@ -172,6 +172,29 @@
 		<servlet-name>joinForm</servlet-name>
 		<url-pattern>/join</url-pattern>
 	</servlet-mapping>
+	
+	<!-- join 개인 페이지 -->
+	<servlet>
+		<servlet-name>joinPersonForm</servlet-name>
+		<jsp-file>/views/joinForm_person.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>joinPersonForm</servlet-name>
+		<url-pattern>/joinPerson</url-pattern>
+	</servlet-mapping>
+	
+	<!-- join 기업 페이지 -->
+	<servlet>
+		<servlet-name>joinCorpForm</servlet-name>
+		<jsp-file>/views/joinForm_corp.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>joinCorpForm</servlet-name>
+		<url-pattern>/joinCorp</url-pattern>
+	</servlet-mapping>	
+
 	
 	<!-- login -->
 	<servlet>

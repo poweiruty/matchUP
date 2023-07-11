@@ -55,7 +55,7 @@
                 </a>
             </div>
             <!-- 회원가입 -->
-            <div class="login">
+            <div class="join">
                 <a href="join">
                     <h3>회원가입</h3>
                 </a>
