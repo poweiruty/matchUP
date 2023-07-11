@@ -9,6 +9,13 @@ public class Review {
 	private int created;
 	private int updated;
 	
+	public Review(int pusersId, int corpId,int star,String review) {
+		this.pusers_id=pusersId;
+		this.corp_id=corpId;
+		this.star=star;
+		this.review=review;	
+	}
+	
 	public Review(int reviewId, int pusersId, int corpId, int star, 
 				  String review, int created, int updated) {
 		this.review_id=reviewId;
