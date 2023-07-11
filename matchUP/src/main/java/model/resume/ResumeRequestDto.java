@@ -12,6 +12,14 @@ public class ResumeRequestDto {
 	private int resume_modified;
 	
 	
+	public ResumeRequestDto(String career, String degree, 
+							String activity, String certificate) {
+		this.career=career;
+		this.degree=degree;
+		this.activity=activity;
+		this.certificate=certificate;
+	}
+	
 	public ResumeRequestDto(int jobId, String career, String degree, 
 			  				String activity, String certificate) {
 		this.job_id=jobId;
@@ -20,6 +28,7 @@ public class ResumeRequestDto {
 		this.activity=activity;
 		this.certificate=certificate;
 	}
+	
 	public ResumeRequestDto(int pusersId, int jobId, String career, String degree, 
 				  			String activity, String certificate) {
 		this.pusers_id=pusersId;
