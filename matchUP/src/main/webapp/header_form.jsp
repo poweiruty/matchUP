@@ -2,6 +2,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +14,8 @@
     <link rel="stylesheet" href="resources/style/reset_form.css">
     <!-- header css -->
     <link rel="stylesheet" href="resources/style/grid.css">
+    <link rel="stylesheet" href="resources/style/join.css">
+    
     <!-- js -->
     <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
@@ -37,14 +41,26 @@
                     <h3>기업리뷰</h3>
                 </a>
             </div>
-            <!-- 로그인 & 마이페이지 -->
-            <div class="login">
-                <a href="login">
-                    <h3>로그인</h3>
-                </a>
-            </div>
+            <!-- 기업회원 마이페이지 -->
+			<c:choose>
+				<c:when test="${not empty sessionScope.cname }">
+					<a href="mypageCorp">
+						<h3>마이페이지</h3>
+					</a>
+				</c:when>
+				<c:when test="${not empty sessionScope.log}">
+					<a href="mypagePerson">
+						<h3>마이페이지</h3>
+					</a>
+				</c:when>
+				<c:otherwise>
+					<a href="login">
+						<h3>로그인</h3>
+					</a>
+				</c:otherwise>
+			</c:choose>
             <!-- 회원가입 -->
-            <div class="login">
+            <div class="join">
                 <a href="join">
                     <h3>회원가입</h3>
                 </a>

@@ -27,42 +27,31 @@
 			<div class="tab_cont">
 				<div class="tab on">
 					<!-- form -->
-					<form action="PLogin"  method="POST" class="index_form" id="puser_login">
+					<form action="PLogin" class="index_form" method="POST">
 						<h2>아이디</h2>
 						<div class="id">
-							<input type="text" class="id" name="id" id="pid" placeholder="아이디">
+							<input type="text" class="id" name="id" id="id" placeholder="아이디">
 						</div>
-						<div>
-							<span class="error" id="error-pid">아이디 필수입력</span>
-						</div> 
 						<h2>비밀번호</h2>
 						<div class="pwd">
-							<input type="text" class="pwd" name="pwd" id="ppwd" placeholder="비밀번호">
+							<input type="text" class="pwd" name="pwd" placeholder="비밀번호"> <!-- 테스트 후 type = "password"로 변경 -->
 						</div>
-						<div>
-							<span class="error" id="error-ppwd">비밀번호 필수입력</span>
-						</div> 
-						<input type="button" name="login_btn" id="login_btn" value="로그인" onclick="checkValue(form)">
+						<input type="submit" name="login_btn" id="login_btn" value="로그인">
 					</form>
 				</div>
 				<div class="tab">
 					<!-- form -->
-					<form action="CLogin"  method="POST" class="index_form" id="cuser_login">
+					<form action="CLogin" class="index_form" method="POST">
 						<h2>아이디</h2>
 						<div class="id">
-							<input type="text" class="id" name="id" id="cid" placeholder="아이디">
+							<input type="text" class="id" name="id" id="id" placeholder="아이디">
 						</div>
-						<div>
-							<span class="error" id="error-cid">아이디 필수입력</span>
-						</div> 
 						<h2>비밀번호</h2>
 						<div class="pwd">
-							<input type="text" class="pwd" name="pwd" id="cpwd" placeholder="비밀번호">
+							<input type="text" class="pwd" name="pwd" placeholder="비밀번호"> <!-- 테스트 후 type = "password"로 변경 -->
 						</div>
-						<div>
-							<span class="error" id="error-cpwd">비밀번호 필수입력</span>
-						</div> 
-						<input type="button" name="login_btn" id="login_btn" value="로그인" onclick="checkValue(form)">
+
+						<input type="submit" name="login_btn" id="login_btn" value="로그인">
 					</form>
 				</div>
 			</div>
@@ -77,12 +66,11 @@
 			<div class="find_box">
 				<h1>로그인 정보가 생각나지 않으세요?</h1>
 				<p>아이디 또는 비밀번호를 찾으실 수 있습니다.</p>
-				<a href="#"><button class="btn_find">아이디 찾기</button></a> <a href="#"><button
-						class="btn_find">비밀번호 찾기</button></a>
+				<a href="#"><button class="btn_find">아이디 찾기</button></a> 
+				<a href="#"><button class="btn_find">비밀번호 찾기</button></a>
 			</div>
 		</div>
 	</div>
-	<script src="../resources/script/validation_log.js"></script>
 	<!-- footer 시작 -->
 	<jsp:include page="footer"></jsp:include>
 

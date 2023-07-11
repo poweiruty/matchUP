@@ -19,41 +19,34 @@
 	}
 	
 	String userID = null;
-	
-	if(session.getAttribute("userID") != null){
-		userID = (String) session.getAttribute("userID");
-	}
-	if(userID == null){
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("alert('로그인 해주세요');");
-		script.println("location.href = 'userLogin.jsp'");
-		script.println("</script>");
-		script.close();
-		return;
-	}
+	String tempEmail = session.getAttribute("tempEmail").toString();
 	
 	// hash 처리한 결과를 비교해 결과 값 반환
-	String userEmail = dao.getUserbyId(userID).getEmail();
-	boolean isRight = (SHA256.getSHA256(userEmail).equals(code)) ? true : false;
-	if(isRight == true){
-		//dao.setUserEmailChecked(userID);
+	boolean isRight = (SHA256.getSHA256(tempEmail).equals(code)) ? true : false;
+	if(isRight == true){		
+		/* request.getSession().setAttribute("emailchk", "1");
+		session.removeAttribute("tempEmail"); */
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("alert('인증에 성공했습니다.');");
-		script.println("location.href = 'index.jsp'");
+		script.println("alert('인증에 성공했습니다.');");		
+		//script.println("location.href = '/join'");		
+		//script.println("console.log(localStorage.getItem('email'))");
+		script.println("window.close();");
 		script.println("</script>");
 		script.close();
+		//session.setAttribute("emailChk", "1");			
 		return;
 	}else{
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('잘못된 이메일 주소입니다.');");
-		script.println("location.href = 'index.jsp'");
+		script.println("location.href = 'joinForm.jsp'");
 		script.println("</script>");
 		script.close();
 	}
-
 %>
+<!--  <script>
+	window.localStorage.setItem("code",sessionStorage.getItem("tempEmail"));
+</script> -->
 </body>
 </html>

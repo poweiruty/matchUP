@@ -4,6 +4,7 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import model.resume.ResumeRequestDto;
 import util.DBManager;
 
 public class ReviewDao {
@@ -23,54 +24,53 @@ public class ReviewDao {
 	
 	
 	// CREATE
-//	public boolean createResume(ReviewRequestDto dto) {
-//		
-//		Review review = getReviewByResumeId(dto.getReviewid());
-//		
-//		if(resume != null) {
-//			return false;
-//		} 
-//					
-//		int pusersId = dto.getPusersId();
-//		int jobId=dto.getJobId();
-//		String career=dto.getCareer();
-//		String degree=dto.getDegree();
-//		String activity=dto.getActivity();
-//		String certificate=dto.getCertificate();
-//			
-//		this.conn = DBManager.getConnection();
-//		
-//		String sql = "INSERT INTO resume_tb(pusers_id,job_id,career,degree,activity,certificate) VALUES(?,?,?,?,?,?)";			
-//			
-//		try{
-//			this.pstmt=this.conn.prepareStatement(sql);
-//			this.pstmt.setInt(1, pusersId);
-//			this.pstmt.setInt(2, jobId);
-//			this.pstmt.setString(3, career);
-//			this.pstmt.setString(4, degree);
-//			this.pstmt.setString(5, activity);
-//			this.pstmt.setString(6, certificate);
-//		}catch (Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			DBManager.close(this.conn, this.pstmt);
-//		}
-//		return true;
-//	}
+	public boolean createReview(ReviewRequestDto dto) {
+		
+		Review reviews = getReviewByPusersId(dto.getPusersId());
+		
+		if(reviews != null) {
+			return false;
+		} 
+					
+		int pusersId = dto.getPusersId();
+		int corpId=dto.getCorpId();
+		int star=dto.getStar();
+		String review=dto.getReview();
+			
+		this.conn = DBManager.getConnection();
+		
+		String sql = "insert into review_tb(pusers_id,corp_id,star,review) values(?,?,?,?)";			
+			
+		try{
+			this.pstmt=this.conn.prepareStatement(sql);
+			this.pstmt.setInt(1, pusersId);
+			this.pstmt.setInt(2,corpId);
+			this.pstmt.setInt(3, star);
+			this.pstmt.setString(4, review);
+			
+			this.pstmt.execute();
+			
+		}catch (Exception e) {
+			System.out.println("데이터 추가성공");
+			e.printStackTrace();
+		}finally {
+			DBManager.close(this.conn, this.pstmt);
+		}
+		return true;
+	}
 	
 		
-	
 	// READ
-	public Review getResumeByPusersId(int reviewIdx) {
+	public Review getReviewByPusersId(int pusersIdx){
 		Review reviews = null;
 		
 		this.conn = DBManager.getConnection();
 		
 		if(this.conn != null) {
-			String sql = "select * from review_tb where review_id=?";
+			String sql = "select * from review_tb where pusers_id=?";
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
-				this.pstmt.setInt(1, reviewIdx);
+				this.pstmt.setInt(1, pusersIdx);
 				this.rs = this.pstmt.executeQuery();
 				
 				if(this.rs.next()) {
@@ -95,7 +95,7 @@ public class ReviewDao {
 		return reviews;
 	}
 	
-	public ArrayList<Review> getResumeAll(){
+	public ArrayList<Review> getReviewAll(){
 		ArrayList<Review> list = new ArrayList<Review>();
 		
 		this.conn = DBManager.getConnection();
@@ -132,82 +132,66 @@ public class ReviewDao {
 	}
 	
 
+	// Update
+	public void updateReview(ReviewRequestDto dto) {	
+		this.conn = DBManager.getConnection();		
+		if(this.conn != null) {			
+			String sql = "update review_tb set corp_id=?,star=?,review=? where pusers_id=?";					
+			 	
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				
+	            this.pstmt.setInt(1, dto.getCorpId());
+	            this.pstmt.setInt(2, dto.getStar());
+	            this.pstmt.setString(3, dto.getReview());
+	            this.pstmt.setInt(4, dto.getPusersId());
+	            
+	            int rowsAffected = this.pstmt.executeUpdate();
+	            
+	            if (rowsAffected > 0) {
+	                System.out.println("리뷰 업데이트 성공");
+	                System.out.println("확인 : "+rowsAffected);
+	            } else {
+	                System.out.println("리뷰 업데이트 실패");
+	                System.out.println("확인 : "+rowsAffected);
+	            }
+	            
+				System.out.println("데이터 수정 성공");
+			}catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("데이터 수정 실패");
+			}finally {
+				DBManager.close(this.conn, this.pstmt);
+			}			
+		}
+	}
+
 	
-//	// Update
-//	public void updateResume(ResumeRequestDto dto) {
-//		Resume resume=getResumeByPusersId(dto.getPusersId());
-//		
-//		this.conn = DBManager.getConnection();		
-//		if(this.conn != null) {			
-//			String sql = "update resume_tb rs inner join pusers_tb pu on rs.pusers_id=pu.pusers_id set job_id=?,rs.career=?,rs.degree=?,rs.activity=?,rs.certificate=? where rs.resume_id=?";					
-//			 	
-//			try {
-//				this.pstmt = this.conn.prepareStatement(sql);
-//				
-//				if(resume.getJobId()==dto.getJobId()) {
-//					this.pstmt.setInt(1, resume.getJobId());						
-//				}else {
-//					this.pstmt.setInt(1, dto.getJobId());
-//				}
-//				if(resume.getCareer().equals(dto.getCareer())) {	
-//					this.pstmt.setString(2, resume.getCareer());
-//				}else {
-//					this.pstmt.setString(2, dto.getCareer());
-//				}
-//				if(resume.getDegree().equals(dto.getDegree())) {
-//					this.pstmt.setString(3, resume.getDegree());
-//				}else {
-//					this.pstmt.setString(3, dto.getDegree());
-//				}
-//				if(resume.getActivity().equals(dto.getActivity())) {
-//					this.pstmt.setString(4, resume.getActivity());
-//				}else {
-//					this.pstmt.setString(4, dto.getActivity());
-//				}
-//				if(resume.getCertificate().equals(dto.getCertificate())){
-//					this.pstmt.setString(5, resume.getCertificate());
-//				}else {
-//					this.pstmt.setString(5, dto.getCertificate());
-//				}
-//				
-//				this.pstmt.setInt(6, dto.getPusersId());
-//				
-//				this.pstmt.execute();				
-//				
-//			}catch (Exception e) {
-//				e.printStackTrace();
-//			}finally {
-//				DBManager.close(this.conn, this.pstmt);
-//			}			
-//		}
-//	}
-//
-//	
-//	// DELETE
-//	public boolean deleteResume(String resumeId) {
-//		this.conn = DBManager.getConnection();
-//		boolean check = true;
-//		
-//		if(this.conn != null) {
-//			String sql = "delete from resume_tb where resume_id=?";
-//			
-//			try {
-//				this.pstmt = this.conn.prepareStatement(sql);
-//				this.pstmt.setString(1, resumeId);
-//				
-//				this.pstmt.execute();
-//			}catch (Exception e) {
-//				e.printStackTrace();
-//				check = false;
-//			}finally {
-//				DBManager.close(this.conn, this.pstmt);
-//			}
-//		}else{
-//			check = false;
-//		}
-//		
-//		return check;
-//	}
+	// DELETE
+	public boolean deleteReview(int reviewId) {
+		this.conn = DBManager.getConnection();
+		boolean check = true;
+		
+		if(this.conn != null) {
+			String sql = "delete from review_tb where review_id=?";
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setInt(1, reviewId);
+				
+				this.pstmt.execute();
+			}catch (Exception e) {
+				e.printStackTrace();
+				check = false;
+			}finally {
+				DBManager.close(this.conn, this.pstmt);
+			}
+		}else{
+			check = false;
+		}
+		
+		return check;
+	}
 }
 
 

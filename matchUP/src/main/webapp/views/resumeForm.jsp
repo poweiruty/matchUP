@@ -42,9 +42,8 @@
                         </li>
                         <li>
                             <label for="email">이메일 </label>
-                            <input type="text" name="email" id="email"> @
+                            <input type="text" name="email" id="email">
                             <input type="text" name="email2" id="email2">
-
                         </li>
                         <div class="add_wrap">
                             <li id="add">
@@ -59,12 +58,12 @@
                             <input type="text" id="job">
                         </li>
                         <li>
-                            <label for="qual">보유자격증</label>
-                            <input type="text" id="qual">
+                            <label for="career">경력</label>
+                            <input type="text" id="career">
                         </li>
                         <li>
-                            <label for="edu">최종학력</label>
-                            <select name="edu" id="edu">
+                            <label for="degree">최종학력</label>
+                            <select name="degree" id="degree">
                                 <option value="sel">옵션 선택</option>
                                 <option value="1">초졸</option>
                                 <option value="2">중졸</option>
@@ -72,8 +71,18 @@
                                 <option value="4">대졸(2~3년제)</option>
                                 <option value="5">대졸(4년제)</option>
                                 <option value="6">대학원졸</option>
+                                <input type="text" id="degree_input">
                             </select>
                         </li>
+                        <li>
+                            <label for="activity">대외활동/수상이력</label>
+                            <input type="text" id="activity">
+                        </li>
+                        <li>
+                            <label for="certificate">보유자격증</label>
+                            <input type="text" id="certificate">
+                        </li>
+                        
                         <li>
                             <label for="intro">자기소개 </label>
                             <textarea name="intro" id="intro" cols="30" rows="10">
@@ -83,7 +92,7 @@
                 </form>
             </div>
             <div class="bottom">
-                <span><a href="#">수정</a></span>
+                <span><a href="#">등록</a></span>
                 <span><a href="index">취소</a></span>
             </div>
         </div>

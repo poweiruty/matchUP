@@ -1,23 +1,91 @@
-/*$('#id').on('change', e => {
-	if($('#id').val() !== "") {
-		$('#error-id').hide();
+$('#id').on('change', e => {
+	if($('#id').val() !== "" && id.match(/^[a-zA-Z0-9]{3,11}$/) !== null) {
+		$('#error-noneId').hide();
 		$('#id').parent().css('border-color', 'lightgrey');
 	}
-});*/
+});
+$('#password').on('change', e => {
+	if($('#password').val() !== "" && password.match(/^[a-zA-Z0-9!@#$%]{8,20}$/) !== null) {
+		$('#error-password').hide();
+		$('#password').parent().css('border-color', 'lightgrey');
+	}
+});
+$('#passwordChk').on('change', e => {
+	if($('#passwordChk').val() !== "") {
+		$('#error-password_chk').hide();
+	}else if($('#passwordChk').val() === $('#password').val()){
+		$('#error-pwdEquals').hide();
+	}
+});
+$('#name').on('change', e => {
+	if($('#name').val() !== "") {
+		$('#error-name').hide();
+	}
+});
+$('#birth').on('change', e => {
+	if($('#year').val() !== "" && $('#month').val() !== "" && $('#date').val() !== "") {
+		$('#error-birth').hide();
+	}
+});
+$('#pnum').on('change', e => {
+	if(tel.length === 11 && tel.match(/\d{11}/) !== null){
+		$('#error-tel').hide();		
+	}
+});	
 
 function checkValue(htmlForm){
 	const id = htmlForm.id.value;
 	const password = htmlForm.password.value;
+	const passwordChk = htmlForm.passwordChk.value;
 	const name = htmlForm.name.value;
-	const birth = htmlForm.birth.value;	
-	const tel = htmlForm.tel.value;
+	const birth = htmlForm.year.value + htmlForm.month.value + htmlForm.date.value;	
+	const tel = htmlForm.phone.value + htmlForm.phone1.value + htmlForm.phone2.value;	
+	var email = htmlForm.email.value + "@" + htmlForm.email2.value;	
+		
+	if(htmlForm.selectEmail.value === "1"){
+		email += htmlForm.email2.value;
+	}else{
+		email += htmlForm.selectEmail.value;
+	}
 	
+	const emailChk = htmlForm.emailchk.value;
+	const address = htmlForm.address.value + htmlForm.detailAddress.value + htmlForm.extraAddress.value;
+		
 	let check = true;
 	
-	if(id === ""){
-		$('')
+	if(id === "" || id.match(/^[a-zA-Z0-9]{3,11}$/) === null){
+		$('#error-noneId').show();
+		check = false;
+	}else if(password === "" || password.match(/^[a-zA-Z0-9!@#$%]{8,20}$/) === null){
+		$('#error-password').show();
+		check = false;
+	}else if(passwordChk === ""){
+		$('#error-password_chk').show();
+		check = false;
+	}else if(password !== passwordChk){
+		$('#error-pwdEquals').show();
+		check = false;
+	}else if(name === ""){		
+		$('#error-name').show();
+		check = false;
+	}else if(birth === "" || birth.length !== 8){
+		$('#error-birth').show();
+		check = false;
+	}else if(tel.length !== 11){
+		$('#error-tel').show();
+		console.log(tel.length);
+		check = false;
+	}else if(emailChk === "인증실패"){
+		$('#error-emailChk').show();
+		check = false;
+	}
+	
+	
+	if(check === true){
+		htmlForm.submit();
 	}
 }
+
 function daumPostCode(){
 	new daum.Postcode({
         oncomplete: function(data) {
@@ -66,71 +134,42 @@ function daumPostCode(){
     	}        
     }).open();
 }
-
-
-/*function emailAuthentication(){	
-	if(!emailValCheck()){
-		return false;
-	}
-	var url = "confirmEmail.jsp?email=" + document.joinForm.email.value;
-	var condition = "toolbar=no, location=no, menubar=no, scrollbars=no,resizable=no,width=300,height=200";
-	open(url, "confirm", condition);
-
-}
-
-const form = document.joinForm;
-function emailValCheck(){
-	var emailPattern= /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	
-	var email = form.email.value;
-	if(form.selectEmail.value === "1"){
-		email += form.email2.value;
-	}else{
-		email += form.selectEmail.value;
-	}
-	
-	if(!check(emailPattern, email, "유효하지 않은 이메일 주소입니다.")) {
-		return false;
-	}
-    return true;
-}
-
-function check(pattern, target, message){
-	if(pattern.test(target)){
-		return true;
-	}
-	alert(message);
-	target.focus();
-	return false;
-}*/
-var isAuth = false;
-function sendEmail(){	
-	var email = document.getElementById('email').value;
+function sendEmail(){
+	document.getElementById("emailchk").value = "인증중";
+		
+	var emailId = document.getElementById('email').value;
+	var email = "";
+	var res = ""
 	if(document.getElementById('selectEmail').value === '1'){
 		email += document.getElementById("email2").value;
 	}else{
 		email += document.getElementById("selectEmail").value;
 	}
 	
-	location.href='views/emailSendAction.jsp?email=' + email;		
-
+	if(emailId !== "" && email !== ""){
+		res = emailId + email;
+		alert("인증메일이 전송되었습니다.");
+		console.log(res);		
+		localStorage.setItem("email", res);
+		location.href='emailSend?email=' + res;
+	}else{
+		alert("이메일을 확인해주세요.");
+	}
+	
 }
-/*$('#btn2').click(function() {
-		var email = document.getElementById('email').value;
-		if(document.getElementById('selectEmail').value === '1'){
-			email += document.getElementById("email2").value;
-		}else{
-			email += document.getElementById("selectEmail").value;
-		}
-		
-		$.ajax({
-			type : 'get',
-			url : '<c:url value ="sendEmail?email="/>'+email, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
-			success : function (data) {
-				console.log("data : " +  data);
-				checkInput.attr('disabled',false);
-				code =data;
-				alert('인증번호가 전송되었습니다.')
-			}			
-		}); // end ajax
-	}); // end send eamil*/
+
+function emailAuthChk(){	
+	var email = document.getElementById('email').value;	
+	if(document.getElementById('selectEmail').value === '1'){
+		email += document.getElementById("email2").value;
+	}else{
+		email += document.getElementById("selectEmail").value;
+	}
+	
+	if(localStorage.getItem("email") === email){
+		document.getElementById("emailchk").value = "1";
+		alert("인증된 이메일입니다.");
+	}else{
+		document.getElementById("emailchk").value = "인증실패";
+	}	
+}

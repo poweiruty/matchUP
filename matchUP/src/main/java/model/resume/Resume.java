@@ -13,8 +13,27 @@ public class Resume {
 	private int resume_created;
 	private int resume_modified;
 	
+	public Resume(int jobId, String career, String degree, 
+			  String activity, String certificate) {
+		this.job_id=jobId;
+		this.career=career;
+		this.degree=degree;
+		this.activity=activity;
+		this.certificate=certificate;
+	}
 	public Resume(int pusersId, int jobId, String career, String degree, 
 				  String activity, String certificate) {
+		this.pusers_id=pusersId;
+		this.job_id=jobId;
+		this.career=career;
+		this.degree=degree;
+		this.activity=activity;
+		this.certificate=certificate;
+	}
+	public Resume(int resumeId, int pusersId, int jobId, String career,
+			String degree, String activity, String certificate) {
+		this.resume_id=resumeId;
+		this.pusers_id = pusersId;
 		this.job_id=jobId;
 		this.career=career;
 		this.degree=degree;
@@ -34,7 +53,6 @@ public class Resume {
 		this.resume_created=resumeCreated;
 		this.resume_modified=resumeModified;
 	}
-	
 	
 	// getter
 	public int getResumeId() {

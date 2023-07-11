@@ -8,34 +8,37 @@ public class UserRequestDto {
 	private String tel;
 	private String email;
 	private String user_address;
+	private int emailCheck;
 	
-	
-	public UserRequestDto(String ppassword, String tel, String email, String user_address) {	
+	public UserRequestDto(String ppassword, String tel, String email, String user_address, int emailCheck) {	
 		this.ppassword = ppassword;
 		this.tel = tel;
 		this.email = email;
 		this.user_address = user_address;
+		this.emailCheck = emailCheck;
 	}
 
-	public UserRequestDto(String pid, String ppassword, String pname, int birth, String tel) {
+	public UserRequestDto(String pid, String ppassword, String pname, int birth, String tel, int emailCheck) {
 		this.pid = pid;
 		this.ppassword = ppassword;
 		this.pname = pname;
 		this.birth = birth;
 		this.tel = tel;
+		this.emailCheck = emailCheck;
 	}
 
-	public UserRequestDto(String pid, String ppassword, String pname, int birth, String tel, String email) {
+	public UserRequestDto(String pid, String ppassword, String pname, int birth, String tel, String email, int emailCheck) {
 		this.pid = pid;
 		this.ppassword = ppassword;
 		this.pname = pname;
 		this.birth = birth;
 		this.tel = tel;
 		this.email = email;
+		this.emailCheck = emailCheck;
 	}
 
 	public UserRequestDto(String pid, String ppassword, String pname, int birth, String tel, String email,
-			String user_address) {
+			String user_address, int emailCheck) {
 		this.pid = pid;
 		this.ppassword = ppassword;
 		this.pname = pname;
@@ -43,6 +46,7 @@ public class UserRequestDto {
 		this.tel = tel;
 		this.email = email;
 		this.user_address = user_address;
+		this.emailCheck = emailCheck;
 	}
 
 	public String getPid() {
@@ -100,4 +104,13 @@ public class UserRequestDto {
 	public void setUser_address(String user_address) {
 		this.user_address = user_address;
 	}
+
+	public int getEmailCheck() {
+		return emailCheck;
+	}
+
+	public void setEmailCheck(int emailCheck) {
+		this.emailCheck = emailCheck;
+	}
+	
 }
