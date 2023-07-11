@@ -15,10 +15,18 @@
 
 	<!-- body 시작 -->
 	<c:choose>
+		<c:when test="${not empty sessionScope.cname }">
+			${sessionScope.log }님 환영합니다!
+		<button onclick="location.href='Clogout'">로그아웃</button> 
+		<button onclick="location.href='#'">회원탈퇴</button> <!-- 수정 -->
+		</c:when>
+		
 		<c:when test="${not empty sessionScope.log }">
 			${sessionScope.log }님 환영합니다!
-			<span>로그아웃</span>
+		<button onclick="location.href='Plogout'">로그아웃</button> 
+		<button onclick="location.href='#'">회원탈퇴</button> <!-- 수정 -->
 		</c:when>
+		
 		<c:otherwise>
 			<!-- 비 로그인시 메인 메시지 -->
 			환영합니다!

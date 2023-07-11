@@ -36,7 +36,7 @@
                     <h3>기업리뷰</h3>
                 </a>
             </div>
-			<!-- 기업회원 마이페이지 -->
+			<!-- 마이페이지 -->
 			<c:choose>
 				<c:when test="${not empty sessionScope.cname }">
 					<a href="mypageCorp">

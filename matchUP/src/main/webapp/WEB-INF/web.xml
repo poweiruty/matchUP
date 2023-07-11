@@ -68,6 +68,28 @@
 		<url-pattern>/CLogin</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 기업 Logout -->
+	<servlet>
+		<servlet-name>CorpLogoutRequestAction</servlet-name>
+		<servlet-class>controller.corp.CorpLogoutRequestAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CorpLogoutRequestAction</servlet-name>
+		<url-pattern>/Clogout</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 개인 Logout -->
+	<servlet>
+		<servlet-name>UserLogoutRequestAction</servlet-name>
+		<servlet-class>controller.User.UserLogoutRequestAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UserLogoutRequestAction</servlet-name>
+		<url-pattern>/Plogout</url-pattern>
+	</servlet-mapping>
+	
 	
 	
 	<!-- 2. JSP 페이지 맵핑 -->
