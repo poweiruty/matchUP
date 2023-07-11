@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- 채용관리 페이지 -->
 <!DOCTYPE html>
 <html lang="ko">
@@ -32,6 +31,11 @@
 							<span class="corp_id">회사명: </span> 
 							<span>${sessionScope.cname }</span>
 						</li>
+						<li>
+							<span class="cnum">사업자등록번호: </span> 
+							<span>${sessionScope.cnum }</span>
+						</li>
+						
 						<li>
 							<span class="phone">담당자 연락처: </span> 
 							<span>0${sessionScope.phone }</span>

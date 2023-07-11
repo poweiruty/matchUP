@@ -49,6 +49,14 @@ public class JoinCuserAction extends HttpServlet {
 		
 		CorpUserRequestDto cuser = new CorpUserRequestDto(id, password, name, num, mgr_name, mgr_tel, mgr_email, address);
 		
-		
+		System.out.println("id : " + id);
+		System.out.println("password : " + password);
+		System.out.println("name : " + name);
+		System.out.println("cnum : " + num);
+		System.out.println("mgr_name : " + mgr_name);
+		System.out.println("mgr_tel : " + mgr_tel);
+		System.out.println("mgr_email : " + mgr_email);
+		System.out.println("address : " + address);
+
 	}
 }

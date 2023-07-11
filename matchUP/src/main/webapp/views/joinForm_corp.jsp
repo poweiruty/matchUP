@@ -24,26 +24,27 @@
 	<div id="wrap">
 		<div class="section">
 			<div class="section_box">
-				<form action="" method="post" name="membership"
-					enctype="multipart/form-data">
+				<form action="CJoin" method="post">
 					<ul>
 						<div class="pc_1">
 							<li class="start">
 								<h2>회원정보입력(기업 회원)</h2>
 							</li>
 							<!-- 아이디 부분 -->
-							<li><label for="id">
+							<li>
+								<label for="id">
 									<h2>아이디</h2>
-							</label></li>
-							<li class="id"><input type="text" name="id" id="id"
-								placeholder="길이 4-12자 이내" required> <input type="button"
-								name="btn1" id="btn1" value="중복확인"><br /></li>
+								</label>
+							</li>
+							<li class="id">
+								<input type="text" name="id" id="id"	placeholder="길이 4-12자 이내" required> 
+								<input type="button" name="btn1" id="btn1" value="중복확인"><br />
+							</li>
 
 							<!-- 비밀번호 부분 -->
-							<li><label for="pwd1">
-									<h2>
-										비밀번호<span class="pwd_warning"> *특수문자는 '! @ # $ % ^ &
-											+='만 사용 가능합니다.</span>
+							<li>
+								<label for="pwd1">
+									<h2>비밀번호<span class="pwd_warning"> *특수문자는 '! @ # $ % ^ & + ='만 사용 가능합니다.</span>
 									</h2>
 							</label></li>
 							<html>
@@ -155,11 +156,10 @@
 								<div class="marketing_wrap">
 									<div class="marketing">
 										<h2>마케팅 정보 수신동의</h2>
-										<br /> 중요한 알림 및 각종 혜택 알림을 수신합니다. <br /> 수업과 관련된 사항은 수신동의와
-										관련없이 보내드립니다. <br />
-										<br /> <input type="checkbox" name="chk1" id="chk">SNS
-										서비스 동의 (선택) <br /> <input type="checkbox" name="chk2"
-											id="chk">메일 수신 동의 (선택) <br />
+										<br /> 중요한 알림 및 각종 혜택 알림을 수신합니다. 
+										<br /> 수업과 관련된 사항은 수신동의와 관련없이 보내드립니다. <br />
+										<br /> <input type="checkbox" name="chk1" id="chk">SNS 서비스 동의 (선택) <br /> 
+										<input type="checkbox" name="chk2"	id="chk">메일 수신 동의 (선택) <br />
 									</div>
 								</div> <!-- 약관동의 부분 -->
 								<div class="agree_wrap">

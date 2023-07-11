@@ -56,10 +56,11 @@ public class LoginCuserAction extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("log", id);
 			session.setAttribute("cname", cuser.getCname());
+			session.setAttribute("mgr_name", cuser.getMgr_name());
 			session.setAttribute("phone", cuser.getMgr_tel());
-			session.setAttribute("cname", cuser.getCname());
 			session.setAttribute("email", cuser.getMgr_email());
 			session.setAttribute("map", cuser.getCaddress());
+			session.setAttribute("cnum", cuser.getCnum());
 			
 			 // corporation_tb에서 staffs 값 가져오기
 	        CorpDao corpDao = CorpDao.getInstance();
@@ -76,10 +77,11 @@ public class LoginCuserAction extends HttpServlet {
 			// 확인용
 			System.out.println(session.getAttribute("log"));
 			System.out.println(session.getAttribute("cname"));
+			System.out.println(session.getAttribute("mgr_name"));
 			System.out.println(session.getAttribute("phone"));
-			System.out.println(session.getAttribute("cname"));
 			System.out.println(session.getAttribute("email"));
 			System.out.println(session.getAttribute("map"));
+			System.out.println(session.getAttribute("cnum"));
 		}
 
 		response.sendRedirect(url);

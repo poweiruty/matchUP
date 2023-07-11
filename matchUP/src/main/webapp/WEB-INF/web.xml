@@ -207,15 +207,26 @@
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>	
 	
-	<!-- main -->
+	<!-- mypage 기업회원 -->
 	<servlet>
-		<servlet-name>myPageForm</servlet-name>
-		<jsp-file>/views/myPageForm.jsp</jsp-file>
+		<servlet-name>myPageCorpForm</servlet-name>
+		<jsp-file>/views/myPageForm_corp.jsp</jsp-file>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>myPageForm</servlet-name>
-		<url-pattern>/mypage</url-pattern>
+		<servlet-name>myPageCorpForm</servlet-name>
+		<url-pattern>/mypageCorp</url-pattern>
+	</servlet-mapping>	
+	
+	<!-- mypage 개인회원 -->
+	<servlet>
+		<servlet-name>myPagePersonForm</servlet-name>
+		<jsp-file>/views/myPageForm_person.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>myPagePersonForm</servlet-name>
+		<url-pattern>/mypagePerson</url-pattern>
 	</servlet-mapping>	
 	
 	<!-- resume -->

@@ -41,22 +41,24 @@
                     <h3>기업리뷰</h3>
                 </a>
             </div>
-            <!-- 로그인 & 마이페이지 -->
-            <div class="login">
-               <c:choose>
-            	<c:when test="${not empty sessionScope.log }">
-            		<a href="mypage">
-            			<h3>마이페이지</h3> 
-            		</a>            	
-            	</c:when>
-            	<c:otherwise>
-            		<a href="login">
-                   		 <h3>로그인</h3>
-               		</a>
-            	</c:otherwise>
-            
-            </c:choose>
-            </div>
+            <!-- 기업회원 마이페이지 -->
+			<c:choose>
+				<c:when test="${not empty sessionScope.cname }">
+					<a href="mypageCorp">
+						<h3>마이페이지</h3>
+					</a>
+				</c:when>
+				<c:when test="${not empty sessionScope.log}">
+					<a href="mypagePerson">
+						<h3>마이페이지</h3>
+					</a>
+				</c:when>
+				<c:otherwise>
+					<a href="login">
+						<h3>로그인</h3>
+					</a>
+				</c:otherwise>
+			</c:choose>
             <!-- 회원가입 -->
             <div class="join">
                 <a href="join">

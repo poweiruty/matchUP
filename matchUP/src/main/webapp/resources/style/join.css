@@ -263,7 +263,7 @@ p.title{
     }
     ul{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-evenly;
     }
     .pc_1, .pc_2{

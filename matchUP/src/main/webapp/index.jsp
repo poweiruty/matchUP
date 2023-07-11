@@ -17,9 +17,12 @@
 	<c:choose>
 		<c:when test="${not empty sessionScope.log }">
 			${sessionScope.log }님 환영합니다!
+			<span>로그아웃</span>
 		</c:when>
 		<c:otherwise>
 			<!-- 비 로그인시 메인 메시지 -->
+			환영합니다!
+			로그인 후 서비스를 이용해 주세요.
 		</c:otherwise>
 
 	</c:choose>

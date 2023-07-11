@@ -21,7 +21,7 @@
 	<div id="wrap">
 		<div class="section">
 			<div class="section_box">
-				<form action="Join" method="POST">
+				<form action="PJoin" method="POST">
 					<ul>
 						<div class="pc_1">
 							<li class="start">
