@@ -10,23 +10,25 @@ public class User {
 	private String user_address;
 	private int emailCheck;
 	
-	public User(String pid, String ppassword, String pname, int birth, String tel) {
+	public User(String pid, String ppassword, String pname, int birth, String tel, int emailCheck) {
 		this.pid = pid;
 		this.ppassword = ppassword;
 		this.pname = pname;
 		this.birth = birth;
 		this.tel = tel;
+		this.emailCheck = emailCheck;
 	}
-	public User(String pid, String ppassword, String pname, int birth, String tel, String email) {
+	public User(String pid, String ppassword, String pname, int birth, String tel, String email, int emailCheck) {
 		this.pid = pid;
 		this.ppassword = ppassword;
 		this.pname = pname;
 		this.birth = birth;
 		this.tel = tel;
 		this.email = email;
+		this.emailCheck = emailCheck;
 	}
 	public User(String pid, String ppassword, String pname, int birth, String tel, String email,
-			String user_address) {		
+			String user_address, int emailCheck) {		
 		this.pid = pid;
 		this.ppassword = ppassword;
 		this.pname = pname;
@@ -34,6 +36,7 @@ public class User {
 		this.tel = tel;
 		this.email = email;
 		this.user_address = user_address;
+		this.emailCheck = emailCheck;
 	}
 	public String getPid() {
 		return pid;
@@ -55,11 +58,14 @@ public class User {
 	}
 	public String getUser_address() {
 		return user_address;
+	}	
+	public int getEmailCheck() {
+		return emailCheck;
 	}
 	
 	@Override
 	public String toString() {
-		return String.format("id : %s\npassword : %s\nname; : %s\nbirth : %d\ntel : %s\nemail : %s\naddress : %s", this.pid, this.ppassword, this.pname, this.birth, this.tel, this.email, this.user_address);
+		return String.format("id : %s\npassword : %s\nname; : %s\nbirth : %d\ntel : %s\nemail : %s\naddress : %s\nemailChk : %d", this.pid, this.ppassword, this.pname, this.birth, this.tel, this.email, this.user_address, this.emailCheck);
 	}
 	
 }	

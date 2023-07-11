@@ -34,14 +34,15 @@ public class UserDao {
 		String tel = dto.getTel();
 		String email = dto.getEmail();
 		String address = dto.getUser_address();
+		int emailCheck = dto.getEmailCheck();
 		
 		boolean check = true;
 		
 		if(id != null && password != null && name != null && birth != 0 && tel != null) {
 			this.conn = DBManager.getConnection();
 			if(this.conn != null) {
-				if(!email.equals("")) {
-					String sql = "INSERT INTO pusers_tb (pid,ppassword,pname,birth,tel,email) VALUES(?, ?, ?, DATE(?), ?, ?)";
+				if(!email.equals("") && emailCheck == 1) {
+					String sql = "INSERT INTO pusers_tb (pid,ppassword,pname,birth,tel,email,userEmailCheck) VALUES(?, ?, ?, DATE(?), ?, ?, ?)";
 					try {
 						this.pstmt = this.conn.prepareStatement(sql);
 						this.pstmt.setString(1, id);
@@ -50,6 +51,7 @@ public class UserDao {
 						this.pstmt.setInt(4, birth);
 						this.pstmt.setString(5, tel);
 						this.pstmt.setString(6, email);
+						this.pstmt.setInt(7, emailCheck);
 						
 						this.pstmt.execute();
 						
@@ -125,9 +127,10 @@ public class UserDao {
 					int birthNum = Integer.parseInt(sdf.format(birth));					
 					String tel = this.rs.getString(6);					
 					String email = this.rs.getString(7);
-					String address = this.rs.getString(8);										
+					String address = this.rs.getString(8);		
+					int emailCheck = this.rs.getInt(9);
 					
-					user = new User(id, password, name, birthNum, tel, email, address);					
+					user = new User(id, password, name, birthNum, tel, email, address, emailCheck);					
 				}
 			}catch (Exception e) {
 				e.printStackTrace();
@@ -161,8 +164,9 @@ public class UserDao {
 					String tel = this.rs.getString(6);
 					String email = this.rs.getString(7);
 					String address = this.rs.getString(8);
+					int emailCheck = this.rs.getInt(9);
 					
-					User user = new User(id,password,name,birthNum,tel,email,address);
+					User user = new User(id,password,name,birthNum,tel,email,address,emailCheck);
 					
 					list.add(user);
 				}
@@ -181,7 +185,7 @@ public class UserDao {
 		
 		this.conn = DBManager.getConnection();		
 		if(this.conn != null) {			
-			String sql = "UPDATE pusers_tb SET ppassword=?, tel=?, email=?, user_address=? WHERE pid=? AND ppassword=?";					
+			String sql = "UPDATE pusers_tb SET ppassword=?, tel=?, email=?, user_address=?, userEmailCheck=? WHERE pid=? AND ppassword=?";					
 			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
@@ -209,9 +213,13 @@ public class UserDao {
 				}else {
 					this.pstmt.setString(4, dto.getUser_address());
 				}
-				
-				this.pstmt.setString(5, dto.getPid());
-				this.pstmt.setString(6, password);
+				if(user.getEmailCheck() == dto.getEmailCheck()) {
+					this.pstmt.setInt(5, user.getEmailCheck());
+				}else {
+					this.pstmt.setInt(5, dto.getEmailCheck());
+				}
+				this.pstmt.setString(6, dto.getPid());
+				this.pstmt.setString(7, password);
 				
 				this.pstmt.execute();				
 				
@@ -249,18 +257,51 @@ public class UserDao {
 		return check;
 	}
 	
-	public boolean idCheck(String id) {
-		User user = getUserbyId(id);
-		boolean check = false;
-			
-		if(user != null) {
-			check = true;			
-		}
-		
-		return check;	
-	}
 	
-	public void emailCheck(String id) {
+	public int checkId(String id) { 
+		User user = getUserbyId(id); 
+		int check = 0;
+		  
+		if(user != null) {
+			check = 0;
+		}else {
+			check = 1;
+		}
+		 
+		return check; 
+	}
+	 
+	
+	public void emailCheck(String email) {
 		
+		this.conn = DBManager.getConnection();
+		if(this.conn != null) {
+			String sql = "UPDATE pusers_tb SET userEmailCheck=1 WHERE email=?";
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setString(1, email);
+				this.pstmt.execute();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBManager.close(this.conn, this.pstmt);
+			}
+		}		
 	}
 }	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

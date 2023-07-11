@@ -31,10 +31,6 @@
 							<span class="corp_id">회사명: </span> 
 							<span>${sessionScope.cname }</span>
 						</li>
-						<li>
-							<span class="cnum">사업자등록번호: </span> 
-							<span>${sessionScope.cnum }</span>
-						</li>
 						
 						<li>
 							<span class="phone">담당자 연락처: </span> 

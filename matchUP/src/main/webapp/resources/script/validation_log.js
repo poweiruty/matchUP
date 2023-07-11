@@ -1,19 +1,58 @@
-$(document).ready(function() {
-	openTab("active", "puser_login");
+$('#pid').on('change', e => {
+	const id = $('#pid').val();
+	
+	if(id !== "") {
+		$('#error-pid').hide();
+	}
 });
-function openTab(evt, tabName) {
-	// 탭 내용을 모두 숨김
-	let i, tabcontent, tablinks;
-	tabcontent = document.getElementsByClassName("tabcontent");
-	for (i = 0; i < tabcontent.length; i++) {
-		tabcontent[i].style.display = "none";
+
+$('#ppwd').on('change', e => {
+	const pwd = $('#ppwd').val();
+	
+	if(pwd !== "") {
+		$('#error-ppwd').hide();
 	}
-	// 탭 버튼의 active 클래스 제거
-	tablinks = document.getElementsByClassName("tablink");
-	for (i = 0; i < tablinks.length; i++) {
-		tablinks[i].className = tablinks[i].className.replace(" active", "");
+});
+$('#cid').on('change', e => {
+	const id = $('#cid').val();
+	
+	if(id !== "") {
+		$('#error-cid').hide();
 	}
-	// 선택된 탭 내용 표시 및 버튼에 active 클래스 추가
-	document.getElementById(tabName).style.display = "block";
-	evt.currentTarget.class += " active";
+});
+
+$('#cpwd').on('change', e => {
+	const pwd = $('#cpwd').val();
+	
+	if(pwd !== "") {
+		$('#error-cpwd').hide();
+	}
+});
+
+function checkValue(htmlform) {	
+	const id = htmlform.id.value
+	const pwd = htmlform.pwd.value;
+	
+	let check = true;
+	
+	if(id === "") {
+		$('#error-pid').show();
+		check = false;
+	} else if(pwd === "") {
+		$('#error-ppwd').show();
+		check = false;
+	}
+	
+	if(id === "") {
+		$('#error-cid').show();
+		check = false;
+	} else if(pwd === "") {
+		$('#error-cpwd').show();
+		check = false;
+	}
+	
+	
+	if(check === true) {
+		htmlform.submit();
+	}
 }

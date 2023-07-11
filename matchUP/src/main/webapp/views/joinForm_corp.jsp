@@ -47,51 +47,51 @@
 									<h2>비밀번호<span class="pwd_warning"> *특수문자는 '! @ # $ % ^ & + ='만 사용 가능합니다.</span>
 									</h2>
 							</label></li>
-							<html>
-<li class="pwd"><input type="password" name="pwd1" id="pwd1"
-	placeholder="4-10자의 영문, 특수문자, 숫자 조합" required> <input
-	type="password" name="pwd2" id="pwd2" placeholder="비밀번호 확인" required>
-	<span id="chkNotice" size="1"></span></li>
-
-<!-- 회사명 부분 -->
-<li class="corp_name"><label for="corp_name">
-		<h2>회사명</h2>
-</label> <input type="text" name="name" id="name"
-	placeholder="본사 주소를 기준으로 기입해 주세요." required></li>
-
-<!-- 생년월일 부분 -->
-<li><label for="corp_num">
-		<h2>
-			사업자등록번호<span class="corp_warning"> *사업자등록번호는 추후 수정이 불가능 합니다.
-				정확히 입력해 주세요.</span>
-		</h2>
-</label></li>
-<li class="corp_num"><input type="text" name="corp_num"
-	id="corp_num" required></li>
-<!-- 담당자 이름 부분 -->
-<li><label for="mgr_name"><h2>채용 담당자 성명</h2></label></li>
-<li><input type="text" name="mgr_name" id="mgr_name" required>
-</li>
-<!-- 담당자 번호 부분 -->
-<li>
-	<h2>채용 담당자 연락처</h2>
-</li>
-<li class="phone"><select name="phone" id="phone">
-		<option value="010">010</option>
-		<option value="011">011</option>
-		<option value="016">016</option>
-		<option value="017">017</option>
-		<option value="018">018</option>
-		<option value="019">019</option>
-</select> <span>-</span> <input type="text" name="phone1" id="phone1"
-	maxlength="4"
-	oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-	<span>-</span> <input type="text" name="phone2" id="phone2"
-	maxlength="4"
-	oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-</li>
-
-<!-- 이메일 부분 -->
+							
+							<li class="pwd"><input type="password" name="pwd1" id="pwd1"
+								placeholder="4-10자의 영문, 특수문자, 숫자 조합" required> <input
+								type="password" name="pwd2" id="pwd2" placeholder="비밀번호 확인" required>
+								<span id="chkNotice" size="1"></span></li>
+							
+							<!-- 회사명 부분 -->
+							<li class="corp_name"><label for="corp_name">
+									<h2>회사명</h2>
+							</label> <input type="text" name="name" id="name"
+								placeholder="본사 주소를 기준으로 기입해 주세요." required></li>
+							
+							<!-- 생년월일 부분 -->
+							<li><label for="corp_num">
+									<h2>
+										사업자등록번호<span class="corp_warning"> *사업자등록번호는 추후 수정이 불가능 합니다.
+											정확히 입력해 주세요.</span>
+									</h2>
+							</label></li>
+							<li class="corp_num"><input type="text" name="corp_num"
+								id="corp_num" required></li>
+							<!-- 담당자 이름 부분 -->
+							<li><label for="mgr_name"><h2>채용 담당자 성명</h2></label></li>
+							<li><input type="text" name="mgr_name" id="mgr_name" required>
+							</li>
+							<!-- 담당자 번호 부분 -->
+							<li>
+								<h2>채용 담당자 연락처</h2>
+							</li>
+							<li class="phone"><select name="phone" id="phone">
+									<option value="010">010</option>
+									<option value="011">011</option>
+									<option value="016">016</option>
+									<option value="017">017</option>
+									<option value="018">018</option>
+									<option value="019">019</option>
+							</select> <span>-</span> <input type="text" name="phone1" id="phone1"
+								maxlength="4"
+								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+								<span>-</span> <input type="text" name="phone2" id="phone2"
+								maxlength="4"
+								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+							</li>
+							
+							<!-- 이메일 부분 -->
 							<li>
 								<label for="email">
 									<h2>이메일</h2>

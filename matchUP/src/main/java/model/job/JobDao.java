@@ -14,6 +14,7 @@ public class JobDao {
 	public static JobDao getInstance() {
 		return instance;
 	}
+		
 	
 	public Job getJob(String job) {
 		Job jobs = null;

@@ -20,9 +20,8 @@
 </head>
 <body>
 <%
-
-	String email = request.getParameter("email");		
-	
+	String email = request.getParameter("email");
+	PrintWriter script = null;
 	System.out.println(email);
 	
 	String host = "http://localhost:8081/";
@@ -30,7 +29,7 @@
 	String to = email;
 	String subject = "Match-UP 이메일인증 메일";
 	new SHA256();
-	String content = "링크에 접속해 이메일인증을 진행해주세요." + 
+	String content = "링크에 접속해 이메일인증을 진행해주세요.<br>" + 
 				"<a href='" + host + "views/emailCheckAction.jsp?code=" + SHA256.getSHA256(to) +"'>이메일 인증하기 </a>";
 	Properties p = new Properties();
 	p.put("mail.smtp.user", from);
@@ -46,6 +45,7 @@
 	p.put("mail.smtp.ssl.enable", "true");  // 추가된 코드
 	
 	try {
+		session.setAttribute("tempEmail", to);
 		Authenticator auth = new Gmail();
 		Session ses = Session.getInstance(p,auth);
 		ses.setDebug(true);
@@ -56,11 +56,17 @@
 		Address toAddr = new InternetAddress(to);
 		msg.addRecipient(Message.RecipientType.TO, toAddr);
 		msg.setContent(content, "text/html;charset=UTF-8");
-		Transport.send(msg);
+		Transport.send(msg);		
+		script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('인증메일이 전송되었습니다.');");		
+		script.println("location.href = 'javascript:history.back();'");		
+		script.println("</script>");
+		script.close();
 		
 	}catch (Exception e) {
 		e.printStackTrace();
-		PrintWriter script = response.getWriter();
+		script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('잘못된 이메일 주소입니다.');");
 		script.println("location.href = 'index'");
