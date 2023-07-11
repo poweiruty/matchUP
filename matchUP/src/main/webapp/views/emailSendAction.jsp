@@ -20,12 +20,11 @@
 </head>
 <body>
 <%
-
 	String email = request.getParameter("email");
 	PrintWriter script = null;
 	System.out.println(email);
 	
-	String host = "http://localhost:8080/";
+	String host = "http://localhost:8081/";
 	String from = "rbxo0032@gmail.com";
 	String to = email;
 	String subject = "Match-UP 이메일인증 메일";
@@ -61,8 +60,7 @@
 		script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('인증메일이 전송되었습니다.');");		
-		script.println("location.href = 'javascript:history.back();'");
-		script.println("document.getElementById('emailchk').value='1'");
+		script.println("location.href = 'javascript:history.back();'");		
 		script.println("</script>");
 		script.close();
 		

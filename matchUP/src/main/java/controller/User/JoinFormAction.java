@@ -48,15 +48,10 @@ public class JoinFormAction extends HttpServlet {
 		String birth = request.getParameter("year") + request.getParameter("month") + request.getParameter("date");
 		int birthNum = Integer.parseInt(birth);
 		String tel = request.getParameter("phone") + request.getParameter("phone1") + request.getParameter("phone2");
-		String email = request.getParameter("email");
-		if (request.getParameter("selectEmail").equals("1")) {
-			email += request.getParameter("email2");
-		} else {
-			email += request.getParameter("selectEmail");
-		}
-		String address = request.getParameter("address") + " " + request.getParameter("detailAddress")
-				+ request.getParameter("extraAddress");
-
+		String email = request.getParameter("email");		
+		String address = request.getParameter("address");
+		int emailChk = Integer.parseInt(request.getParameter("emailChk"));
+			
 		System.out.println("id : " + id);
 		System.out.println("password : " + password);
 		System.out.println("name : " + name);
@@ -64,8 +59,9 @@ public class JoinFormAction extends HttpServlet {
 		System.out.println("tel : " + tel);
 		System.out.println("email : " + email);
 		System.out.println("address : " + address);
+		System.out.println("emailChk : " + emailChk);
 
-		UserRequestDto user = new UserRequestDto(id, password, name, birthNum, tel, email, address);
+		UserRequestDto user = new UserRequestDto(id, password, name, birthNum, tel, email, address, emailChk);
 
 		UserDao userDao = UserDao.getInstance();
 		boolean result = userDao.createUser(user);

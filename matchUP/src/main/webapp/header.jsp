@@ -37,7 +37,7 @@
                 </a>
             </div>       
             <c:choose>
-            	<c:when test="${not empty sessionScope.log }">
+            	<c:when test="${not empty sessionScope.log}">
             		<a href="mypage">
             			<h3>마이페이지</h3> 
             		</a>            	
@@ -46,8 +46,7 @@
             		<a href="login">
                    		 <h3>로그인</h3>
                		</a>
-            	</c:otherwise>
-            
+            	</c:otherwise>            
             </c:choose>
             <!-- 회원가입 -->
             <div class="login">

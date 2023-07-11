@@ -106,11 +106,11 @@ li.phone{
     width: 30%;
 }
 /* 인증번호 전송 부분 */
-#btn2{
-    width: 100%;
-    cursor: pointer;
+#btn2, #btn3{
+    width: 49.4%;    
 }
-#btn2:hover{
+#btn2:hover, #btn3:hover{
+	cursor: pointer;
     color: #fff;
     background-color: gray;
 }
@@ -124,7 +124,7 @@ li.phone{
 #num{
     width:70%;
 }
-#btn3{
+/* #btn3{
     width: 30%;
     height: 30px;
     color: #fff;
@@ -134,7 +134,7 @@ li.phone{
     cursor: pointer;
     color: #fff;
     background-color: gray;
-}
+} */
 /* 세로줄(pc ver. only) */
 .hr{
     display: none;
@@ -199,12 +199,13 @@ li#add{
     color: gray;
     font-weight: 700;
 }
-#submit{
+.sub > #submit_btn{
     width: 100%;
     height: 35px;
     margin-bottom: 5px;
+    background-color: white;
 }
-#submit:hover, #index:hover{
+.sub > #submit_btn:hover, #index:hover{
     cursor: pointer;
     color: #fff;
     background-color: gray;  
@@ -216,7 +217,7 @@ li#add{
     margin-bottom: 15px;
     color: black;
 }
-#submit, #index{
+.sub > #submit_btn, #index{
     border: 1px solid gray;
     border-radius: 20px;
     text-align: center;

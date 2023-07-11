@@ -1,3 +1,7 @@
+<%@page import="java.io.Console"%>
+<%@page import="model.SHA256"%>
+<%@page import="java.io.PrintWriter"%>
+<%@page import="model.user_general.UserDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,13 +9,6 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<link rel="stylesheet" href="resources/style/reset_form.css">
-<!-- header css -->
-<link rel="stylesheet" href="resources/style/grid.css">
-
-<link rel="stylesheet" href="resources/style/join.css">
 </head>
 
 <body>
@@ -21,7 +18,7 @@
 	<div id="wrap">
 		<div class="section">
 			<div class="section_box">
-				<form action="Join" method="POST" name="joinForm">		
+				<form action="PJoin" method="POST" name="joinForm">		
 					<ul>
 						<div class="pc_1">
 							<li class="start">
@@ -34,31 +31,36 @@
 								</label>
 							</li>
 							<li class="id">
-								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" required> 
-								<input type="button" name="btn1" id="btn1" value="중복확인"><br/>								
+								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내(소문자(영어), 숫자)"> 
+								<input type="button" name="btn1" id="btn1" value="중복확인" >		
+								<input type="hidden" name="idchk" id="idchk" value="no">						
 							</li>
-							<li class="error" id="error-duplId">* 이미 사용 중인 아이디입니다.</li>								
-							<li class="error" id="error-noneId">* 아이디는 필수 정보입니다.</li>
+							<li class="error" id="error-duplId1">* 아이디 중복체크를 해주세요.</li>
+							<li class="error" id="error-duplId2">* 이미 사용 중인 아이디입니다.</li>								
+							<li class="error" id="error-noneId">* 아이디를 확인해주세요.(소문자(영어), 숫자 4~12자이내)</li>
 							<!-- 비밀번호 부분 -->
 							<li>
 								<label for="pwd1">
 									<h2>
-										비밀번호<span class="pwd_warning"> *특수문자는 '! @ # $ % ^ &
-											+='만 사용 가능합니다.</span>
+										비밀번호<span class="pwd_warning"> *특수문자는 '! @ # $ %'만 사용 가능합니다.</span>
 									</h2>
 								</label>
 							</li>
 							<li class="pwd">
-								<input type="password" name="password" id="password" placeholder="4-10자의 영문, 특수문자, 숫자 조합" required>
-								<input type="password" name="password_chk" id="password_chk" placeholder="비밀번호 확인" required>								
-								<span id="chkNotice" size="1"></span>
+								<input type="password" name="password" id="password" placeholder="4-10자의 영문, 특수문자, 숫자 조합">													
 							</li>
-							
+							<li class="error" id="error-password">비밀번호: 필수 정보입니다.</li>
+							<li class="pwd">
+								<input type="password" name="passwordChk" id="passwordChk" placeholder="비밀번호 확인">
+							</li>							
+							<li class="error" id="error-password_chk">비밀번호 다시 한번 입력해주세요.</li>
+							<li class="error" id="error-pwdEquals">비밀번호가 일치하지 않습니다.</li>
 							<!-- 이름 부분 -->
 							<li class="name">
 								<label for="name"><h2>이름</h2></label>
-								<input type="text" name="name" id="name" required>
+								<input type="text" name="name" id="name">
 							</li> 
+							<li class="error" id="error-name">이름: 필수 정보입니다.</li>
 							<!-- 생년월일 부분 -->
 							<li>
 								<label for="birth"> 
@@ -67,7 +69,7 @@
 									</h2>
 								</label>
 							</li>
-							<li class="birth">
+							<li class="birth" id="birth">
 								<select name="year" id="year">
 									<option value="">연도 선택</option>
 									<option value="1980">1980</option>
@@ -151,11 +153,14 @@
 									<option value="31">31</option>
 								</select>
 							</li>
+							<li class="error" id="error-birth">
+								생일: 필수 정보입니다.
+							</li>
 							<!-- 휴대폰 부분 -->
 							<li>
 								<h2>휴대폰</h2>
 							</li>
-							<li class="phone">
+							<li class="phone" id="pnum">
 								<select name="phone" id="phone">
 									<option value="010">010</option>
 									<option value="011">011</option>
@@ -168,7 +173,10 @@
 								<input type="text" name="phone1" id="phone1" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
 								<span>-</span> 
 								<input type="text" name="phone2" id="phone2" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-							</li>					
+							</li>	
+							<li class="error" id="error-tel">
+								휴대폰번호: 필수 정보입니다.
+							</li>				
 							<!-- 이메일 부분 -->
 							<li>
 								<label for="email">
@@ -197,13 +205,13 @@
 							</select>
 							<!-- 인증번호 전송 부분 -->
 							<li>
+								<input type="hidden" name="emailchk" id="emailchk" value="0" >
 								<input type="button" name="btn2" id="btn2" value="인증메일 전송" onclick="sendEmail()">
-								<input type="hidden" name="emailchk" id="emailchk" value="">							
+								<input type="button" name="btn3" id="btn3" value="인증여부 확인" onclick="emailAuthChk()">															
 							</li>
 							<!-- 인증번호 입력 부분 -->
-							<li class="number">
-								<input type="text" name="num" id="num" maxlength="6" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-								<input type="button" name="btn3" id="btn3" value="인증번호 확인">
+							<li class="error" id="error-emailChk">
+								이메일: 인증되지 않은 이메일입니다.
 							</li>
 						</div>
 						<div class="hr">
@@ -239,7 +247,7 @@
 										관련없이 보내드립니다. <br />
 										<br /> <input type="checkbox" name="chk1" id="chk">SNS
 										서비스 동의 (선택) <br /> <input type="checkbox" name="chk2"
-											id="chk">메일 수신 동의 (선택) <br />
+										id="chk">메일 수신 동의 (선택) <br />
 									</div>
 								</div> <!-- 약관동의 부분 -->
 								<div class="agree_wrap">
@@ -258,7 +266,7 @@
 							<!-- 가입하기 부분 -->
 
 							<li class="sub">
-								<input type="submit" name="submit" id="submit" value="가입하기" onclick="checkValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
+								<input type="button" name="submit_btn" id="submit_btn" value="가입하기" onclick="checkValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
 								<a href="index"> <!-- 초기 화면으로 돌아감 -->
 									<div id="index">메인 페이지로 돌아가기</div>
 								</a>							
@@ -269,7 +277,16 @@
 			</div>
 		</div>
 	</div>       
-	<script src="resources/script/validation_join.js"></script>                
+	<script src="resources/script/validation_join.js"></script>    
+	<script>
+		window.onpageshow = function(e){
+			if((e.persisted || (window.performance && window.performance.navigation.type === 2))){
+				//$('input[name=emailchk]').attr("value","1");
+				console.log($('input[name=emailchk]').attr("value"));
+				console.log(document.getElementById("emailchk").value);
+			}
+		}		
+	</script>
 </body>
 <!-- footer 시작 -->
 <jsp:include page="footer"></jsp:include>

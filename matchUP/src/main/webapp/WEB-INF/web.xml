@@ -58,6 +58,28 @@
 		<url-pattern>/CLogin</url-pattern>
 	</servlet-mapping>
 	
+	<!-- Send_Email -->
+	<servlet>
+		<servlet-name>SendEmailAction</servlet-name>
+		<servlet-class>controller.common.SendEmailAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SendEmailAction</servlet-name>
+		<url-pattern>/emailSend</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Send_Email_Check -->
+	<servlet>
+		<servlet-name>EmailCheckAction</servlet-name>
+		<servlet-class>controller.common.EmailCheckAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>EmailCheckAction</servlet-name>
+		<url-pattern>/emailCheck</url-pattern>
+	</servlet-mapping>
+	
 	
 	
 	<!-- 2. JSP 페이지 맵핑 -->
