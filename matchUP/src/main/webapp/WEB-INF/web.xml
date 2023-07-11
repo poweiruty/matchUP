@@ -47,6 +47,16 @@
 		<url-pattern>/PLogin</url-pattern>
 	</servlet-mapping>
 	
+	<!-- Login -->
+	<servlet>
+		<servlet-name>JobPostFormAction</servlet-name>
+		<servlet-class>controller.corp.JobPostFormAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>JobPostFormAction</servlet-name>
+		<url-pattern>/JobPost</url-pattern>
+	</servlet-mapping>
 	<!-- Cuser_Login -->
 	<servlet>
 		<servlet-name>LoginCuserAction</servlet-name>
@@ -58,32 +68,31 @@
 		<url-pattern>/CLogin</url-pattern>
 	</servlet-mapping>
 	
-	<!-- Send_Email -->
+	<!-- 기업 Logout -->
 	<servlet>
-		<servlet-name>SendEmailAction</servlet-name>
-		<servlet-class>controller.common.SendEmailAction</servlet-class>
+		<servlet-name>CorpLogoutRequestAction</servlet-name>
+		<servlet-class>controller.corp.CorpLogoutRequestAction</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>SendEmailAction</servlet-name>
-		<url-pattern>/emailSend</url-pattern>
+		<servlet-name>CorpLogoutRequestAction</servlet-name>
+		<url-pattern>/Clogout</url-pattern>
 	</servlet-mapping>
 	
-	<!-- Send_Email_Check -->
+	<!-- 개인 Logout -->
 	<servlet>
-		<servlet-name>EmailCheckAction</servlet-name>
-		<servlet-class>controller.common.EmailCheckAction</servlet-class>
+		<servlet-name>UserLogoutRequestAction</servlet-name>
+		<servlet-class>controller.User.UserLogoutRequestAction</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>EmailCheckAction</servlet-name>
-		<url-pattern>/emailCheck</url-pattern>
+		<servlet-name>UserLogoutRequestAction</servlet-name>
+		<url-pattern>/Plogout</url-pattern>
 	</servlet-mapping>
 	
 	
 	
 	<!-- 2. JSP 페이지 맵핑 -->
-	
 	
 	<!-- index -->
 	<servlet>
@@ -175,7 +184,7 @@
 	</servlet-mapping>
 	
 	
-	<!-- join -->
+	<!-- join main 페이지 -->
 	<servlet>
 		<servlet-name>joinForm</servlet-name>
 		<jsp-file>/views/joinForm.jsp</jsp-file>
@@ -185,6 +194,29 @@
 		<servlet-name>joinForm</servlet-name>
 		<url-pattern>/join</url-pattern>
 	</servlet-mapping>
+	
+	<!-- join 개인 페이지 -->
+	<servlet>
+		<servlet-name>joinPersonForm</servlet-name>
+		<jsp-file>/views/joinForm_person.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>joinPersonForm</servlet-name>
+		<url-pattern>/joinPerson</url-pattern>
+	</servlet-mapping>
+	
+	<!-- join 기업 페이지 -->
+	<servlet>
+		<servlet-name>joinCorpForm</servlet-name>
+		<jsp-file>/views/joinForm_corp.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>joinCorpForm</servlet-name>
+		<url-pattern>/joinCorp</url-pattern>
+	</servlet-mapping>	
+
 	
 	<!-- login -->
 	<servlet>
@@ -197,15 +229,26 @@
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>	
 	
-	<!-- main -->
+	<!-- mypage 기업회원 -->
 	<servlet>
-		<servlet-name>myPageForm</servlet-name>
-		<jsp-file>/views/myPageForm.jsp</jsp-file>
+		<servlet-name>myPageCorpForm</servlet-name>
+		<jsp-file>/views/myPageForm_corp.jsp</jsp-file>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>myPageForm</servlet-name>
-		<url-pattern>/mypage</url-pattern>
+		<servlet-name>myPageCorpForm</servlet-name>
+		<url-pattern>/mypageCorp</url-pattern>
+	</servlet-mapping>	
+	
+	<!-- mypage 개인회원 -->
+	<servlet>
+		<servlet-name>myPagePersonForm</servlet-name>
+		<jsp-file>/views/myPageForm_person.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>myPagePersonForm</servlet-name>
+		<url-pattern>/mypagePerson</url-pattern>
 	</servlet-mapping>	
 	
 	<!-- resume -->
