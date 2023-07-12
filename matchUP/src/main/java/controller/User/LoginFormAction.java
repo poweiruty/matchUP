@@ -43,7 +43,6 @@ public class LoginFormAction extends HttpServlet {
 		User user = userDao.getUserbyId(id);
 		
 		
-		
 		String url = "login";
 		
 		if(user != null && user.getPpassword().equals(password)) {
