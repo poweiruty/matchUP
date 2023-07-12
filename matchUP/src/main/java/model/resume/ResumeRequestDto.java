@@ -4,6 +4,7 @@ public class ResumeRequestDto {
 	private int resume_id;
 	private int pusers_id;
 	private int job_id;
+	private String job;
 	private String career;
 	private String degree;
 	private String activity;
@@ -12,8 +13,9 @@ public class ResumeRequestDto {
 	private int resume_modified;
 	
 	
-	public ResumeRequestDto(String career, String degree, 
+	public ResumeRequestDto(String job, String career, String degree, 
 							String activity, String certificate) {
+		this.job=job;
 		this.career=career;
 		this.degree=degree;
 		this.activity=activity;

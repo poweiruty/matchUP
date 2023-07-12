@@ -1,3 +1,7 @@
+<%@page import="util.DBManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,37 +30,85 @@
             <p class="resume_title">나의 이력서</p>
             <div class="main_resume">
                 <!-- 이름, 생년월일, 연락처, 이메일, 주소 -->
-                <form action="" method="post" name="resume" class="resumeForm" enctype="multipart/form-data">
+                <form action="Resume" method="post" name="resume" class="resumeForm" enctype="multipart/form-data">
                     <ul>
                         <li>
-                            <label for="name">이름 </label>
-                            <input type="text" id="name">
+                            <!-- <label for="name">이름 </label>
+                            <input type="text" id="name"> -->
+                            <span class="pname">이름 : </span>
+                            <span>${sessionScope.pname}</span>
                         </li>
                         <li>
-                            <label for="date">생년월일 </label>
-                            <input type="date" id="date">
+                            <!-- <label for="date">생년월일 </label>
+                            <input type="date" id="date"> -->
+                            <span class="birth">생년월일 : </span>
+                            <span>${sessionScope.birth}</span>
                         </li>
                         <li>
-                            <label for="tel">연락처 </label>
-                            <input type="text" id="tel">
+                            <!-- <label for="tel">연락처 </label>
+                            <input type="text" id="tel"> -->
+                            <span class="tel">전화번호 : </span>
+                            <span>${sessionScope.tel}</span>
                         </li>
                         <li>
-                            <label for="email">이메일 </label>
+                           <!--  <label for="email">이메일 </label>
                             <input type="text" name="email" id="email">
-                            <input type="text" name="email2" id="email2">
+                            <input type="text" name="email2" id="email2"> -->
+                            <span class="email">이메일 : </span>
+                            <span>${sessionScope.email}</span>
                         </li>
-                        <div class="add_wrap">
-                            <li id="add">
-                            <label for="address">주소</label>
-                            <input type="text" name="address" id="address" placeholder="우편번호를 검색하세요.">
-                            <input type="button" name="address_btn" id="address_btn" value="우편번호 검색">
-                        </li>
-                            <input type="text" name="address_detail" id="address_detail" placeholder="상세주소">
-                        </div>
                         <li>
-                            <label for="job">희망직종 </label>
-                            <input type="text" id="job">
-                        </li>
+                            <!-- <label for="email">이메일 </label>
+                            <input type="text" name="email" id="email">
+                            <input type="text" name="email2" id="email2"> -->
+                            <span class="user_address">주소 : </span>
+                            <span>${sessionScope.user_address}</span>
+                        </li> 
+                   		
+                   		<li>
+                   			<label for="job">희망직종</label>
+                   			<select name="job" id="job" size="1">      
+                   				<option value="" selected></option>
+                   				<%
+                   				Connection conn = null;
+                   				PreparedStatement pstmt=null;
+                   				ResultSet rs=null;
+                   				
+                   				try{
+                   					conn=DBManager.getConnection();
+                   					String sql="select job from job_tb group by job order by job_id ASC";
+                   					
+                   					pstmt=conn.prepareStatement(sql);
+                   					rs=pstmt.executeQuery();
+                   					
+                   					while(rs.next()){
+                   						String job=rs.getString("job");
+                   				%>
+                   						<option value="<%= job %>"><%= job%></option>
+                   				<%
+                   					}
+                   				}catch(Exception e){
+                   					e.printStackTrace();
+                   					System.out.println("직업 데이터 연동 및 출력 실패");
+                   				}finally{
+                   					try{
+                   						if(rs!=null){
+                   							rs.close();
+                   						}
+                   						if(pstmt!=null){
+                   							pstmt.close();
+                   						}
+                   						if(conn!=null){
+                   							conn.close();
+                   						}
+                   					}catch(Exception e){
+                   						e.printStackTrace();
+                   					}
+                   				}
+                   				%>
+                   			</select>
+                   		</li>
+                   		
                         <li>
                             <label for="career">경력</label>
                             <input type="text" id="career">

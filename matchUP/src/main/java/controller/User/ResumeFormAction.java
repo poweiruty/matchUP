@@ -1,4 +1,4 @@
-package controller.resume;
+package controller.User;
 
 import java.io.IOException;
 
@@ -12,8 +12,7 @@ import model.resume.ResumeRequestDto;
  * Servlet implementation class JobPostFormAction
  */
 
-//@WebServlet("/resume")
-
+//@WebServlet("/Resume")
 public class ResumeFormAction {
 	private static final long serialVersionUID = 1L;
 
@@ -41,20 +40,22 @@ public class ResumeFormAction {
 		// TODO Auto-generated method stub
 		{
 			request.setCharacterEncoding("UTF-8");
-
+			
+			String job = request.getParameter("job");
 			String career = request.getParameter("career");
 			String degree = request.getParameter("degree");
 			String activity = request.getParameter("activity");
 			String certificate = request.getParameter("certificate");
 			
 			// 화면에서 넘겨준 데이터 확인
+			System.out.println("job :"+job);
 			System.out.println("career : " + career);
 			System.out.println("region : " + degree);
 			System.out.println("regionDetail : " + activity);
 			System.out.println("salary : " + certificate);
 
 			// DTO 객체 생성
-			ResumeRequestDto resume = new ResumeRequestDto(career, degree, activity, certificate);
+			ResumeRequestDto resume = new ResumeRequestDto(job,career, degree, activity, certificate);
 
 			// DAO 객체 생성
 			ResumeDao dao = ResumeDao.getInstance();
