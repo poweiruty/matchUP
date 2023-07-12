@@ -13,6 +13,7 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	
 	<!-- 1. 서블릿 페이지 맵핑 -->
 	<!-- Puser_Join -->
 	<servlet>
@@ -47,7 +48,7 @@
 		<url-pattern>/PLogin</url-pattern>
 	</servlet-mapping>
 	
-	<!-- Login -->
+	<!-- Job Posting -->
 	<servlet>
 		<servlet-name>JobPostFormAction</servlet-name>
 		<servlet-class>controller.corp.JobPostFormAction</servlet-class>
@@ -57,6 +58,7 @@
 		<servlet-name>JobPostFormAction</servlet-name>
 		<url-pattern>/JobPost</url-pattern>
 	</servlet-mapping>
+	
 	<!-- Cuser_Login -->
 	<servlet>
 		<servlet-name>LoginCuserAction</servlet-name>
@@ -90,7 +92,27 @@
 		<url-pattern>/Plogout</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 이력서 양식 -->
+	<servlet>
+		<servlet-name>ResumeFormAction</servlet-name>
+		<servlet-class>controller.resume.ResumeFormAction</servlet-class>
+	</servlet>
 	
+	<servlet-mapping>
+		<servlet-name>ResumeFormAction</servlet-name>
+		<url-pattern>/Resume</url-pattern>
+	</servlet-mapping>
+	
+	<!--  리뷰 양식 -->
+	<!-- <servlet>
+		<servlet-name>ReviewFormAction</servlet-name>
+		<servlet-class>controller.resume.ReviewFormAction</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ReviewFormAction</servlet-name>
+		<url-pattern>/Review</url-pattern>
+	</servlet-mapping> -->
 	
 	<!-- 2. JSP 페이지 맵핑 -->
 	
@@ -251,7 +273,7 @@
 		<url-pattern>/mypagePerson</url-pattern>
 	</servlet-mapping>	
 	
-	<!-- resume -->
+	<!-- resume 이력서 -->
 	<servlet>
 		<servlet-name>resumeForm</servlet-name>
 		<jsp-file>/views/resumeForm.jsp</jsp-file>

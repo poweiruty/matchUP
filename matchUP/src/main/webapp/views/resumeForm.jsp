@@ -30,39 +30,31 @@
             <p class="resume_title">나의 이력서</p>
             <div class="main_resume">
                 <!-- 이름, 생년월일, 연락처, 이메일, 주소 -->
-                <form action="Resume" method="post" name="resume" class="resumeForm" enctype="multipart/form-data">
+                <form action="Resume" method="post">
                     <ul>
                         <li>
-                            <!-- <label for="name">이름 </label>
-                            <input type="text" id="name"> -->
                             <span class="pname">이름 : </span>
                             <span>${sessionScope.pname}</span>
                         </li>
+                        
                         <li>
-                            <!-- <label for="date">생년월일 </label>
-                            <input type="date" id="date"> -->
                             <span class="birth">생년월일 : </span>
                             <span>${sessionScope.birth}</span>
                         </li>
-                        <li>
-                            <!-- <label for="tel">연락처 </label>
-                            <input type="text" id="tel"> -->
+                        
+                        <li>                   
                             <span class="tel">전화번호 : </span>
-                            <span>${sessionScope.tel}</span>
+                            <span>${sessionScope.phone}</span>
                         </li>
+                        
                         <li>
-                           <!--  <label for="email">이메일 </label>
-                            <input type="text" name="email" id="email">
-                            <input type="text" name="email2" id="email2"> -->
-                            <span class="email">이메일 : </span>
+                            <span class="email_resume">이메일 : </span>
                             <span>${sessionScope.email}</span>
                         </li>
+                        
                         <li>
-                            <!-- <label for="email">이메일 </label>
-                            <input type="text" name="email" id="email">
-                            <input type="text" name="email2" id="email2"> -->
                             <span class="user_address">주소 : </span>
-                            <span>${sessionScope.user_address}</span>
+                            <span>${sessionScope.address}</span>
                         </li> 
                    		
                    		<li>
@@ -123,7 +115,7 @@
                                 <option value="4">대졸(2~3년제)</option>
                                 <option value="5">대졸(4년제)</option>
                                 <option value="6">대학원졸</option>
-                                <input type="text" id="degree_input">
+                                <input type="text" id="degree_input" placeholder="최종학력의 학교명을 입력하세요.">
                             </select>
                         </li>
                         <li>
@@ -137,16 +129,15 @@
                         
                         <li>
                             <label for="intro">자기소개 </label>
-                            <textarea name="intro" id="intro" cols="30" rows="10">
-                        </textarea>
+                            <textarea name="intro" id="intro" cols="30" rows="10"></textarea>
                         </li>
                     </ul>
+                    <div class="bottom">
+                		<input type="submit" name="submit" id="submit" value="이력서 등록">
+                		<span><a href="index"> 메인 페이지로 돌아가기</a></span> 
+            		</div>
                 </form>
-            </div>
-            <div class="bottom">
-                <span><a href="#">등록</a></span>
-                <span><a href="index">취소</a></span>
-            </div>
+            </div>           
         </div>
     </section>
     <!-- body 끝 -->
