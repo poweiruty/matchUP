@@ -1,5 +1,7 @@
 package model.user_corp;
 
+import model.corp.Corp;
+
 public class CorpUser {
 	private String cid;
 	private String cpassword;
@@ -9,6 +11,7 @@ public class CorpUser {
 	private String mgr_tel;
 	private String mgr_email;
 	private String caddress;
+	
 	
 	public CorpUser(String cid, String cpassword, String cname, int cnum, String mgr_name, String mgr_tel) {
 		this.cid = cid;
@@ -68,4 +71,5 @@ public class CorpUser {
 	public String toString() {	
 		return String.format("id : %s\npassword : %s\nname; : %s\nnum : %d\nmgr_name : %s\nmgr_tel : %s\nmgr_email : %s\naddress : %s", this.cid, this.cpassword, this.cname, this.cnum,this.mgr_name, this.mgr_tel, this.mgr_email, this.caddress);
 	}
+
 }

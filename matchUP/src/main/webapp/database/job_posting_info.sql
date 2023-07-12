@@ -5,7 +5,8 @@ create table `job_posting_tb`(
 	post_id int auto_increment primary key,		-- 채용공고 인덱스
     corp_id int(10),							-- 기업 인덱스(외래키)
     job_id int(10),								-- 직무/직종 인덱스
-    semi_region_id int(10),						-- 지역자치 인덱스
+    main_region_id int(10),						-- 지역자치 메인 인덱스
+    semi_region_id int(10),						-- 지역자치 세부 인덱스
     recruit_people int(5) NOT NULL,				-- 채용인원
     recruit_period date NOT NULL,				-- 채용기간
     salary varchar(10),							-- 임금

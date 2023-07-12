@@ -1,12 +1,15 @@
 package controller.corp;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.corp.Corp;
+import model.corp.CorpDao;
 import model.user_corp.CorpUser;
 import model.user_corp.CorpUserDao;
 
@@ -45,17 +48,55 @@ public class LoginCuserAction extends HttpServlet {
 		
 		CorpUserDao dao = CorpUserDao.getInstance();
 		CorpUser cuser = dao.getCorpUserbyId(id);
-		
+		 
+	        
 		String url="login";
 		if(cuser != null && cuser.getCpassword().equals(pwd)) {
 			url = "index";
 			HttpSession session = request.getSession();
 			session.setAttribute("log", id);
+			session.setAttribute("cname", cuser.getCname());
+			session.setAttribute("mgr_name", cuser.getMgr_name());
+			session.setAttribute("phone", cuser.getMgr_tel());
+			session.setAttribute("email", cuser.getMgr_email());
+			session.setAttribute("map", cuser.getCaddress());
+			session.setAttribute("cnum", cuser.getCnum());
 			
+			 // corporation_tb에서 staffs 값 가져오기
+	        CorpDao corpDao = CorpDao.getInstance();
+	        Corp corp = corpDao.getCorpbyId(id);
+	        if (corp != null) {
+	            int staffs = corp.getStaffs();
+	            String ceo = corp.getCeo();
+	            
+	            session.setAttribute("ceo", ceo);
+	            session.setAttribute("staffs", staffs);
+	        }
+	        
+	
+			// 확인용
 			System.out.println(session.getAttribute("log"));
+			System.out.println(session.getAttribute("cname"));
+			System.out.println(session.getAttribute("mgr_name"));
+			System.out.println(session.getAttribute("phone"));
+			System.out.println(session.getAttribute("email"));
+			System.out.println(session.getAttribute("map"));
+			System.out.println(session.getAttribute("cnum"));
 		}
-		
+
 		response.sendRedirect(url);
 		
 	}
 }
+
+
+//			Corp corp = corp.getCorporation();
+//			if (corp != null) {
+//				session.setAttribute("corpId", corp.getCid());
+//				session.setAttribute("staffs", corp.getStaffs());
+//				session.setAttribute("ceo", corp.getCeo());
+//				
+//				System.out.println(session.getAttribute("corpId"));
+//				System.out.println(session.getAttribute("staffs"));
+//				System.out.println(session.getAttribute("ceo"));
+//			}
