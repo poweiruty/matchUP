@@ -88,15 +88,3 @@ public class LoginCuserAction extends HttpServlet {
 		
 	}
 }
-
-
-//			Corp corp = corp.getCorporation();
-//			if (corp != null) {
-//				session.setAttribute("corpId", corp.getCid());
-//				session.setAttribute("staffs", corp.getStaffs());
-//				session.setAttribute("ceo", corp.getCeo());
-//				
-//				System.out.println(session.getAttribute("corpId"));
-//				System.out.println(session.getAttribute("staffs"));
-//				System.out.println(session.getAttribute("ceo"));
-//			}
