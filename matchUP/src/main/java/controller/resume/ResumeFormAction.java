@@ -43,16 +43,18 @@ public class ResumeFormAction extends HttpServlet{
 				String degree = request.getParameter("degree");
 				String activity = request.getParameter("activity");
 				String certificate = request.getParameter("certificate");
+				String intro = request.getParameter("intro");
 				
 				// 화면에서 넘겨준 데이터 확인
 				System.out.println("job :"+job);
 				System.out.println("career : " + career);
-				System.out.println("region : " + degree);
-				System.out.println("regionDetail : " + activity);
-				System.out.println("salary : " + certificate);
+				System.out.println("degree : " + degree);
+				System.out.println("activity : " + activity);
+				System.out.println("certificate : " + certificate);
+				System.out.println("intro : " + intro);
 
 				// DTO 객체 생성
-				ResumeRequestDto resume = new ResumeRequestDto(job,career, degree, activity, certificate);
+				ResumeRequestDto resume = new ResumeRequestDto(job,career, degree,activity,certificate,intro);
 
 				// DAO 객체 생성
 				ResumeDao dao = ResumeDao.getInstance();
