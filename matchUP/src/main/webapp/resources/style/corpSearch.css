@@ -51,15 +51,27 @@ li:hover, h2:hover{
     height: 30px;
 }
 
-#search_btn{
+li>button{
     width: 100px;
     height: 50px;
     border-radius: 0.5rem;
 }
 
-#search_btn:hover{
+li>button:hover{
     background-color:cornflowerblue;
     color: black;
     font-weight: 700;
     cursor: pointer;
+}
+
+/* 검색 내역 부분 */
+
+.con_wrap{
+    margin-top: 5%;
+    padding: 0 5%;
+}
+
+.search_con{
+    border: solid 1px gray;
+    height: 600px;
 }

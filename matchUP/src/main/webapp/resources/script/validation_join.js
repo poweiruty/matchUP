@@ -173,3 +173,11 @@ function emailAuthChk(){
 		document.getElementById("emailchk").value = "인증실패";
 	}	
 }
+
+function leave(id) {
+  let result = confirm("탈퇴하시겠습니까?");
+  if(result) {
+    location.href="leave?id="+id;
+    //get방식으로 아이디 파라미터 함께 넘기기
+  }
+}
