@@ -26,7 +26,7 @@
             <div id="wrap">
                 <div class="section">
                     <div class="section_box">
-                        <form action="" method="post" name="membership" enctype="multipart/form-data">
+                        <form action="Cupdate" method="post" >
                             <ul>
                                 <div class="pc_1">
                                     <li class="start">
@@ -36,41 +36,41 @@
                                     <li><label for="id">
                                             <h2>아이디</h2>
                                         </label></li>
-                                    <li class="id"><input type="text" name="id" id="id"
+                                    <li class="id"><input type="text" name="cid" id="cid"
                                             value="${sessionScope.log}" readonly></li>
 
                                     <!-- 비밀번호 부분 -->
-                                    <li><label for="pwd1">
+                                    <li><label for="cpassword">
                                             <h2>
                                                 비밀번호<span class="pwd_warning"> 회원정보 수정을 위해 비밀번호를 입력해
                                                     주세요.</span>
                                             </h2>
                                         </label></li>
-                                    <li class="pwd1"><input type="password" name="pwd1" id="pwd1" required> <span
+                                    <li class="cpassword"><input type="password" name="cpassword" id="cpassword" required> <span
                                             id="chkNotice" size="1"></span></li>
 
-                                    <li><label for="pwd2">
+                                    <li><label for="newCpassword">
                                             <h2>
-                                                변경할 비밀번호<span class="pwd_warning"> *특수문자는 '! @ # $ % ^
+                                                변경할 비밀번호<span class="newCpassword"> *특수문자는 '! @ # $ % ^
                                                     & +='만 사용 가능합니다.</span>
                                             </h2>
                                         </label></li>
 
-                                    <li class="pwd2"><input type="password" name="pwd2" id="pwd2"> <span id="chkNotice"
+                                    <li class="new-cpassword"><input type="password" name="new-cpassword" id="new-cpassword"> <span id="chkNotice"
                                             size="1"></span></li>
                                     <!-- 회사명 부분 -->
-                                    <li class="corp_name"><label for="corp_name">
+                                    <li class="cname"><label for="cname">
                                             <h2>회사명</h2>
-                                        </label> <input type="text" name="name" id="name"
+                                        </label> <input type="text" name="cname" id="cname"
                                             value="${sessionScope.cname}" readonly></li>
 
                                     <!-- 사업자등록번호 부분 -->
-                                    <li><label for="corp_num">
+                                    <li><label for="cnum">
                                             <h2>
                                                 사업자등록번호
                                             </h2>
                                         </label></li>
-                                    <li class="corp_num"><input type="text" name="corp_num" id="corp_num"
+                                    <li class="cnum"><input type="text" name="cnum" id="cnum"
                                             value="${sessionScope.cnum}" readonly></li>
                                     <!-- 담당자 이름 부분 -->
                                     <li><label for="mgr_name">
@@ -82,14 +82,14 @@
                                     <li>
                                         <h2>채용 담당자 연락처</h2>
                                     </li>
-                                    <li class="phone"><input type="text" name="phone" id="phone"
+                                    <li class="mgr_tel"><input type="text" name="mgr_tel" id="mgr_tel"
                                             value=0${sessionScope.phone}></li>
 
                                     <!-- 이메일 부분 -->
-                                    <li><label for="email">
+                                    <li><label for="mgr_email">
                                             <h2>이메일</h2>
                                         </label></li>
-                                    <li class="email"><input type="text" name="email" id="email"
+                                    <li class="mgr_email"><input type="text" name="mgr_email" id="mgr_email"
                                             value="${sessionScope.email}"></li>
                                 </div>
                                 <div class="hr">
@@ -99,22 +99,20 @@
                                 <div class="pc_2">
                                     <!-- 주소 부분 시작 -->
                                     <div class="add_wrap">
-                                    <label for="default_address">
-                                        <h2 id="default_address">기존 주소</h2>
+                                    <label for="caddress">
+                                        <h2 id="caddress">기존 주소</h2>
                                     </label> 
-                                    <input type="text" name="default_address" id="default_address" value="${sessionScope.address}" > 
-                                        <label for="address">
-                                        <h2 id="add">변경할 주소</h2>
+                                    <input type="text" name="caddress" id="caddress" value="${sessionScope.map}" readonly> 
+                                        <label for="new-caddress">
+                                        <h2 id="new-caddress">변경할 주소</h2>
                                     </label>
-                                   <li id="add">
-										<input type="text" name="postcode" id="postcode" placeholder="우편번호">
-										<input type="button" onclick="daumPostCode()" value="우편번호 찾기">								                                    </li> 
-                                    <input type="text" name="address_detail" id="address_detail" placeholder="상세주소">
+                                   <li id="new-caddress">
+                                    <input type="text" name="new-caddress" id="new-caddress" placeholder="변경할 주소">
                                 </div>
                                     <!-- 주소 끝 -->
 
                                     <!-- 수정하기 부분 -->
-                                    <li class="sub"><input type="submit" name="submit" id="submit" value="수정하기">
+                                    <li class="sub"><input type="submit" name="submit" id="submit" value="수정하기"  onclick="checkValue(form)">
                                         <!-- 메인 페이지로 돌아가기 부분 --> <a href="index"> <!-- 초기 화면으로 돌아감 -->
                                             <div id="index">메인 페이지로 돌아가기</div>
                                         </a></li>

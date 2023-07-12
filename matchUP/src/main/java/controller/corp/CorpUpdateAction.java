@@ -1,11 +1,14 @@
 package controller.corp;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.user_corp.CorpUserRequestDto;
+import model.user_corp.CorpUserDao;
 
 /**
  * Servlet implementation class CorpUpdateAction
@@ -22,19 +25,44 @@ public class CorpUpdateAction extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		{	
+		request.setCharacterEncoding("UTF-8");
+		
+		CorpUserRequestDto corpUserDto = null;
+		
+		String cid = request.getParameter("cid");
+		String cpassword = request.getParameter("cpassword");
+		String newCpassword = request.getParameter("new-cpassword");
+		String cname = request.getParameter("cname");
+		int cnum = request.getIntHeader("cnum");
+		String mgr_name = request.getParameter("mgr_name");
+		String mgr_tel = request.getParameter("mgr_tel");
+		String mgr_email = request.getParameter("mgr_email");
+		String caddress = request.getParameter("caddress");
+		String newCaddress = request.getParameter("new-caddress");
+		
+		
+		System.out.println("cid " + cid);
+		System.out.println("cpassword " + cpassword);
+		System.out.println("newCpassword " + newCpassword);
+		System.out.println("cname " + cname);
+		System.out.println("cnum " + cnum);
+		System.out.println("mgr_name " + mgr_name);
+		System.out.println("mgr_tel " + mgr_tel);
+		System.out.println("mgr_email " + mgr_email);
+		System.out.println("caddress " + caddress);
+		System.out.println("newCaddress " + newCaddress);
+		
+		corpUserDto = new CorpUserRequestDto(cid, newCpassword, cname, cnum, mgr_name, mgr_tel, mgr_email, newCaddress);
+		
+		CorpUserDao corpUserDao = CorpUserDao.getInstance();
+		corpUserDao.updateCorpUser(corpUserDto, cpassword);
+		
+		String url = "CUpdateRequest"; //수정
+		response.sendRedirect(url);	}	}
 
 }
