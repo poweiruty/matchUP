@@ -38,12 +38,6 @@ input, textarea{
     margin-top: 5%;
 }
 
-.bottom>span{
-    border: solid 1px gray;
-    border-radius: 10px;
-    padding: 0 5%;
-}
-
 .bottom a:hover, .bottom>span:hover{
     background-color: gray;
     cursor: pointer;
@@ -58,24 +52,5 @@ label{
     font-weight: 700;
 }
 
-/* 주소 */
 
-#address{
-    width: 20%;
-}
-
-#address_btn{
-    width: 10%;
-    height: 20px;
-}
-
-#address_btn:hover{
-    cursor: pointer;
-    color: #fff;
-    background-color: gray;
-}
-
-#address_detail{
-    width: 30%;
-}
 

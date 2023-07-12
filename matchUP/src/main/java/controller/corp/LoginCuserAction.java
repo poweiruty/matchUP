@@ -1,7 +1,6 @@
 package controller.corp;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -48,13 +47,13 @@ public class LoginCuserAction extends HttpServlet {
 		
 		CorpUserDao dao = CorpUserDao.getInstance();
 		CorpUser cuser = dao.getCorpUserbyId(id);
-		 
-	        
+		
 		String url="login";
 		if(cuser != null && cuser.getCpassword().equals(pwd)) {
 			url = "index";
 			HttpSession session = request.getSession();
 			session.setAttribute("log", id);
+			
 			session.setAttribute("cname", cuser.getCname());
 			session.setAttribute("mgr_name", cuser.getMgr_name());
 			session.setAttribute("phone", cuser.getMgr_tel());
@@ -73,17 +72,9 @@ public class LoginCuserAction extends HttpServlet {
 	            session.setAttribute("staffs", staffs);
 	        }
 	        
-	
-			// 확인용
 			System.out.println(session.getAttribute("log"));
-			System.out.println(session.getAttribute("cname"));
-			System.out.println(session.getAttribute("mgr_name"));
-			System.out.println(session.getAttribute("phone"));
-			System.out.println(session.getAttribute("email"));
-			System.out.println(session.getAttribute("map"));
-			System.out.println(session.getAttribute("cnum"));
 		}
-
+		
 		response.sendRedirect(url);
 		
 	}
