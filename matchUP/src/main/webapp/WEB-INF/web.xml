@@ -14,6 +14,7 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 	<!-- 1. 서블릿 페이지 맵핑 -->
+	
 	<!-- Puser_Join -->
 	<servlet>
 		<servlet-name>JoinFormAction</servlet-name>
@@ -23,6 +24,28 @@
 	<servlet-mapping>
 		<servlet-name>JoinFormAction</servlet-name>
 		<url-pattern>/PJoin</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Puser 탈퇴 -->
+	<servlet>
+		<servlet-name>DeletePuserFormAction</servlet-name>
+		<servlet-class>controller.User.DeletePuserFormAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>DeletePuserFormAction</servlet-name>
+		<url-pattern>/PLeave</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Cuser 탈퇴 -->
+	<servlet>
+		<servlet-name>DeleteCuserFormAction</servlet-name>
+		<servlet-class>controller.corp.DeleteCuserFormAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>DeleteCuserFormAction</servlet-name>
+		<url-pattern>/CLeave</url-pattern>
 	</servlet-mapping>
 	
 	<!-- Cuser_Join -->
@@ -57,6 +80,7 @@
 		<servlet-name>JobPostFormAction</servlet-name>
 		<url-pattern>/JobPost</url-pattern>
 	</servlet-mapping>
+	
 	<!-- Cuser_Login -->
 	<servlet>
 		<servlet-name>LoginCuserAction</servlet-name>
@@ -183,6 +207,17 @@
 		<url-pattern>/jobPost</url-pattern>
 	</servlet-mapping>
 	
+	<!-- jobPostUpdate -->
+	<servlet>
+		<servlet-name>jobPostUpdateForm</servlet-name>
+		<jsp-file>/views/jobPostUpdateForm.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>jobPostUpdateForm</servlet-name>
+		<url-pattern>/jobPostUpdate</url-pattern>
+	</servlet-mapping>
+	
 	
 	<!-- join main 페이지 -->
 	<servlet>
@@ -249,6 +284,28 @@
 	<servlet-mapping>
 		<servlet-name>myPagePersonForm</servlet-name>
 		<url-pattern>/mypagePerson</url-pattern>
+	</servlet-mapping>	
+	
+	<!-- 개인 회원탈퇴 -->
+	<servlet>
+		<servlet-name>deleteUserForm</servlet-name>
+		<jsp-file>/views/deleteUserForm.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>deleteUserForm</servlet-name>
+		<url-pattern>/leave</url-pattern>
+	</servlet-mapping>
+		
+	<!-- 기업 회원탈퇴 -->
+	<servlet>
+		<servlet-name>deleteCuserForm</servlet-name>
+		<jsp-file>/views/deleteCuserForm.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>deleteCuserForm</servlet-name>
+		<url-pattern>/cleave</url-pattern>
 	</servlet-mapping>	
 	
 	<!-- resume -->

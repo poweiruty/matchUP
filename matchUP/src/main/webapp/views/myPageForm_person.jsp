@@ -7,9 +7,7 @@
         <head>
             <meta charset="UTF-8">
             <title>마이페이지(개인)</title>
-            <link rel="stylesheet" href="resources/style/reset_form.css">
             <!-- header css -->
-            <link rel="stylesheet" href="resources/style/grid.css">
             <link rel="stylesheet" href="resources/style/join.css">
         </head>
 
@@ -18,6 +16,9 @@
        	   <jsp:include page="header_form"></jsp:include>
             <!-- header 끝 -->
             <!-- body 시작 -->
+            <c:if test="${empty sessionScope.log }">
+				<c:redirect url="login"></c:redirect>
+			</c:if>
             <div id="wrap">
                 <div class="section">
                     <div class="section_box">
@@ -34,7 +35,7 @@
                                         </label>
                                     </li>
                                     <li class="id">
-                                        <input type="text" name="id" id="id" placeholder="${sessionScope.log}" readonly>
+                                        <input type="text" name="id" id="id" value="${sessionScope.log}" readonly>
                                     </li>
 
                                     <!-- 비밀번호 부분 -->
@@ -54,14 +55,15 @@
                                             </h2>
                                         </label></li>
 
-                                    <li class="pwd2"><input type="password" name="pwd2" id="pwd2"> <span id="chkNotice"
+                                    <li class="pwd2"><input type="password" name="pwd2" id="pwd2"> 
+                                    <span id="chkNotice"
                                             size="1"></span></li>
                                     <!-- 이름 부분 -->
                                     <li class="name">
                                         <label for="name">
                                             <h2>이름</h2>
                                         </label>
-                                        <input type="text" name="name" id="name" placeholder="${sessionScope.pname}"
+                                        <input type="text" name="name" id="name" value="${sessionScope.pname}"
                                             readonly>
                                     </li>
 
@@ -72,7 +74,7 @@
                                         </label>
                                     </li>
                                     <li class="birth">
-                                        <input type="text" name="birth" id="birth" placeholder="${sessionScope.birth}"
+                                        <input type="text" name="birth" id="birth" value="${sessionScope.birth}"
                                             readonly>
                                     </li>
 
@@ -81,7 +83,7 @@
                                         <h2>연락처</h2>
                                     </li>
                                     <li class="phone">
-                                        <input type="text" name="phone" id="phone" placeholder=${sessionScope.phone}>
+                                        <input type="text" name="phone" id="phone" value=${sessionScope.phone}>
                                     </li>
 
                                     <!-- 이메일 부분 -->
@@ -89,7 +91,7 @@
                                         <h2>이메일</h2>
                                     </label></li>
                                 <li class="email"><input type="text" name="email" id="email"
-                                        placeholder="${sessionScope.email}"></li>
+                                        value="${sessionScope.email}"></li>
                             </div>
                             <div class="hr">
                                 <hr class="pc_line">
@@ -101,7 +103,7 @@
 
                                     <label for="default_address">
                                         <h2 id="default_address">기존 주소</h2>
-                                    </label> <input type="text" name="default_address" id="default_address" placeholder="${sessionScope.address}"> 
+                                    </label> <input type="text" name="default_address" id="default_address" value="${sessionScope.address}" > 
                                         <label for="address">
                                         <h2 id="add">변경할 주소</h2>
                                     </label>
@@ -114,7 +116,7 @@
                                 <!-- 주소 끝 -->
 
                                 <!-- 수정하기 부분 -->
-                                <li class="sub"><input type="submit" name="submit" id="submit" value="수정하기">
+                                <li class="sub"><input type="submit" name="submit" id="submit" value="수정하기" onclick="checkValue(form)">
                                         <!-- 메인 페이지로 돌아가기 부분 -->
                                         <a href="index"> <!-- 초기 화면으로 돌아감 -->
                                             <div id="index">메인 페이지로 돌아가기</div>
@@ -126,6 +128,7 @@
                     </div>
                 </div>
             </div>
+            	<script src="resources/script/validation_join.js"></script>
         </body>
 <!-- footer 시작 -->
 <jsp:include page="footer"></jsp:include>

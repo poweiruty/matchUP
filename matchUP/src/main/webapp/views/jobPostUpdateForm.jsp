@@ -23,23 +23,18 @@
 	</c:if>
 	<section class="container">
         <div class="msg">
-            <p id="msg_title">관심채용정보</p>
+            <p id="msg_title">채용공고관리</p>
         </div>
         <div class="main">
             <div class="saved">
-                <p id="saved_title">저장됨</p>
-                <div class="saved_con">
-                    <span>저장된 스크랩: #건</span>
-                </div>
-                <div class="saved_con_detail">
+                <p id="saved_title">진행중인 채용공고</p>
+               <div class="saved_con_detail">
                     <!-- 여기에 내용 -->
                 </div>
             </div>
             <div class="completed">
-                <p id="completed_title">지원완료</p>
-                <div class="completed_con">
-                    <span>완료된 스크랩: #건</span>
-                </div>
+                <p id="completed_title">마감된 채용공고</p>
+                
                 <div class="completed_con_detail">
                     <!-- 여기에 내용 -->
                 </div>

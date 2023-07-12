@@ -18,13 +18,13 @@
 		<c:when test="${not empty sessionScope.cname }">
 			${sessionScope.log }님 환영합니다!
 		<button onclick="location.href='Clogout'">로그아웃</button> 
-		<button onclick="location.href='#'">회원탈퇴</button> <!-- 수정 -->
+		<button onclick="location.href='leave'">회원탈퇴</button> 
 		</c:when>
 		
 		<c:when test="${not empty sessionScope.log }">
 			${sessionScope.log }님 환영합니다!
 		<button onclick="location.href='Plogout'">로그아웃</button> 
-		<button onclick="location.href='#'">회원탈퇴</button> <!-- 수정 -->
+		<button onclick="location.href='leave'">회원탈퇴</button>
 		</c:when>
 		
 		<c:otherwise>

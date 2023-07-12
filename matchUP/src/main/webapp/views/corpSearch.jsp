@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -22,7 +24,6 @@
             <p id="msg_title">기업검색</p>
             <p>당신을 기다리고 있습니다!</p>
         </div>
-        <form action="" method="post" name="corpSearch" enctype="multipart/form-data">
             <div id="tab_search">
                 <ul class="search">
                     <label for="search_bar">
@@ -38,13 +39,17 @@
                 </ul>
                 <ul>
                     <li class="search_btn">
-                        <input type="button" value="검색" id="search_btn">
+						<button onclick="search()">검색</button>
                     </li>
                 </ul>
             </div>
-        </form>
+        <!-- 검색 내역 부분 -->
+        <div class="con_wrap">
+            <div class="search_con">
+			
+        </div>
     </section>
-
+        
     <!-- body 끝 -->
 
       <!-- footer 시작 -->

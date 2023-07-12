@@ -1,4 +1,9 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="util.DBManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!-- 채용관리 페이지 -->
 <!DOCTYPE html>
 <html lang="ko">
@@ -18,10 +23,12 @@
 	<!-- header 끝 -->
 
 	<!-- body 시작 -->
+
+
 	<section class="container">
 		<div class="jobPost_wrap">
 			<div class="title">
-				<p>채용 관리</p>
+				<p>채용 공고 등록</p>
 			</div>
 			<div class="main_con">
 				<form action="JobPost" method="post">
@@ -54,14 +61,46 @@
 						</li>
 						<li>
 							<label for="job">직종</label> 
-							<select name="job" id="job" required>
-								<option value="">옵션 선택</option>
-								<option value="1">기획,전략</option>
-								<option value="2">마케팅,홍보</option>
-								<option value="3">회계,세무,재무</option>
-								<option value="4">인사,노무</option>
-								<option value="5">총무,법무,사무</option>
-							</select>
+								<select name="job" id="job" size="1">
+                   				<option value="" selected></option>
+                   				<%
+                   				Connection conn = null;
+                   				PreparedStatement pstmt=null;
+                   				ResultSet rs=null;
+                   				
+                   				try{
+                   					conn=DBManager.getConnection();
+                   					String sql="select job from job_tb group by job order by job_id ASC";
+                   					
+                   					pstmt=conn.prepareStatement(sql);
+                   					rs=pstmt.executeQuery();
+                   					
+                   					while(rs.next()){
+                   						String job=rs.getString("job");
+                   				%>
+                   						<option value="<%= job %>"><%= job%></option>
+                   				<%
+                   					}
+                   				}catch(Exception e){
+                   					e.printStackTrace();
+                   					System.out.println("직업 데이터 연동 및 출력 실패");
+                   				}finally{
+                   					try{
+                   						if(rs!=null){
+                   							rs.close();
+                   						}
+                   						if(pstmt!=null){
+                   							pstmt.close();
+                   						}
+                   						if(conn!=null){
+                   							conn.close();
+                   						}
+                   					}catch(Exception e){
+                   						e.printStackTrace();
+                   					}
+                   				}
+                   				%>
+                   			</select>
 						</li>
 						<li>
 							<label for="people">인원수</label> 
@@ -77,49 +116,80 @@
 						</li>
 						<li>
 							<label for="region">지역</label> 
-							<select name="region" id="region">
-								<option value="">옵션 선택</option>
-								<option value="1">서울특별시</option>
-								<option value="2">경기도</option>
-								<option value="3">인천광역시</option>
-								<option value="4">부산광역시</option>
-								<option value="5">대구광역시</option>
-								<option value="6">광주광역시</option>
-								<option value="7">대전광역시</option>
-								<option value="8">울산광역시</option>
-								<option value="9">세종특별시</option>
-								<option value="10">강원도</option>
-								<option value="11">충청남도</option>
-								<option value="12">충청북도</option>
-								<option value="13">경상남도</option>
-								<option value="14">경상북도</option>
-								<option value="15">전라남도</option>
-								<option value="16">전라북도</option>
-								<option value="17">제주도</option>
-							</select> 
-							<select name="region_detail" id="region_detail">
-								<option value="">옵션 선택</option>
-								<option value="1">서초구</option>
-								<option value="2">강남구</option>
-								<option value="3">성남시</option>
-								<option value="4">수원시</option>
-								<option value="5">서구</option>
-								<option value="6">해운대구</option>
-								<option value="7">동구</option>
-								<option value="8">춘천시</option>
-								<option value="9">강릉시</option>
-								<option value="10">천안시</option>
-								<option value="11">청주시</option>
-								<option value="12">제천시</option>
-								<option value="13">통영시</option>
-								<option value="14">포항시</option>
-								<option value="15">목포시</option>
-								<option value="16">여수시</option>
-								<option value="17">전주시</option>
-								<option value="18">군산시</option>
-								<option value="19">제주시</option>
-								<option value="20">서귀포시</option>
-							</select>
+							<select name="job" id="job" size="1">
+                   				<option value="" selected></option>
+                   				<%
+                   				                   				
+                   				try{
+                   					conn=DBManager.getConnection();
+                   					String sql="select main_region from main_region_tb group by main_region order by main_region_id ASC";
+                   					
+                   					pstmt=conn.prepareStatement(sql);
+                   					rs=pstmt.executeQuery();
+                   					
+                   					while(rs.next()){
+                   						String main_region=rs.getString("main_region");
+                   				%>
+                   						<option value="<%= main_region %>"><%= main_region%></option>
+                   				<%
+                   					}
+                   				}catch(Exception e){
+                   					e.printStackTrace();
+                   					System.out.println("직업 데이터 연동 및 출력 실패");
+                   				}finally{
+                   					try{
+                   						if(rs!=null){
+                   							rs.close();
+                   						}
+                   						if(pstmt!=null){
+                   							pstmt.close();
+                   						}
+                   						if(conn!=null){
+                   							conn.close();
+                   						}
+                   					}catch(Exception e){
+                   						e.printStackTrace();
+                   					}
+                   				}
+                   				%>
+                   			</select>
+							<select name="job" id="job" size="1">
+                   				<option value="" selected></option>
+                   				<%
+                   				                   				
+                   				try{
+                   					conn=DBManager.getConnection();
+                   					String sql="select semi_region from semi_region_tb group by semi_region order by semi_region_id ASC";
+                   					
+                   					pstmt=conn.prepareStatement(sql);
+                   					rs=pstmt.executeQuery();
+                   					
+                   					while(rs.next()){
+                   						String semi_region=rs.getString("semi_region");
+                   				%>
+                   						<option value="<%= semi_region %>"><%= semi_region%></option>
+                   				<%
+                   					}
+                   				}catch(Exception e){
+                   					e.printStackTrace();
+                   					System.out.println("직업 데이터 연동 및 출력 실패");
+                   				}finally{
+                   					try{
+                   						if(rs!=null){
+                   							rs.close();
+                   						}
+                   						if(pstmt!=null){
+                   							pstmt.close();
+                   						}
+                   						if(conn!=null){
+                   							conn.close();
+                   						}
+                   					}catch(Exception e){
+                   						e.printStackTrace();
+                   					}
+                   				}
+                   				%>
+                   			</select>
 						</li>
 						<li>
 							<label for="salary">급여</label> 

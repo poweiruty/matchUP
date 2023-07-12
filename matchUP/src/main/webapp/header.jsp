@@ -58,28 +58,41 @@
 
 			<!-- 회원가입 -->
             <div class="join">
-                <a href="join">
-                    <h3>회원가입</h3>
-                </a>
+                <c:choose>
+					<c:when test="${not empty sessionScope.cname or not empty sessionScope.log }">
+						<a href="leave"><h3>회원탈퇴</h3></a>
+					</c:when>
+					<c:otherwise>
+						<a href="join"><h3>회원가입</h3></a>
+					</c:otherwise>
+				</c:choose>
             </div>
             <!-- 관심채용정보(스크랩) -->
             <div class="scrap">              
-                <a href="scrap">
-                    <h3>관심채용정보</h3>
-                </a>
+                <c:choose>
+					<c:when test="${not empty sessionScope.cname }">
+						<a href="jobPostUpdate"><h3>채용공고관리</h3></a>
+					</c:when>
+					
+					<c:otherwise>
+						<a href="resume"><h3>관심채용정보</h3></a>
+					</c:otherwise>
+				</c:choose>
             </div>
-            <!-- 이력서 -->
-            <div class="resumeForm">
-                <a href="resume">
-                    <h3>이력서 관리</h3>
-                </a>
-            </div>
-            <!-- 채용 관리 -->
-            <div class="jobPostForm">
-                <a href="jobPost">
-                    <h3>채용 관리</h3>
-                </a>
-            </div>
+            <!-- 이력서 / 채용관리 -->
+			<div class="resumeForm">
+				<c:choose>
+					<c:when test="${not empty sessionScope.cname }">
+						<a href="jobPost"><h3>채용공고등록</h3></a>
+					</c:when>
+					
+					<c:otherwise>
+						<a href="resume"><h3>이력서 관리</h3></a>
+					</c:otherwise>
+				</c:choose>
+
+			</div>
+		
         </div>
     </header>
     <!-- header 끝 -->
