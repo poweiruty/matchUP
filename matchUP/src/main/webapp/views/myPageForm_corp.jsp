@@ -6,7 +6,11 @@
 
         <head>
             <meta charset="UTF-8">
-            <title>Insert title here</title>
+            <title>마이페이지(기업)</title>
+            <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                       
+            <link rel="stylesheet" href="resources/style/join.css">
+           
         </head>
 
         <body>
@@ -95,18 +99,18 @@
                                 <div class="pc_2">
                                     <!-- 주소 부분 시작 -->
                                     <div class="add_wrap">
-
-                                        <label for="default_address">
-                                            <h2 id="default_address">기존 회사 주소</h2>
-                                        </label> <input type="text" name="default_address" id="default_address"
-                                            value="${sessionScope.map}"> <label for="address">
-                                            <h2 id="add">변경할 회사 주소</h2>
-                                        </label>
-                                        <li id="add"><input type="text" name="address" id="address"
-                                                placeholder="우편번호를 검색하세요."> 
-                                                <input type="button" name="address_btn" id="address_btn" value="우편번호 검색"></li> 
-                                                <input type="text" name="address_detail" id="address_detail" placeholder="상세주소">
-                                    </div>
+                                    <label for="default_address">
+                                        <h2 id="default_address">기존 주소</h2>
+                                    </label> 
+                                    <input type="text" name="default_address" id="default_address" value="${sessionScope.address}" > 
+                                        <label for="address">
+                                        <h2 id="add">변경할 주소</h2>
+                                    </label>
+                                   <li id="add">
+										<input type="text" name="postcode" id="postcode" placeholder="우편번호">
+										<input type="button" onclick="daumPostCode()" value="우편번호 찾기">								                                    </li> 
+                                    <input type="text" name="address_detail" id="address_detail" placeholder="상세주소">
+                                </div>
                                     <!-- 주소 끝 -->
 
                                     <!-- 수정하기 부분 -->
@@ -120,7 +124,7 @@
                     </div>
                 </div>
             </div>
-
+            	<script src="resources/script/validation_join.js"></script>
             <!-- footer -->
             <jsp:include page="footer"></jsp:include>
             <!-- footer 끝 -->

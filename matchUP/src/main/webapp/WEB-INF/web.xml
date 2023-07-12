@@ -114,6 +114,48 @@
 		<url-pattern>/Plogout</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 개인 정보수정 -->
+	<servlet>
+		<servlet-name>UserUpdateAction</servlet-name>
+		<servlet-class>controller.User.UserUpdateAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UserUpdateAction</servlet-name>
+		<url-pattern>/Update</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UserUpdateRequest</servlet-name>
+		<servlet-class>controller.User.UserUpdateRequest</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UserUpdateRequest</servlet-name>
+		<url-pattern>/UserUpdateRequest</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 기업 정보수정 -->
+	<servlet>
+		<servlet-name>CorpUpdateAction</servlet-name>
+		<servlet-class>controller.corp.CorpUpdateAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CorpUpdateAction</servlet-name>
+		<url-pattern>/Cupdate</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CorpUpdateRequest</servlet-name>
+		<servlet-class>controller.corp.CorpUpdateRequest</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CorpUpdateRequest</servlet-name>
+		<url-pattern>/CUpdateRequest</url-pattern>
+	</servlet-mapping>
+	
 	
 	
 	<!-- 2. JSP 페이지 맵핑 -->
