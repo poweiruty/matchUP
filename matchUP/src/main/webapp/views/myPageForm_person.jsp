@@ -42,8 +42,10 @@
 						<span class="pwd_warning"> 회원정보 수정을 위해 비밀번호를 입력해 주세요.</span>
 									</h2>
 							</label></li>
-							<li class="ppassword"><input type="password" name="ppassword"
-								id="ppassword" required> <span id="chkNotice" size="1"></span></li>
+							<li class="ppassword">
+							<input type="password" name="ppassword"
+								id="ppassword" required> 
+								<span id="chkNotice" size="1"></span></li>
 
 							<li><label for="new-password">
 									<h2>
@@ -66,6 +68,7 @@
 							</label></li>
 							<li class="birth"><input type="text" name="birth" id="birth"
 								value="${sessionScope.birth}" readonly></li>
+							
 
 							<!-- 휴대폰 부분 -->
 							<li>
@@ -88,16 +91,13 @@
 						<div class="pc_2">
 							<!-- 주소 부분 시작 -->
 							<div class="add_wrap">
-								<label for="user_address">
 									<h2 id="user_address">기존 주소</h2>
-								</label> <input type="text" name="user_address" id="user_address"
-									value="${sessionScope.address}"> <label for="user_address">
+								 <input type="text" name="user_address" id="user_address"
+									value="${sessionScope.address}" readonly> 
 									<h2 id="add">변경할 주소</h2>
-								</label>
-								<li id="add"><input type="text" name="postcode"
-									id="postcode" placeholder="우편번호"> <input type="button"
-									onclick="daumPostCode()" value="우편번호 찾기"></li> <input
-									type="text" name="address_detail" id="address_detail"
+								
+								<li id="add">
+								<input type="text" name="new-address" id="new-address"
 									placeholder="상세주소">
 							</div>
 							<!-- 주소 끝 -->
