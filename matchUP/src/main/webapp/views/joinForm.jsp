@@ -10,7 +10,7 @@
 
 <body>
     <!-- header 시작 -->
-          <jsp:include page="header_form"></jsp:include>
+    <jsp:include page="header_form"></jsp:include>
     <!-- header 끝 -->
 
     <div id="wrap">
