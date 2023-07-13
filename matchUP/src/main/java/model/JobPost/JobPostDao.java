@@ -31,17 +31,16 @@ public class JobPostDao {
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, dto.getCorp_name());
-				pstmt.setString(2, dto.getStaffs());
+				pstmt.setString(2, dto.getStaffs());				
 				pstmt.setString(3, dto.getCeo());
-				pstmt.setInt(4, 0);
-				pstmt.setInt(5, Integer.parseInt(dto.getJob()));
-				pstmt.setInt(6, Integer.parseInt(dto.getRegion()));
-				pstmt.setInt(7, Integer.parseInt(dto.getRegionDetail()));
-				pstmt.setInt(8, Integer.parseInt(dto.getPeople()));
-				pstmt.setString(9, dto.getPostDate());
-				pstmt.setString(10, dto.getSalary());
-				pstmt.setString(11, dto.getWelfare());
-				pstmt.setString(12, dto.getJobDetail());
+				pstmt.setInt(4, Integer.parseInt(dto.getJob()));
+				pstmt.setInt(5, Integer.parseInt(dto.getRegion()));
+				pstmt.setInt(6, Integer.parseInt(dto.getRegionDetail()));
+				pstmt.setInt(7, Integer.parseInt(dto.getPeople()));
+				pstmt.setString(8, dto.getPostDate());
+				pstmt.setString(9, dto.getSalary());
+				pstmt.setString(10, dto.getWelfare());
+				pstmt.setString(11, dto.getJobDetail());
 
 				pstmt.execute();	
 				check = true;
@@ -68,7 +67,7 @@ public class JobPostDao {
 
                 if (rs.next()) {
                 	String corp_name = rs.getString("corp_name");
-                	String staffs = rs.getString("staffs");
+                	int staffs = rs.getInt("staffs");
                 	String ceo = rs.getString("ceo");
                     String jobId = rs.getString("job_id");
                     String main_region_id = rs.getString("main_region_id");
