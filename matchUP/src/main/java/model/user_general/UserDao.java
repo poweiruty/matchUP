@@ -121,6 +121,7 @@ public class UserDao {
 				this.pstmt.setString(1,id);
 				this.rs = this.pstmt.executeQuery();
 				if(this.rs.next()) {
+					int puserIdx=this.rs.getInt(1);		// 황인규 작성
 					String password = this.rs.getString(3);
 					String name = this.rs.getString(4);
 					Date birth = this.rs.getDate(5);
@@ -130,7 +131,8 @@ public class UserDao {
 					String address = this.rs.getString(8);		
 					int emailCheck = this.rs.getInt(9);
 					
-					user = new User(id, password, name, birthNum, tel, email, address, emailCheck);					
+					// 이 부분 황인규가 건드림(+puserIdx)
+					user = new User(puserIdx, id, password, name, birthNum, tel, email, address, emailCheck);					
 				}
 			}catch (Exception e) {
 				e.printStackTrace();
