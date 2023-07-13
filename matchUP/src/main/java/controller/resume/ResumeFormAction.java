@@ -61,6 +61,7 @@ public class ResumeFormAction extends HttpServlet{
 
 		String url = "index";
 
+		
 		response.sendRedirect(url);
 		
 	}
