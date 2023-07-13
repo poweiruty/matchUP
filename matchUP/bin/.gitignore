@@ -1,2 +1,8 @@
+/build/
+build/
+.classpath
+.gitignore
+.project
+.settings
 /controller/
 /model/
