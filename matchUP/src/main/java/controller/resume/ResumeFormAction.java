@@ -34,37 +34,35 @@ public class ResumeFormAction extends HttpServlet{
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-			request.setCharacterEncoding("UTF-8");
-			{
-				String job = request.getParameter("job");
-				String career = request.getParameter("career");
-				String degree = request.getParameter("degree");
-				String activity = request.getParameter("activity");
-				String certificate = request.getParameter("certificate");
-				String intro = request.getParameter("intro");
-				
-				// 화면에서 넘겨준 데이터 확인
-				System.out.println("job :"+job);
-				System.out.println("career : " + career);
-				System.out.println("degree : " + degree);
-				System.out.println("activity : " + activity);
-				System.out.println("certificate : " + certificate);
-				System.out.println("intro : " + intro);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		String job = request.getParameter("job");
+		String career = request.getParameter("career");
+		String degree = request.getParameter("degree");
+		String activity = request.getParameter("activity");
+		String certificate = request.getParameter("certificate");
+		String intro = request.getParameter("intro");
 
-				// DTO 객체 생성
-				ResumeRequestDto resume = new ResumeRequestDto(job,career, degree,activity,certificate,intro);
+		// 화면에서 넘겨준 데이터 확인
+		System.out.println("job :" + job);
+		System.out.println("career : " + career);
+		System.out.println("degree : " + degree);
+		System.out.println("activity : " + activity);
+		System.out.println("certificate : " + certificate);
+		System.out.println("intro : " + intro);
 
-				// DAO 객체 생성
-				ResumeDao dao = ResumeDao.getInstance();
+		// DTO 객체 생성
+		ResumeRequestDto resume = new ResumeRequestDto(job, career, degree, activity, certificate, intro);
 
-				boolean result = dao.createResume(resume);
+		// DAO 객체 생성
+		ResumeDao dao = ResumeDao.getInstance();
 
-				String url = "index";
-				
-				response.sendRedirect(url);
-			}
+		boolean result = dao.createResume(resume);
+
+		String url = "index";
+
+		response.sendRedirect(url);
+		
 	}
 }
 
