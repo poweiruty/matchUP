@@ -75,3 +75,7 @@ li:hover, h2:hover{
     border: solid 1px gray;
     height: 600px;
 }
+
+.region_li{
+	width: 800px;
+}

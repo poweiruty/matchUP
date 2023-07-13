@@ -50,6 +50,7 @@ public class LoginFormAction extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("log", id);
+			session.setAttribute("password", user.getPpassword());
 			session.setAttribute("pname", user.getPname());
 			session.setAttribute("birth", user.getBirth());
 			session.setAttribute("phone", user.getTel());
@@ -72,6 +73,7 @@ public class LoginFormAction extends HttpServlet {
 			System.out.println(session.getAttribute("address"));
 			
 			System.out.println(session.getAttribute("log"));
+			System.out.println(session.getAttribute("password"));
 			System.out.println(session.getAttribute("pname"));
 			System.out.println(session.getAttribute("birth"));
 			System.out.println(session.getAttribute("phone"));

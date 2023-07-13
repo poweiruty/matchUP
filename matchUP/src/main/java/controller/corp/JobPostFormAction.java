@@ -53,8 +53,14 @@ public class JobPostFormAction extends HttpServlet {
 			String postDate = request.getParameter("post_date");
 			String welfare = request.getParameter("welfare");
 			String jobDetail = request.getParameter("job_detail");
+			String corp_name = request.getParameter("corp_name");
+			String staffs = request.getParameter("staffs");
+			String ceo = request.getParameter("ceo");
 			
 			// 화면에서 넘겨준 데이터 확인
+			System.out.println("corp_name : " + corp_name);
+			System.out.println("staffs : " + staffs);
+			System.out.println("ceo : " + ceo);
 			System.out.println("job : " + job);
 			System.out.println("people : " + people);
 			System.out.println("region : " + region);
@@ -65,7 +71,7 @@ public class JobPostFormAction extends HttpServlet {
 			System.out.println("jobDetail : " + jobDetail);
 
 			// DTO 객체 생성
-			JobPostDto jobPost = new JobPostDto(job, people, region, regionDetail, salary, postDate, welfare, jobDetail);
+			JobPostDto jobPost = new JobPostDto(corp_name, staffs, ceo, job, people, region, regionDetail, salary, postDate, welfare, jobDetail);
 
 			// DAO 객체 생성
 			JobPostDao jobPostDao = JobPostDao.getInstance();
@@ -73,7 +79,7 @@ public class JobPostFormAction extends HttpServlet {
 			// JobPost 데이터 DB에 저장
 			boolean result = jobPostDao.createJobPost(jobPost);
 
-			String url = "index";
+			String url = "jobPost";
 			
 			response.sendRedirect(url);
 			

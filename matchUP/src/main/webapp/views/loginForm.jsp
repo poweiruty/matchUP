@@ -62,13 +62,7 @@
 					<button class="btn_join">회원가입</button>
 				</a>
 			</div>
-			<!-- 아이디 비밀 번호 찾기 -->
-			<div class="find_box">
-				<h1>로그인 정보가 생각나지 않으세요?</h1>
-				<p>아이디 또는 비밀번호를 찾으실 수 있습니다.</p>
-				<a href="#"><button class="btn_find">아이디 찾기</button></a> 
-				<a href="#"><button class="btn_find">비밀번호 찾기</button></a>
-			</div>
+			
 		</div>
 	</div>
 	<!-- footer 시작 -->

@@ -4,11 +4,14 @@ public class Corp {
 	private String cid;
 	private int staffs;
 	private String ceo;
+	private int corp_id;
 	
-	public Corp(String cid,  int staffs, String ceo) {
+	
+	public Corp(String cid,  int staffs, String ceo, int corp_id) {
 		this.cid = cid;
 		this.staffs = staffs;
 		this.ceo = ceo;
+		this.corp_id = corp_id;
 	}
 
 	public String getCid() {
@@ -21,6 +24,10 @@ public class Corp {
 
 	public String getCeo() {
 		return this.ceo;
+	}
+
+	public int getCorp_id() {
+		return this.corp_id;
 	}
 	
 	@Override

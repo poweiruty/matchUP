@@ -34,10 +34,13 @@
 				<form action="JobPost" method="post">
 					<ul>
 					
+					
 						<li>
-							<span class="corp_id">회사명: </span> 
-							<span>${sessionScope.cname }</span>
+							<span>회사명: </span>
+							<input type = "text" name ="corp_name" id="corp_name" value="${sessionScope.cname }"></span>
 						</li>
+						
+						
 						
 						<li>
 							<span class="phone">담당자 연락처: </span> 
@@ -48,37 +51,41 @@
 							<span>${sessionScope.email }</span>
 						</li>
 						<li>
-							<span class="phone">본사 소재지: </span> 
+							<span class="map">본사 소재지: </span> 
 							<span>${sessionScope.map }</span>
 						</li>
 						<li>
-							<span class="ceo">대표자명: </span>
-							<span>${sessionScope.ceo }</span>
+							<span>대표자명: </span>
+							<input type="text" name="ceo" id="ceo" value="${sessionScope.ceo }">
 						</li>
 						<li> 
-							<span class="staffs">총 사원 수: </span>
-							<span>${sessionScope.staffs }</span> 
+							<span>사원 수</span>
+							<input type="text" name="staffs" id="staffs" value="${sessionScope.staffs }"> 
 						</li>
+						
+						
+						
 						<li>
-							<label for="job">직종</label> 
-								<select name="job" id="job" size="1">
-                   				<option value="" selected></option>
-                   				<%
-                   				Connection conn = null;
-                   				PreparedStatement pstmt=null;
-                   				ResultSet rs=null;
-                   				
+							<label for="job">직종</label>	                                                                                                                          
+								<%
+									Connection conn = null;
+	                   				PreparedStatement pstmt=null;
+	                   				ResultSet rs=null;
                    				try{
-                   					conn = DBManager.getConnection();
-                   					String sql="select job from job_tb group by job order by job_id ASC";
+                   					conn=DBManager.getConnection();
+                   					String sql="select job_id, job from job_tb group by job order by job_id ASC";
                    					
                    					pstmt=conn.prepareStatement(sql);
                    					rs=pstmt.executeQuery();
-                   					
+                   				%>
+                   					<select name="job" id="job" size="1">
+                   					<option value="" selected>선택</option>
+                   				<% 
                    					while(rs.next()){
+                   						int job_id=rs.getInt("job_id");
                    						String job=rs.getString("job");
                    				%>
-                   						<option value="<%= job %>"><%= job%></option>
+                   						<option value="<%= job_id%>"><%= job%></option>		
                    				<%
                    					}
                    				}catch(Exception e){
@@ -105,7 +112,7 @@
 						<li>
 							<label for="people">인원수</label> 
 							<select name="people" id="people" required>
-								<option value="">옵션 선택</option>
+								<option value="">선택</option>
 								<option value="1">1명</option>
 								<option value="2">2~5명</option>
 								<option value="3">6~9명</option>
@@ -113,29 +120,29 @@
 								<option value="5">20명 이상</option>
 								<option value="6">상시 채용</option>
 							</select>
-						</li>
-						<li>
-							<label for="region">지역</label> 
-							<select name="job" id="job" size="1">
-                   				<option value="" selected></option>
-                   				<%
-                   				                   				
-                   				try{
-                   					conn=DBManager.getConnection();
-                   					String sql="select main_region from main_region_tb group by main_region order by main_region_id ASC";
-                   					
-                   					pstmt=conn.prepareStatement(sql);
-                   					rs=pstmt.executeQuery();
-                   					
-                   					while(rs.next()){
-                   						String main_region=rs.getString("main_region");
-                   				%>
-                   						<option value="<%= main_region %>"><%= main_region%></option>
-                   				<%
-                   					}
-                   				}catch(Exception e){
-                   					e.printStackTrace();
-                   					System.out.println("직업 데이터 연동 및 출력 실패");
+								</li>
+								<li>
+							   <label for="region">지역</label> 
+							   <select name="region" id="region" size="1">
+							       <option value="" selected>선택</option>
+							       <% 
+							       try {
+							           conn = DBManager.getConnection();
+							           String sql = "select main_region_id, main_region from main_region_tb group by main_region order by main_region_id ASC";
+							           
+							           pstmt = conn.prepareStatement(sql);
+							           rs = pstmt.executeQuery();
+							           
+							           while(rs.next()) {
+							               int main_region_id = rs.getInt("main_region_id");
+							               String main_region = rs.getString("main_region");
+							       %>
+							               <option value="<%= main_region_id %>"><%= main_region %></option>		
+							       <%
+							           }
+							       } catch(Exception e) {
+							           e.printStackTrace();
+							           System.out.println("지역 데이터 연동 및 출력 실패");
                    				}finally{
                    					try{
                    						if(rs!=null){
@@ -153,26 +160,26 @@
                    				}
                    				%>
                    			</select>
-							<select name="job" id="job" size="1">
-                   				<option value="" selected></option>
-                   				<%
-                   				                   				
-                   				try{
-                   					conn=DBManager.getConnection();
-                   					String sql="select semi_region from semi_region_tb group by semi_region order by semi_region_id ASC";
-                   					
-                   					pstmt=conn.prepareStatement(sql);
-                   					rs=pstmt.executeQuery();
-                   					
-                   					while(rs.next()){
-                   						String semi_region=rs.getString("semi_region");
-                   				%>
-                   						<option value="<%= semi_region %>"><%= semi_region%></option>
-                   				<%
-                   					}
-                   				}catch(Exception e){
-                   					e.printStackTrace();
-                   					System.out.println("직업 데이터 연동 및 출력 실패");
+									 <select name="region_detail" id="region_detail" size="1">
+							       <option value="" selected>선택</option>
+							       <% 
+							       try {
+							           conn = DBManager.getConnection();
+							           String sql = "select semi_region_id, semi_region from semi_region_tb group by semi_region order by semi_region_id ASC";
+							           
+							           pstmt = conn.prepareStatement(sql);
+							           rs = pstmt.executeQuery();
+							           
+							           while(rs.next()) {
+							               int semi_region_id = rs.getInt("semi_region_id");
+							               String semi_region = rs.getString("semi_region");
+							       %>
+							               <option value="<%= semi_region_id %>"><%= semi_region %></option>		
+							       <%
+							           }
+							       } catch(Exception e) {
+							           e.printStackTrace();
+							           System.out.println("지역 데이터 연동 및 출력 실패");
                    				}finally{
                    					try{
                    						if(rs!=null){
@@ -193,23 +200,13 @@
 						</li>
 						<li>
 							<label for="salary">급여</label> 
-							<select name="salary" id="salary">
-								<option value="">옵션 선택</option>
-								<option value="연 2000~3000만원">연 2000~3000만원</option>
-								<option value="연 3000~5000만원">연 3000~5000만원</option>
-								<option value="연 5000만원 이상">연 5000만원 이상</option>
-							</select>
+								<input type="text" name="salary" id="salary">
+								<span>만원 (연봉기준)</span>
 							</li>
 							<li>
-							<label for="post_date">채용공고 일정</label> 
-							<select name="post_date" id="post_date" required>
-								<option value="">옵션 선택</option>
-								<option value="1~3일">1~3일</option>
-								<option value="4~7일">4~7일</option>
-								<option value="1~2주">1~2주</option>
-								<option value="3~4주">3~4주</option>
-								<option value="한 달">한 달</option>
-							</select></li>
+							<label for="post_date">채용공고 마감일</label> 
+							<input type="date" name="post_date" id="post_date">
+							</li>
 							<li>
 						<label for="welfare">복지</label>
 						<input type="text" name="welfare" id="welfare" placeholder="회사 내 복지사항에 대해 적어주세요.">
