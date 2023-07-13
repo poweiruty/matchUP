@@ -60,8 +60,6 @@ public class CorpDao {
 	    }
 	    return check;
 	}
-
-
 	
 	// read
 	public Corp getCorpbyId(String cid) {
@@ -78,8 +76,9 @@ public class CorpDao {
 	            if (this.rs.next()) {
 	                int staffs = this.rs.getInt("staffs");
 	                String ceo = this.rs.getString("ceo");
+	                int corp_id = this.rs.getInt("corp_id");
 
-	                corp = new Corp(cid, staffs, ceo);
+	                corp = new Corp(cid, staffs, ceo, corp_id);
 	            }
 	        } catch (Exception e) {
 	            e.printStackTrace();
@@ -106,8 +105,9 @@ public class CorpDao {
 	                String cid = this.rs.getString("cid");
 	                int staffs = this.rs.getInt("staffs");
 	                String ceo = this.rs.getString("ceo");
+	                int corp_id = this.rs.getInt("corp_id");
 
-	                Corp corp = new Corp(cid, staffs, ceo);
+	                Corp corp = new Corp(cid, staffs, ceo, corp_id);
 
 	                list.add(corp);
 	            }

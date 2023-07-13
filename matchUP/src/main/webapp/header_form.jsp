@@ -21,32 +21,34 @@
 </head>
 <body>
 	<!-- header 시작 -->
-	<header id="header">
-		<div class="index">
-			<a href="index.jsp"> Match-UP </a>
-		</div>
+    <header id="header">
+        <div class="index">
+            <a href="index.jsp">
+                Match-UP
+            </a>
+        </div>
 
-		<!-- 검색 -->
-		<div class="nav">
-			<div class="corpSearch">
-				<a href="search">
-					<h3>기업검색</h3>
-				</a>
-			</div>
-			<!-- 기업리뷰 -->
-			<div class="corpReview">
-				<a href="review">
-					<h3>기업리뷰</h3>
-				</a>
-			</div>
-			<!-- 기업회원 마이페이지 -->
+        <!-- 검색 -->
+        <div class="nav">
+            <div class="corpSearch">
+                <a href="search">
+                    <h3>기업검색</h3>
+                </a>
+            </div>
+            <!-- 기업리뷰 -->
+            <div class="corpReview">
+                <a href="review">
+                    <h3>기업리뷰</h3>
+                </a>
+            </div>
+			<!-- 마이페이지 -->
 			<c:choose>
 				<c:when test="${not empty sessionScope.cname }">
 					<a href="mypageCorp">
 						<h3>마이페이지</h3>
 					</a>
 				</c:when>
-				<c:when test="${not empty sessionScope.log}">
+				<c:when test="${not empty sessionScope. log}">
 					<a href="mypagePerson">
 						<h3>마이페이지</h3>
 					</a>
@@ -57,6 +59,8 @@
 					</a>
 				</c:otherwise>
 			</c:choose>
+
+
 			<!-- 회원가입 -->
             <div class="join">
                 <c:choose>
@@ -68,17 +72,23 @@
 					</c:otherwise>
 				</c:choose>
             </div>
-			<!-- 관심채용정보(스크랩) -->
-			<div class="scrap">
-				<a href="scrap">
-					<h3>관심채용정보</h3>
-				</a>
-			</div>
-		  <!-- 이력서 / 채용관리 -->
+            <!-- 관심채용정보(스크랩) -->
+            <div class="scrap">              
+                <c:choose>
+					<c:when test="${not empty sessionScope.cname }">
+						<a href="jobPostUpdate"><h3>채용공고관리</h3></a>
+					</c:when>
+					
+					<c:otherwise>
+						<a href="resume"><h3>관심채용정보</h3></a>
+					</c:otherwise>
+				</c:choose>
+            </div>
+            <!-- 이력서 / 채용관리 -->
 			<div class="resumeForm">
 				<c:choose>
 					<c:when test="${not empty sessionScope.cname }">
-						<a href="jobPost"><h3>채용 관리</h3></a>
+						<a href="jobPost"><h3>채용공고등록</h3></a>
 					</c:when>
 					
 					<c:otherwise>
@@ -87,7 +97,9 @@
 				</c:choose>
 
 			</div>
-	</header>
-	<!-- header 끝 -->
+		
+        </div>
+    </header>
+    <!-- header 끝 -->
 </body>
 </html>

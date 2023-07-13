@@ -42,7 +42,6 @@ public class CorpUpdateAction extends HttpServlet {
 		String mgr_tel = request.getParameter("mgr_tel");
 		String mgr_email = request.getParameter("mgr_email");
 		String caddress = request.getParameter("caddress");
-		String newCaddress = request.getParameter("new-caddress");
 		
 		
 		System.out.println("cid " + cid);
@@ -54,9 +53,8 @@ public class CorpUpdateAction extends HttpServlet {
 		System.out.println("mgr_tel " + mgr_tel);
 		System.out.println("mgr_email " + mgr_email);
 		System.out.println("caddress " + caddress);
-		System.out.println("newCaddress " + newCaddress);
 		
-		corpUserDto = new CorpUserRequestDto(cid, newCpassword, cname, cnum, mgr_name, mgr_tel, mgr_email, newCaddress);
+		corpUserDto = new CorpUserRequestDto(cid, newCpassword, cname, cnum, mgr_name, mgr_tel, mgr_email, caddress);
 		
 		CorpUserDao corpUserDao = CorpUserDao.getInstance();
 		corpUserDao.updateCorpUser(corpUserDto, cpassword);

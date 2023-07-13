@@ -31,6 +31,13 @@
             <div class="main_resume">
                 <!-- 이름, 생년월일, 연락처, 이메일, 주소 -->
                 <form action="Resume" method="post">
+                
+                	<!--  테스토 : 황인규 작성
+                	<div calss="test">
+                		<span>세션값을 뽑아와보자 : </span>
+                		<span>${sessionScope.puserIdx}</span>
+                	</div> -->
+                	
                     <ul>
                         <li>
                             <span class="pname">이름 : </span>
@@ -58,9 +65,7 @@
                         </li> 
                    		
                    		<li>
-                   			<label for="job">희망직종</label>
-                   			<select name="job" id="job" size="1">      
-                   				<option value="" selected></option>
+                   			<label for="job">희망직종</label>                        				
                    				<%
                    				Connection conn = null;
                    				PreparedStatement pstmt=null;
@@ -68,15 +73,19 @@
                    				
                    				try{
                    					conn=DBManager.getConnection();
-                   					String sql="select job from job_tb group by job order by job_id ASC";
+                   					String sql="select job_id, job from job_tb group by job order by job_id ASC";
                    					
                    					pstmt=conn.prepareStatement(sql);
                    					rs=pstmt.executeQuery();
-                   					
+                   				%>
+                   					<select name="job" id="job" size="1">
+                   						<option value="" selected></option>
+                   				<% 
                    					while(rs.next()){
+                   						int job_id=rs.getInt("job_id");
                    						String job=rs.getString("job");
                    				%>
-                   						<option value="<%= job %>"><%= job%></option>
+                   						<option value="<%= job_id%>"><%= job%></option>		
                    				<%
                    					}
                    				}catch(Exception e){
@@ -100,31 +109,33 @@
                    				%>
                    			</select>
                    		</li>
-                   		
+                   		            
                         <li>
-                            <label for="career">경력</label>
-                            <input type="text" id="career">
-                        </li>
-                        <li>
-                            <label for="degree">최종학력</label>
-                            <select name="degree" id="degree">
+                            <label for="graduation">최종학력</label>
+                            <select name="graduation" id="graduation">
                                 <option value="sel">옵션 선택</option>
                                 <option value="1">초졸</option>
                                 <option value="2">중졸</option>
                                 <option value="3">고졸</option>
                                 <option value="4">대졸(2~3년제)</option>
                                 <option value="5">대졸(4년제)</option>
-                                <option value="6">대학원졸</option>
-                                <input type="text" id="degree_input" placeholder="최종학력의 학교명을 입력하세요.">
+                                <option value="6">대학원졸</option>                             
                             </select>
+                            <textarea name="degree" id="degree" cols="30" rows="10"></textarea>
                         </li>
+                        
+                        <li>
+                            <label for="career">경력</label>
+                            <textarea name="career" id="career" cols="30" rows="10"></textarea>
+                        </li>
+                        
                         <li>
                             <label for="activity">대외활동/수상이력</label>
-                            <input type="text" id="activity">
+                            <textarea name="activity" id="activity" cols="30" rows="10"></textarea>
                         </li>
                         <li>
                             <label for="certificate">보유자격증</label>
-                            <input type="text" id="certificate">
+                            <textarea name="certificate" id="certificate" cols="30" rows="10"></textarea>
                         </li>
                         
                         <li>

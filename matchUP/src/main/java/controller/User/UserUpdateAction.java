@@ -40,7 +40,6 @@ public class UserUpdateAction extends HttpServlet {
 		String pname = request.getParameter("pname");
 		String tel = request.getParameter("tel");
 		String user_address = request.getParameter("user_address");
-		String newAddress = request.getParameter("new-address");
 		
 		
 		System.out.println("pid " + pid);
@@ -50,9 +49,8 @@ public class UserUpdateAction extends HttpServlet {
 		System.out.println("pname " + pname);
 		System.out.println("tel " + tel);
 		System.out.println("user_address " + user_address);
-		System.out.println("new-address " + newAddress);
 		
-		userDto = new UserRequestDto(pid, newPassword, pname, 0, tel, email, newAddress, 1);
+		userDto = new UserRequestDto(pid, newPassword, pname, 0, tel, email, user_address, 1);
 		
 		UserDao userDao = UserDao.getInstance();
 		userDao.updateUser(userDto, ppassword);

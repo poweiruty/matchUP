@@ -1,6 +1,7 @@
 package model.user_general;
 
 public class User {
+	private int puserIdx;   // 데이터의 pusers_id 불러오는 거 : 황인규 작성 
 	private String pid;
 	private String ppassword;
 	private String pname;
@@ -38,6 +39,23 @@ public class User {
 		this.user_address = user_address;
 		this.emailCheck = emailCheck;
 	}
+	// 생성자 황인규 작성
+	public User(int puserIdx, String pid, String ppassword, String pname, int birth, String tel, String email,
+			String user_address, int emailCheck) {		
+		this.puserIdx = puserIdx;
+		this.pid = pid;
+		this.ppassword = ppassword;
+		this.pname = pname;
+		this.birth = birth;
+		this.tel = tel;
+		this.email = email;
+		this.user_address = user_address;
+		this.emailCheck = emailCheck;
+	}
+	
+	public int getPuserIdx() {
+		return puserIdx;
+	}	// 황인규 작성
 	public String getPid() {
 		return pid;
 	}
