@@ -1,5 +1,4 @@
-<%@page import="model.user_general.UserDao"%>
-<%@page import="util.DBManager"%>
+<!-- 오류 떠서 임포트 두줄 삭제함. 필요시 다시 넣으셈! -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
