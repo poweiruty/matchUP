@@ -55,6 +55,7 @@ public class LoginCuserAction extends HttpServlet {
 			url = "index";
 			HttpSession session = request.getSession();
 			session.setAttribute("log", id);
+			session.setAttribute("cpassword", cuser.getCpassword());
 			session.setAttribute("cname", cuser.getCname());
 			session.setAttribute("mgr_name", cuser.getMgr_name());
 			session.setAttribute("phone", cuser.getMgr_tel());
@@ -76,6 +77,7 @@ public class LoginCuserAction extends HttpServlet {
 	
 			// 확인용
 			System.out.println(session.getAttribute("log"));
+			System.out.println(session.getAttribute("cpassword"));
 			System.out.println(session.getAttribute("cname"));
 			System.out.println(session.getAttribute("mgr_name"));
 			System.out.println(session.getAttribute("phone"));

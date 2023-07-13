@@ -39,18 +39,19 @@
 							<!-- 비밀번호 부분 -->
 							<li><label for="pwd1">
 									<h2>비밀번호
-						<span class="pwd_warning"> 회원정보 수정을 위해 비밀번호를 입력해 주세요.</span>
+						<span class="pwd_warning"></span>
 									</h2>
-							</label></li>
+							</label>
+							</li>
 							<li class="ppassword">
 							<input type="password" name="ppassword"
-								id="ppassword" required> 
+								id="ppassword" value="${sessionScope. password}" readonly> 
 								<span id="chkNotice" size="1"></span></li>
 
 							<li><label for="new-password">
 									<h2>
-										변경할 비밀번호<span class="pwd_warning"> *특수문자는 '! @ # $ % ^
-											& +='만 사용 가능합니다.</span>
+										변경할 비밀번호
+										<span class="pwd_warning"> 변경을 원치 않으시면, 현재 비밀번호를 입력하세요.</span>
 									</h2>
 							</label></li>
 
@@ -91,14 +92,9 @@
 						<div class="pc_2">
 							<!-- 주소 부분 시작 -->
 							<div class="add_wrap">
-									<h2 id="user_address">기존 주소</h2>
+									<h2 id="user_address">주소</h2>
 								 <input type="text" name="user_address" id="user_address"
-									value="${sessionScope.address}" readonly> 
-									<h2 id="add">변경할 주소</h2>
-								
-								<li id="add">
-								<input type="text" name="new-address" id="new-address"
-									placeholder="상세주소">
+									value="${sessionScope.address}"> 
 							</div>
 							<!-- 주소 끝 -->
 

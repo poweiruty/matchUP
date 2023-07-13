@@ -40,24 +40,27 @@
                                             value="${sessionScope.log}" readonly></li>
 
                                     <!-- 비밀번호 부분 -->
-                                    <li><label for="cpassword">
-                                            <h2>
-                                                비밀번호<span class="pwd_warning"> 회원정보 수정을 위해 비밀번호를 입력해
-                                                    주세요.</span>
-                                            </h2>
-                                        </label></li>
-                                    <li class="cpassword"><input type="password" name="cpassword" id="cpassword" required> <span
-                                            id="chkNotice" size="1"></span></li>
+							<li><label for="pwd1">
+									<h2>비밀번호
+						<span class="pwd_warning"></span>
+									</h2>
+							</label>
+							</li>
+							<li class="cpassword">
+							<input type="password" name="cpassword"
+								id="cpassword" value="${sessionScope. cpassword}" readonly> 
+								<span id="chkNotice" size="1"></span></li>
 
-                                    <li><label for="newCpassword">
-                                            <h2>
-                                                변경할 비밀번호<span class="newCpassword"> *특수문자는 '! @ # $ % ^
-                                                    & +='만 사용 가능합니다.</span>
-                                            </h2>
-                                        </label></li>
+							<li><label for="new-password">
+									<h2>
+										변경할 비밀번호
+										<span class="pwd_warning"> 변경을 원치 않으시면, 현재 비밀번호를 입력하세요.</span>
+									</h2>
+							</label></li>
 
-                                    <li class="new-cpassword"><input type="password" name="new-cpassword" id="new-cpassword"> <span id="chkNotice"
-                                            size="1"></span></li>
+							<li class="newCpassword"><input type="password" name="newCpassword"
+								id="newCpassword"> <span id="chkNotice" size="1"></span></li>
+								
                                     <!-- 회사명 부분 -->
                                     <li class="cname"><label for="cname">
                                             <h2>회사명</h2>
@@ -98,18 +101,12 @@
 
                                 <div class="pc_2">
                                     <!-- 주소 부분 시작 -->
-                                    <div class="add_wrap">
-                                    <label for="caddress">
-                                        <h2 id="caddress">기존 주소</h2>
-                                    </label> 
-                                    <input type="text" name="caddress" id="caddress" value="${sessionScope.map}" readonly> 
-                                        <label for="new-caddress">
-                                        <h2 id="new-caddress">변경할 주소</h2>
-                                    </label>
-                                   <li id="new-caddress">
-                                    <input type="text" name="new-caddress" id="new-caddress" placeholder="변경할 주소">
-                                </div>
-                                    <!-- 주소 끝 -->
+							<div class="add_wrap">
+									<h2 id="map">주소</h2>
+								 <input type="text" name="map" id="map"
+									value="${sessionScope.map}"> 
+							</div>
+							<!-- 주소 끝 -->
 
                                     <!-- 수정하기 부분 -->
                                     <li class="sub"><input type="submit" name="submit" id="submit" value="수정하기"  onclick="checkValue(form)">

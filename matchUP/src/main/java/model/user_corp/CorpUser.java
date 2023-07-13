@@ -1,7 +1,5 @@
 package model.user_corp;
 
-import model.corp.Corp;
-
 public class CorpUser {
 	private String cid;
 	private String cpassword;

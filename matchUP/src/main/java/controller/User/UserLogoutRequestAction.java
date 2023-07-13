@@ -28,6 +28,7 @@ public class UserLogoutRequestAction extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getSession().removeAttribute("log");
+		request.getSession().removeAttribute("password");
 		response.sendRedirect("index");
 	}
 
