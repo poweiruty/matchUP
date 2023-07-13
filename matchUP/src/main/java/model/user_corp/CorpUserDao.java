@@ -258,5 +258,39 @@ public class CorpUserDao {
 		}
 		return check;
 	}
+	
+//	public ArrayList<CorpUser> getUserbyCname(String cname) {
+//		ArrayList<CorpUser> list = new ArrayList<CorpUser>();
+//		this.conn = DBManager.getConnection();
+//
+//		if (this.conn != null) {
+//			String sql = "SELECT * FROM cusers_tb WHERE cname LIKE ?";
+//			try {
+//				this.pstmt = this.conn.prepareStatement(sql);
+//				this.pstmt.setString(1, "%" + cname + "%");
+//				this.rs = this.pstmt.executeQuery();
+//
+//				while (this.rs.next()) {
+//					String id = this.rs.getString(2);
+//					String password = this.rs.getString(3);
+//					String name = this.rs.getString(4);
+//					int num = this.rs.getInt(5);
+//					String mgr_name = this.rs.getString(6);
+//					String mgr_tel = this.rs.getString(7);
+//					String mgr_email = this.rs.getString(8);
+//					String address = this.rs.getString(9);
+//
+//					CorpUser cuser = new CorpUser(id, password, name, num, mgr_name, mgr_tel, mgr_email, address);
+//					list.add(cuser);
+//				}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			} finally {
+//				DBManager.close(this.conn, this.pstmt, this.rs);
+//			}
+//		}
+//
+//		return list;
+//	}
 
 }

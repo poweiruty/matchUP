@@ -69,7 +69,7 @@
                    				ResultSet rs=null;
                    				
                    				try{
-                   					conn=DBManager.getConnection();
+                   					conn = DBManager.getConnection();
                    					String sql="select job from job_tb group by job order by job_id ASC";
                    					
                    					pstmt=conn.prepareStatement(sql);

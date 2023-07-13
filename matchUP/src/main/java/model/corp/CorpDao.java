@@ -60,8 +60,6 @@ public class CorpDao {
 	    }
 	    return check;
 	}
-
-
 	
 	// read
 	public Corp getCorpbyId(String cid) {

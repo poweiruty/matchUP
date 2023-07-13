@@ -1,254 +1,259 @@
 @media(min-width:360px){
 /* 360이하로 안줄어들게 */
-#wrap{
-    margin-top: 50px;
-    min-width:360px;
-    padding: 75px 15px;
-}
-/* 프리텐다드 폰트 */
-@font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-}
-.section{
-    padding: 0 10px;
-    border: 1px solid gainsboro;
-}
-
-.start{
-    margin-top:5px;
-    text-align: center;
-}
-/* 폼 공통 css
-form{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    gap:10px;
-    padding:30px 10px;
-} */
-
-/* 프리텐다드 폰트 적용 */
-form, select, input{
-    font-family: 'Pretendard-Regular';
-}
-
-/* 폼 input, select 공통 css */
-form input, select {
-  border-radius: 5px;
-  border:1px solid gainsboro;
-  height:25px;
-}
-
-li{
-    padding: 2px 0;
-}        
-.id{
-    display: flex;
-    flex-direction: row;
-    gap: 2px;
-}
-/* 아이디 텍스트 상자 */
-#id{
-    width: 70%;
-}
-.id_warning{
-    display: none;
-}
-.id_warning, .pwd_warning , .birth_warning, .corp_warning{
-    font-size: 0.8rem;
-    color: red;
-}
-/* 아이디 중복확인 버튼 */
-#btn1{
-    width: 30%;
-    height: 30px;
-}
-#btn1:hover{
-    cursor: pointer;
-    color: #fff;
-    background-color: gray;
-}
-/* 비밀번호 부분 */
-.pwd{
-    display: flex;
-    flex-direction: column;
-}
-#pwd1, #pwd2{
-    margin: 3px 0;
-}
-/* 이름 부분 */
-.name, .corp_name{
-    display: flex;
-    flex-direction: column;
-} /* TS: width:98.5%로 위아래 너비를 맞췄었는데 플렉스 태그로 간격이 자동으로 맞추어 짐 */
-
-/* 성별, 체크박스 높이 조정 */
-.gender{
-    margin: 5px 0;
-}
-#m, #f, #chk{
-    height: 15px;
-}
-
-/* 휴대폰 부분 */
-li.phone{
-    display: flex;
-    justify-content: space-between;
-}
-#phone{
-    width: 30%;
-    height: 28px; /* ?? */
-}
-#phone1, #phone2{
-    width: 30%;
-}
-/* 인증번호 전송 부분 */
-#btn2{
-    width: 100%;
-    cursor: pointer;
-}
-#btn2:hover{
-    color: #fff;
-    background-color: gray;
-}
-/* 인증번호 입력 부분 */
-.number{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 2px;
-}
-#num{
-    width:70%;
-}
-#btn3{
-    width: 30%;
-    height: 30px;
-    color: #fff;
-    background-color: black;
-}
-#btn3:hover{
-    cursor: pointer;
-    color: #fff;
-    background-color: gray;
-}
-/* 세로줄(pc ver. only) */
-.hr{
-    display: none;
-    width: 1px;
-    border-left: 1px dashed gainsboro;
-}
-
-/* 이메일 부분 */
-/* #email, #email2{
-    width: 46%;
-} */
-.email{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-#email, #email2{
-    width: 47%;
-}
-#selectEmail{
-    width: 100%;
-    height: 30px;
-    margin: 5px 0;
-}
-
-/* 주소 부분 */
-li#add{
-    display: flex;
-    flex-direction: row;
-}
-
-#address{
-    width: 70%;
-}
-
-#address_btn{
-    width: 30%;
-    height: 30px;
-}
-
-#address_btn:hover{
-    cursor: pointer;
-    color: #fff;
-    background-color: gray;
-}
-
-#address_detail{
-    width: 100%;
-}
-
-/* 하단 약관 부분(마케팅 정보 수신동의, 약관동의) */
-.marketing_wrap, .agree_wrap{
-    border: 1px solid gainsboro;
-    padding: 5px;
-    margin-bottom: 10px;
-}
-.agree a{
-    color: black;
-    text-decoration: underline solid 1px;
-}
-.agree a:hover{
-    color: gray;
-    font-weight: 700;
-}
-#submit{
-    width: 100%;
-    height: 35px;
-    margin-bottom: 5px;
-}
-#submit:hover, #index:hover{
-    cursor: pointer;
-    color: #fff;
-    background-color: gray;  
-}
-#index{
-    font-size: 0.9rem;
-    height: 30px;
-    line-height: 30px;
-    margin-bottom: 15px;
-    color: black;
-}
-#submit, #index{
-    border: 1px solid gray;
-    border-radius: 20px;
-    text-align: center;
-    font-family: "Pretendard-Regular";
-}
-
-/* join 메인 페이지 부분 */
-p.title{
-    font-size: 1.8rem;
-    text-align: center;
-}
-
-.join_sub_btn{
-    border: solid 1px black;
-    border-radius: 5px;
-}
-
-.join_sub_btn:hover{
-    background-color: gainsboro;
-    color: black;
-}
-
-.join_main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.join_main>li{
-    padding: 5px;
-}
-
+	#wrap{
+	    margin-top: 50px;
+	    min-width:360px;
+	    padding: 75px 15px;
+	}
+	/* 프리텐다드 폰트 */
+	@font-face {
+	    font-family: 'Pretendard-Regular';
+	    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+	    font-weight: 400;
+	    font-style: normal;
+	}
+	.section{
+	    padding: 0 10px;
+	    border: 1px solid gainsboro;
+	}
+	
+	.start{
+	    margin-top:5px;
+	    text-align: center;
+	}
+	/* 폼 공통 css
+	form{
+	    display:flex;
+	    flex-direction: column;
+	    align-items: center;
+	    gap:10px;
+	    padding:30px 10px;
+	} */
+	
+	/* 프리텐다드 폰트 적용 */
+	form, select, input{
+	    font-family: 'Pretendard-Regular';
+	}
+	
+	/* 폼 input, select 공통 css */
+	form input, select {
+	  border-radius: 5px;
+	  border:1px solid gainsboro;
+	  height:25px;
+	}
+	
+	li{
+	    padding: 2px 0;
+	}        
+	.id{
+	    display: flex;
+	    flex-direction: row;
+	    gap: 2px;
+	}
+	/* 아이디 텍스트 상자 */
+	#id{
+	    width: 70%;
+	}
+	.id_warning{
+	    display: none;
+	}
+	.id_warning, .pwd_warning , .birth_warning, .corp_warning{
+	    font-size: 0.8rem;
+	    color: red;
+	}
+	/* 아이디 중복확인 버튼 */
+	#btn1{
+	    width: 30%;
+	    height: 30px;
+	}
+	#btn1:hover{
+	    cursor: pointer;
+	    color: #fff;
+	    background-color: gray;
+	}
+	/* 비밀번호 부분 */
+	.pwd{
+	    display: flex;
+	    flex-direction: column;
+	}
+	#pwd1, #pwd2{
+	    margin: 3px 0;
+	}
+	/* 이름 부분 */
+	.name, .corp_name{
+	    display: flex;
+	    flex-direction: column;
+	} /* TS: width:98.5%로 위아래 너비를 맞췄었는데 플렉스 태그로 간격이 자동으로 맞추어 짐 */
+	
+	/* 성별, 체크박스 높이 조정 */
+	.gender{
+	    margin: 5px 0;
+	}
+	#m, #f, #chk{
+	    height: 15px;
+	}
+	
+	/* 휴대폰 부분 */
+	li.phone{
+	    display: flex;
+	    justify-content: space-between;
+	}
+	#phone{
+	    width: 30%;
+	    height: 28px; /* ?? */
+	}
+	#phone1, #phone2{
+	    width: 30%;
+	}
+	/* 인증번호 전송 부분 */
+	#btn2{
+	    width: 100%;
+	    cursor: pointer;
+	}
+	#btn2:hover{
+	    color: #fff;
+	    background-color: gray;
+	}
+	/* 인증번호 입력 부분 */
+	.number{
+	    display: flex;
+	    flex-direction: row;
+	    justify-content: space-between;
+	    gap: 2px;
+	}
+	#num{
+	    width:70%;
+	}
+	#btn3{
+	    width: 30%;
+	    height: 30px;
+	    color: #fff;
+	    background-color: black;
+	}
+	#btn3:hover{
+	    cursor: pointer;
+	    color: #fff;
+	    background-color: gray;
+	}
+	/* 세로줄(pc ver. only) */
+	.hr{
+	    display: none;
+	    width: 1px;
+	    border-left: 1px dashed gainsboro;
+	}
+	
+	/* 이메일 부분 */
+	/* #email, #email2{
+	    width: 46%;
+	} */
+	.email{
+	    display: flex;
+	    flex-direction: row;
+	    justify-content: space-between;
+	}
+	#email, #email2{
+	    width: 47%;
+	}
+	#selectEmail{
+	    width: 100%;
+	    height: 30px;
+	    margin: 5px 0;
+	}
+	
+	/* 주소 부분 */
+	li#add{
+	    display: flex;
+	    flex-direction: row;
+	}
+	
+	#address{
+	    width: 70%;
+	}
+	
+	#address_btn{
+	    width: 30%;
+	    height: 30px;
+	}
+	
+	#address_btn:hover{
+	    cursor: pointer;
+	    color: #fff;
+	    background-color: gray;
+	}
+	
+	#address_detail{
+	    width: 100%;
+	}
+	
+	/* 하단 약관 부분(마케팅 정보 수신동의, 약관동의) */
+	.marketing_wrap, .agree_wrap{
+	    border: 1px solid gainsboro;
+	    padding: 5px;
+	    margin-bottom: 10px;
+	}
+	.agree a{
+	    color: black;
+	    text-decoration: underline solid 1px;
+	}
+	.agree a:hover{
+	    color: gray;
+	    font-weight: 700;
+	}
+	#submit{
+	    width: 100%;
+	    height: 35px;
+	    margin-bottom: 5px;
+	}
+	#submit:hover, #index:hover{
+	    cursor: pointer;
+	    color: #fff;
+	    background-color: gray;  
+	}
+	#index{
+	    font-size: 0.9rem;
+	    height: 30px;
+	    line-height: 30px;
+	    margin-bottom: 15px;
+	    color: black;
+	}
+	#submit, #index{
+	    border: 1px solid gray;
+	    border-radius: 20px;
+	    text-align: center;
+	    font-family: "Pretendard-Regular";
+	}
+	
+	/* join 메인 페이지 부분 */
+	p.title{
+	    font-size: 1.8rem;
+	    text-align: center;
+	}
+	
+	.join_sub_btn{
+	    border: solid 1px black;
+	    border-radius: 5px;
+	}
+	
+	.join_sub_btn:hover{
+	    background-color: gainsboro;
+	    color: black;
+	}
+	
+	.join_main{
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	}
+	
+	.join_main>li{
+	    padding: 5px;
+	}
+	
+	.error {
+		display: none;
+		color: red;
+		font-size: 0.7em;
+	}
 }
 
 /* PC ver. */

@@ -85,5 +85,14 @@ public class JobPostDto {
 	public void setJobDetail(String jobDetail) {
 		this.jobDetail = jobDetail;
 	}
+
+	@Override
+	public String toString() {
+		return "JobPostDto [job=" + job + ", people=" + people + ", region=" + region + ", regionDetail=" + regionDetail
+				+ ", salary=" + salary + ", postDate=" + postDate + ", welfare=" + welfare + ", jobDetail=" + jobDetail
+				+ "]";
+	}
+	
+	
 	
 }

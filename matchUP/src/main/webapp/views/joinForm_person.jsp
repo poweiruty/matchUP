@@ -1,3 +1,5 @@
+<%@page import="model.user_general.UserDao"%>
+<%@page import="util.DBManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,13 +17,24 @@
 </head>
 
 <body>
-     <!-- header 시작 -->
-       <jsp:include page="header_form"></jsp:include>
+	<%		
+		String id = "";
+		if(request.getAttribute("id") != null){
+			id = request.getAttribute("id").toString();
+		}
+	
+	%>
+	<!-- header 시작 -->
+    <jsp:include page="header_form"></jsp:include>
 	<!-- header 끝 -->  
 	<div id="wrap">
 		<div class="section">
-			<div class="section_box">
-				<form action="PJoin" method="POST">
+			<div class="section_box">	
+				<form action="UserIdCheck" method="POST" name="idForm" id="idForm" style="display: none;">
+					<input type="hidden" name="tmpId" id="tmpId" value="">
+					<input type="hidden" name="idchk" id="idchk" value="<%=request.getAttribute("idDupl")%>">	
+				</form>			
+				<form action="PJoin" method="POST" name="joinForm" id="joinForm">
 					<ul>
 						<div class="pc_1">
 							<li class="start">
@@ -33,10 +46,10 @@
 										<h2>아이디</h2>
 								</label>
 							</li>
-							<li class="id">
-								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" required> 
-								<input type="button" name="btn1" id="btn1" value="중복확인"><br/>								
-							</li>
+							<li class="id">							
+								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" value="<%=id %>" required>									
+								<input type="button" form="idForm" name="btn1" id="btn1" value="중복확인" onclick="idChk(form)"><br/>																														
+							</li>							
 							<li class="error" id="error-duplId">* 이미 사용 중인 아이디입니다.</li>								
 							<li class="error" id="error-noneId">* 아이디는 필수 정보입니다.</li>
 							<!-- 비밀번호 부분 -->
@@ -197,6 +210,7 @@
 							</select>
 							<!-- 인증번호 전송 부분 -->
 							<li>
+								<input type="hidden" name="emailchk" id="emailchk" value="0">
 								<input type="button" name="btn2" id="btn2" value="인증메일 전송" onclick="sendEmail()">
 							</li>
 							<!-- 인증번호 입력 부분 -->
@@ -265,7 +279,7 @@
 					</ul>
 				</form>
 			</div>
-		</div>
+		</div>		
 	</div>       
 	<script src="resources/script/validation_join.js"></script>                
 </body>

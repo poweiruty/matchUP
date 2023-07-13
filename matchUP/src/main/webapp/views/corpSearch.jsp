@@ -21,7 +21,7 @@
     <!-- body 시작 -->
     <section class="container">
         <div class="msg">
-            <p id="msg_title">기업검색</p>
+            <p id="msg_title">채용공고 검색</p>
             <p>당신을 기다리고 있습니다!</p>
         </div>
             <div id="tab_search">
@@ -39,7 +39,8 @@
                 </ul>
                 <ul>
                     <li class="search_btn">
-						<button onclick="search()">검색</button>
+						<!-- <button onclick="search()">검색</button> -->
+						<input type="button" id="sBtn" name="sBtn" value="검색" onclick="search()">
                     </li>
                 </ul>
             </div>
@@ -51,7 +52,7 @@
     </section>
         
     <!-- body 끝 -->
-
+		<script src="resources/script/search_post.js"></script>  
       <!-- footer 시작 -->
      	<jsp:include page="footer"></jsp:include>
 

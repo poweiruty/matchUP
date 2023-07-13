@@ -7,6 +7,9 @@ public class SemiRegion {
 	private String semi_region;
 	
 	// Constructor
+	public SemiRegion(String semiRegion) {
+		this.semi_region=semiRegion;
+	}
 	public SemiRegion(int mainRegionId, String semiRegion) {
 		this.main_region_id=mainRegionId;
 		this.semi_region=semiRegion;

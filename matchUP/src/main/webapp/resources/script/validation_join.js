@@ -1,11 +1,20 @@
 $('#id').on('change', e => {
-	if($('#id').val() !== "" && id.match(/^[a-zA-Z0-9]{3,11}$/) !== null) {
+	//&& id.match(/^[a-zA-Z0-9]{3,11}$/) !== null
+	if($('#id').val() !== "") {
 		$('#error-noneId').hide();
 		$('#id').parent().css('border-color', 'lightgrey');
 	}
 });
+$('#id').on('change', e => {
+	//&& id.match(/^[a-zA-Z0-9]{3,11}$/) !== null
+	if($('#idchk').val() === "사용가능") {
+		$('#error-duplId').hide();
+		$('#id').parent().css('border-color', 'lightgrey');
+	}
+});
 $('#password').on('change', e => {
-	if($('#password').val() !== "" && password.match(/^[a-zA-Z0-9!@#$%]{8,20}$/) !== null) {
+	// && password.match(/^[a-zA-Z0-9!@#$%]{8,20}$/) !== null
+	if($('#password').val() !== "") {
 		$('#error-password').hide();
 		$('#password').parent().css('border-color', 'lightgrey');
 	}
@@ -33,15 +42,22 @@ $('#pnum').on('change', e => {
 	}
 });	
 
+function idChk(idform){
+	document.getElementById('tmpId').value = document.getElementById('id').value;
+	const id = idform.tmpId.value;	
+	idform.submit();
+}
+
 function checkValue(htmlForm){
 	const id = htmlForm.id.value;
 	const password = htmlForm.password.value;
-	const passwordChk = htmlForm.passwordChk.value;
+	const passwordChk = htmlForm.password_chk.value;
 	const name = htmlForm.name.value;
 	const birth = htmlForm.year.value + htmlForm.month.value + htmlForm.date.value;	
-	const tel = htmlForm.phone.value + htmlForm.phone1.value + htmlForm.phone2.value;	
+	const tel = htmlForm.phone.value + htmlForm.phone1.value + htmlForm.phone2.value;
+	var idchk = document.getElementById('idchk').value;	
 	var email = htmlForm.email.value + "@" + htmlForm.email2.value;	
-		
+	
 	if(htmlForm.selectEmail.value === "1"){
 		email += htmlForm.email2.value;
 	}else{
@@ -52,10 +68,12 @@ function checkValue(htmlForm){
 	const address = htmlForm.address.value + htmlForm.detailAddress.value + htmlForm.extraAddress.value;
 		
 	let check = true;
-	
 	if(id === "" || id.match(/^[a-zA-Z0-9]{3,11}$/) === null){
-		$('#error-noneId').show();
+		$('#error-noneId').show();		
 		check = false;
+	}else if(idchk === "중복" || idchk === null){
+		$('#error-duplId').show();
+		check = false;		
 	}else if(password === "" || password.match(/^[a-zA-Z0-9!@#$%]{8,20}$/) === null){
 		$('#error-password').show();
 		check = false;

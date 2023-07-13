@@ -16,6 +16,17 @@
 	
 	<!-- 1. 서블릿 페이지 맵핑 -->
 	
+	<!-- Puser id중복체크 -->
+<!-- 	<servlet>
+		<servlet-name>UserIdCheckAction</servlet-name>
+		<servlet-class>controller.User.UserIdCheckAction</servlet-class>		
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UserIdCheckAction</servlet-name>
+		<url-pattern>/UserIdCheck</url-pattern>
+	</servlet-mapping> -->
+	
 	<!-- Puser_Join -->
 	<servlet>
 		<servlet-name>JoinFormAction</servlet-name>
