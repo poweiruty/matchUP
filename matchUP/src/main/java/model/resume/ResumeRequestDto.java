@@ -4,9 +4,9 @@ public class ResumeRequestDto {
 	private int resume_id;
 	private int pusers_id;
 	private int job_id;
-	private String job;
-	private String career;
+	private String graduation;
 	private String degree;
+	private String career;
 	private String activity;
 	private String certificate;
 	private String intro;
@@ -14,57 +14,32 @@ public class ResumeRequestDto {
 	private int resume_modified;
 	
 	
-	public ResumeRequestDto(String job, String career, String degree, 
-							String activity, String certificate, String intro) {
-		this.job=job;
-		this.career=career;
-		this.degree=degree;
-		this.activity=activity;
-		this.certificate=certificate;
-		this.intro=intro;;
-	}
-	
-	public ResumeRequestDto(int jobId, String career, String degree, 
-			  				String activity, String certificate) {
+	public ResumeRequestDto(int puserIdx,int jobId,String graduation,String degree, 
+							String career,String activity,String certificate,String intro) {
+		this.pusers_id=puserIdx;
 		this.job_id=jobId;
-		this.career=career;
+		this.graduation=graduation;
 		this.degree=degree;
+		this.career=career;
 		this.activity=activity;
 		this.certificate=certificate;
-	}
-	
-	public ResumeRequestDto(int pusersId, int jobId, String career, String degree, 
-				  			String activity, String certificate) {
-		this.pusers_id=pusersId;
-		this.job_id=jobId;
-		this.career=career;
-		this.degree=degree;
-		this.activity=activity;
-		this.certificate=certificate;
-	}
-	public ResumeRequestDto(int resumeId, int pusersId, int jobId, String career,
-							String degree, String activity, String certificate) {
+		this.intro=intro;
+	} 
+	public ResumeRequestDto(int resumeId, int pusersId, int jobId, 
+			  	  			String graduation,String degree,String career,String activity, 
+			  	  			String certificate,String intro, int resumeCreated, int resumeModified) {  	  
 		this.resume_id=resumeId;
 		this.pusers_id = pusersId;
 		this.job_id=jobId;
-		this.career=career;
+		this.graduation=graduation;
 		this.degree=degree;
+		this.career=career;
 		this.activity=activity;
 		this.certificate=certificate;
-	}
-	public ResumeRequestDto(int resumeId, int pusersId, int jobId, String career, 
-				  			String degree, String activity, String certificate, 
-				  			int resumeCreated, int resumeModified) {
-		this.resume_id=resumeId;
-		this.pusers_id = pusersId;
-		this.job_id=jobId;
-		this.career=career;
-		this.degree=degree;
-		this.activity=activity;
-		this.certificate=certificate;
+		this.intro=intro;
 		this.resume_created=resumeCreated;
 		this.resume_modified=resumeModified;
-	}
+	} 
 		
 	// Getter, Setter
 	public int getResumeId() {
@@ -88,11 +63,11 @@ public class ResumeRequestDto {
 		this.job_id = jobId;
 	}
 	
-	public String getCareer() {
-		return career;
+	public String getGraduation() {
+		return graduation;
 	}
-	public void setCareer(String career) {
-		this.career = career;
+	public void setGraduation(String graduation) {
+		this.graduation = graduation;
 	}
 		
 	public String getDegree() {
@@ -100,6 +75,13 @@ public class ResumeRequestDto {
 	}
 	public void setDegree(String degree) {
 		this.degree = degree;
+	}
+	
+	public String getCareer() {
+		return career;
+	}
+	public void setCareer(String career) {
+		this.career = career;
 	}
 		
 	public String getActivity() {
@@ -114,6 +96,13 @@ public class ResumeRequestDto {
 	}
 	public void setCertificate(String certificate) {
 		this.certificate = certificate;
+	}
+	
+	public String getIntro() {
+		return intro;
+	}
+	public void setIntro(String intro) {
+		this.intro = intro;
 	}
 		
 	public int getResumeCreated() {

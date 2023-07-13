@@ -1,6 +1,7 @@
 package model.user_general;
 
 public class UserRequestDto {
+	private int puserIdx; // 황인규 작성
 	private String pid;
 	private String ppassword;
 	private String pname;
@@ -48,6 +49,15 @@ public class UserRequestDto {
 		this.user_address = user_address;
 		this.emailCheck = emailCheck;
 	}
+	
+	public int getPuserIdx() {
+		return this.puserIdx;
+	}
+	
+	public void setPuserIdx(int puserIdx) {
+		this.puserIdx=puserIdx;
+	}
+
 
 	public String getPid() {
 		return this.pid;

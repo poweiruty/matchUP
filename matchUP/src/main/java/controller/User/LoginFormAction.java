@@ -42,7 +42,6 @@ public class LoginFormAction extends HttpServlet {
 		UserDao userDao = UserDao.getInstance();
 		User user = userDao.getUserbyId(id);
 		
-		
 		String url = "login";
 		
 		if(user != null && user.getPpassword().equals(password)) {
@@ -50,14 +49,8 @@ public class LoginFormAction extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("log", id);
-			session.setAttribute("password", user.getPpassword());
-			session.setAttribute("pname", user.getPname());
-			session.setAttribute("birth", user.getBirth());
-			session.setAttribute("phone", user.getTel());
-			session.setAttribute("email", user.getEmail());
-			session.setAttribute("address", user.getUser_address());
-
 			
+			session.setAttribute("puserIdx",user.getPuserIdx());	// 황인규 작성
 			session.setAttribute("pname", user.getPname());
 			session.setAttribute("birth", user.getBirth());
 			session.setAttribute("phone", user.getTel());
@@ -66,6 +59,7 @@ public class LoginFormAction extends HttpServlet {
 
 			
 			System.out.println(session.getAttribute("log"));
+			System.out.println(session.getAttribute("puserIdx"));   // 황인규 작성
 			System.out.println(session.getAttribute("pname"));
 			System.out.println(session.getAttribute("birth"));
 			System.out.println(session.getAttribute("phone"));
@@ -73,16 +67,7 @@ public class LoginFormAction extends HttpServlet {
 			System.out.println(session.getAttribute("address"));
 			
 			System.out.println(session.getAttribute("log"));
-			System.out.println(session.getAttribute("password"));
-			System.out.println(session.getAttribute("pname"));
-			System.out.println(session.getAttribute("birth"));
-			System.out.println(session.getAttribute("phone"));
-			System.out.println(session.getAttribute("email"));
-			System.out.println(session.getAttribute("address"));
 		}
-		
-		
-		
 		response.sendRedirect(url);
 	}
 }
