@@ -43,7 +43,7 @@
 									</li>
 									<!-- 회원가입 연결 -->
 									<li>
-										<button class="btn_join"><a href="join">회원가입</a></button>
+										<a href="join"><button class="btn_join">회원가입</button></a>
 									</li>
 								</ul>
 							</div>
@@ -69,7 +69,7 @@
 									</li>
 									<!-- 회원가입 연결 -->
 									<li>
-										<button class="btn_join"><a href="join">회원가입</a></button>
+										<a href="join"><button class="btn_join">회원가입</button></a>
 									</li>
 								</ul>
 							</div>

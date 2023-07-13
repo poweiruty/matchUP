@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="resources/style/reset_form.css">
     <!-- header css -->
     <link rel="stylesheet" href="resources/style/grid.css">
-    <link rel="stylesheet" href="resources/style/join.css">
     
     <!-- js -->
     <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

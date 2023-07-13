@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
+    <link rel="stylesheet" href="resources/style/join.css">
 </head>
 
 <body>
@@ -21,10 +22,10 @@
                     <span>개인회원과 기업회원을 선택하세요.</span>
                 </li>
                 <li>
-                    <a class="join_sub_btn" href="joinPerson">개인 회원</a>
+                    <a href="joinPerson"><button class="join_sub_btn">개인회원</button></a>
                 </li>
                 <li>
-                    <a class="join_sub_btn" href="joinCorp">기업 회원</a>
+                    <a href="joinCorp"><button class="join_sub_btn">기업회원</button></a>
                 </li>
             </ul>
         </div>
