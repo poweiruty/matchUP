@@ -83,7 +83,7 @@
 							<!-- 주소 끝 -->
 
 							<!-- 수정하기 부분 -->
-							<li class="sub">
+							<li class="sub">	
 								<div class="submit">
 								<input type="submit" name="submit" id="submit" value="수정하기" onclick="checkValue(form)">
 								<a href="index"> 

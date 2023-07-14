@@ -35,9 +35,7 @@
 			<button class="logout_btn" onclick="location.href='Plogout'">로그아웃</button>
 			<button class="leave_btn" onclick="location.href='leave'">회원탈퇴</button>
 		</c:when>
-
 		<c:otherwise>
-			<!-- 비 로그인시 메인 메시지 -->
 			<p class="welcome">환영합니다! <a class="login_link" href="login">로그인</a> 후 서비스를 이용해 주세요.</p>
 		</c:otherwise>
 

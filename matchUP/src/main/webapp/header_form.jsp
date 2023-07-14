@@ -69,7 +69,9 @@
 						<button class="logout_btn" onclick="location.href='Plogout'">로그아웃</button>
 						<button class="leave_btn" onclick="location.href='leave'">회원탈퇴</button>
 					</c:when>
-
+					<c:otherwise>
+						<button class="login_link" onclick="location.href='login'">로그인</button>
+					</c:otherwise>
 				</c:choose>
 			</div>
 		</div>

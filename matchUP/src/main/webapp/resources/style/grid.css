@@ -59,3 +59,8 @@ header {
     cursor: pointer;
     background-color: gray;
 }
+
+.login_link{
+    width: 150px;
+    height: 30px;
+}
