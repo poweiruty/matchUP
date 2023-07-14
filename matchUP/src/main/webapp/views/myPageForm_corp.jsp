@@ -48,8 +48,8 @@
 									</h2>
 							</label></li>
 
-							<li class="newCpassword"><input type="password" name="newCpassword"
-								id="newCpassword"> <span id="chkNotice" size="1"></span></li>
+							<li class="new-password"><input type="password" name="new-password"
+								id="new-password" required> </li>
 								
                                     <!-- 회사명 부분 -->
                                     <li class="cname"><label for="cname">

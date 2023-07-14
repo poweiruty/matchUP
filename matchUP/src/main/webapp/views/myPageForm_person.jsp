@@ -46,7 +46,7 @@
 							</label></li>
 
 							<li class="new-password"><input type="password" name="new-password"
-								id="new-password"> <span id="chkNotice" size="1"></span></li>
+								id="new-password" required> </li>
 							<!-- 이름 부분 -->
 							<li class="pname"><label for="pname">
 									<h2>이름</h2>
