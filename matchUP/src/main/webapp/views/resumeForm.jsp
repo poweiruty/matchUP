@@ -40,27 +40,27 @@
                 	
                     <ul>
                         <li>
-                            <span class="pname">이름 : </span>
+                            <label for="pname">이름 </label>
                             <span>${sessionScope.pname}</span>
                         </li>
                         
                         <li>
-                            <span class="birth">생년월일 : </span>
+                            <label for="birth">생년월일 </label>
                             <span>${sessionScope.birth}</span>
                         </li>
                         
                         <li>                   
-                            <span class="tel">전화번호 : </span>
+                            <label for="tel">연락처 </label>
                             <span>${sessionScope.phone}</span>
                         </li>
                         
                         <li>
-                            <span class="email_resume">이메일 : </span>
+                            <label for="email_resume">이메일 </label>
                             <span>${sessionScope.email}</span>
                         </li>
                         
                         <li>
-                            <span class="user_address">주소 : </span>
+                            <label for="user_address">주소 </label>
                             <span>${sessionScope.address}</span>
                         </li> 
                    		
@@ -121,7 +121,7 @@
                                 <option value="5">대졸(4년제)</option>
                                 <option value="6">대학원졸</option>                             
                             </select>
-                            <textarea name="degree" id="degree" cols="30" rows="10"></textarea>
+                            <textarea name="degree" id="degree" cols="30" rows="10" placeholder="그 밖의 학력에 관련된 세부사항을 적어주세요."></textarea>
                         </li>
                         
                         <li>
@@ -145,7 +145,7 @@
                     </ul>
                     <div class="bottom">
                 		<input type="submit" name="submit" id="submit" value="이력서 등록">
-                		<span><a href="index"> 메인 페이지로 돌아가기</a></span> 
+                		<a href="index"><input type="button" value="메인 페이지로 돌아가기"></a>
             		</div>
                 </form>
             </div>           

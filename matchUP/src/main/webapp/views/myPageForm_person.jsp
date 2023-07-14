@@ -37,26 +37,15 @@
 								value="${sessionScope.log}" readonly></li>
 
 							<!-- 비밀번호 부분 -->
-							<li><label for="pwd1">
-									<h2>비밀번호
-						<span class="pwd_warning"></span>
-									</h2>
-							</label>
-							</li>
-							<li class="ppassword">
-							<input type="password" name="ppassword"
-								id="ppassword" value="${sessionScope. password}" readonly> 
-								<span id="chkNotice" size="1"></span></li>
-
 							<li><label for="new-password">
-									<h2>
-										변경할 비밀번호
+									<h2 id="pwd_center">
+										변경할 비밀번호<br>
 										<span class="pwd_warning"> 변경을 원치 않으시면, 현재 비밀번호를 입력하세요.</span>
 									</h2>
 							</label></li>
 
 							<li class="new-password"><input type="password" name="new-password"
-								id="new-password"> <span id="chkNotice" size="1"></span></li>
+								id="new-password" required> </li>
 							<!-- 이름 부분 -->
 							<li class="pname"><label for="pname">
 									<h2>이름</h2>
@@ -84,12 +73,7 @@
 							</label></li>
 							<li class="email"><input type="text" name="email" id="email"
 								value="${sessionScope.email}"></li>
-						</div>
-						<div class="hr">
-							<hr class="pc_line">
-						</div>
-
-						<div class="pc_2">
+						
 							<!-- 주소 부분 시작 -->
 							<div class="add_wrap">
 									<h2 id="user_address">주소</h2>
@@ -99,8 +83,11 @@
 							<!-- 주소 끝 -->
 
 							<!-- 수정하기 부분 -->
-							<li class="sub"><input type="submit" name="submit" id="submit" value="수정하기" onclick="checkValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
+							<li class="sub">	
+								<div class="submit">
+								<input type="submit" name="submit" id="submit" value="수정하기" onclick="checkValue(form)">
 								<a href="index"> 
+								</div>
 								<!-- 초기 화면으로 돌아감 -->
 								<div id="index">메인 페이지로 돌아가기</div>
 								</a>
