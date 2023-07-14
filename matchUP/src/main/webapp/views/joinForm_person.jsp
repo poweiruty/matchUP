@@ -8,10 +8,7 @@
 <title>회원가입</title>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<link rel="stylesheet" href="resources/style/reset_form.css">
 <!-- header css -->
-<link rel="stylesheet" href="resources/style/grid.css">
-
 <link rel="stylesheet" href="resources/style/join.css">
 </head>
 
@@ -54,8 +51,8 @@
 							<!-- 비밀번호 부분 -->
 							<li>
 								<label for="pwd1">
-									<h2>
-										비밀번호<span class="pwd_warning"> *특수문자는 '! @ # $ % ^ &
+									<h2 id="pwd_center">
+										비밀번호<br><span class="pwd_warning"> *특수문자는 '! @ # $ % ^ &
 											+='만 사용 가능합니다.</span>
 									</h2>
 								</label>
@@ -74,7 +71,7 @@
 							<!-- 생년월일 부분 -->
 							<li>
 								<label for="birth"> 
-									<h2> 생년월일
+									<h2 id="birth_center"> 생년월일<br>
 										<span class="birth_warning"> *만 14세 미만의 사용자는 가입할 수 없습니다.</span>
 									</h2>
 								</label>
@@ -188,9 +185,9 @@
 								</label>
 							</li>
 							<li class="email">
-								<input type="text" name="email" id="email">@ 
+								<input type="text" name="email" id="email">@
 								<input type="text" name="email2" id="email2" value="naver.com">
-							</li>
+						
 							<select name="selectEmail" id="selectEmail">
 								<option value="1">직접입력</option>
 								<option value="@naver.com" selected>naver.com</option>
@@ -207,6 +204,7 @@
 								<option value="@hanmir.com">hanmir.com</option>
 								<option value="@paran.com">paran.com</option>
 							</select>
+							</li>
 							<!-- 인증번호 전송 부분 -->
 							<li>
 								<input type="hidden" name="emailchk" id="emailchk" value="0">
@@ -217,12 +215,6 @@
 								<input type="text" name="num" id="num" maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
 								<input type="button" name="btn3" id="btn3" value="인증번호 확인">
 							</li>
-						</div>
-						<div class="hr">
-							<hr class="pc_line">
-						</div>
-
-						<div class="pc_2">
 							<li>
 								<label for="address">
 									<h2>주소</h2>
@@ -246,18 +238,18 @@
 							<li>
 								<div class="marketing_wrap">
 									<div class="marketing">
-										<h2>마케팅 정보 수신동의</h2>
-										<br /> 중요한 알림 및 각종 혜택 알림을 수신합니다. <br /> 수업과 관련된 사항은 수신동의와
-										관련없이 보내드립니다. <br />
-										<br /> <input type="checkbox" name="chk1" id="chk">SNS
-										서비스 동의 (선택) <br /> <input type="checkbox" name="chk2"
-											id="chk">메일 수신 동의 (선택) <br />
+										<h3>마케팅 정보 수신동의</h3>
+										<br /> 중요한 알림 및 각종 혜택 알림을 수신합니다. 
+										<br /> 수업과 관련된 사항은 수신동의와	관련없이 보내드립니다. <br />
+										<br /> 
+										<input type="checkbox" name="chk1" id="chk">SNS	서비스 동의 (선택) <br /> 
+										<input type="checkbox" name="chk2" id="chk">메일 수신 동의 (선택) <br />
 									</div>
 								</div> <!-- 약관동의 부분 -->
 								<div class="agree_wrap">
 									<div class="agree">
 										<p>
-										<h2>약관동의</h2>
+										<h3>약관동의</h3>
 										<input type="checkbox" name="chk3" id="chk" required>
 										<a href="term">이용약관</a> 동의 (필수) <br /> 
 										<input type="checkbox" name="chk4" id="chk" required>

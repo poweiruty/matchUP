@@ -44,25 +44,27 @@
 							<!-- 비밀번호 부분 -->
 							<li>
 								<label for="pwd1">
-									<h2>비밀번호<span class="pwd_warning"> *특수문자는 '! @ # $ % ^ & + ='만 사용 가능합니다.</span>
+									<h2 id="pwd_center">
+										비밀번호<br><span class="pwd_warning"> *특수문자는 '! @ # $ % ^ &
+											+='만 사용 가능합니다.</span>
 									</h2>
-							</label></li>
-							
-							<li class="pwd"><input type="password" name="pwd1" id="pwd1"
-								placeholder="4-10자의 영문, 특수문자, 숫자 조합" required> <input
-								type="password" name="pwd2" id="pwd2" placeholder="비밀번호 확인" required>
-								<span id="chkNotice" size="1"></span></li>
-							
+								</label>
+							</li>
+							<li class="pwd">
+								<input type="password" name="password" id="password" placeholder="4-10자의 영문, 특수문자, 숫자 조합" required>
+								<input type="password" name="password_chk" id="password_chk" placeholder="비밀번호 확인" required>								
+								<span id="chkNotice" size="1"></span>
+							</li>
 							<!-- 회사명 부분 -->
 							<li class="corp_name"><label for="corp_name">
 									<h2>회사명</h2>
 							</label> <input type="text" name="name" id="name"
 								placeholder="본사 주소를 기준으로 기입해 주세요." required></li>
 							
-							<!-- 생년월일 부분 -->
+							<!-- 사업자등록번호 부분 -->
 							<li><label for="corp_num">
-									<h2>
-										사업자등록번호<span class="corp_warning"> *사업자등록번호는 추후 수정이 불가능 합니다.
+									<h2 id="birth_center">
+										사업자등록번호<br><span class="corp_warning"> *사업자등록번호는 추후 수정이 불가능 합니다.
 											정확히 입력해 주세요.</span>
 									</h2>
 							</label></li>
@@ -98,9 +100,9 @@
 								</label>
 							</li>
 							<li class="email">
-								<input type="text" name="email" id="email">@ 
+								<input type="text" name="email" id="email">@
 								<input type="text" name="email2" id="email2" value="naver.com">
-							</li>
+						
 							<select name="selectEmail" id="selectEmail">
 								<option value="1">직접입력</option>
 								<option value="@naver.com" selected>naver.com</option>
@@ -117,8 +119,10 @@
 								<option value="@hanmir.com">hanmir.com</option>
 								<option value="@paran.com">paran.com</option>
 							</select>
+							</li>
 							<!-- 인증번호 전송 부분 -->
 							<li>
+								<input type="hidden" name="emailchk" id="emailchk" value="0">
 								<input type="button" name="btn2" id="btn2" value="인증메일 전송" onclick="sendEmail()">
 							</li>
 							<!-- 인증번호 입력 부분 -->
@@ -126,12 +130,6 @@
 								<input type="text" name="num" id="num" maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
 								<input type="button" name="btn3" id="btn3" value="인증번호 확인">
 							</li>
-						</div>
-						<div class="hr">
-							<hr class="pc_line">
-						</div>
-
-						<div class="pc_2">
 							<li>
 								<label for="address">
 									<h2>주소</h2>
@@ -155,17 +153,18 @@
 							<li>
 								<div class="marketing_wrap">
 									<div class="marketing">
-										<h2>마케팅 정보 수신동의</h2>
+										<h3>마케팅 정보 수신동의</h3>
 										<br /> 중요한 알림 및 각종 혜택 알림을 수신합니다. 
-										<br /> 수업과 관련된 사항은 수신동의와 관련없이 보내드립니다. <br />
-										<br /> <input type="checkbox" name="chk1" id="chk">SNS 서비스 동의 (선택) <br /> 
-										<input type="checkbox" name="chk2"	id="chk">메일 수신 동의 (선택) <br />
+										<br /> 수업과 관련된 사항은 수신동의와	관련없이 보내드립니다. <br />
+										<br /> 
+										<input type="checkbox" name="chk1" id="chk">SNS	서비스 동의 (선택) <br /> 
+										<input type="checkbox" name="chk2" id="chk">메일 수신 동의 (선택) <br />
 									</div>
 								</div> <!-- 약관동의 부분 -->
 								<div class="agree_wrap">
 									<div class="agree">
 										<p>
-										<h2>약관동의</h2>
+										<h3>약관동의</h3>
 										<input type="checkbox" name="chk3" id="chk" required>
 										<a href="term">이용약관</a> 동의 (필수) <br /> 
 										<input type="checkbox" name="chk4" id="chk" required>
