@@ -41,8 +41,12 @@ public class UserIdCheckAction extends HttpServlet {
 		//PrintWriter script = response.getWriter();
 		ServletContext app = this.getServletContext();
 		RequestDispatcher dispatcher = app.getRequestDispatcher("/joinPerson");
+		String pageInfo = request.getParameter("pageInfo");
 		String id = request.getParameter("id");		
 		String res = null;
+		
+		
+		
 		UserDao dao = UserDao.getInstance();
 		User user = dao.getUserbyId(id);
 		

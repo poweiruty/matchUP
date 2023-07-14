@@ -31,6 +31,7 @@
 		<div class="section">
 			<div class="section_box">	
 				<form action="UserIdCheck" method="POST" name="idForm" id="idForm" style="display: none;">
+					<input type="hidden" name="pageInfo" id="pageInfo" value="puser">					
 					<input type="hidden" name="tmpId" id="tmpId" value="">
 					<input type="hidden" name="idchk" id="idchk" value="<%=request.getAttribute("idDupl")%>">	
 				</form>			
