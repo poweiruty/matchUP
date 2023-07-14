@@ -36,7 +36,7 @@
                 	
                     <ul>
                         <li>
-                            <span class="pname">이름 : </span>
+                            <span class="pname">이름 : ㅋㅋㅋㅋ자살마렵다</span>
                             <span>${sessionScope.pname}</span>
                         </li>
                         
