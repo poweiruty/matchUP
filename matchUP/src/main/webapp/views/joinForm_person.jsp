@@ -21,8 +21,7 @@
 		String id = "";
 		if(request.getAttribute("id") != null){
 			id = request.getAttribute("id").toString();
-		}
-	
+		}	
 	%>
 	<!-- header 시작 -->
     <jsp:include page="header_form"></jsp:include>

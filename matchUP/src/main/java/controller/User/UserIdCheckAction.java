@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.user_corp.CorpUser;
+import model.user_corp.CorpUserDao;
 import model.user_general.User;
 import model.user_general.UserDao;
 
@@ -41,20 +43,11 @@ public class UserIdCheckAction extends HttpServlet {
 		//PrintWriter script = response.getWriter();
 		ServletContext app = this.getServletContext();
 		RequestDispatcher dispatcher = app.getRequestDispatcher("/joinPerson");
-		String pageInfo = request.getParameter("pageInfo");
+		
 		String id = request.getParameter("id");		
-		String res = null;
+		String res = null;		
 		
 		
-		
-		UserDao dao = UserDao.getInstance();
-		User user = dao.getUserbyId(id);
-		
-		if(user == null) {
-			res = "사용가능";
-		}else {
-			res = "중복";
-		}
 		request.setAttribute("idDupl", res);	
 		dispatcher.forward(request, response);
 	}
@@ -67,19 +60,41 @@ public class UserIdCheckAction extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		//HttpSession session = request.getSession();	
-		//PrintWriter script = response.getWriter();		
+		//PrintWriter script = response.getWriter();	
+		CorpUserDao cdao = CorpUserDao.getInstance();		
+		UserDao dao = UserDao.getInstance();
+		User user = null;
+		CorpUser cuser = null;
 		String tmpId = request.getParameter("tmpId");
+		String pageInfo = request.getParameter("pageInfo");
 		String res = null;
 		String id = tmpId;
-		UserDao dao = UserDao.getInstance();
-		User user = dao.getUserbyId(tmpId);
+		
+		System.out.println("page : " + pageInfo);
 		System.out.println("id : " + id);
-		System.out.println("tmpId : " + tmpId);
-		if(user == null) {
-			res = "사용가능";			
+		System.out.println("tmpId : " + tmpId);	
+		
+//		if(pageInfo.equals("puser")) {
+//			user = dao.getUserbyId(id);			
+//			if(user == null) {
+//				res = "사용가능";
+//			}else {
+//				res = "중복";
+//			}
+//		}else if(pageInfo.equals("cuser")) {
+//			cuser = cdao.getCorpUserbyId(id);
+//			if(cuser == null) {
+//				res = "사용가능";				
+//			}else {
+//				res = "중복";
+//			}		
+//		}
+		if(dao.getUserbyId(id) == null && cdao.getCorpUserbyId(id) == null) {
+			res = "사용가능";
 		}else {
 			res = "중복";
 		}
+		
 		
 		System.out.println(res);		
 		request.setAttribute("idDupl", res);	

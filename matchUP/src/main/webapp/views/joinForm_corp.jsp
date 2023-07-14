@@ -24,6 +24,11 @@
 	<div id="wrap">
 		<div class="section">
 			<div class="section_box">
+				<form action="UserIdCheck" method="POST" name="idForm" id="idForm" style="display: none;">
+					<input type="hidden" name="pageInfo" id="pageInfo" value="puser">					
+					<input type="hidden" name="tmpId" id="tmpId" value="">
+					<input type="hidden" name="idchk" id="idchk" value="<%=request.getAttribute("idDupl")%>">	
+				</form>	
 				<form action="CJoin" method="post">
 					<ul>
 						<div class="pc_1">
@@ -37,8 +42,8 @@
 								</label>
 							</li>
 							<li class="id">
-								<input type="text" name="id" id="id"	placeholder="길이 4-12자 이내" required> 
-								<input type="button" name="btn1" id="btn1" value="중복확인"><br />
+								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" required> 
+								<input type="button" form="idForm" name="btn1" id="btn1" value="중복확인" onclick="idChk(form)"><br/>
 							</li>
 
 							<!-- 비밀번호 부분 -->
@@ -119,6 +124,7 @@
 							</select>
 							<!-- 인증번호 전송 부분 -->
 							<li>
+								<input type="hidden" name="emailchk" id="emailchk" value="0">
 								<input type="button" name="btn2" id="btn2" value="인증메일 전송" onclick="sendEmail()">
 							</li>
 							<!-- 인증번호 입력 부분 -->

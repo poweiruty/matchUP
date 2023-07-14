@@ -11,8 +11,8 @@
 </head>
 
 <body>
-     <!-- header 시작 -->
-         <jsp:include page="header"></jsp:include>
+    <!-- header 시작 -->
+    <jsp:include page="header"></jsp:include>
 
     <!-- header 끝 -->
     <!-- body 시작 -->
