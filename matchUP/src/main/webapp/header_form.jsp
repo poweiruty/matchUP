@@ -25,8 +25,6 @@
         width: 300px;
 		height: 300px;
     }
-	
-
 	 
  </style>
     <!-- js -->
@@ -34,13 +32,47 @@
 </head>
 <body>
 	<!-- header 시작 -->
-    <header id="header">
-        <div class="index">
-            <a href="index.jsp">
+	<header id="header">
+		<div class="index">
+			<a href="index.jsp">
 				<img class="logo" src="resources/img/Rlogo.png">
-            </a>
-        </div>
+			</a>
+			<!-- 마이페이지 -->
+			<div class="top_1">
+				<c:choose>
+					<c:when test="${not empty sessionScope.cname }">
+						<a href="index">
+							<h3>MATCH-UP(기업회원)</h3>
+						</a>
+					</c:when>
+					<c:when test="${not empty sessionScope. log}">
+						<a href="index">
+							<h3>MATCH-UP(개인회원)</h3>
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a href="index">
+							<h3>MATCH-UP</h3>
+						</a>
+					</c:otherwise>
+				</c:choose>
+			</div>
 
+			<div class="top_2">
+				<c:choose>
+					<c:when test="${not empty sessionScope.cname }">
+						<button class="logout_btn" onclick="location.href='Clogout'">로그아웃</button>
+						<button class="leave_btn" onclick="location.href='leave'">회원탈퇴</button>
+					</c:when>
+
+					<c:when test="${not empty sessionScope.log }">
+						<button class="logout_btn" onclick="location.href='Plogout'">로그아웃</button>
+						<button class="leave_btn" onclick="location.href='leave'">회원탈퇴</button>
+					</c:when>
+
+				</c:choose>
+			</div>
+		</div>
         <!-- 검색 -->
         <div class="nav">
             <div class="corpSearch">

@@ -29,7 +29,7 @@
             <div class="saved">
                 <p id="saved_title">저장됨</p>
                 <div class="saved_con">
-                    <span>저장된 스크랩: #건</span>
+                    <span>저장된 채용정보: #건</span>
                 </div>
                 <div class="saved_con_detail">
                     <!-- 여기에 내용 -->
@@ -38,7 +38,7 @@
             <div class="completed">
                 <p id="completed_title">지원완료</p>
                 <div class="completed_con">
-                    <span>완료된 스크랩: #건</span>
+                    <span>완료된 채용정보: #건</span>
                 </div>
                 <div class="completed_con_detail">
                     <!-- 여기에 내용 -->

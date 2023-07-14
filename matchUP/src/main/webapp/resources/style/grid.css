@@ -35,6 +35,9 @@ header {
     font-size: 1.7rem;
     text-align: center;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* footer */
@@ -45,4 +48,14 @@ header {
     border-top: solid 1px gray;
     padding: 20px 0;
     margin-top: 10%;
+}
+
+.logout_btn, .leave_btn{
+    width: 100px;
+    height: 30px;
+}
+
+.logout_btn:hover, .leave_btn:hover{
+    cursor: pointer;
+    background-color: gray;
 }

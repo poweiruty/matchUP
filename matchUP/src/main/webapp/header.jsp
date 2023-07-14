@@ -1,116 +1,165 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Header</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+		<!DOCTYPE html>
+		<html>
 
-<!-- 초기화 css -->
-    <link rel="stylesheet" href="resources/style/reset.css">
-    <!-- header css -->
-    <link rel="stylesheet" href="resources/style/grid.css">
-    <!-- favicon -->
+		<head>
+			<meta charset="UTF-8">
+			<title>Header</title>
 
-<!-- 로고 css -->
-<style>
-   .logo{
-        width: 150px;
-		height: 150px;
-    }
-    
-    .Rlogo{
-        width: 300px;
-		height: 300px;
-    }
-</style>
+			<!-- 초기화 css -->
+			<link rel="stylesheet" href="resources/style/reset.css">
+			<!-- header css -->
+			<link rel="stylesheet" href="resources/style/grid.css">
+			<!-- favicon -->
+
+			<!-- 로고 css -->
+			<style>
+				.logo {
+					width: 150px;
+					height: 150px;
+				}
+
+				.Rlogo {
+					width: 300px;
+					height: 300px;
+				}
+			</style>
 
 
-    <!-- js -->
-    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>    
-</head>
-<body>
-  <!-- header 시작 -->
-    <header id="header">
-        <div class="index">
-            <a href="index.jsp">
-               <img class="logo" src="resources/img/Rlogo.png">
-            </a>
-        </div>
+			<!-- js -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		</head>
 
-        <!-- 검색 -->
-        <div class="nav">
-            <div class="corpSearch">
-                <a href="search">
-                    <h3>기업검색</h3>
-                </a>
-            </div>
-            <!-- 기업리뷰 -->
-            <div class="corpReview">
-                <a href="review">
-                    <h3>기업리뷰</h3>
-                </a>
-            </div>
-			<!-- 마이페이지 -->
-			<c:choose>
-				<c:when test="${not empty sessionScope.cname }">
-					<a href="mypageCorp">
-						<h3>마이페이지</h3>
+		<body>
+			<!-- header 시작 -->
+			<header id="header">
+				<div class="index">
+					<a href="index.jsp">
+						<img class="logo" src="resources/img/Rlogo.png">
 					</a>
-				</c:when>
-				<c:when test="${not empty sessionScope. log}">
-					<a href="mypagePerson">
-						<h3>마이페이지</h3>
-					</a>
-				</c:when>
-				<c:otherwise>
-					<a href="login">
-						<h3>로그인</h3>
-					</a>
-				</c:otherwise>
-			</c:choose>
+					<!-- 마이페이지 -->
+					<div class="top_1">
+						<c:choose>
+							<c:when test="${not empty sessionScope.cname }">
+								<a href="index">
+									<h3>MATCH-UP(기업회원)</h3>
+								</a>
+							</c:when>
+							<c:when test="${not empty sessionScope. log}">
+								<a href="index">
+									<h3>MATCH-UP(개인회원)</h3>
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a href="index">
+									<h3>MATCH-UP</h3>
+								</a>
+							</c:otherwise>
+						</c:choose>
+					</div>
+
+					<div class="top_2">
+						<c:choose>
+							<c:when test="${not empty sessionScope.cname }">
+								<button class="logout_btn" onclick="location.href='Clogout'">로그아웃</button>
+								<button class="leave_btn" onclick="location.href='leave'">회원탈퇴</button>
+							</c:when>
+
+							<c:when test="${not empty sessionScope.log }">
+								<button class="logout_btn" onclick="location.href='Plogout'">로그아웃</button>
+								<button class="leave_btn" onclick="location.href='leave'">회원탈퇴</button>
+							</c:when>
+
+						</c:choose>
+					</div>
+				</div>
+
+				<!-- 검색 -->
+				<div class="nav">
+					<div class="corpSearch">
+						<a href="search">
+							<h3>기업검색</h3>
+						</a>
+					</div>
+					<!-- 기업리뷰 -->
+					<div class="corpReview">
+						<a href="review">
+							<h3>기업리뷰</h3>
+						</a>
+					</div>
+					<!-- 마이페이지 -->
+					<c:choose>
+						<c:when test="${not empty sessionScope.cname }">
+							<a href="mypageCorp">
+								<h3>마이페이지</h3>
+							</a>
+						</c:when>
+						<c:when test="${not empty sessionScope. log}">
+							<a href="mypagePerson">
+								<h3>마이페이지</h3>
+							</a>
+						</c:when>
+						<c:otherwise>
+							<a href="login">
+								<h3>로그인</h3>
+							</a>
+						</c:otherwise>
+					</c:choose>
 
 
-			<!-- 회원가입 -->
-            <div class="join">
-                <c:choose>
-					<c:when test="${not empty sessionScope.cname or not empty sessionScope.log }">
-						<a href="leave"><h3>회원탈퇴</h3></a>
-					</c:when>
-					<c:otherwise>
-						<a href="join"><h3>회원가입</h3></a>
-					</c:otherwise>
-				</c:choose>
-            </div>
-            <!-- 관심채용정보(스크랩) -->
-            <div class="scrap">              
-                <c:choose>
-					<c:when test="${not empty sessionScope.cname }">
-						<a href="jobPostUpdate"><h3>채용공고관리</h3></a>
-					</c:when>
-					
-					<c:otherwise>
-						<a href="scrap"><h3>관심채용정보</h3></a>
-					</c:otherwise>
-				</c:choose>
-            </div>
-            <!-- 이력서 / 채용관리 -->
-			<div class="resumeForm">
-				<c:choose>
-					<c:when test="${not empty sessionScope.cname }">
-						<a href="jobPost"><h3>채용공고등록</h3></a>
-					</c:when>
-					
-					<c:otherwise>
-						<a href="resume"><h3>이력서 관리</h3></a>
-					</c:otherwise>
-				</c:choose>
+					<!-- 회원가입 -->
+					<div class="join">
+						<c:choose>
+							<c:when test="${not empty sessionScope.cname or not empty sessionScope.log }">
+								<a href="leave">
+									<h3>회원탈퇴</h3>
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a href="join">
+									<h3>회원가입</h3>
+								</a>
+							</c:otherwise>
+						</c:choose>
+					</div>
+					<!-- 관심채용정보(스크랩) -->
+					<div class="scrap">
+						<c:choose>
+							<c:when test="${not empty sessionScope.cname }">
+								<a href="jobPostUpdate">
+									<h3>채용공고관리</h3>
+								</a>
+							</c:when>
 
-			</div>
-		
-        </div>
-    </header>
-    <!-- header 끝 -->
-</body>
-</html>
+							<c:otherwise>
+								<a href="scrap">
+									<h3>관심채용정보</h3>
+								</a>
+							</c:otherwise>
+						</c:choose>
+					</div>
+					<!-- 이력서 / 채용관리 -->
+					<div class="resumeForm">
+						<c:choose>
+							<c:when test="${not empty sessionScope.cname }">
+								<a href="jobPost">
+									<h3>채용공고등록</h3>
+								</a>
+							</c:when>
+
+							<c:otherwise>
+								<a href="resume">
+									<h3>이력서 관리</h3>
+								</a>
+							</c:otherwise>
+						</c:choose>
+
+					</div>
+
+				</div>
+			</header>
+			<!-- header 끝 -->
+		</body>
+
+		</html>
