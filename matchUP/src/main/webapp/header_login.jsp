@@ -19,6 +19,11 @@
          height: 150px;
      }
      
+     .Rlogo{
+        width: 300px;
+		height: 300px;
+    }
+     
  </style>
     <!-- js -->
     <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -39,7 +44,7 @@
     <header id="header">
         <div class="index">
             <a href="index">
-                <img class="logo" src="resources/img/logo.png">
+                <img class="logo" src="resources/img/Rlogo.png">
             </a>
         </div>
 

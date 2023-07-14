@@ -20,6 +20,10 @@
 		height: 150px;
     }
     
+    .Rlogo{
+        width: 300px;
+		height: 300px;
+    }
 </style>
 
 
@@ -31,7 +35,7 @@
     <header id="header">
         <div class="index">
             <a href="index.jsp">
-               <img class="logo" src="resources/img/logo.png">
+               <img class="logo" src="resources/img/Rlogo.png">
             </a>
         </div>
 

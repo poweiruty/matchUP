@@ -9,8 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>matchUP</title>
 <link rel="stylesheet" href="resources/style/index.css">
-    <link rel="icon" href="resources/img/favicon.png" type="image/x-icon">
-
+<link rel="icon" href="resources/img/favicon.png" type="image/x-icon">
 </head>
 <body>
 	<!-- header -->

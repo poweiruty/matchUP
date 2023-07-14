@@ -119,8 +119,8 @@
 						</li>
 			</ul>
 			<ul>
-				<li class="search_btn">
-					<button onclick="search()">검색</button>
+				<li class="search_btn_li">
+					<button class="search_btn" onclick="search()">검색</button>
 				</li>
 			</ul>
 		</div>
