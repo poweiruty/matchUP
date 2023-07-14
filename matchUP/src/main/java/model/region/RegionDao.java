@@ -161,10 +161,12 @@ public class RegionDao {
 		this.conn = DBManager.getConnection();
 
 		if (this.conn != null) {
-			String sql = "SELECT * FROM main_region_tb WHERE main_region LIKE ?";
+			//String sql = "SELECT * FROM main_region_tb WHERE main_region LIKE ?";
+			String sql = "select * from main_region_tb where instr(?, main_region);";
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
-				this.pstmt.setString(1, "%" + region + "%");
+				//this.pstmt.setString(1, "%" + region + "%");
+				this.pstmt.setString(1, region);
 				this.rs = this.pstmt.executeQuery();
 
 				while (this.rs.next()) {

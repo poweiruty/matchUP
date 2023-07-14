@@ -53,11 +53,8 @@ public class LoginCuserAction extends HttpServlet {
 			url = "index";
 			HttpSession session = request.getSession();
 			session.setAttribute("log", id);
-<<<<<<< HEAD
-			
-=======
+
 			session.setAttribute("cpassword", cuser.getCpassword());
->>>>>>> refs/remotes/origin/#2-LeeTaewoo
 			session.setAttribute("cname", cuser.getCname());
 			session.setAttribute("mgr_name", cuser.getMgr_name());
 			session.setAttribute("phone", cuser.getMgr_tel());
@@ -77,8 +74,7 @@ public class LoginCuserAction extends HttpServlet {
 	        }
 	        
 			System.out.println(session.getAttribute("log"));
-<<<<<<< HEAD
-=======
+
 			System.out.println(session.getAttribute("cpassword"));
 			System.out.println(session.getAttribute("cname"));
 			System.out.println(session.getAttribute("mgr_name"));
@@ -86,7 +82,6 @@ public class LoginCuserAction extends HttpServlet {
 			System.out.println(session.getAttribute("email"));
 			System.out.println(session.getAttribute("map"));
 			System.out.println(session.getAttribute("cnum"));
->>>>>>> refs/remotes/origin/#2-LeeTaewoo
 		}
 		
 		response.sendRedirect(url);

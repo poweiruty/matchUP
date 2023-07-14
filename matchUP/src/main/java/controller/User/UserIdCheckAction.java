@@ -75,7 +75,7 @@ public class UserIdCheckAction extends HttpServlet {
 			res = "사용가능";			
 		}else {
 			res = "중복";
-			}
+		}
 		
 		System.out.println(res);		
 		request.setAttribute("idDupl", res);	

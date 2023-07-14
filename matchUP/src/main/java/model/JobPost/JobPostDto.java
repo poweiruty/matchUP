@@ -28,6 +28,15 @@ public class JobPostDto {
 		this.jobDetail = jobDetail;
 	}
 
+	public JobPostDto(String corp_name, String staffs, String ceo, String people, String rper, String salary,
+			String welfare, String desc) {
+		this.corp_name = corp_name;
+		this.staffs = staffs;
+		this.ceo = ceo;
+		this.people = people;
+		 
+	}
+
 	public String getJob() {
 		return job;
 	}
@@ -92,17 +101,6 @@ public class JobPostDto {
 		this.jobDetail = jobDetail;
 	}
 
-<<<<<<< HEAD
-	@Override
-	public String toString() {
-		return "JobPostDto [job=" + job + ", people=" + people + ", region=" + region + ", regionDetail=" + regionDetail
-				+ ", salary=" + salary + ", postDate=" + postDate + ", welfare=" + welfare + ", jobDetail=" + jobDetail
-				+ "]";
-	}
-	
-	
-	
-=======
 	public String getCorp_name() {
 		return corp_name;
 	}
@@ -126,6 +124,13 @@ public class JobPostDto {
 	public void setCeo(String ceo) {
 		this.ceo = ceo;
 	}
+	
 
->>>>>>> refs/remotes/origin/#2-LeeTaewoo
+	@Override
+	public String toString() {
+		return "JobPostDto [job=" + job + ", people=" + people + ", region=" + region + ", regionDetail=" + regionDetail
+				+ ", salary=" + salary + ", postDate=" + postDate + ", welfare=" + welfare + ", jobDetail=" + jobDetail
+				+ "]";
+	}
+
 }
