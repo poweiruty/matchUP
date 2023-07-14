@@ -12,7 +12,14 @@
     <link rel="stylesheet" href="resources/style/reset.css">
     <!-- header css -->
     <link rel="stylesheet" href="resources/style/grid.css">
-    
+<!-- 로고 css -->
+<style>
+    .logo{
+         width: 150px;
+         height: 150px;
+     }
+     
+ </style>
     <!-- js -->
     <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
      <script>
@@ -32,7 +39,7 @@
     <header id="header">
         <div class="index">
             <a href="index">
-                Match-UP
+                <img class="logo" src="resources/img/logo.png">
             </a>
         </div>
 
@@ -100,8 +107,5 @@
 			</div>
     </header>
     <!-- header 끝 -->
-</body>
-</html>
-
 </body>
 </html>

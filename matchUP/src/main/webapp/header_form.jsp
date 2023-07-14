@@ -14,7 +14,14 @@
     <link rel="stylesheet" href="resources/style/reset_form.css">
     <!-- header css -->
     <link rel="stylesheet" href="resources/style/grid.css">
-    
+<!-- 로고 css -->
+<style>
+	.logo{
+		 width: 150px;
+		 height: 150px;
+	 }
+	 
+ </style>
     <!-- js -->
     <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
@@ -23,7 +30,7 @@
     <header id="header">
         <div class="index">
             <a href="index.jsp">
-                Match-UP
+				<img class="logo" src="resources/img/logo.png">
             </a>
         </div>
 
@@ -79,7 +86,7 @@
 					</c:when>
 					
 					<c:otherwise>
-						<a href="resume"><h3>관심채용정보</h3></a>
+						<a href="scrap"><h3>관심채용정보</h3></a>
 					</c:otherwise>
 				</c:choose>
             </div>

@@ -9,6 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>matchUP</title>
 <link rel="stylesheet" href="resources/style/index.css">
+    <link rel="icon" href="resources/img/favicon.png" type="image/x-icon">
+
 </head>
 <body>
 	<!-- header -->
@@ -19,7 +21,7 @@
 	<!-- main 시작 -->
 	<section class="container">
 	<p class="idx_title">
-		당신에게 딱 맞는 사람들을 매칭해드립니다. <br> 구인구직 플랫폼, Match-UP
+		당신(yoU)과 사람들(People)을 잇습니다. <br> 구인구직 플랫폼, Match-UP
 	</p>
 
 	<c:choose>

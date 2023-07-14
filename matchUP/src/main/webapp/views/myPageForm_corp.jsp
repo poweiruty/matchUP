@@ -40,17 +40,7 @@
                                             value="${sessionScope.log}" readonly></li>
 
                                     <!-- 비밀번호 부분 -->
-							<li><label for="pwd1">
-									<h2>비밀번호
-						<span class="pwd_warning"></span>
-									</h2>
-							</label>
-							</li>
-							<li class="cpassword">
-							<input type="password" name="cpassword"
-								id="cpassword" value="${sessionScope. cpassword}" readonly> 
-								<span id="chkNotice" size="1"></span></li>
-
+			
 							<li><label for="new-password">
 									<h2>
 										변경할 비밀번호

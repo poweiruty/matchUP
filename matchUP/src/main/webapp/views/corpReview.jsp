@@ -29,9 +29,9 @@
                     <ul>
                         <li class="main_search">
                             <label for="search_bar">
-                                <h2>기업명 또는 직무</h2>
+                                <h2>기업명</h2>
                             </label>
-                            <input type="text" id="search_bar" placeholder="직무 혹은 회사명">
+                            <input type="text" id="search_bar" placeholder="회사명">
                         </li>
                     </ul>
                 </div>
