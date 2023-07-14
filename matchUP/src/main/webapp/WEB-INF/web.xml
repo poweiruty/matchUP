@@ -177,7 +177,6 @@
 		<servlet-name>CorpUpdateRequest</servlet-name>
 		<url-pattern>/CUpdateRequest</url-pattern>
 	</servlet-mapping>
-	
 	<!--  리뷰 양식 -->
 	<!-- <servlet>
 		<servlet-name>ReviewFormAction</servlet-name>
