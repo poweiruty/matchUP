@@ -29,6 +29,7 @@
 						<div class="pc_1">
 							<li class="start">
 								<h2>회원정보입력(기업 회원)</h2>
+								<br>
 							</li>
 							<!-- 아이디 부분 -->
 							<li>

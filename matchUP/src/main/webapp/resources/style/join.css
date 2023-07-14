@@ -253,6 +253,10 @@
 		width: 200px;
 	}
 
+	#password, #password_chk{
+		width: 300px;
+	}
+
 /* PC ver. */
     #wrap{
         display: flex;
@@ -280,4 +284,8 @@
 
 	.sub>#chk1, #chk2, #chk3, #chk4{
 		width: 20px;
+	}
+
+	label{
+		text-align: center;
 	}
