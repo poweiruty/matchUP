@@ -3,6 +3,8 @@ package model.JobPost;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import util.DBManager;
@@ -90,77 +92,5 @@ public class JobPostDao {
 
         return jobPostDto;
     }
-    
-//    public JobPostDto getJobPostbyRegion(String main_region_id) {
-//    	JobPostDto jobPostDto = null;
-//    	conn = DBManager.getConnection();
-//    	
-//    	if (conn != null) {
-//    		String sql = "SELECT * FROM job_posting_tb WHERE main_region_id = ?";
-//    		try {
-//    			pstmt = conn.prepareStatement(sql);
-//    			pstmt.setString(1, main_region_id);
-//    			rs = pstmt.executeQuery();
-//    			
-//    			if (rs.next()) {
-//    				String corp_id = rs.getString("corp_id");
-//    				String jobId = rs.getString("job_id");
-//    				String semi_region_id = rs.getString("semi_region_id");
-//    				int recruit_people = rs.getInt("recruit_people");
-//    				String recruit_period = rs.getString("recruit_period");
-//    				String salary = rs.getString("salary");
-//    				String welfare = rs.getString("welfare");
-//    				String description = rs.getString("description");
-//    				
-//    				//jobPostDto = new JobPostDto(corp_id, jobId, main_region_id, semi_region_id, recruit_people,
-//    				//recruit_period, salary, welfare, description);
-//    			}
-//    		} catch (Exception e) {
-//    			e.printStackTrace();
-//    		} finally {
-//    			DBManager.close(conn, pstmt, rs);
-//    		}
-//    	}
-//    	
-//    	return jobPostDto;
-//    }
 
-	/*
-    public ArrayList<JobPostDto> getJobPostAll() {
-        ArrayList<JobPostDto> list = new ArrayList<>();
-        conn = DBManager.getConnection();
-
-        if (conn != null) {
-            String sql = "SELECT * FROM job_posting_tb";
-
-            try {
-                pstmt = conn.prepareStatement(sql);
-                rs = pstmt.executeQuery();
-
-                while (rs.next()) {
-                    String id = rs.getString("corp_id");
-                    String jobId = rs.getString("job_id");
-                    String main_region_id = rs.getString("main_region_id");
-                    String semi_region_id = rs.getString("semi_region_id");
-                    int recruit_people = rs.getInt("recruit_people");
-                    String recruit_period = rs.getString("recruit_period");
-                    String salary = rs.getString("salary");
-                    String welfare = rs.getString("welfare");
-                    String description = rs.getString("description");
-
-                    //JobPostDto jobPostDto = new JobPostDto(id, jobId, main_region_id, semi_region_id, recruit_people,
-                            //recruit_period, salary, welfare, description);
-
-                    //list.add(jobPostDto);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                DBManager.close(conn, pstmt, rs);
-            }
-        }
-
-        return list;
-    }
-	*/
 }

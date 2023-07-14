@@ -156,57 +156,8 @@ public class RegionDao {
 //			return list;
 //		}
 
-	public String getMainbySearch(String region) {
-		String rid = "";
-		this.conn = DBManager.getConnection();
 
-		if (this.conn != null) {
-			//String sql = "SELECT * FROM main_region_tb WHERE main_region LIKE ?";
-			String sql = "select * from main_region_tb where instr(?, main_region);";
-			try {
-				this.pstmt = this.conn.prepareStatement(sql);
-				//this.pstmt.setString(1, "%" + region + "%");
-				this.pstmt.setString(1, region);
-				this.rs = this.pstmt.executeQuery();
-
-				while (this.rs.next()) {
-					String id = this.rs.getString(1);
-
-					rid = id;
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				DBManager.close(this.conn, this.pstmt, this.rs);
-			}
-		}
-
-		return rid;
-	}
 
 	
-	public ArrayList<SemiRegion> getSemibySearch(int mrid) {
-		ArrayList<SemiRegion> list = new ArrayList<SemiRegion>();
-		this.conn = DBManager.getConnection();
-		if(this.conn != null) {
-			String sql = "select semi_region_id from semi_region_tb where main_region_id=?";
-			try {
-				this.pstmt = this.conn.prepareStatement(sql);
-				this.pstmt.setInt(1, mrid);
-				this.rs = this.pstmt.executeQuery();
-				while(this.rs.next()) {
-					String semi_region = this.rs.getString(1);
-					
-					SemiRegion semi = new SemiRegion(semi_region);
-					
-					list.add(semi);
-				}
-			}catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-				DBManager.close(this.conn,this.pstmt, this.rs);
-			}
-		}
-		return list;
-	}
+
 }

@@ -74,7 +74,6 @@ public class LoginCuserAction extends HttpServlet {
 	        }
 	        
 			System.out.println(session.getAttribute("log"));
-
 			System.out.println(session.getAttribute("cpassword"));
 			System.out.println(session.getAttribute("cname"));
 			System.out.println(session.getAttribute("mgr_name"));

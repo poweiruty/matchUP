@@ -13,11 +13,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import model.JobPost.JobPost;
+import model.JobPost.JobPostDao;
 import model.JobPost.JobPostDto;
+import model.corp.CorpDao;
+import model.job.Job;
+import model.job.JobDao;
 import model.region.MainRegion;
 import model.region.RegionDao;
 import model.region.SemiRegion;
+import model.search.JobPostSearchDao;
 import model.user_corp.CorpUser;
 import model.user_corp.CorpUserDao;
 import util.DBManager;
@@ -41,110 +49,80 @@ public class SearchAction extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		request.setCharacterEncoding("UTF-8");	
+		response.setContentType("application/json; charset=utf-8");		
 		
 		String job = request.getParameter("job");
 		String region = request.getParameter("region");
-		CorpUserDao dao = CorpUserDao.getInstance();
+		String region_detail = request.getParameter("region_detail");
+		
 		ArrayList<JobPostDto> list = null;
-		RegionDao reDao = RegionDao.getInstance();
-		ArrayList<SemiRegion> selist = new ArrayList<SemiRegion>();
+		JobPostSearchDao jpsDao = JobPostSearchDao.getInstance();
 		
 		
-		String[] cname = null;
+		String cname = null;
 		String jobName = null;
-		//String[] main_region = null;
 		String main_region = null;
-		String[] semi_region = null;
+		String semi_region = null;
 		
-//		if(dao.getUserbyCname(job) != null) {
-//			list = dao.getUserbyCname(job);
-//			cname = new String[list.size()];
-//			for(int i = 0; i < cname.length; i++) {
-//				cname[i] = list.get(i).getCname();
-//			}
-//			
-//			System.out.println(Arrays.toString(cname));
-//		}
-		
-//		if(reDao.getMainbySearch(region) != null) {
-//			mrlist = reDao.getMainbySearch(region);
-//			main_region = new String[mrlist.size()];
-//			for(int i = 0; i < main_region.length; i++) {
-//				main_region[i] = mrlist.get(i).getMainRegion();
-//			}
-//			System.out.println(Arrays.toString(main_region));
-//		}
-
-		if(reDao.getMainbySearch(region) != null) {
-			main_region = reDao.getMainbySearch(region);
-			int mrid = Integer.parseInt(main_region);
-			selist = reDao.getSemibySearch(mrid);
-			semi_region = new String[selist.size()];
-			for(int i = 0; i < selist.size(); i++) {
-				semi_region[i] = selist.get(i).getSemiRegion();
-			}
-			//System.out.println(Arrays.toString(semi_region));			
-		}
-		
-		
-//		Connection conn = null;
-//		PreparedStatement pstmt = null;
-//		ResultSet rs = null;
-		
-		
-		
-		
-		if(job.equals("") && !region.equals("")) {			
-			if(main_region != null) {
-				//System.out.println("지역만 ");
-				list = new ArrayList<JobPostDto>();
-				conn = DBManager.getConnection();
-				if(conn != null) {
-					String sql = "select * from job_posting_tb where main_region_id=?";
-					try {
-						pstmt = conn.prepareStatement(sql);
-						pstmt.setInt(1, Integer.parseInt(main_region));
-						rs = pstmt.executeQuery();
-						while(rs.next()) {
-							String name = rs.getString(2);
-							String staffs = rs.getString(3);
-							String ceo = rs.getString(4);
-							String rpeo = rs.getString(8);
-							String rper = rs.getString(9);
-							String salary = rs.getString(10);
-							String welfare = rs.getString(11);
-							String desc = rs.getString(12);
-
-							JobPostDto post = new JobPostDto(name, staffs, ceo, rpeo, rper, salary, welfare, desc);
-							
-							list.add(post);
-						}
-					}catch (Exception e) {
-						e.printStackTrace();
-					}finally {
-						DBManager.close(conn, pstmt, rs);
-					}
-				}	
-				for(JobPostDto post : list) {
-					System.out.println(post);
-				}
-			}
+		if(!job.equals("") && jpsDao.getJobSearch(job) != null) 
+			jobName = jpsDao.getJobSearch(job);		
 			
-		}else if(!job.equals("") && region.equals("")) {			
-			System.out.println("직업만");
-		}else if(job.equals("") && region.equals("")) {
-			System.out.println("둘다빈칸");
-		}else {
-//			conn = DBManager.getConnection();
-//			if(conn != null) {
-//				String sql = "select * from job_posting_tb where ";
-//			}
+		if(!job.equals("") && jpsDao.getCorpbyCname(job) != null) 
+			cname = jpsDao.getCorpbyCname(job);		
+
+		if(!region.equals("") && jpsDao.getMainbySearch(region) != null) 
+			main_region = jpsDao.getMainbySearch(region);		
+		
+		if(!region_detail.equals("") && jpsDao.getSemibySearch(region_detail) != null) 
+			semi_region = jpsDao.getSemibySearch(region_detail);
+		
+		
+		if (cname != null && main_region != null && semi_region == null) { 			
+			list = jpsDao.getPostbyCnameAndMain(cname, main_region);		
+			System.out.println(1);
+		}else if (cname != null && semi_region != null) { 
+			list = jpsDao.getPostbyCnameAndSemi(cname, semi_region);
+			System.out.println(2);
+		}else if (main_region != null && semi_region == null) { 
+			list = jpsDao.getPostbyMainRegion(main_region);
+			System.out.println(3);
+		}else if (jobName != null && main_region != null && semi_region == null) {
+			list = jpsDao.getPostbyJobNameAndMain(jobName, main_region);
+			System.out.println(4);
+		}else if(jobName != null && semi_region != null) {
+		 	list = jpsDao.getPostbyJobNameAndSemi(jobName, semi_region);
+		 	System.out.println(5);
+		}else if (semi_region != null) { 
+			list = jpsDao.getPostbySemiRegion(semi_region);
+			System.out.println(6);
+		}else if (cname != null) {
+			list = jpsDao.getPostbyCname(job);
+			System.out.println(7);
+		}else if (jobName != null) {
+			list = jpsDao.getPostbyJobName(jobName);
+			System.out.println(8);
+		}else if(cname == null && jobName == null && main_region == null && semi_region == null) {
+			list = jpsDao.getPostbyAll();
+			System.out.println(9);
 		}
+		
+		if(list != null) {
+			ArrayList<JobPostDto> postList = new ArrayList<JobPostDto>();
+			for(JobPostDto post : list) {				
+				
+				String corp_name =  post.getCorp_name();
+				String postDate = post.getPostDate();
+				String desc = post.getJobDetail();
+				
+				JobPostDto dto = new JobPostDto(corp_name, postDate, desc);				
+				postList.add(dto);
+			}				
+			JSONArray responseList = new JSONArray(postList);
+			response.getWriter().append(responseList.toString());
+		}else	
+			response.sendRedirect("search");
+
 	}
 
 	/**

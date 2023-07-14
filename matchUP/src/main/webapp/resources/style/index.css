@@ -9,3 +9,9 @@ p.idx_title{
 .container{
     text-align: center;
 }
+
+.login_link:hover{
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}

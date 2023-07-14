@@ -6,13 +6,39 @@ public class JobPostDto {
 	private String staffs;
 	private String ceo;
     private String job;
-	private String people;
-	private String region;
+    private String region;	
 	private String regionDetail;
+	private String people;
+	private String postDate;	
 	private String salary;
-	private String postDate;
 	private String welfare;
 	private String jobDetail;
+	private String create_post;
+	
+	
+	public JobPostDto(String corp_name, String postDate, String jobDetail) {	
+		this.corp_name = corp_name;
+		this.postDate = postDate;
+		this.jobDetail = jobDetail;
+	}
+
+
+	public JobPostDto(String corp_name, String staffs, String ceo, String job, String region, String regionDetail,
+			String people, String postDate, String salary, String welfare, String jobDetail, String create_post) {		
+		this.corp_name = corp_name;
+		this.staffs = staffs;
+		this.ceo = ceo;
+		this.job = job;
+		this.region = region;
+		this.regionDetail = regionDetail;
+		this.people = people;
+		this.postDate = postDate;
+		this.salary = salary;
+		this.welfare = welfare;
+		this.jobDetail = jobDetail;
+		this.create_post = create_post;
+	}
+
 
 	public JobPostDto(String corp_name, String staffs, String ceo, String job, String people, String region, String regionDetail, String salary, String postDate, String welfare, String jobDetail) {
 		this.corp_name = corp_name;
@@ -28,13 +54,17 @@ public class JobPostDto {
 		this.jobDetail = jobDetail;
 	}
 
-	public JobPostDto(String corp_name, String staffs, String ceo, String people, String rper, String salary,
-			String welfare, String desc) {
+	public JobPostDto(String corp_name, String staffs, String ceo, String people, String postDate, String salary,
+			String welfare, String desc, String create_post) {
 		this.corp_name = corp_name;
 		this.staffs = staffs;
 		this.ceo = ceo;
 		this.people = people;
-		 
+		this.postDate = postDate; 
+		this.salary = salary;
+		this.welfare = welfare;
+		this.jobDetail = desc;
+		this.create_post = create_post;		
 	}
 
 	public String getJob() {
@@ -123,14 +153,24 @@ public class JobPostDto {
 
 	public void setCeo(String ceo) {
 		this.ceo = ceo;
-	}
+	}	
 	
+	public String getCreate_post() {
+		return create_post;
+	}
+
+	public void setCreate_post(String create_post) {
+		this.create_post = create_post;
+	}
 
 	@Override
 	public String toString() {
-		return "JobPostDto [job=" + job + ", people=" + people + ", region=" + region + ", regionDetail=" + regionDetail
-				+ ", salary=" + salary + ", postDate=" + postDate + ", welfare=" + welfare + ", jobDetail=" + jobDetail
-				+ "]";
+		return "JobPostDto [corp_name=" + corp_name + ", staffs=" + staffs + ", ceo=" + ceo + ", job=" + job
+				+ ", region=" + region + ", regionDetail=" + regionDetail + ", people=" + people + ", postDate="
+				+ postDate + ", salary=" + salary + ", welfare=" + welfare + ", jobDetail=" + jobDetail
+				+ ", create_post=" + create_post + "]";
 	}
+
+	
 
 }

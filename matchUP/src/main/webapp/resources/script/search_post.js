@@ -7,27 +7,44 @@ $(window).on('load',function(){
 });
 
 function search(){
-	const search_bar = $('#search_bar').val();
-	const region_bar = $('#region_bar').val();	
+	const job = $('#search_bar').val();
+	const region = $('#region').val();
+	const region_detail = $('#region_detail').val();	
+
 	let chk = true;
-	
-	/*if(region_bar.length == 1){
-		alert(region_bar + " 지역 취업정보를 찾지 못하였습니다.");
-		document.getElementById('region_bar').value = "";
-		chk = false;
-	}*/
-	
 	
 	if(chk === true){
 		$.ajax({
-			url:`/Search?job=${search_bar}&region=${region_bar}`,
-			method:"GET",
-			success: function(data){
-				console.log("성공");
-			},
-			error: function(xhr, status){
-				console.log("실패");
+			url:`/Search?job=${job}&region=${region}&region_detail=${region_detail}`,
+			method:"GET",						
+		}).done(function(response){
+			$('#contents-container').empty();
+			
+			const list = response;
+			console.log('typeof list : ', typeof list);
+			
+			if(typeof list === 'string'){
+				alert('ㅈㅅ');
+			}else{
+				list.forEach(post => {
+					const corp_name = post.corp_name;
+					const postDate = post.postDate;
+					const desc = post.jobDetail;
+					
+					if (corp_name !== "") {
+						$('#contents-container').append(
+							`<div class="post">		
+								<a href="#${corp_name}" class="detail_btn">					                  
+				                 	<span class="post-cname">${corp_name}</span>
+				                    <span class="post-postDate">${postDate}</span>
+				                    <span class="post-desc">${desc}</span>
+				                </a>
+	                    	 </div>
+	                    	 `
+						);
+					}
+				});
 			}			
-		});
-	}
+		});	
+	}	
 }

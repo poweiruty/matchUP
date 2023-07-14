@@ -39,8 +39,8 @@ public class JobDao {
 			}
 		}
 		return jobs;
-	}
-	
+	}	
+
 	public ArrayList<Job> getJobAll(){
 		ArrayList<Job> list = new ArrayList<Job>();
 		
