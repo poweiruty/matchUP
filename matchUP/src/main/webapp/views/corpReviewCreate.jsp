@@ -23,10 +23,9 @@
             <p class="msg_title">리뷰 작성</p>
         </div>
         <div class="main_con">
-            <p class="resume_title">나의 이력서</p>
             <div class="main_resume">
                 <!-- 이름, 생년월일, 연락처, 이메일, 주소 -->
-                <form action="Resume" method="post">
+                <form action="ReviewCreate" method="post">
                 
                 	<!--  테스토 : 황인규 작성
                 	<div calss="test">
@@ -34,67 +33,55 @@
                 		<span>${sessionScope.puserIdx}</span>
                 	</div> -->
                 	
-                    <ul>
+                    <ul>                                                                                                 
                         <li>
-                            <span class="pname">이름 : ㅋㅋㅋㅋ자살마렵다</span>
-                            <span>${sessionScope.pname}</span>
-                        </li>
-                        
-                        <li>
-                            <span class="birth">생년월일 : </span>
-                            <span>${sessionScope.birth}</span>
-                        </li>
-                        
-                        <li>                   
-                            <span class="tel">전화번호 : </span>
-                            <span>${sessionScope.phone}</span>
-                        </li>
-                        
-                        <li>
-                            <span class="email_resume">이메일 : </span>
-                            <span>${sessionScope.email}</span>
-                        </li>
-                        
-                        <li>
-                            <span class="user_address">주소 : </span>
-                            <span>${sessionScope.address}</span>
-                        </li> 
-                   		            
-                        <li>
-                            <label for="graduation">최종학력</label>
-                            <select name="graduation" id="graduation">
+                            <label for="star">별점</label>
+                            <select name="star" id="star">
                                 <option value="sel">옵션 선택</option>
-                                <option value="1">초졸</option>
-                                <option value="2">중졸</option>
-                                <option value="3">고졸</option>
-                                <option value="4">대졸(2~3년제)</option>
-                                <option value="5">대졸(4년제)</option>
-                                <option value="6">대학원졸</option>                             
-                            </select>
-                            <textarea name="degree" id="degree" cols="30" rows="10"></textarea>
+                                <option value="1">★☆☆☆☆</option>
+                                <option value="2">★★☆☆☆</option>
+                                <option value="3">★★★☆☆</option>
+                                <option value="4">★★★★☆</option>
+                                <option value="5">★★★★★</option>                                                             
+                            </select>                         
                         </li>
                         
                         <li>
-                            <label for="career">경력</label>
-                            <textarea name="career" id="career" cols="30" rows="10"></textarea>
+                            <label for="career">기업 한줄평</label>
+                            <input type="text" name="summary" id="summary" placeholder="기업에 관하여 간략하게 적어주세요." required>                    
                         </li>
                         
                         <li>
-                            <label for="activity">대외활동/수상이력</label>
+                            <label for="activity">기업리뷰</label>
                             <textarea name="activity" id="activity" cols="30" rows="10"></textarea>
                         </li>
+                        
                         <li>
-                            <label for="certificate">보유자격증</label>
-                            <textarea name="certificate" id="certificate" cols="30" rows="10"></textarea>
+                            <label for="position">직함/담당업무</label>
+                            <input type="text" name="position" id="position">                    
                         </li>
+                        
                         
                         <li>
                             <label for="intro">자기소개 </label>
                             <textarea name="intro" id="intro" cols="30" rows="10"></textarea>
                         </li>
+                        
+                        <li>
+                            <label for="period">근무기간</label>
+                            <select name="period" id="period">
+                                <option value="sel">옵션 선택</option>
+                                <option value="1">1년~3년</option>
+                                <option value="2">3년~5년</option>
+                                <option value="3">5년~7년</option>
+                                <option value="4">7년~10년</option>
+                                <option value="5">10년 이상</option>                                                             
+                            </select>                         
+                        </li>
+                        
                     </ul>
                     <div class="bottom">
-                		<input type="submit" name="submit" id="submit" value="이력서 등록">
+                		<input type="submit" name="submit" id="submit" value="이력서 저장">
                 		<span><a href="index"> 메인 페이지로 돌아가기</a></span> 
             		</div>
                 </form>
