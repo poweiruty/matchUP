@@ -126,7 +126,7 @@
 		<url-pattern>/Plogout</url-pattern>
 	</servlet-mapping>
 
-	<!-- 이력서 양식 -->
+	<!-- resume -->
 	<servlet>
 		<servlet-name>ResumeFormAction</servlet-name>
 		<servlet-class>controller.resume.ResumeFormAction</servlet-class>
@@ -179,7 +179,7 @@
 	</servlet-mapping>
 	
 	<!--  리뷰 양식 -->
-	<servlet>
+	<!-- <servlet>
 		<servlet-name>ReviewFormAction</servlet-name>
 		<servlet-class>controller.review.ReviewFormAction</servlet-class>
 	</servlet>
@@ -187,10 +187,10 @@
 	<servlet-mapping>
 		<servlet-name>ReviewFormAction</servlet-name>
 		<url-pattern>/Review</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 	
 	<!--  리뷰 작성 양식 -->
-	<servlet>
+	<!-- <servlet>
 		<servlet-name>ReviewCreateAction</servlet-name>
 		<servlet-class>controller.review.ReviewCreateAction</servlet-class>
 	</servlet>
@@ -198,7 +198,7 @@
 	<servlet-mapping>
 		<servlet-name>ReviewCreateAction</servlet-name>
 		<url-pattern>/ReviewCreate</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 	
 	<!-- 2. JSP 페이지 맵핑 -->
 	
@@ -393,26 +393,26 @@
 	</servlet-mapping>
 	
 	<!-- 리뷰 -->
-	<servlet-mapping>
+	<!-- <servlet-mapping>
 		<servlet-name>reviewForm</servlet-name>
 		<url-pattern>/views/corpReview.jsp</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>
-		<servlet-name>corpReview</servlet-name>
+		<servlet-name>reviewForm</servlet-name>
 		<url-pattern>/review</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 	
 	<!-- 리뷰 작성 -->
-	<servlet-mapping>
-		<servlet-name>reviewCreate</servlet-name>
+	<!-- <servlet-mapping>
+		<servlet-name>reviewCreateForm</servlet-name>
 		<url-pattern>/views/corpReviewCreate.jsp</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>
-		<servlet-name>corpReviewCreate</servlet-name>
+		<servlet-name>reviewCreateFrom</servlet-name>
 		<url-pattern>/reviewCreate</url-pattern>
-	</servlet-mapping>	
+	</servlet-mapping> -->	
 	
 	<!-- scrap -->
 	<servlet>
