@@ -24,7 +24,7 @@ public class ResumeDao {
 	
 	
 	// CREATE
-public boolean createResume(ResumeRequestDto dto) {
+	public boolean createResume(ResumeRequestDto dto) {
 	  	Resume resume = getResumeByPusersId(dto.getPusersId());
 	 
 	  	/* 한 사용자가 이력서를 여러개를 작성할 수 있어야 함.
