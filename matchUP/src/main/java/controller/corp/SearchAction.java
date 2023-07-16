@@ -1,11 +1,7 @@
 package controller.corp;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,21 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
-import model.JobPost.JobPost;
-import model.JobPost.JobPostDao;
 import model.JobPost.JobPostDto;
-import model.corp.CorpDao;
-import model.job.Job;
-import model.job.JobDao;
-import model.region.MainRegion;
-import model.region.RegionDao;
-import model.region.SemiRegion;
 import model.search.JobPostSearchDao;
-import model.user_corp.CorpUser;
-import model.user_corp.CorpUserDao;
-import util.DBManager;
 
 /**
  * Servlet implementation class SearchAction

@@ -24,7 +24,7 @@
     <!-- body 시작 -->
     <section class="container">
         <div class="msg">
-            <p class="msg_title">이력서 관리</p>
+            <p class="msg_title">이력서 등록</p>
         </div>
         <div class="main_con">
             <p class="resume_title">나의 이력서</p>
