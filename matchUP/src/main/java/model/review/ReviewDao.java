@@ -4,7 +4,7 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-import model.resume.ResumeRequestDto;
+import model.review.ReviewRequestDto;
 import util.DBManager;
 
 public class ReviewDao {
@@ -25,28 +25,28 @@ public class ReviewDao {
 	
 	// CREATE
 	public boolean createReview(ReviewRequestDto dto) {
-		
-		Review reviews = getReviewByPusersId(dto.getPusersId());
-		
-		if(reviews != null) {
-			return false;
-		} 
 					
 		int pusersId = dto.getPusersId();
 		int corpId=dto.getCorpId();
 		int star=dto.getStar();
+		String summary=dto.getSummary();
 		String review=dto.getReview();
+		String position=dto.getPosition();
+		String period=dto.getPeriod();
 			
 		this.conn = DBManager.getConnection();
 		
-		String sql = "insert into review_tb(pusers_id,corp_id,star,review) values(?,?,?,?)";			
+		String sql = "insert into review_tb(pusers_id,corp_id,star,summary,review,position,period) values(?,?,?,?,?,?,?)";			
 			
 		try{
 			this.pstmt=this.conn.prepareStatement(sql);
 			this.pstmt.setInt(1, pusersId);
 			this.pstmt.setInt(2,corpId);
 			this.pstmt.setInt(3, star);
-			this.pstmt.setString(4, review);
+			this.pstmt.setString(4, summary);
+			this.pstmt.setString(5, review);
+			this.pstmt.setString(6, position);
+			this.pstmt.setString(7, period);
 			
 			this.pstmt.execute();
 			
@@ -74,17 +74,20 @@ public class ReviewDao {
 				this.rs = this.pstmt.executeQuery();
 				
 				if(this.rs.next()) {
-					int reviewId=this.rs.getInt(1);
-					int pusersId=this.rs.getInt(2);
-					int corpId=this.rs.getInt(3);
-					int star=this.rs.getInt(4);
-					String review=this.rs.getString(5);
-					Timestamp created = this.rs.getTimestamp(6);
+					int reviewId = this.rs.getInt(1);
+					int pusersId = this.rs.getInt(2);
+					int corpId = this.rs.getInt(3);
+					int star = this.rs.getInt(4);
+					String summary=this.rs.getString(5);
+					String review = this.rs.getString(6);
+					String position = this.rs.getString(7);
+					String period = this.rs.getString(8);
+					Timestamp created = this.rs.getTimestamp(9);
 					int createdTime=Integer.parseInt(sdf.format(created));
-					Timestamp updated =this.rs.getTimestamp(7); 
+					Timestamp updated =this.rs.getTimestamp(10); 
 					int updatedTime=Integer.parseInt(sdf.format(updated));
 					
-					reviews = new Review(reviewId, pusersId, corpId, star, review, createdTime, updatedTime);
+					reviews = new Review(reviewId,pusersId,corpId,star,summary,review,position,period,createdTime,updatedTime);
 				}
 			}catch (Exception e) {
 				e.printStackTrace();
@@ -112,13 +115,16 @@ public class ReviewDao {
 					int pusersId = this.rs.getInt(2);
 					int corpId = this.rs.getInt(3);
 					int star = this.rs.getInt(4);
-					String review = this.rs.getString(5);
-					Timestamp created = this.rs.getTimestamp(6);
+					String summary=this.rs.getString(5);
+					String review = this.rs.getString(6);
+					String position = this.rs.getString(7);
+					String period = this.rs.getString(8);
+					Timestamp created = this.rs.getTimestamp(9);
 					int createdTime=Integer.parseInt(sdf.format(created));
-					Timestamp updated =this.rs.getTimestamp(7); 
+					Timestamp updated =this.rs.getTimestamp(10); 
 					int updatedTime=Integer.parseInt(sdf.format(updated));
 					
-					Review reviews = new Review(reviewId, pusersId, corpId, star, review, createdTime, updatedTime);
+					Review reviews = new Review(reviewId,pusersId,corpId,star,summary,review,position,period,createdTime,updatedTime);
 					
 					list.add(reviews);
 				}

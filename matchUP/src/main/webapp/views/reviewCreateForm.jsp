@@ -1,3 +1,7 @@
+<%@page import="util.DBManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,7 +37,53 @@
                 		<span>${sessionScope.puserIdx}</span>
                 	</div> -->
                 	
-                    <ul>                                                                                                 
+                    <ul>
+                    	<li>
+                   			<label for="corporation">기업</label>                        				
+                   				<%
+                   				Connection conn = null;
+                   				PreparedStatement pstmt=null;
+                   				ResultSet rs=null;
+                   				
+                   				try{
+                   					conn=DBManager.getConnection();
+                   					String sql="select corp_id, corp_name from corporation_tb group by corp_name order by corp_id ASC";
+                   					
+                   					pstmt=conn.prepareStatement(sql);
+                   					rs=pstmt.executeQuery();
+                   				%>
+                   					<select name="corporation" id="corporation" size="1">
+                   						<option value="" selected></option>
+                   				<% 
+                   					while(rs.next()){
+                   						int corp_id=rs.getInt("corp_id");
+                   						String corp_name=rs.getString("corp_name");
+                   				%>
+                   						<option value="<%= corp_id%>"><%= corp_name%></option>		
+                   				<%
+                   					}
+                   				}catch(Exception e){
+                   					e.printStackTrace();
+                   					System.out.println("직업 데이터 연동 및 출력 실패");
+                   				}finally{
+                   					try{
+                   						if(rs!=null){
+                   							rs.close();
+                   						}
+                   						if(pstmt!=null){
+                   							pstmt.close();
+                   						}
+                   						if(conn!=null){
+                   							conn.close();
+                   						}
+                   					}catch(Exception e){
+                   						e.printStackTrace();
+                   					}
+                   				}
+                   				%>
+                   			</select>
+                   		</li>
+                   		                                                                                                 
                         <li>
                             <label for="star">별점</label>
                             <select name="star" id="star">
@@ -47,24 +97,18 @@
                         </li>
                         
                         <li>
-                            <label for="career">기업 한줄평</label>
+                            <label for="summary">기업 한줄평</label>
                             <input type="text" name="summary" id="summary" placeholder="기업에 관하여 간략하게 적어주세요." required>                    
                         </li>
                         
                         <li>
-                            <label for="activity">기업리뷰</label>
-                            <textarea name="activity" id="activity" cols="30" rows="10"></textarea>
+                            <label for="review">기업리뷰</label>
+                            <textarea name="review" id="review" cols="30" rows="10"></textarea>
                         </li>
-                        
+                                                                                                                                
                         <li>
                             <label for="position">직함/담당업무</label>
                             <input type="text" name="position" id="position">                    
-                        </li>
-                        
-                        
-                        <li>
-                            <label for="intro">자기소개 </label>
-                            <textarea name="intro" id="intro" cols="30" rows="10"></textarea>
                         </li>
                         
                         <li>
