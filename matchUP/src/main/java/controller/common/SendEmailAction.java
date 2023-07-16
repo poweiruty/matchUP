@@ -24,7 +24,7 @@ import util.Gmail;
 /**
  * Servlet implementation class SendSMSAction
  */
-//@WebServlet("/sendEmail")
+@WebServlet("/sendEmail")
 public class SendEmailAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -49,7 +49,7 @@ public class SendEmailAction extends HttpServlet {
 		PrintWriter script = null;
 		System.out.println(email);
 
-		String host = "http://localhost:8081/";
+		String host = "http://localhost:8080/";
 		String from = "rbxo0032@gmail.com";
 		String to = email;
 		String subject = "Match-UP 이메일인증 메일";

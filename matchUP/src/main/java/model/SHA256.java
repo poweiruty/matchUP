@@ -24,7 +24,6 @@ public class SHA256 {
 			e.printStackTrace();
 		}
 		
-		
 		return result.toString();
 	}
 }

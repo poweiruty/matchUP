@@ -23,9 +23,7 @@ function search(){
 			const list = response;
 			console.log('typeof list : ', typeof list);
 			
-			if(typeof list === 'string'){
-				alert('ㅈㅅ');
-			}else{
+			if(typeof list === 'object'){
 				list.forEach(post => {
 					const corp_name = post.corp_name;
 					const postDate = post.postDate;
@@ -44,7 +42,7 @@ function search(){
 						);
 					}
 				});
-			}			
+			}		
 		});	
 	}	
 }
