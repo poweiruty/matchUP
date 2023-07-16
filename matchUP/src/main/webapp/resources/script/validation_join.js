@@ -169,7 +169,7 @@ function sendEmail(){
 		alert("인증메일이 전송되었습니다.");
 		console.log(res);		
 		localStorage.setItem("email", res);
-		location.href='sendEmail?email=' + res;
+		location.href='SendEmail?email=' + res;
 	}else{
 		alert("이메일을 확인해주세요.");
 	}

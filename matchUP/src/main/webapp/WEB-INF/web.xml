@@ -199,6 +199,16 @@
 		<url-pattern>/ReviewCreate</url-pattern>
 	</servlet-mapping>
 	
+	<!--  이메일 인증메일 전송 -->
+	<servlet>
+		<servlet-name>SendEmailAction</servlet-name>
+		<servlet-class>controller.common.SendEmailAction</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>SendEmailAction</servlet-name>
+		<url-pattern>/SendEmail</url-pattern>
+	</servlet-mapping>
 	<!-- 2. JSP 페이지 맵핑 -->
 	
 	<!-- index -->
