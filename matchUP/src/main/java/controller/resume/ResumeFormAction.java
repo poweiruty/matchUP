@@ -84,7 +84,7 @@ public class ResumeFormAction extends HttpServlet{
 				System.out.println("활동 : " + activity);
 				System.out.println("자격증 : " + certificate);
 				System.out.println("자기소개 : " + intro);
-
+				
 				// DTO 객체 생성
 				ResumeRequestDto resume = new ResumeRequestDto(puserIdx,jobIdx,graduation,degree,career,activity,certificate,intro);
 
