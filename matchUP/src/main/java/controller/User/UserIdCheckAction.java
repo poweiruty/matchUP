@@ -47,7 +47,8 @@ public class UserIdCheckAction extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		CorpUserDao cdao = CorpUserDao.getInstance();		
+		CorpUserDao cdao = CorpUserDao.getInstance();	
+		HttpSession session = request.getSession();
 		UserDao dao = UserDao.getInstance();
 		String tmpId = request.getParameter("tmpId");
 		String res = null;
@@ -59,12 +60,16 @@ public class UserIdCheckAction extends HttpServlet {
 			res = "중복";
 		}
 		
+		String url = "joinPerson";
 		
 		System.out.println(res);		
-		request.setAttribute("idDupl", res);	
-		request.setAttribute("id", id);	
-		ServletContext app = this.getServletContext();
-		RequestDispatcher dispatcher = app.getRequestDispatcher("/joinPerson");
-		dispatcher.forward(request, response);
+//		request.setAttribute("idDupl", res);	
+//		request.setAttribute("id", id);
+		session.setAttribute("idDupl", res);
+		session.setAttribute("id", id);
+//		ServletContext app = this.getServletContext();
+//		RequestDispatcher dispatcher = app.getRequestDispatcher("/joinPerson");
+//		dispatcher.forward(request, response);		
+		response.sendRedirect(url);
 	}
 }

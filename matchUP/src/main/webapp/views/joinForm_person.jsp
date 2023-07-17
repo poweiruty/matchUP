@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- header css -->
 <link rel="stylesheet" href="resources/style/join.css">
@@ -15,9 +14,12 @@
 <body>
 	<%		
 		String id = "";
-		if(request.getAttribute("id") != null){
+		/* if(request.getAttribute("id") != null){
 			id = request.getAttribute("id").toString();
-		}	
+		} */
+		if(session.getAttribute("id") != null){
+			id = session.getAttribute("id").toString();
+		}
 	%>
 	<!-- header 시작 -->
     <jsp:include page="header_form"></jsp:include>
@@ -28,7 +30,8 @@
 				<form action="UserIdCheck" method="POST" name="idForm" id="idForm" style="display: none;">
 					<input type="hidden" name="pageInfo" id="pageInfo" value="puser">					
 					<input type="hidden" name="tmpId" id="tmpId" value="">
-					<input type="hidden" name="idchk" id="idchk" value="<%=request.getAttribute("idDupl")%>">	
+					<%-- <input type="hidden" name="idchk" id="idchk" value="<%=request.getAttribute("idDupl")%>"> --%>
+					<input type="hidden" name="idchk" id="idchk" value="<%=session.getAttribute("idDupl")%>">	
 				</form>			
 				<form action="PJoin" method="POST" name="joinForm" id="joinForm">
 					<ul>
@@ -44,11 +47,12 @@
 								</label>
 							</li>
 							<li class="id">							
-								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" value="<%=id %>" required>									
-								<input type="button" form="idForm" name="btn1" id="btn1" value="중복확인" onclick="idChk(form)"><br/>																														
-							</li>							
+								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" value="<%=id %>">									
+								<input type="button" form="idForm" name="btn1" id="btn1" value="중복확인" onclick="idChk(form); idNotice();"><br/>																														
+							</li>														
 							<li class="error" id="error-duplId">* 이미 사용 중인 아이디입니다.</li>								
 							<li class="error" id="error-noneId">* 아이디는 필수 정보입니다.</li>
+							
 							<!-- 비밀번호 부분 -->
 							<li>
 								<label for="pwd1">
@@ -62,6 +66,9 @@
 								<input type="password" name="password" id="password" placeholder="4-10자의 영문, 특수문자, 숫자 조합" required>
 								<input type="password" name="password_chk" id="password_chk" placeholder="비밀번호 확인" required>								
 								<span id="chkNotice" size="1"></span>
+								<li class="error" id="error-password">* 비밀번호는 필수 정보입니다.</li>
+								<li class="error" id="error-password_chk">* 비밀번호를 다시 입력해주세요.</li>
+								<li class="error" id="error-pwdEquals">* 비밀번호가 일치하지 않습니다.</li>
 							</li>
 							
 							<!-- 이름 부분 -->
@@ -262,7 +269,7 @@
 							<!-- 가입하기 부분 -->
 
 							<li class="sub">
-								<input type="button" name="submit" id="submit" value="가입하기" onclick="checkValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
+								<input type="button" id="submit_btn" value="가입하기" onclick="checkValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
 								<a href="index"> 
 									<div id="index">메인 페이지로 돌아가기</div>
 								</a>

@@ -41,8 +41,8 @@ public class UserDao {
 		if(id != null && password != null && name != null && birth != 0 && tel != null) {
 			this.conn = DBManager.getConnection();
 			if(this.conn != null) {
-				if(!email.equals("") && emailCheck == 1) {
-					String sql = "INSERT INTO pusers_tb (pid,ppassword,pname,birth,tel,email,userEmailCheck) VALUES(?, ?, ?, DATE(?), ?, ?, ?)";
+				if(!address.equals("")) {
+					String sql = "INSERT INTO pusers_tb (pid,ppassword,pname,birth,tel,email,user_address,userEmailCheck) VALUES(?, ?, ?, DATE(?), ?, ?, ?, ?)";
 					try {
 						this.pstmt = this.conn.prepareStatement(sql);
 						this.pstmt.setString(1, id);
@@ -51,25 +51,8 @@ public class UserDao {
 						this.pstmt.setInt(4, birth);
 						this.pstmt.setString(5, tel);
 						this.pstmt.setString(6, email);
-						this.pstmt.setInt(7, emailCheck);
-						
-						this.pstmt.execute();
-						
-					}catch (Exception e) {
-						e.printStackTrace();					
-					}finally {
-						DBManager.close(this.conn, this.pstmt);
-					}
-				}else if(!address.equals("")){
-					String sql = "INSERT INTO pusers_tb (pid,ppassword,pname,birth,tel,user_address) VALUES(?, ?, ?, DATE(?), ?, ?)";
-					try {
-						this.pstmt = this.conn.prepareStatement(sql);
-						this.pstmt.setString(1, id);
-						this.pstmt.setString(2, password);
-						this.pstmt.setString(3, name);
-						this.pstmt.setInt(4, birth);
-						this.pstmt.setString(5, tel);
-						this.pstmt.setString(6, address);
+						this.pstmt.setString(7, address);
+						this.pstmt.setInt(8, emailCheck);
 						
 						this.pstmt.execute();
 						
@@ -98,7 +81,6 @@ public class UserDao {
 						DBManager.close(this.conn, this.pstmt);
 					}
 				}
-			}else {
 				check = false;
 			}
 		}else {
