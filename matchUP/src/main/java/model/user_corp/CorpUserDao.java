@@ -181,7 +181,8 @@ public class CorpUserDao {
 	public void updateCorpUser(CorpUserRequestDto dto, String cpassword) {
 		CorpUser cuser = getCorpUserbyId(dto.getCid());
 		this.conn = DBManager.getConnection();
-		if(this.conn != null) {
+		if(this.conn != null  && dto.getCpassword() != null && dto.getMgr_email() != null && dto.getCid() != null) {
+			if(dto.getCpassword() != "") {
 			String sql = "UPDATE cusers_tb SET cpassword=?, mgr_name=?, mgr_tel=?, mgr_email=?, caddress=? WHERE cid=? AND cpassword=?";						
 			try {				
 				this.pstmt = this.conn.prepareStatement(sql);
@@ -225,7 +226,8 @@ public class CorpUserDao {
 				e.printStackTrace();
 			} finally {
 				DBManager.close(this.conn, this.pstmt);
-			}			
+			}		
+			}
 		}
 	}
 	

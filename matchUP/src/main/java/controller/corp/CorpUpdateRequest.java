@@ -14,7 +14,7 @@ import model.user_corp.CorpUserDao;
 /**
  * Servlet implementation class CorpUpdateRequest
  */
-@WebServlet("/CorpUpdateRequest")
+//@WebServlet("/CorpUpdateRequest")
 public class CorpUpdateRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -57,15 +57,7 @@ public class CorpUpdateRequest extends HttpServlet {
 			
 			url = "mypageCorp";
 		}
-		
-		// 페이지 이동 처리 방법 2가지 
-		// 1) response.sendRedirect(url)
-		// ㄴ 지정한 페이지로 랜딩만 함 (데이터는 들고가지 않음) 
-		// response.sendRedirect(url);
-		
-		// 2) request.getRequestDispatcher(url).forward(request, response)
-		// ㄴ 객체를 들고 url로 전달 처리 할 수 O 
-		// ㄴ 이동 시, 변경된 url이 패스에 보이지 않고, -> 현재 servlet 패스값이 유지됨 
+
 		request.getRequestDispatcher(url).forward(request, response);	
 	}
 }

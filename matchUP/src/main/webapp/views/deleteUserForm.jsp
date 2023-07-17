@@ -43,7 +43,7 @@ input{
 
 	<div id="wrap">
 		<div class="section">
-			<form method="POST" action="CLeave">
+			<form method="POST" action="PLeave">
 				<ul class="delete_main">
 					<li>
 						<p class="title">회원탈퇴</p>

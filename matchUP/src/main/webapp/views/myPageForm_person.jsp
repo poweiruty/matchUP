@@ -37,15 +37,19 @@
 								value="${sessionScope.log}" readonly></li>
 
 							<!-- 비밀번호 부분 -->
-							<li><label for="new-password">
-									<h2 id="pwd_center">
-										변경할 비밀번호<br>
-										<span class="pwd_warning"> 변경을 원치 않으시면, 현재 비밀번호를 입력하세요.</span>
-									</h2>
-							</label></li>
+							<li>
+								<h2>비밀번호</h2> <input type="text" id="password"
+								name="password" autofocus>
+							</li>
+								<ul>
+									<li class="error" id="error-password">비밀번호를 입력하세요.</li>
+								</ul>
+							<li><h2 id="pwd_center">
+									변경할 비밀번호<br>
+								</h2></li>
 
-							<li class="new-password"><input type="password" name="new-password"
-								id="new-password" required> </li>
+							<li class="new-password"><input type="text" name="new-password"
+								id="new-password"> </li>
 							<!-- 이름 부분 -->
 							<li class="pname"><label for="pname">
 									<h2>이름</h2>
@@ -65,7 +69,7 @@
 								<h2>연락처</h2>
 							</li>
 							<li class="tel"><input type="text" name="tel" id="tel"
-								value=${sessionScope.phone}></li>
+								value="${sessionScope.phone}"></li>
 
 							<!-- 이메일 부분 -->
 							<li><label for="email">
@@ -85,7 +89,7 @@
 							<!-- 수정하기 부분 -->
 							<li class="sub">	
 								<div class="submit">
-								<input type="submit" name="submit" id="submit" value="수정하기" onclick="checkValue(form)">
+								<input type="button" id="submit-btn" value="수정하기" onclick="checkPupdate(form)">
 								<a href="index"> 
 								</div>
 								<!-- 초기 화면으로 돌아감 -->

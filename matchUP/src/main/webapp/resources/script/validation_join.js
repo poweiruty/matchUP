@@ -13,12 +13,13 @@ $('#id').on('change', e => {
 	}
 });
 $('#password').on('change', e => {
-	// && password.match(/^[a-zA-Z0-9!@#$%]{8,20}$/) !== null
 	if($('#password').val() !== "") {
 		$('#error-password').hide();
-		$('#password').parent().css('border-color', 'lightgrey');
+		$('#password').parent().css('border-color', 'red');
+		$('#password').parent().css('border-top', 'solid 1px red');
 	}
 });
+
 $('#passwordChk').on('change', e => {
 	if($('#passwordChk').val() !== "") {
 		$('#error-password_chk').hide();
@@ -51,12 +52,11 @@ function idChk(idform){
 function checkValue(htmlForm){
 	const id = htmlForm.id.value;
 	const password = htmlForm.password.value;
-	const passwordChk = htmlForm.password_chk.value;
 	const name = htmlForm.name.value;
-	const birth = htmlForm.year.value + htmlForm.month.value + htmlForm.date.value;	
-	const tel = htmlForm.phone.value + htmlForm.phone1.value + htmlForm.phone2.value;
+	const birth = htmlForm.birth.value;	
+	const tel = htmlForm.phone.value;
 	var idchk = document.getElementById('idchk').value;	
-	var email = htmlForm.email.value + "@" + htmlForm.email2.value;	
+	var email = htmlForm.email.value;	
 	
 	if(htmlForm.selectEmail.value === "1"){
 		email += htmlForm.email2.value;
@@ -68,6 +68,7 @@ function checkValue(htmlForm){
 	const address = htmlForm.address.value + htmlForm.detailAddress.value + htmlForm.extraAddress.value;
 		
 	let check = true;
+	
 	if(id === "" || id.match(/^[a-zA-Z0-9]{3,11}$/) === null){
 		$('#error-noneId').show();		
 		check = false;
@@ -76,12 +77,8 @@ function checkValue(htmlForm){
 		check = false;		
 	}else if(password === "" || password.match(/^[a-zA-Z0-9!@#$%]{8,20}$/) === null){
 		$('#error-password').show();
-		check = false;
-	}else if(passwordChk === ""){
-		$('#error-password_chk').show();
-		check = false;
-	}else if(password !== passwordChk){
-		$('#error-pwdEquals').show();
+		$('#password').parent().css('border-color', 'red');
+		$('#password').parent().css('border-top', 'solid 1px red');
 		check = false;
 	}else if(name === ""){		
 		$('#error-name').show();
@@ -103,6 +100,74 @@ function checkValue(htmlForm){
 		htmlForm.submit();
 	}
 }
+
+function checkPupdate(htmlForm){
+	const id = htmlForm.id.value;
+	const password = htmlForm.password.value;
+	const name = htmlForm.name.value;
+	const birth = htmlForm.birth.value;	
+	const tel = htmlForm.tel.value;
+		
+	let check = true;
+	
+	if(id === "" || id){
+		$('#error-noneId').show();		
+		check = false;
+	}else if(password === ""){
+		$('#error-password').show();
+		$('#password').parent().css('border-color', 'red');
+		check = false;
+	}else if(name === ""){		
+		$('#error-name').show();
+		check = false;
+	}else if(birth === "" || birth.length !== 8){
+		$('#error-birth').show();
+		check = false;
+	}else if(tel.length !== 11){
+		$('#error-tel').show();
+		check = false;
+	}
+	
+	if(check === true){
+		console.log(check);
+		htmlForm.submit();
+	}
+}
+
+function checkCupdate(htmlForm){
+	const cid = htmlForm.cid.value;
+	const cpassword = htmlForm.cpassword.value;
+	const mgr_tel = htmlForm.mgr_tel.value;	
+	const mgr_email = htmlForm.mgr_email.value;
+	const caddress = htmlForm.caddress.value;
+		
+	let check = true;
+	
+	if(cid === ""){
+		$('#error-password').show();		
+		check = false;
+	}else if(cpassword === ""){
+		$('#error-password').show();
+		$('#cpassword').parent().css('border-color', 'red');
+		check = false;
+	}else if(mgr_tel === ""){
+		$('#error-password').show();
+		check = false;
+	}else if(mgr_email.length === ""){
+		$('#error-password').show();
+		check = false;
+	}else if(caddress.length === ""){
+		$('#error-password').show();
+		check = false;
+	}
+	
+	
+	if(check === true){
+		console.log("check " + check);
+		htmlForm.submit();
+	}
+}
+
 
 function daumPostCode(){
 	new daum.Postcode({

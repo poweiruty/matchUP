@@ -34,7 +34,7 @@ public class UserUpdateAction extends HttpServlet {
 		UserRequestDto userDto = null;
 		
 		String pid = request.getParameter("pid");
-		String ppassword = request.getParameter("ppassword");
+		String password = request.getParameter("password");
 		String newPassword = request.getParameter("new-password");
 		String email = request.getParameter("email");
 		String pname = request.getParameter("pname");
@@ -43,7 +43,7 @@ public class UserUpdateAction extends HttpServlet {
 		
 		
 		System.out.println("pid " + pid);
-		System.out.println("ppassword " + ppassword);
+		System.out.println("password " + password);
 		System.out.println("newPassword " + newPassword);
 		System.out.println("email " + email);
 		System.out.println("pname " + pname);
@@ -53,7 +53,7 @@ public class UserUpdateAction extends HttpServlet {
 		userDto = new UserRequestDto(pid, newPassword, pname, 0, tel, email, user_address, 1);
 		
 		UserDao userDao = UserDao.getInstance();
-		userDao.updateUser(userDto, ppassword);
+		userDao.updateUser(userDto, password);
 		
 		String url = "UserUpdateRequest";
 		response.sendRedirect(url);	}
