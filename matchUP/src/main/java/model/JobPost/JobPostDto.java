@@ -47,8 +47,9 @@ public class JobPostDto {
 	}
 
 
-	public JobPostDto(String corp_name, String staffs, String ceo, String job, String region, String regionDetail,
+	public JobPostDto(String title, String corp_name, String staffs, String ceo, String job, String region, String regionDetail,
 			String people, String postDate, String salary, String welfare, String jobDetail, String create_post) {		
+		this.title = title;
 		this.corp_name = corp_name;
 		this.staffs = staffs;
 		this.ceo = ceo;
@@ -64,7 +65,8 @@ public class JobPostDto {
 	}
 
 
-	public JobPostDto(String corp_name, String staffs, String ceo, String job, String people, String region, String regionDetail, String salary, String postDate, String welfare, String jobDetail) {
+	public JobPostDto(String title, String corp_name, String staffs, String ceo, String job, String people, String region, String regionDetail, String salary, String postDate, String welfare, String jobDetail) {
+		this.title = title;
 		this.corp_name = corp_name;
 		this.staffs = staffs;
 		this.ceo = ceo;
@@ -78,9 +80,10 @@ public class JobPostDto {
 		this.jobDetail = jobDetail;
 	}
 
-	public JobPostDto(int post_id, String corp_name, String staffs, String ceo, String people, String postDate, String salary,
+	public JobPostDto(int post_id, String title, String corp_name, String staffs, String ceo, String people, String postDate, String salary,
 			String welfare, String desc, String create_post) {
 		this.post_id = post_id;
+		this.title = title;
 		this.corp_name = corp_name;
 		this.staffs = staffs;
 		this.ceo = ceo;
@@ -91,11 +94,12 @@ public class JobPostDto {
 		this.jobDetail = desc;
 		this.create_post = create_post;		
 	}
-	public JobPostDto(int post_id, String corp_name, String staffs, String ceo, String job, String region,
+	public JobPostDto(int post_id, String title, String corp_name, String staffs, String ceo, String job, String region,
 			String regionDetail, String people, String postDate, String salary, String welfare, String jobDetail,
 			String create_post) {
 		super();
 		this.post_id = post_id;
+		this.title = title;
 		this.corp_name = corp_name;
 		this.staffs = staffs;
 		this.ceo = ceo;
@@ -230,6 +234,21 @@ public class JobPostDto {
 	}
 	
 		
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	public void setPost_id(int post_id) {
+		this.post_id = post_id;
+	}
 
 	
 

@@ -45,6 +45,7 @@ public class JobPostFormAction extends HttpServlet {
 		{
 			request.setCharacterEncoding("UTF-8");
 
+			String title = request.getParameter("title");
 			String job = request.getParameter("job");
 			String people = request.getParameter("people");
 			String region = request.getParameter("region");
@@ -58,6 +59,7 @@ public class JobPostFormAction extends HttpServlet {
 			String ceo = request.getParameter("ceo");
 			
 			// 화면에서 넘겨준 데이터 확인
+			System.out.println("title : " + title);
 			System.out.println("corp_name : " + corp_name);
 			System.out.println("staffs : " + staffs);
 			System.out.println("ceo : " + ceo);
@@ -71,7 +73,7 @@ public class JobPostFormAction extends HttpServlet {
 			System.out.println("jobDetail : " + jobDetail);
 
 			// DTO 객체 생성
-			JobPostDto jobPost = new JobPostDto(corp_name, staffs, ceo, job, people, region, regionDetail, salary, postDate, welfare, jobDetail);
+			JobPostDto jobPost = new JobPostDto(title, corp_name, staffs, ceo, job, people, region, regionDetail, salary, postDate, welfare, jobDetail);
 
 			// DAO 객체 생성
 			JobPostDao jobPostDao = JobPostDao.getInstance();
