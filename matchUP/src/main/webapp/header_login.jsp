@@ -137,15 +137,23 @@
 			<div class="resumeForm">
 				<c:choose>
 					<c:when test="${not empty sessionScope.cname }">
-						<a href="jobPost"><h3>채용 관리</h3></a>
+						<a href="jobPost">
+							<h3>채용공고등록</h3>
+						</a>
 					</c:when>
 					
+					<c:when test="${not empty sessionScope.pname }">
+						<a href="resumeRead	">
+							<h3>이력서 관리</h3>
+						</a>
+					</c:when>
+							
 					<c:otherwise>
-						<a href="resumeRead"><h3>이력서 관리</h3></a>
-					</c:otherwise>
+						<a href="login">								
+							<h3>이력서 관리</h3>
+						</a>
+					</c:otherwise>													
 				</c:choose>
-
-			</div>
     </header>
     <!-- header 끝 -->
 </body>
