@@ -144,8 +144,9 @@ public class CorpUserDao {
 					String mgr_tel = this.rs.getString(7);
 					String mgr_email = this.rs.getString(8);
 					String address = this.rs.getString(9);
+					int emailChk = this.rs.getInt(10);
 
-					corp = new CorpUser(id, password, name, num, mgr_name, mgr_tel, mgr_email, address);
+					corp = new CorpUser(id, password, name, num, mgr_name, mgr_tel, mgr_email, address, emailChk);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

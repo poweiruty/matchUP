@@ -498,5 +498,14 @@
 		<servlet-name>emailCheckAction</servlet-name>
 		<url-pattern>/emailCheck</url-pattern>
 	</servlet-mapping>	
-	
+	<!-- viewDtail -->
+	<servlet>
+		<servlet-name>viewDtailForm</servlet-name>
+		<jsp-file>/views/viewDtailForm.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>viewDtailForm</servlet-name>
+		<url-pattern>/viewDtail</url-pattern>
+	</servlet-mapping>
 </web-app>
