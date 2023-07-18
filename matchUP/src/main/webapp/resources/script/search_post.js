@@ -11,6 +11,9 @@ function search(){
 	const region = $('#region').val();
 	const region_detail = $('#region_detail').val();	
 
+	console.log(job);
+	console.log(region);
+	console.log(region_detail);
 	let chk = true;
 	
 	if(chk === true){
@@ -18,7 +21,7 @@ function search(){
 			url:`/Search?job=${job}&region=${region}&region_detail=${region_detail}`,
 			method:"GET",						
 		}).done(function(response){
-			$('#contents-container').empty();
+			$('#jobpost-list').empty();
 			
 			const list = response;
 			console.log('typeof list : ', typeof list);

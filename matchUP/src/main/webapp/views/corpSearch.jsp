@@ -38,10 +38,8 @@
 				<label for="search_bar">
 					<h2>검색어</h2>
 				</label>
-				<input type="text" id="search_bar" placeholder="업종 및 회사명(업종 ex -> 디자인, 교육, 회계...)">
-			</ul>
-	
-	
+				<input type="text" name="search_bar" id="search_bar" placeholder="업종 및 회사명(업종 ex -> 디자인, 교육, 회계...)">
+			</ul>	
 			 <ul class="region">
 				<li class ="region_li" style="width: 1000px;">
 							<label for="region">지역</label> 
@@ -140,7 +138,7 @@
 					</ul>
 				</div>
 				<div id="detail_tab">			
-			 		<iframe src="search" name="detail_post" id="detail_post" width="630" height="500"></iframe>
+			 		<iframe src="viewDtail" name="detail_post" id="detail_post" width="630" height="500"></iframe>
 			 	</div>
 			</div>
 		</div>

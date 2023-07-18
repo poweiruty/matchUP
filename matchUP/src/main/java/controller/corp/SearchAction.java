@@ -39,8 +39,7 @@ public class SearchAction extends HttpServlet {
 		String region_detail = request.getParameter("region_detail");
 		
 		ArrayList<JobPostDto> list = null;
-		JobPostSearchDao jpsDao = JobPostSearchDao.getInstance();
-		
+		JobPostSearchDao jpsDao = JobPostSearchDao.getInstance();		
 		
 		String cname = null;
 		String jobName = null;
@@ -69,6 +68,7 @@ public class SearchAction extends HttpServlet {
 		}else if (main_region != null && semi_region == null) { 
 			list = jpsDao.getPostbyMainRegion(main_region);
 			System.out.println(3);
+			System.out.println("job : " + job);
 		}else if (jobName != null && main_region != null && semi_region == null) {
 			list = jpsDao.getPostbyJobNameAndMain(jobName, main_region);
 			System.out.println(4);
