@@ -39,6 +39,11 @@
                 	</div> -->
                 	
                     <ul>
+                    	<li>
+                            <label for="resume_title">제목</label>
+                            <input type="text" name="resume_title" id="resume_title">                    
+                        </li>
+                        
                         <li>
                             <label for="pname">이름 </label>
                             <span>${sessionScope.pname}</span>
@@ -133,6 +138,7 @@
                             <label for="activity">대외활동/수상이력</label>
                             <textarea name="activity" id="activity" cols="30" rows="10"></textarea>
                         </li>
+                        
                         <li>
                             <label for="certificate">보유자격증</label>
                             <textarea name="certificate" id="certificate" cols="30" rows="10"></textarea>
@@ -143,6 +149,7 @@
                             <textarea name="intro" id="intro" cols="30" rows="10"></textarea>
                         </li>
                     </ul>
+                    
                     <div class="bottom">
                 		<input type="submit" name="submit" id="submit" value="이력서 등록">
                 		<a href="index"><input type="button" value="메인 페이지로 돌아가기"></a>

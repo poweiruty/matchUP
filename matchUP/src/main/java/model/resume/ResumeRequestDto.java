@@ -3,6 +3,7 @@ package model.resume;
 public class ResumeRequestDto {
 	private int resume_id;
 	private int pusers_id;
+	private String resume_title;
 	private int job_id;
 	private String graduation;
 	private String degree;
@@ -13,8 +14,9 @@ public class ResumeRequestDto {
 	private int resume_created;
 	private int resume_modified;
 	
-	public ResumeRequestDto(int jobId, String graduation,String degree, 
+	public ResumeRequestDto(String resumeTitle, int jobId,String graduation,String degree, 
 			  String career, String activity, String certificate, String intro) {
+		this.resume_title=resumeTitle;
 		this.job_id=jobId;
 		this.graduation=graduation;
 		this.degree=degree;
@@ -23,9 +25,10 @@ public class ResumeRequestDto {
 		this.certificate=certificate;
 		this.intro=intro;
 	}
-	public ResumeRequestDto(int puserIdx,int jobId,String graduation,String degree, 
-							String career,String activity,String certificate,String intro) {
+	public ResumeRequestDto(int puserIdx,String resumeTitle,int jobId,String graduation,String degree, 
+				  String career, String activity, String certificate, String intro) {
 		this.pusers_id=puserIdx;
+		this.resume_title=resumeTitle;
 		this.job_id=jobId;
 		this.graduation=graduation;
 		this.degree=degree;
@@ -34,11 +37,12 @@ public class ResumeRequestDto {
 		this.certificate=certificate;
 		this.intro=intro;
 	} 
-	public ResumeRequestDto(int resumeId, int pusersId, int jobId, 
-			  	  			String graduation,String degree,String career,String activity, 
-			  	  			String certificate,String intro, int resumeCreated, int resumeModified) {  	  
+	public ResumeRequestDto(int resumeId, int pusersId, String resumeTitle, int jobId, 
+		  	  	  String graduation, String degree, String career, 
+		  	      String activity, String certificate, String intro, int resumeCreated, int resumeModified) {
 		this.resume_id=resumeId;
 		this.pusers_id = pusersId;
+		this.resume_title=resumeTitle;
 		this.job_id=jobId;
 		this.graduation=graduation;
 		this.degree=degree;
@@ -63,6 +67,13 @@ public class ResumeRequestDto {
 	}
 	public void setPusersId(int pusersId) {
 		this.pusers_id = pusersId;
+	}
+	
+	public String getResumeTitle() {
+		return resume_title;	
+	}
+	public void setResumeTitle(String resumeTitle) {
+		this.resume_title = resumeTitle;
 	}
 		
 	public int getJobId() {
