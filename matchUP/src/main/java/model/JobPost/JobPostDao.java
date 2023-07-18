@@ -28,21 +28,22 @@ public class JobPostDao {
 
 		conn = DBManager.getConnection();
 		if (conn != null) {
-			String sql = "INSERT INTO job_posting_tb (corp_name, staffs, ceo, job_id, main_region_id, semi_region_id, recruit_people, recruit_period, salary, welfare, description) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO job_posting_tb (title, corp_name, staffs, ceo, job_id, main_region_id, semi_region_id, recruit_people, recruit_period, salary, welfare, description) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, dto.getCorp_name());
-				pstmt.setString(2, dto.getStaffs());				
-				pstmt.setString(3, dto.getCeo());
-				pstmt.setInt(4, Integer.parseInt(dto.getJob()));
-				pstmt.setInt(5, Integer.parseInt(dto.getRegion()));
-				pstmt.setInt(6, Integer.parseInt(dto.getRegionDetail()));
-				pstmt.setInt(7, Integer.parseInt(dto.getPeople()));
-				pstmt.setString(8, dto.getPostDate());
-				pstmt.setString(9, dto.getSalary());
-				pstmt.setString(10, dto.getWelfare());
-				pstmt.setString(11, dto.getJobDetail());
+				pstmt.setString(1, dto.getTitle());
+				pstmt.setString(2, dto.getCorp_name());
+				pstmt.setString(3, dto.getStaffs());				
+				pstmt.setString(4, dto.getCeo());
+				pstmt.setInt(5, Integer.parseInt(dto.getJob()));
+				pstmt.setInt(6, Integer.parseInt(dto.getRegion()));
+				pstmt.setInt(7, Integer.parseInt(dto.getRegionDetail()));
+				pstmt.setInt(8, Integer.parseInt(dto.getPeople()));
+				pstmt.setString(9, dto.getPostDate());
+				pstmt.setString(10, dto.getSalary());
+				pstmt.setString(11, dto.getWelfare());
+				pstmt.setString(12, dto.getJobDetail());
 
 				pstmt.execute();	
 				check = true;
