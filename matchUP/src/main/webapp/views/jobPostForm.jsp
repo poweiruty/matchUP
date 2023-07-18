@@ -14,12 +14,18 @@
 <title>Document</title>
 
 <link rel="stylesheet" href="resources/style/jobPost.css">
+
 </head>
 
 <body>
 	<!-- header 시작 -->
 
 	<jsp:include page="header_form"></jsp:include>
+	<style>
+		li{
+			margin: 3% 0;
+		}
+	</style>
 	<!-- header 끝 -->
 
 	<!-- body 시작 -->
@@ -27,14 +33,18 @@
 
 	<section class="container">
 		<div class="jobPost_wrap">
-			<div class="title">
+			<div class="posting_title">
 				<p>채용 공고 등록</p>
 			</div>
 			<div class="main_con">
 				<form action="JobPost" method="post">
 					<ul>
-					
-					
+					<li>
+						<span>회사정보</span><br>
+						<span class="if">*입력된 정보가 상이할 시, 고객센터로 문의해 주시기 바랍니다.</span>
+					</li>
+					<div class="corpInfo">
+											
 						<li>
 							<span>회사명: </span>
 							<input type = "text" name ="corp_name" id="corp_name" value="${sessionScope.cname }"></span>
@@ -44,27 +54,37 @@
 						
 						<li>
 							<span class="phone">담당자 연락처: </span> 
-							<span>0${sessionScope.phone }</span>
+							<input type="text" id="phone" value="${sessionScope.phone }">
 						</li>
 						<li>
-							<span class="phone">담당자 이메일: </span> 
-							<span>${sessionScope.email }</span>
+							<span class="email">담당자 이메일: </span> 
+							<input type="text" id="email" value="${sessionScope.email }">
 						</li>
 						<li>
 							<span class="map">본사 소재지: </span> 
-							<span>${sessionScope.map }</span>
+							<input type="text" id="map" value="${sessionScope.map }">
 						</li>
 						<li>
 							<span>대표자명: </span>
-							<input type="text" name="ceo" id="ceo" value="${sessionScope.ceo }">
+							<input type="text" name="ceo" id="ceo" value="${sessionScope.ceo }" readonly>
 						</li>
 						<li> 
 							<span>사원 수</span>
 							<input type="text" name="staffs" id="staffs" value="${sessionScope.staffs }"> 
 						</li>
-						
-						
-						
+					</div>
+						<hr class="line">
+						<div class="postinfo">
+							<li>
+								<span>채용공고 정보입력</span><br>
+								<span class="if">*채용시 필요한 정보들을 입력해 주세요.</span>
+							</li>
+
+							<li>
+								<span>채용공고 제목: </span>
+								<input type = "text" name ="title" id="title" >
+							</li>
+
 						<li>
 							<label for="job">직종</label>	                                                                                                                          
 								<%
@@ -107,7 +127,10 @@
                    					}
                    				}
                    				%>
-                   			</select>
+                   			</select><br>
+							<span class="if">
+								*유사한 직종이 포함되어 있는 항목을 골라주세요.
+							</span>
 						</li>
 						<li>
 							<label for="people">인원수</label> 
@@ -120,6 +143,9 @@
 								<option value="5">20명 이상</option>
 								<option value="6">상시 채용</option>
 							</select>
+							<span class="if">
+								*본 공고시에만 적용됩니다.
+							</span>
 								</li>
 								<li>
 							   <label for="region">지역</label> 
@@ -214,10 +240,11 @@
 						<li><label for="job_detail">직무 세부사항</label> 
 						<input type="text" name="job_detail" id="job_detail"placeholder="직무에 관련된 세부사항을 적어주세요.">
 						</li>
+					</div>
 					</ul>
 					<div class="bottom">
 						<input type="submit" name="submit" id="submit" value="등록">
-						<span><a href="index">취소</a></span>
+						<a class="cancel" href="index">취소</a>
 					</div>
 				</form>
 			</div>

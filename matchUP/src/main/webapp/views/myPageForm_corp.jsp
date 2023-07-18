@@ -41,7 +41,7 @@
 
 							<!-- 비밀번호 부분 -->
 							<li>
-								<h2>비밀번호</h2> <input type="text" id="cpassword" name="cpassword"
+								<h2 class="password_title">비밀번호</h2> <input type="text" id="cpassword" name="cpassword"
 								autofocus>
 							</li>
 							<ul>

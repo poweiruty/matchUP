@@ -62,7 +62,7 @@
 				<c:choose>
 					<c:when test="${not empty sessionScope.cname }">
 						<button class="logout_btn" onclick="location.href='Clogout'">로그아웃</button>
-						<button class="leave_btn" onclick="location.href='leave'">회원탈퇴</button>
+						<button class="leave_btn" onclick="location.href='cleave'">회원탈퇴</button>
 					</c:when>
 
 					<c:when test="${not empty sessionScope.log }">
@@ -109,16 +109,25 @@
 
 
 			<!-- 회원가입 -->
-            <div class="join">
-                <c:choose>
-					<c:when test="${not empty sessionScope.cname or not empty sessionScope.log }">
-						<a href="leave"><h3>회원탈퇴</h3></a>
-					</c:when>
+			<div class="join">
+				<c:choose>
+					<c:when test="${not empty sessionScope.cname }">
+					<a href="cleave">
+						<h3>회원탈퇴</h3>
+					</a>
+				</c:when>
+				<c:when test="${not empty sessionScope. log}">
+					<a href="leave">
+						<h3>회원탈퇴</h3>
+					</a>
+				</c:when>
 					<c:otherwise>
-						<a href="join"><h3>회원가입</h3></a>
+						<a href="join">
+							<h3>회원가입</h3>
+						</a>
 					</c:otherwise>
 				</c:choose>
-            </div>
+			</div>
             <!-- 관심채용정보(스크랩) -->
             <div class="scrap">              
                 <c:choose>
