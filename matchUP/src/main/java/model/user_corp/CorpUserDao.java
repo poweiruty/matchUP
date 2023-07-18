@@ -33,54 +33,17 @@ public class CorpUserDao {
 		String mgr_tel = dto.getMgr_tel();
 		String mgr_email = dto.getMgr_email();
 		String address = dto.getCaddress();
+		int emailChk = dto.getEmailChk();
 
 		boolean check = true;
 
 
-		if (id != null && password != null && name != null && num != 0 && mgr_name !=null && mgr_tel != null) {	// 이 부분 수정
+		if (id != null && password != null && name != null && num != 0 && mgr_name !=null && mgr_tel != null && mgr_email != null) {	// 이 부분 수정
 
 			this.conn = DBManager.getConnection();
 			if (this.conn != null) {
-				if (!mgr_email.equals("")) {
-					String sql = "INSERT INTO cusers_tb (cid, cpassword, cname, cnum, mgr_name, mgr_tel, mgr_email) VALUES(?,?,?,?,?,?,?)";
-
-					try {
-						this.pstmt = this.conn.prepareStatement(sql);
-						this.pstmt.setString(1, id);
-						this.pstmt.setString(2, password);
-						this.pstmt.setString(3, name);
-						this.pstmt.setInt(4, num);
-						this.pstmt.setString(5, mgr_name);
-						this.pstmt.setString(6, mgr_tel);
-						this.pstmt.setString(7, mgr_email);
-
-						this.pstmt.execute();
-					} catch (Exception e) {
-						e.printStackTrace();
-					} finally {
-						DBManager.close(this.conn, this.pstmt);
-					}
-				} else if (!address.equals("")) {
-					String sql = "INSERT INTO cusers_tb (cid, cpassword, cname, cnum, mgr_name, mgr_tel, caddress) VALUES(?,?,?,?,?,?,?)";
-
-					try {
-						this.pstmt = this.conn.prepareStatement(sql);
-						this.pstmt.setString(1, id);
-						this.pstmt.setString(2, password);
-						this.pstmt.setString(3, name);
-						this.pstmt.setInt(4, num);
-						this.pstmt.setString(5, mgr_name);
-						this.pstmt.setString(6, mgr_tel);
-						this.pstmt.setString(7, address);
-
-						this.pstmt.execute();
-					} catch (Exception e) {
-						e.printStackTrace();
-					} finally {
-						DBManager.close(this.conn, this.pstmt);
-					}
-				} else {
-					String sql = "INSERT INTO cusers_tb (cid, cpassword, cname, cnum, mgr_name, mgr_tel, mgr_email, caddress) VALUES(?,?,?,?,?,?,?,?)";
+				if (!address.equals("")) {
+					String sql = "INSERT INTO cusers_tb (cid, cpassword, cname, cnum, mgr_name, mgr_tel, mgr_email, caddress, userEmailCheck) VALUES(?,?,?,?,?,?,?,?,?)";
 
 					try {
 						this.pstmt = this.conn.prepareStatement(sql);
@@ -92,6 +55,26 @@ public class CorpUserDao {
 						this.pstmt.setString(6, mgr_tel);
 						this.pstmt.setString(7, mgr_email);
 						this.pstmt.setString(8, address);
+						this.pstmt.setInt(9, emailChk);
+
+						this.pstmt.execute();
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						DBManager.close(this.conn, this.pstmt);
+					}
+				} else {
+					String sql = "INSERT INTO cusers_tb (cid, cpassword, cname, cnum, mgr_name, mgr_tel, mgr_email, userEmailCheck) VALUES(?,?,?,?,?,?,?,?)";
+
+					try {
+						this.pstmt = this.conn.prepareStatement(sql);
+						this.pstmt.setString(1, id);
+						this.pstmt.setString(2, password);
+						this.pstmt.setString(3, name);
+						this.pstmt.setInt(4, num);
+						this.pstmt.setString(5, mgr_name);
+						this.pstmt.setString(6, mgr_tel);
+						this.pstmt.setString(7, address);
 
 						this.pstmt.execute();
 					} catch (Exception e) {
@@ -140,7 +123,40 @@ public class CorpUserDao {
 
 		return corp;
 	}
+	
+	public CorpUser getCorpUserbyEmail(String email) {
+		CorpUser corp = null;
+		this.conn = DBManager.getConnection();
 
+		if (this.conn != null) {
+			String sql = "SELECT * FROM cusers_tb WHERE mgr_email=?";
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setString(1, email);
+				this.rs = this.pstmt.executeQuery();
+
+				if (this.rs.next()) {
+					String id = this.rs.getString(2);
+					String password = this.rs.getString(3);
+					String name = this.rs.getString(4);
+					int num = this.rs.getInt(5);
+					String mgr_name = this.rs.getString(6);
+					String mgr_tel = this.rs.getString(7);
+					String mgr_email = this.rs.getString(8);
+					String address = this.rs.getString(9);
+
+					corp = new CorpUser(id, password, name, num, mgr_name, mgr_tel, mgr_email, address);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(this.conn, this.pstmt, this.rs);
+			}
+		}
+
+		return corp;
+	}
+	
 	public ArrayList<CorpUser> getCorpUserAll() {
 		ArrayList<CorpUser> list = new ArrayList<>();
 

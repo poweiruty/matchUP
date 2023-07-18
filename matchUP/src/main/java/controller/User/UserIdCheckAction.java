@@ -51,22 +51,32 @@ public class UserIdCheckAction extends HttpServlet {
 		HttpSession session = request.getSession();
 		UserDao dao = UserDao.getInstance();
 		String tmpId = request.getParameter("tmpId");
+		String pageInfo = request.getParameter("pageInfo");
 		String res = null;
+		String notice = null;
 		String id = tmpId;		
 
 		if(dao.getUserbyId(id) == null && cdao.getCorpUserbyId(id) == null) {
 			res = "사용가능";
+			notice = "* 사용 가능한 아이디입니다.";
 		}else {
 			res = "중복";
+			notice = "* 이미 사용 중인 아이디입니다.";
 		}
 		
 		String url = "joinPerson";
+		if(pageInfo.equals("cuser")) {
+			url = "joinCorp";
+		}
 		
 		System.out.println(res);		
 //		request.setAttribute("idDupl", res);	
 //		request.setAttribute("id", id);
 		session.setAttribute("idDupl", res);
 		session.setAttribute("id", id);
+		
+		
+		session.setAttribute("notice", notice);		
 //		ServletContext app = this.getServletContext();
 //		RequestDispatcher dispatcher = app.getRequestDispatcher("/joinPerson");
 //		dispatcher.forward(request, response);		

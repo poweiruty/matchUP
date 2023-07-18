@@ -5,13 +5,6 @@ $('#id').on('change', e => {
 		$('#id').parent().css('border-color', 'lightgrey');
 	}
 });
-$('#id').on('change', e => {
-	//&& id.match(/^[a-zA-Z0-9]{3,11}$/) !== null
-	if($('#idchk').val() === "사용가능") {
-		$('#error-duplId').hide();
-		$('#id').parent().css('border-color', 'lightgrey');
-	}
-});
 $('#password').on('change', e => {
 	if($('#password').val() !== "") {
 		$('#error-password').hide();
@@ -45,20 +38,97 @@ $('#pnum').on('change', e => {
 
 function idChk(idform){
 	document.getElementById('tmpId').value = document.getElementById('id').value;
-	const id = idform.tmpId.value;	
-	idform.submit();
+	const id = idform.tmpId.value;
+	
+	let check = true;
+	if(id === ""){
+		$('#error-noneId').show();
+		check = false;
+	}	
+	
+	if(check === true){
+		$('#idForm').submit();
+	}
 }
 function idNotice(){
 	if($('#idchk').val() === "중복"){
 		$('#error-duplId').show();
 	}
 }
-function checkValue(htmlForm){
+function pJoinCheckValue(htmlForm){
 	const id = htmlForm.id.value;
 	const password = htmlForm.password.value;
+	const passwordChk = htmlForm.passwordChk.value;
 	const name = htmlForm.name.value;
 	const birth = htmlForm.year.value + htmlForm.month.value + htmlForm.date.value;	
 	console.log(birth);
+	const tel = htmlForm.phone.value + htmlForm.phone1.value + htmlForm.phone2.value;
+	var idchk = document.getElementById('idchk').value;	
+	var email = htmlForm.email.value;	
+	
+	if(htmlForm.selectEmail.value === "1"){
+		email += htmlForm.email2.value;
+	}else{
+		email += htmlForm.selectEmail.value;
+	}	
+	const emailChk = htmlForm.emailchk.value;
+	const address = htmlForm.address.value + htmlForm.detailAddress.value + htmlForm.extraAddress.value;
+	
+	let check = true;
+	
+	if(id === "" || id.match(/^[a-zA-Z0-9]{3,11}$/) === null){
+		$('#error-noneId').show();	
+		console.log("1 : " + check);
+		check = false;
+	}else if(idchk === "중복" || idchk === null){	
+		check = false;		
+	}else if(password === "" || password.match(/^[a-zA-Z0-9!@#$%]{8,20}$/) === null){
+		$('#error-password').show();
+		console.log("3 : " + check);		
+		check = false;
+	}else if(passwordChk === ""){
+		$('#error-password_chk').show();
+		console.log("4 : " + check);		
+		check = false;
+	}else if(password !== passwordChk){
+		$('#error-pwdEquals').show();
+		console.log("5 : " + check);
+		check = false;
+	}else if(name === ""){		
+		$('#error-name').show();
+		console.log("6 : " + check);		
+		check = false;
+	}else if(birth === "" || birth.length !== 8){
+		$('#error-birth').show();
+		console.log("7 : " + check);		
+		check = false;
+	}else if(tel.length !== 11){
+		$('#error-tel').show();		
+		console.log("8 : " + check);		
+		check = false;
+	}else if(email === ""){
+		$('#error-email').show();
+		console.log("10 : " + check);		
+		check = false;
+	}else if(emailChk === "인증실패" || emailChk === "인증중"){
+		$('#error-emailChk').show();
+		console.log(9 + check);		
+		check = false;
+	}
+	
+	
+	if(check === true){
+		alert("회원가입에 성공했습니다.");
+		$("#joinForm").submit();
+	}
+}
+function cJoinCheckValue(htmlForm){
+	const id = htmlForm.id.value;
+	const password = htmlForm.password.value;
+	const passwordChk = htmlForm.passwordChk.value;
+	const cnum = htmlForm.corp_num.value;
+	const cname = htmlForm.cname.value;	
+	const mname = htmlForm.mgr_name.value;
 	const tel = htmlForm.phone.value + htmlForm.phone1.value + htmlForm.phone2.value;
 	var idchk = document.getElementById('idchk').value;	
 	var email = htmlForm.email.value;	
@@ -93,21 +163,29 @@ function checkValue(htmlForm){
 		$('#error-pwdEquals').show();
 		console.log("5 : " + check);
 		check = false;
-	}else if(name === ""){		
-		$('#error-name').show();
+	}else if(cname === ""){		
+		$('#error-cname').show();
 		console.log("6 : " + check);		
 		check = false;
-	}else if(birth === "" || birth.length !== 8){
-		$('#error-birth').show();
+	}else if(cnum === ""){
+		$('#error-cnum').show();
 		console.log("7 : " + check);		
+		check = false;
+	}else if(mname === ""){
+		$('#error-mname').show();
+		console.log("8 : " + check);		
 		check = false;
 	}else if(tel.length !== 11){
 		$('#error-tel').show();		
-		console.log("8 : " + check);		
+		console.log("9 : " + check);		
+		check = false;
+	}else if(email === ""){
+		$('#error-email').show();
+		console.log("10 : " + check);		
 		check = false;
 	}else if(emailChk === "인증실패" || emailChk === "인증중"){
 		$('#error-emailChk').show();
-		console.log(9 + check);		
+		console.log("11 : " + check);		
 		check = false;
 	}
 	
@@ -117,7 +195,6 @@ function checkValue(htmlForm){
 		$("#joinForm").submit();
 	}
 }
-
 function checkPupdate(htmlForm){
 	const id = htmlForm.id.value;
 	const password = htmlForm.password.value;

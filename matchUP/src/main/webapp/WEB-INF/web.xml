@@ -209,6 +209,17 @@
 		<servlet-name>SendEmailAction</servlet-name>
 		<url-pattern>/SendEmail</url-pattern>
 	</servlet-mapping>
+	
+	<!--  이메일 인증메일 확인 -->
+<!-- 	<servlet>
+		<servlet-name>EmailCheckAction</servlet-name>
+		<servlet-class>controller.common.EmailCheckAction</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>EmailCheckAction</servlet-name>
+		<url-pattern>/EmailCheck</url-pattern>
+	</servlet-mapping> -->
 	<!-- 2. JSP 페이지 맵핑 -->
 	
 	<!-- index -->
@@ -455,6 +466,15 @@
 		<servlet-name>term2</servlet-name>
 		<url-pattern>/term2</url-pattern>
 	</servlet-mapping>	
-	
+	<!-- emailCheck -->
+	<servlet>
+		<servlet-name>emailCheckAction</servlet-name>
+		<jsp-file>/views/emailCheckAction.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>emailCheckAction</servlet-name>
+		<url-pattern>/emailCheck</url-pattern>
+	</servlet-mapping>	
 	
 </web-app>

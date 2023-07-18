@@ -16,6 +16,15 @@
 </head>
 
 <body>
+	<%		
+		String id = "";
+		/* if(request.getAttribute("id") != null){
+			id = request.getAttribute("id").toString();
+		} */
+		if(session.getAttribute("id") != null){
+			id = session.getAttribute("id").toString();
+		}
+	%>
 	<!-- header 시작 -->
 	<jsp:include page="header_form"></jsp:include>
 
@@ -25,11 +34,12 @@
 		<div class="section">
 			<div class="section_box">
 				<form action="UserIdCheck" method="POST" name="idForm" id="idForm" style="display: none;">
-					<input type="hidden" name="pageInfo" id="pageInfo" value="puser">					
+					<input type="hidden" name="pageInfo" id="pageInfo" value="cuser">					
 					<input type="hidden" name="tmpId" id="tmpId" value="">
-					<input type="hidden" name="idchk" id="idchk" value="<%=request.getAttribute("idDupl")%>">	
+					<%-- <input type="hidden" name="idchk" id="idchk" value="<%=request.getAttribute("idDupl")%>"> --%>
+					<input type="hidden" name="idchk" id="idchk" value="<%=session.getAttribute("idDupl")%>">	
 				</form>	
-				<form action="CJoin" method="post">
+				<form action="CJoin" method="POST" name="joinForm" id="joinForm">
 					<ul>
 						<div class="pc_1">
 							<li class="start">
@@ -43,7 +53,7 @@
 								</label>
 							</li>
 							<li class="id">
-								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" required> 
+								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" value="<%=id %>"> 
 								<input type="button" form="idForm" name="btn1" id="btn1" value="중복확인" onclick="idChk(form)"><br/>
 							</li>
 
@@ -58,13 +68,13 @@
 							</li>
 							<li class="pwd">
 								<input type="password" name="password" id="password" placeholder="4-10자의 영문, 특수문자, 숫자 조합" required>
-								<input type="password" name="password_chk" id="password_chk" placeholder="비밀번호 확인" required>								
+								<input type="password" name=passwordChk id="passwordChk" placeholder="비밀번호 확인" required>								
 								<span id="chkNotice" size="1"></span>
 							</li>
 							<!-- 회사명 부분 -->
 							<li class="corp_name"><label for="corp_name">
 									<h2>회사명</h2>
-							</label> <input type="text" name="name" id="name"
+							</label> <input type="text" name="cname" id="cname"
 								placeholder="본사 주소를 기준으로 기입해 주세요." required></li>
 							
 							<!-- 사업자등록번호 부분 -->
@@ -182,7 +192,7 @@
 							<!-- 가입하기 부분 -->
 
 							<li class="sub">
-								<input type="button" name="submit-btn" id="submit-btn" value="가입하기" onclick="checkValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
+								<input type="button" name="submit-btn" id="submit-btn" value="가입하기" onclick="cJoinCheckValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
 								<a href="index"> <!-- 초기 화면으로 돌아감 -->
 									<div id="index">메인 페이지로 돌아가기</div>
 								</a>

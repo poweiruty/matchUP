@@ -9,6 +9,8 @@ public class CorpUserRequestDto {
 	private String mgr_tel;
 	private String mgr_email;
 	private String caddress;
+	private int emailChk;
+	
 	
 	public CorpUserRequestDto(String cid, String cpassword, String cname, int cnum, String mgr_name, String mgr_tel) {
 		this.cid = cid;
@@ -38,6 +40,20 @@ public class CorpUserRequestDto {
 		this.mgr_tel = mgr_tel;
 		this.mgr_email = mgr_email;
 		this.caddress = caddress;
+	}
+	
+	public CorpUserRequestDto(String cid, String cpassword, String cname, int cnum, String mgr_name, String mgr_tel,
+			String mgr_email, String caddress, int emailChk) {
+		super();
+		this.cid = cid;
+		this.cpassword = cpassword;
+		this.cname = cname;
+		this.cnum = cnum;
+		this.mgr_name = mgr_name;
+		this.mgr_tel = mgr_tel;
+		this.mgr_email = mgr_email;
+		this.caddress = caddress;
+		this.emailChk = emailChk;
 	}
 	public String getCid() {
 		return cid;
@@ -86,6 +102,12 @@ public class CorpUserRequestDto {
 	}
 	public void setCaddress(String caddress) {
 		this.caddress = caddress;
+	}
+	public int getEmailChk() {
+		return emailChk;
+	}
+	public void setEmailChk(int emailChk) {
+		this.emailChk = emailChk;
 	}
 	
 }

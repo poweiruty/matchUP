@@ -14,11 +14,18 @@
 <body>
 	<%		
 		String id = "";
+		String notice = "";
+		String status = "none";
 		/* if(request.getAttribute("id") != null){
 			id = request.getAttribute("id").toString();
 		} */
 		if(session.getAttribute("id") != null){
 			id = session.getAttribute("id").toString();
+		}
+		
+		if(session.getAttribute("notice") != null){
+			notice = session.getAttribute("notice").toString();
+			status = "block";
 		}
 	%>
 	<!-- header 시작 -->
@@ -50,7 +57,7 @@
 								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" value="<%=id %>">									
 								<input type="button" form="idForm" name="btn1" id="btn1" value="중복확인" onclick="idChk(form); idNotice();"><br/>																														
 							</li>														
-							<li class="error" id="error-duplId">* 이미 사용 중인 아이디입니다.</li>								
+							<li class="error" id="error-duplId" style="display:<%=status%>"><%=notice %></li>								
 							<li class="error" id="error-noneId">* 아이디는 필수 정보입니다.</li>
 							
 							<!-- 비밀번호 부분 -->
@@ -64,7 +71,7 @@
 							</li>
 							<li class="pwd">
 								<input type="password" name="password" id="password" placeholder="4-10자의 영문, 특수문자, 숫자 조합" required>
-								<input type="password" name="password_chk" id="password_chk" placeholder="비밀번호 확인" required>								
+								<input type="password" name="passwordChk" id=passwordChk placeholder="비밀번호 확인" required>								
 								<span id="chkNotice" size="1"></span>
 								<li class="error" id="error-password">* 비밀번호는 필수 정보입니다.</li>
 								<li class="error" id="error-password_chk">* 비밀번호를 다시 입력해주세요.</li>
@@ -269,7 +276,7 @@
 							<!-- 가입하기 부분 -->
 
 							<li class="sub">
-								<input type="button" name="submit-btn" id="submit-btn" value="가입하기" onclick="checkValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
+								<input type="button" name="submit-btn" id="submit-btn" value="가입하기" onclick="pJoinCheckValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
 								<a href="index"> 
 									<div id="index">메인 페이지로 돌아가기</div>
 								</a>
