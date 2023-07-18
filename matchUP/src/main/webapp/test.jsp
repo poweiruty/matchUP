@@ -13,18 +13,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-	UserDao dao = UserDao.getInstance();
-	User res = dao.getUserbyId("green");
-	ArrayList<User> list = dao.getUserAll();
-	
-/* 	for(User user : list){
-		System.out.println(user);
-	} */
-	System.out.println(res);
-	
-	
+	<input type="text" id="myInput">
+	<p id="output"></p>
+	<script>
+	const input = document.getElementById('myInput');
+	const output = document.getElementById('output');
 
-	%>
+	input.addEventListener('input', function() {
+	  output.textContent = input.value;
+	});
+	
+	</script>
 </body>
 </html>
