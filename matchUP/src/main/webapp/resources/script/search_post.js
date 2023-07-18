@@ -25,19 +25,25 @@ function search(){
 			
 			if(typeof list === 'object'){
 				list.forEach(post => {
+					const post_id = post.post_id;
 					const corp_name = post.corp_name;
 					const postDate = post.postDate;
 					const desc = post.jobDetail;
 					
 					if (corp_name !== "") {
 						$('#contents-container').append(
-							`<div class="post">		
-								<a href="#${corp_name}" class="detail_btn">					                  
+							`<li class="post">		
+								<a href="viewDtail?post_id=${post_id}" class="detail_btn" id="detail_btn" target="detail_post" onclick="detail()">					                  
 				                 	<span class="post-cname">${corp_name}</span>
 				                    <span class="post-postDate">${postDate}</span>
 				                    <span class="post-desc">${desc}</span>
 				                </a>
-	                    	 </div>
+				                <ul class="dropdown">
+				                	<li><a href="#">채용공고 저장</a></li>
+				                	<li><a href="#">관심 없음</a></li>
+				                	<li><a href="#">신고하기</a></li>
+				                </ul>
+	                    	 </li>
 	                    	 `
 						);
 					}
@@ -46,7 +52,9 @@ function search(){
 		});	
 	}	
 }
-
+function detail(){
+	$('#detail_tab').show();
+}
 
 
  

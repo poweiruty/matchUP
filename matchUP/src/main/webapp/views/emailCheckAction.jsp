@@ -1,4 +1,5 @@
-<%@page import="org.apache.tomcat.jni.Local"%>
+<%@page import="model.user_corp.CorpUser"%>
+<%@page import="model.user_general.User"%>
 <%@page import="model.user_corp.CorpUserDao"%>
 <%@page import="model.SHA256"%>
 <%@page import="java.io.PrintWriter"%>
@@ -19,16 +20,14 @@
 	String code = null;
 	if(request.getParameter("code") != null){
 		code = request.getParameter("code");
-	}	
-	%>
-	<script>
-		localStorage.getItem("email");
-	</script>	
-	<%
+	}
 	String userID = null;
 	String tempEmail = session.getAttribute("tempEmail").toString();
+	User user = dao.getUserbyEmail(tempEmail);
+	CorpUser cuser = cdao.getCorpUserbyEmail(tempEmail);
+	
 	boolean res = false;
-	if(dao.getUserbyEmail(tempEmail) == null && cdao.getCorpUserbyEmail(tempEmail) == null){	
+	if(user == null && cuser == null){	
 		res = true;
 	}
 	System.out.println("tempEmail : " + tempEmail);
@@ -44,13 +43,20 @@
 		script.close();		
 		return;
 	}else{
-		PrintWriter script = response.getWriter();
-		session.removeAttribute("tempEmail");
+		/* PrintWriter script = response.getWriter();		
 		script.println("<script>");
 		script.println("alert('이미 사용중인 이메일입니다.');");
+		script.println("localStorage.");
 		script.println("window.close();");
-		script.println("</script>");
-		script.close();
+		script.println("</script>"); */
+		%>
+		<script type="text/javascript">
+			alert('이미 사용중인 이메일입니다.');
+			localStorage.clear();
+			window.close();
+		</script>		
+		<%
+		//script.close();
 	}
 %>
 </body>

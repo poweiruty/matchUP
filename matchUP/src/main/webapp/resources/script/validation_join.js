@@ -110,7 +110,7 @@ function pJoinCheckValue(htmlForm){
 		$('#error-email').show();
 		console.log("10 : " + check);		
 		check = false;
-	}else if(emailChk === "인증실패" || emailChk === "인증중"){
+	}else if(emailChk === "인증실패" || emailChk === "인증중" || emailChk === "0"){
 		$('#error-emailChk').show();
 		console.log(9 + check);		
 		check = false;
@@ -148,7 +148,6 @@ function cJoinCheckValue(htmlForm){
 		console.log("1 : " + check);
 		check = false;
 	}else if(idchk === "중복" || idchk === null){
-		$('#error-duplId').show();
 		console.log("2 : " + check);		
 		check = false;		
 	}else if(password === "" || password.match(/^[a-zA-Z0-9!@#$%]{8,20}$/) === null){
@@ -183,7 +182,7 @@ function cJoinCheckValue(htmlForm){
 		$('#error-email').show();
 		console.log("10 : " + check);		
 		check = false;
-	}else if(emailChk === "인증실패" || emailChk === "인증중"){
+	}else if(emailChk === "인증실패" || emailChk === "인증중" || emailChk === "0"){		
 		$('#error-emailChk').show();
 		console.log("11 : " + check);		
 		check = false;
@@ -316,6 +315,7 @@ function sendEmail(){
 	var emailId = document.getElementById('email').value;
 	var email = "";
 	var res = ""
+	console.log(emailId);
 	if(document.getElementById('selectEmail').value === '1'){
 		email += document.getElementById("email2").value;
 	}else{
@@ -326,7 +326,7 @@ function sendEmail(){
 		res = emailId + email;
 		alert("인증메일이 전송되었습니다.");
 		console.log(res);		
-		localStorage.setItem("email", res);
+		localStorage.setItem("email", res);		
 		location.href='SendEmail?email=' + res;
 	}else{
 		alert("이메일을 확인해주세요.");
@@ -346,6 +346,7 @@ function emailAuthChk(){
 		alert("인증된 이메일입니다.");
 	}else{
 		document.getElementById("emailchk").value = "인증실패";
+		$('#error-chkFalse').show();
 	}	
 }
 

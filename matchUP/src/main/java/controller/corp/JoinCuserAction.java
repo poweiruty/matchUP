@@ -46,7 +46,7 @@ public class JoinCuserAction extends HttpServlet {
 		int num = Integer.parseInt(request.getParameter("corp_num"));
 		String mgr_name = request.getParameter("mgr_name");
 		String mgr_tel = request.getParameter("phone") + request.getParameter("phone1") + request.getParameter("phone2");
-		String mgr_email = request.getParameter("email") + "@";
+		String mgr_email = request.getParameter("email");
 		if(request.getParameter("selectEmail").equals("1")) {
 			mgr_email += request.getParameter("email2");
 		}else {

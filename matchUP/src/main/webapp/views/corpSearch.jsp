@@ -15,10 +15,7 @@
 <title>Document</title>
 <link rel="stylesheet" href="resources/style/corpSearch.css">
 <style>
-	.search_con .post{
-		margin:15px;
-	}
-	
+
 </style>
 
 </head>
@@ -123,7 +120,7 @@
                    					}catch(Exception e){
                    						e.printStackTrace();
                    					}
-                   				}
+                   				}                   				
                    				%>
                    			</select>
 						</li>
@@ -137,11 +134,14 @@
 		</div>
 		<!-- 검색 내역 부분 -->
 		<div class="con_wrap">
-			<div class="search_con" id="contents-container">
-				
-			</div>	
 			<div class="search_con">
-			 	
+				<div>
+					<ul id="contents-container">
+					</ul>
+				</div>
+				<div id="detail_tab">			
+			 		<iframe src="search" name="detail_post" id="detail_post" width="400" height="400"></iframe>
+			 	</div>
 			</div>
 		</div>
 	</section>

@@ -95,11 +95,12 @@ public class SearchAction extends HttpServlet {
 			ArrayList<JobPostDto> postList = new ArrayList<JobPostDto>();
 			for(JobPostDto post : list) {				
 				
+				int post_id = post.getPost_id();
 				String corp_name =  post.getCorp_name();
 				String postDate = post.getPostDate();
-				String desc = post.getJobDetail();
+				String desc = post.getJobDetail();				
 				
-				JobPostDto dto = new JobPostDto(corp_name, postDate, desc);				
+				JobPostDto dto = new JobPostDto(post_id, corp_name, postDate, desc);				
 				postList.add(dto);
 			}				
 			JSONArray responseList = new JSONArray(postList);
