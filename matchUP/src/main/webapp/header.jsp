@@ -142,7 +142,7 @@
 						</c:choose>
 					</div>
 					<!-- 이력서 / 채용관리 -->
-					<div class="resumeForm">
+					<div class="resumeForm">  <!-- 로그인 상태에서는 이력서관리 페이지 이동 불가 -->
 						<c:choose>
 							<c:when test="${not empty sessionScope.cname }">
 								<a href="jobPost">
@@ -152,6 +152,7 @@
 
 							<c:otherwise>
 								<a href="resumeRead">
+								<!-- <a href="login"> -->
 									<h3>이력서 관리</h3>
 								</a>
 							</c:otherwise>
