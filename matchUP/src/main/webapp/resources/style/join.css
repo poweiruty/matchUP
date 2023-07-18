@@ -29,6 +29,7 @@
 	
 	
 	/* 폼 input, select 공통 css */
+
 	form input, select {
 	  border-radius: 5px;
 	  border:1px solid gainsboro;
@@ -108,7 +109,7 @@
 	    width:200px;
 	}
 	#btn3{
-	    width: 30%;
+	    width: 150px;
 	    height: 30px;
 	    color: #fff;
 	    background-color: black;
@@ -125,7 +126,7 @@
 	} */
 
 	#email2{
-	    width: 20%;
+	    width: 40%;
 	}
 	.email{
 	    display: flex;
@@ -145,8 +146,12 @@
 	    flex-direction: row;
 	}
 	
-	#address{
-	    width: 400px;
+	.address{
+		text-align: center;
+	}
+
+	.address, #address{
+	    width: 350px;
 	}
 	
 	#address_btn{
@@ -178,13 +183,14 @@
 	    color: gray;
 	    font-weight: 700;
 	}
+
 	#submit-btn{
 	    width: 100%;
 	    height: 35px;
-	    margin-bottom: 5px;
+	    margin: 15px 0;
 	}
 
-	#submit-btn:hover, #index:hover{
+	#submit-btn:hover, #index:hover, .postcode_find:hover{
 	    cursor: pointer;
 	    color: #fff;
 	    background-color: gray;  
@@ -255,7 +261,15 @@
 	}
 
 	#password, #password_chk{
-		width: 300px;
+		width: 160px;
+	}
+
+	.password_title{
+		text-align: center;
+	}
+
+	.postcode_find{
+		width: 40%;
 	}
 
 /* PC ver. */

@@ -4,9 +4,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>회원가입</title>
+    <title>회원탈퇴</title>
     
 <style>
+.section{
+	border: solid 1px gray;
+	margin: 0 15%;
+}
 
 .title{
 	font-size: 1.8rem;
@@ -19,6 +23,7 @@ ul.delete_main{
 
 input{
 	border: solid 1px gray;
+	border-radius: 10px;
     width: 20%;
     padding: 4px;
     margin-bottom: 10px;
