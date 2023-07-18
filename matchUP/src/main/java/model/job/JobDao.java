@@ -16,6 +16,33 @@ public class JobDao {
 	}
 		
 	
+	// 직업 인덱스 값으로 DB 불러오기
+	public Job getJobByJobId(int jobId) {
+		Job jobs = null;
+			
+		this.conn=DBManager.getConnection();
+			
+		if(this.conn!=null) {
+			String sql="select * from job_tb where job_id=?";
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setInt(1,jobId);
+				this.rs = this.pstmt.executeQuery();
+				if(this.rs.next()) {
+					String jobss = this.rs.getString(2);
+					jobs = new Job(jobss);					
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBManager.close(this.conn, this.pstmt, this.rs);
+			}
+		}
+		return jobs;
+	}
+		
+	// 직업 텍스트 값으로 DB 불러오기
 	public Job getJob(String job) {
 		Job jobs = null;
 		

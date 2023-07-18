@@ -106,6 +106,7 @@ public class JobPostDao {
 
                 if (this.rs.next()) {
                 	String corp_name = rs.getString("corp_name");
+                	String title = rs.getString("title");
                 	String staffs = rs.getString("staffs");
                 	String ceo = rs.getString("ceo");
                     String jobId = rs.getString("job_id");
@@ -116,11 +117,11 @@ public class JobPostDao {
                     String salary = rs.getString("salary");
                     String welfare = rs.getString("welfare");
                     String description = rs.getString("description");
-    				Timestamp created_post = this.rs.getTimestamp(13);
+    				Timestamp created_post = this.rs.getTimestamp("created_post");
     				String create_postToString = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(created_post);
                     
                     
-    				jobPostDto = new JobPostDto(post_id, corp_name, staffs, ceo, jobId, main_region_id, semi_region_id, recruit_people, recruit_period, salary, welfare, description, create_postToString);
+    				jobPostDto = new JobPostDto(post_id, title, corp_name, staffs, ceo, jobId, main_region_id, semi_region_id, recruit_people, recruit_period, salary, welfare, description, create_postToString);
                    
                 }
             } catch (Exception e) {

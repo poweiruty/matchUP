@@ -93,9 +93,9 @@ li:hover, h2:hover{
 .search_con .post {
 	margin: 15px;
 }
-.detail_btn{
+/* .detail_btn{
 	background-color: gray;
-}
+} */
 #detail_tab {
 	display: none;
 }

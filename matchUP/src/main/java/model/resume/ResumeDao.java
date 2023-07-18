@@ -63,40 +63,75 @@ public class ResumeDao {
 	}
 	
 	// READ : 특정DB만 뽑아오기
-	public Resume getResumeInfo(int pusersIdx) {
-		Resume resume = null;
-		
-		this.conn=DBManager.getConnection();
-		
-		if(this.conn!=null) {
-			String sql = "SELECT pusers_id, job_id, graduation, degree, career, activity, certificate, intro FROM resume_tb WHERE pusers_id = ?";
-			
-			try {    
-		        this.pstmt = conn.prepareStatement(sql);
-		        this.pstmt.setInt(1, pusersIdx);
-		        this.rs = pstmt.executeQuery();
+	public Resume getResumeInfo(int puserIdx) {
+	    Connection conn = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    Resume resume = null;
 
-		        if (rs.next()) {
-		        	int puserId=rs.getInt("pusers_id");
-		            int jobId = rs.getInt("job_id");
-		            String graduation = rs.getString("graduation");
-		            String degree = rs.getString("degree");
-		            String career = rs.getString("career");
-		            String activity = rs.getString("activity");
-		            String certificate = rs.getString("certificate");
-		            String intro = rs.getString("intro");
+	    try {
+	        conn = DBManager.getConnection();
+	        String sql = "select * from resume_tb where pusers_id=?";
+	        pstmt = conn.prepareStatement(sql);
+	        pstmt.setInt(1, puserIdx);
+	        rs = pstmt.executeQuery();
 
-		            resume = new Resume(puserId, jobId, graduation, degree, career, activity, certificate, intro);
-		        }
-		    } catch (SQLException e) {
-		        e.printStackTrace();
-		    } finally {
-		        DBManager.close(conn, pstmt, rs);
-		    }
-		}
-			
-		return resume;
+	        if (rs.next()) {
+	            // 이력서 정보를 가져와서 Resume 객체에 저장
+	            int jobId = rs.getInt("job_id");
+	            String graduation = rs.getString("graduation");
+	            String degree = rs.getString("degree");
+	            String career = rs.getString("career");
+	            String activity = rs.getString("activity");
+	            String certificate = rs.getString("certificate");
+	            String intro = rs.getString("intro");
+
+	            resume = new Resume(jobId, graduation, degree, career, activity, certificate, intro);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        DBManager.close(conn, pstmt, rs);
+	    }
+	    return resume;
 	}
+	
+//	public Resume getResumeInfo(int pusersIdx) {
+//		Resume resume = null;
+//		
+//		this.conn=DBManager.getConnection();
+//		
+//		if(this.conn!=null) {
+//			String sql = "SELECT pusers_id, job_id, graduation, degree, career, activity, certificate, intro FROM resume_tb WHERE pusers_id = ?";
+//			
+//			try {    
+//		        this.pstmt = conn.prepareStatement(sql);
+//		        this.pstmt.setInt(1, pusersIdx);
+//		        this.rs = pstmt.executeQuery();
+//
+//		        if (rs.next()) {
+//		        	int puserId=rs.getInt("pusers_id");
+//		            int jobId = rs.getInt("job_id");
+//		            String graduation = rs.getString("graduation");
+//		            String degree = rs.getString("degree");
+//		            String career = rs.getString("career");
+//		            String activity = rs.getString("activity");
+//		            String certificate = rs.getString("certificate");
+//		            String intro = rs.getString("intro");
+//
+//		            resume = new Resume(puserId, jobId, graduation, degree, career, activity, certificate, intro);
+//		        }
+//		    } catch (SQLException e) {
+//		        e.printStackTrace();
+//		    } finally {
+//		        DBManager.close(conn, pstmt, rs);
+//		    }
+//		}
+//			
+//		return resume;
+//	}
+	
+	
 	
 	// READ : 1개의 데이터베이스 전체컬럼 읽기
 	public Resume getResumeByPusersId(int pusersIdx) {

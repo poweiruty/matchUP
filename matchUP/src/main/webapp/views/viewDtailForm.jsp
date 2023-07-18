@@ -18,6 +18,7 @@
 	JobPostDao pdao = JobPostDao.getInstance();
 	JobPostDto dto = pdao.getJobPostbyId(post_id);
 	RegionDao rdao = RegionDao.getInstance();
+	
 	int main_id = Integer.parseInt(dto.getRegion());
 	int semi_id = Integer.parseInt(dto.getRegionDetail());
 	MainRegion main = rdao.getMainRegion(main_id);
