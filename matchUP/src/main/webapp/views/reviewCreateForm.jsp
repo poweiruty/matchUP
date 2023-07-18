@@ -125,7 +125,7 @@
                         
                     </ul>
                     <div class="bottom">
-                		<input type="submit" name="submit" id="submit" value="이력서 저장">
+                		<input type="submit" name="submit" id="submit" value="등록">
                 		<span><a href="index"> 메인 페이지로 돌아가기</a></span> 
             		</div>
                 </form>

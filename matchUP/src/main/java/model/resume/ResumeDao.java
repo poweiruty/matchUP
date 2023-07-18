@@ -25,16 +25,6 @@ public class ResumeDao {
 	
 	// CREATE
 	public boolean createResume(ResumeRequestDto dto) {
-	  	Resume resume = getResumeByPusersId(dto.getPusersId());
-	 
-	  	/* 한 사용자가 이력서를 여러개를 작성할 수 있어야 함.
-	  	 
-	  	if (resume != null) { 
-	  		System.out.println("조건문에서 찐빠나지롱"); 
-	  		return false; 
-	  	}
-	  	*/
-	  	
 		int puserIdx=dto.getPusersId();
 		int jobId=dto.getJobId();		
 		String graduation=dto.getGraduation();
@@ -72,7 +62,43 @@ public class ResumeDao {
 		return true;
 	}
 	
-	// READ
+	// READ : 특정DB만 뽑아오기
+	public Resume getResumeInfo(int pusersIdx) {
+		Resume resume = null;
+		
+		this.conn=DBManager.getConnection();
+		
+		if(this.conn!=null) {
+			String sql = "SELECT pusers_id, job_id, graduation, degree, career, activity, certificate, intro FROM resume_tb WHERE pusers_id = ?";
+			
+			try {    
+		        this.pstmt = conn.prepareStatement(sql);
+		        this.pstmt.setInt(1, pusersIdx);
+		        this.rs = pstmt.executeQuery();
+
+		        if (rs.next()) {
+		        	int puserId=rs.getInt("pusers_id");
+		            int jobId = rs.getInt("job_id");
+		            String graduation = rs.getString("graduation");
+		            String degree = rs.getString("degree");
+		            String career = rs.getString("career");
+		            String activity = rs.getString("activity");
+		            String certificate = rs.getString("certificate");
+		            String intro = rs.getString("intro");
+
+		            resume = new Resume(puserId, jobId, graduation, degree, career, activity, certificate, intro);
+		        }
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } finally {
+		        DBManager.close(conn, pstmt, rs);
+		    }
+		}
+			
+		return resume;
+	}
+	
+	// READ : 1개의 데이터베이스 전체컬럼 읽기
 	public Resume getResumeByPusersId(int pusersIdx) {
 		Resume resume = null;
 		
@@ -111,6 +137,7 @@ public class ResumeDao {
 		return resume;
 	}
 	
+	// READ : 데이터 전체 읽기
 	public ArrayList<Resume> getResumeAll(){
 		ArrayList<Resume> list = new ArrayList<Resume>();
 		

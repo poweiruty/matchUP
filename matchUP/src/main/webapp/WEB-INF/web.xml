@@ -126,16 +126,26 @@
 		<url-pattern>/Plogout</url-pattern>
 	</servlet-mapping>
 
-	<!-- resume -->
+	<!-- resumeCreate -->
 	<servlet>
-		<servlet-name>ResumeFormAction</servlet-name>
-		<servlet-class>controller.resume.ResumeFormAction</servlet-class>
+		<servlet-name>ResumeCreateFormAction</servlet-name>
+		<servlet-class>controller.resume.ResumeCreateFormAction</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>ResumeFormAction</servlet-name>
-		<url-pattern>/Resume</url-pattern>
+		<servlet-name>ResumeCreateFormAction</servlet-name>
+		<url-pattern>/ResumeCreate</url-pattern>
 	</servlet-mapping>
-
+	
+	<!-- resumeRead -->
+	<servlet>
+		<servlet-name>ResumeReadFormAction</servlet-name>
+		<servlet-class>controller.resume.ResumeReadFormAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ResumeReadFormAction</servlet-name>
+		<url-pattern>/ResumeRead</url-pattern>
+	</servlet-mapping>
+	
 	<!-- 개인 정보수정 -->
 	<servlet>
 		<servlet-name>UserUpdateAction</servlet-name>
@@ -177,6 +187,7 @@
 		<servlet-name>CorpUpdateRequest</servlet-name>
 		<url-pattern>/CUpdateRequest</url-pattern>
 	</servlet-mapping>
+	
 	<!--  리뷰 양식 -->
 	<servlet>
 		<servlet-name>ReviewFormAction</servlet-name>
@@ -401,15 +412,26 @@
 		<url-pattern>/cleave</url-pattern>
 	</servlet-mapping>	
 	
-	<!-- resume -->
+	<!-- resumeCreate -->
 	<servlet>
-		<servlet-name>resumeForm</servlet-name>
-		<jsp-file>/views/resumeForm.jsp</jsp-file>
+		<servlet-name>resumeCreateForm</servlet-name>
+		<jsp-file>/views/resumeCreateForm.jsp</jsp-file>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>resumeForm</servlet-name>
-		<url-pattern>/resume</url-pattern>
+		<servlet-name>resumeCreateForm</servlet-name>
+		<url-pattern>/resumeCreate</url-pattern>
+	</servlet-mapping>
+	
+	<!-- resumeRead -->
+	<servlet>
+		<servlet-name>resumeReadForm</servlet-name>
+		<jsp-file>/views/resumeReadForm.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>resumeReadForm</servlet-name>
+		<url-pattern>/resumeRead</url-pattern>
 	</servlet-mapping>
 	
 	<!--  review -->

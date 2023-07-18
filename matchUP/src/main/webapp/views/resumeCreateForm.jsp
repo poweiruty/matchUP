@@ -30,7 +30,7 @@
             <p class="resume_title">나의 이력서</p>
             <div class="main_resume">
                 <!-- 이름, 생년월일, 연락처, 이메일, 주소 -->
-                <form action="Resume" method="post">
+                <form action="ResumeCreate" method="post">
                 
                 	<!--  테스토 : 황인규 작성
                 	<div calss="test">

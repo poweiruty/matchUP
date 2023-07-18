@@ -13,7 +13,16 @@ public class ResumeRequestDto {
 	private int resume_created;
 	private int resume_modified;
 	
-	
+	public ResumeRequestDto(int jobId, String graduation,String degree, 
+			  String career, String activity, String certificate, String intro) {
+		this.job_id=jobId;
+		this.graduation=graduation;
+		this.degree=degree;
+		this.career=career;
+		this.activity=activity;
+		this.certificate=certificate;
+		this.intro=intro;
+	}
 	public ResumeRequestDto(int puserIdx,int jobId,String graduation,String degree, 
 							String career,String activity,String certificate,String intro) {
 		this.pusers_id=puserIdx;
