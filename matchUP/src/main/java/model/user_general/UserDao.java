@@ -169,7 +169,8 @@ public class UserDao {
 		User user = getUserbyId(dto.getPid());
 		
 		this.conn = DBManager.getConnection();		
-		if(this.conn != null) {			
+		if(this.conn != null  && dto.getPpassword() != null && dto.getEmail() != null && dto.getPid() != null) {			
+			if(dto.getPpassword() != "") {
 			String sql = "UPDATE pusers_tb SET ppassword=?, tel=?, email=?, user_address=?, userEmailCheck=? WHERE pid=? AND ppassword=?";					
 			
 			try {
@@ -207,12 +208,12 @@ public class UserDao {
 				this.pstmt.setString(7, password);
 				
 				this.pstmt.execute();				
-				
 			}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
 				DBManager.close(this.conn, this.pstmt);
 			}			
+			}
 		}
 	}
 	

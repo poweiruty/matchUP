@@ -22,6 +22,7 @@ header {
 	padding: 10px;
 	margin-bottom: 50px;
 	border-bottom: solid 1px gray;
+    background: linear-gradient(white, lightgray);
 }
 
 
@@ -48,6 +49,7 @@ header {
     border-top: solid 1px gray;
     padding: 20px 0;
     margin-top: 10%;
+    background: linear-gradient(lightgray, white);
 }
 
 .logout_btn, .leave_btn{
@@ -67,4 +69,11 @@ header {
 
 .login_link:hover{
     cursor: pointer;
+}
+
+
+.error {
+	display: none;
+	color: red;
+	font-size: 0.7em;
 }

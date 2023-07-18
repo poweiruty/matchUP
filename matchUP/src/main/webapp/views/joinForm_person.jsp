@@ -269,7 +269,7 @@
 							<!-- 가입하기 부분 -->
 
 							<li class="sub">
-								<input type="button" id="submit_btn" value="가입하기" onclick="checkValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
+								<input type="button" name="submit-btn" id="submit-btn" value="가입하기" onclick="checkValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
 								<a href="index"> 
 									<div id="index">메인 페이지로 돌아가기</div>
 								</a>

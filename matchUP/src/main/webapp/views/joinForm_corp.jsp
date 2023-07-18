@@ -182,7 +182,7 @@
 							<!-- 가입하기 부분 -->
 
 							<li class="sub">
-								<input type="button" name="submit" id="submit" value="가입하기" onclick="checkValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
+								<input type="button" name="submit-btn" id="submit-btn" value="가입하기" onclick="checkValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
 								<a href="index"> <!-- 초기 화면으로 돌아감 -->
 									<div id="index">메인 페이지로 돌아가기</div>
 								</a>
