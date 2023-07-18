@@ -31,18 +31,13 @@ function search(){
 					const desc = post.jobDetail;
 					
 					if (corp_name !== "") {
-						$('#contents-container').append(
+						$('#jobpost-list').append(
 							`<li class="post">		
 								<a href="viewDtail?post_id=${post_id}" class="detail_btn" id="detail_btn" target="detail_post" onclick="detail()">					                  
 				                 	<span class="post-cname">${corp_name}</span>
 				                    <span class="post-postDate">${postDate}</span>
 				                    <span class="post-desc">${desc}</span>
 				                </a>
-				                <ul class="dropdown">
-				                	<li><a href="#">채용공고 저장</a></li>
-				                	<li><a href="#">관심 없음</a></li>
-				                	<li><a href="#">신고하기</a></li>
-				                </ul>
 	                    	 </li>
 	                    	 `
 						);

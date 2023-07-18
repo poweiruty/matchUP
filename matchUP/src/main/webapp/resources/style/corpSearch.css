@@ -72,13 +72,19 @@ li:hover, h2:hover{
 }
 
 .search_con{
-    border: solid 1px gray;
+    border-top: solid 1px gray;
     height: 500px;
     display: flex;
     flex-direction: row;
 }
+.contents-container{
+	border-right: solid 1px gray;
+}
 .post{
-	width:600px;
+	width: 600px;
+	height: 50px;
+	border: solid 1px gray;
+	border-radius: 5px;
 }
 .region_li{
 	width: 800px;
@@ -87,16 +93,9 @@ li:hover, h2:hover{
 .search_con .post {
 	margin: 15px;
 }
-
+.detail_btn{
+	background-color: gray;
+}
 #detail_tab {
 	display: none;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-.dropdown.active {
-  transform: scale(1);
-  transition: all 0.25s cubic-bezier(.5,1.8,.9,.8);
 }

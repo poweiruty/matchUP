@@ -135,12 +135,12 @@
 		<!-- 검색 내역 부분 -->
 		<div class="con_wrap">
 			<div class="search_con">
-				<div>
-					<ul id="contents-container">
+				<div class="contents-container">
+					<ul id="jobpost-list">
 					</ul>
 				</div>
 				<div id="detail_tab">			
-			 		<iframe src="search" name="detail_post" id="detail_post" width="400" height="400"></iframe>
+			 		<iframe src="search" name="detail_post" id="detail_post" width="630" height="500"></iframe>
 			 	</div>
 			</div>
 		</div>
