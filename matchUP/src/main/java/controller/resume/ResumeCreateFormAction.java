@@ -13,14 +13,14 @@ import model.resume.ResumeRequestDto;
  * Servlet implementation class ResumeFormAction
  */
 
-//@WebServlet("/Resume")
-public class ResumeFormAction extends HttpServlet{
+//@WebServlet("/ResumeCreate")
+public class ResumeCreateFormAction extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Default constructor.
 	 */
-	public ResumeFormAction() {}
+	public ResumeCreateFormAction() {}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse

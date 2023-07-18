@@ -151,7 +151,7 @@
 							</c:when>
 
 							<c:otherwise>
-								<a href="resume">
+								<a href="resumeRead">
 									<h3>이력서 관리</h3>
 								</a>
 							</c:otherwise>

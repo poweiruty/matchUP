@@ -139,7 +139,7 @@
 					</c:when>
 					
 					<c:otherwise>
-						<a href="resume"><h3>이력서 관리</h3></a>
+						<a href="resumeRead"><h3>이력서 관리</h3></a>
 					</c:otherwise>
 				</c:choose>
 
