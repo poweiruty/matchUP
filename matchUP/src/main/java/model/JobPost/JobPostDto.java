@@ -25,28 +25,6 @@ public class JobPostDto {
 		this.jobDetail = jobDetail;
 	}
 
-	
-	public JobPostDto(int post_id, String title, String corp_name, String staffs, String ceo, String job, String region,
-			String regionDetail, String people, String postDate, String salary, String welfare, String jobDetail,
-			String create_post) {
-		super();
-		this.post_id = post_id;
-		this.title = title;
-		this.corp_name = corp_name;
-		this.staffs = staffs;
-		this.ceo = ceo;
-		this.job = job;
-		this.region = region;
-		this.regionDetail = regionDetail;
-		this.people = people;
-		this.postDate = postDate;
-		this.salary = salary;
-		this.welfare = welfare;
-		this.jobDetail = jobDetail;
-		this.create_post = create_post;
-	}
-
-
 	public JobPostDto(String title, String corp_name, String staffs, String ceo, String job, String region, String regionDetail,
 			String people, String postDate, String salary, String welfare, String jobDetail, String create_post) {		
 		this.title = title;
@@ -118,6 +96,10 @@ public class JobPostDto {
 	public int getPost_id() {
 		return post_id;
 	}
+	public void setPost_id(int post_id) {
+		this.post_id = post_id;
+	}
+
 	public String getJob() {
 		return job;
 	}
@@ -231,23 +213,6 @@ public class JobPostDto {
 				+ ", ceo=" + ceo + ", job=" + job + ", region=" + region + ", regionDetail=" + regionDetail
 				+ ", people=" + people + ", postDate=" + postDate + ", salary=" + salary + ", welfare=" + welfare
 				+ ", jobDetail=" + jobDetail + ", create_post=" + create_post + "]";
-	}
-	
-		
-
-
-	public String getTitle() {
-		return title;
-	}
-
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-
-	public void setPost_id(int post_id) {
-		this.post_id = post_id;
 	}
 
 	
