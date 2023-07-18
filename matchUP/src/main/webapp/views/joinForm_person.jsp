@@ -6,21 +6,27 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<link rel="stylesheet" href="resources/style/reset_form.css">
 <!-- header css -->
-<link rel="stylesheet" href="resources/style/grid.css">
-
 <link rel="stylesheet" href="resources/style/join.css">
 </head>
 
 <body>
 	<%		
 		String id = "";
-		if(request.getAttribute("id") != null){
+		String notice = "";
+		String status = "none";
+		/* if(request.getAttribute("id") != null){
 			id = request.getAttribute("id").toString();
-		}	
+		} */
+		if(session.getAttribute("id") != null){
+			id = session.getAttribute("id").toString();
+		}
+		
+		if(session.getAttribute("notice") != null){
+			notice = session.getAttribute("notice").toString();
+			status = "block";
+		}
 	%>
 	<!-- header 시작 -->
     <jsp:include page="header_form"></jsp:include>
@@ -31,13 +37,15 @@
 				<form action="UserIdCheck" method="POST" name="idForm" id="idForm" style="display: none;">
 					<input type="hidden" name="pageInfo" id="pageInfo" value="puser">					
 					<input type="hidden" name="tmpId" id="tmpId" value="">
-					<input type="hidden" name="idchk" id="idchk" value="<%=request.getAttribute("idDupl")%>">	
+					<%-- <input type="hidden" name="idchk" id="idchk" value="<%=request.getAttribute("idDupl")%>"> --%>
+					<input type="hidden" name="idchk" id="idchk" value="<%=session.getAttribute("idDupl")%>">	
 				</form>			
 				<form action="PJoin" method="POST" name="joinForm" id="joinForm">
 					<ul>
 						<div class="pc_1">
 							<li class="start">
 								<h2>회원정보입력(개인 회원)</h2>
+								<br>
 							</li>
 							<!-- 아이디 부분 -->
 							<li>
@@ -46,24 +54,28 @@
 								</label>
 							</li>
 							<li class="id">							
-								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" value="<%=id %>" required>									
-								<input type="button" form="idForm" name="btn1" id="btn1" value="중복확인" onclick="idChk(form)"><br/>																														
-							</li>							
-							<li class="error" id="error-duplId">* 이미 사용 중인 아이디입니다.</li>								
+								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" value="<%=id %>">									
+								<input type="button" form="idForm" name="btn1" id="btn1" value="중복확인" onclick="idChk(form); idNotice();"><br/>																														
+							</li>														
+							<li class="error" id="error-duplId" style="display:<%=status%>"><%=notice %></li>								
 							<li class="error" id="error-noneId">* 아이디는 필수 정보입니다.</li>
+							
 							<!-- 비밀번호 부분 -->
 							<li>
 								<label for="pwd1">
-									<h2>
-										비밀번호<span class="pwd_warning"> *특수문자는 '! @ # $ % ^ &
+									<h2 id="pwd_center">
+										비밀번호<br><span class="pwd_warning"> *특수문자는 '! @ # $ % ^ &
 											+='만 사용 가능합니다.</span>
 									</h2>
 								</label>
 							</li>
 							<li class="pwd">
 								<input type="password" name="password" id="password" placeholder="4-10자의 영문, 특수문자, 숫자 조합" required>
-								<input type="password" name="password_chk" id="password_chk" placeholder="비밀번호 확인" required>								
+								<input type="password" name="passwordChk" id=passwordChk placeholder="비밀번호 확인" required>								
 								<span id="chkNotice" size="1"></span>
+								<li class="error" id="error-password">* 비밀번호는 필수 정보입니다.</li>
+								<li class="error" id="error-password_chk">* 비밀번호를 다시 입력해주세요.</li>
+								<li class="error" id="error-pwdEquals">* 비밀번호가 일치하지 않습니다.</li>
 							</li>
 							
 							<!-- 이름 부분 -->
@@ -74,7 +86,7 @@
 							<!-- 생년월일 부분 -->
 							<li>
 								<label for="birth"> 
-									<h2> 생년월일
+									<h2 id="birth_center"> 생년월일<br>
 										<span class="birth_warning"> *만 14세 미만의 사용자는 가입할 수 없습니다.</span>
 									</h2>
 								</label>
@@ -188,9 +200,9 @@
 								</label>
 							</li>
 							<li class="email">
-								<input type="text" name="email" id="email">@ 
+								<input type="text" name="email" id="email">@
 								<input type="text" name="email2" id="email2" value="naver.com">
-							</li>
+						
 							<select name="selectEmail" id="selectEmail">
 								<option value="1">직접입력</option>
 								<option value="@naver.com" selected>naver.com</option>
@@ -207,6 +219,7 @@
 								<option value="@hanmir.com">hanmir.com</option>
 								<option value="@paran.com">paran.com</option>
 							</select>
+							</li>
 							<!-- 인증번호 전송 부분 -->
 							<li>
 								<input type="hidden" name="emailchk" id="emailchk" value="0">
@@ -215,14 +228,8 @@
 							<!-- 인증번호 입력 부분 -->
 							<li class="number">
 								<input type="text" name="num" id="num" maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-								<input type="button" name="btn3" id="btn3" value="인증번호 확인">
+								<input type="button" name="btn3" id="btn3" value="인증번호 확인" onclick="emailAuthChk()">
 							</li>
-						</div>
-						<div class="hr">
-							<hr class="pc_line">
-						</div>
-
-						<div class="pc_2">
 							<li>
 								<label for="address">
 									<h2>주소</h2>
@@ -246,18 +253,18 @@
 							<li>
 								<div class="marketing_wrap">
 									<div class="marketing">
-										<h2>마케팅 정보 수신동의</h2>
-										<br /> 중요한 알림 및 각종 혜택 알림을 수신합니다. <br /> 수업과 관련된 사항은 수신동의와
-										관련없이 보내드립니다. <br />
-										<br /> <input type="checkbox" name="chk1" id="chk">SNS
-										서비스 동의 (선택) <br /> <input type="checkbox" name="chk2"
-											id="chk">메일 수신 동의 (선택) <br />
+										<h3>마케팅 정보 수신동의</h3>
+										<br /> 중요한 알림 및 각종 혜택 알림을 수신합니다. 
+										<br /> 수업과 관련된 사항은 수신동의와	관련없이 보내드립니다. <br />
+										<br /> 
+										<input type="checkbox" name="chk1" id="chk">SNS	서비스 동의 (선택) <br /> 
+										<input type="checkbox" name="chk2" id="chk">메일 수신 동의 (선택) <br />
 									</div>
 								</div> <!-- 약관동의 부분 -->
 								<div class="agree_wrap">
 									<div class="agree">
 										<p>
-										<h2>약관동의</h2>
+										<h3>약관동의</h3>
 										<input type="checkbox" name="chk3" id="chk" required>
 										<a href="term">이용약관</a> 동의 (필수) <br /> 
 										<input type="checkbox" name="chk4" id="chk" required>
@@ -269,7 +276,7 @@
 							<!-- 가입하기 부분 -->
 
 							<li class="sub">
-								<input type="submit" name="submit" id="submit" value="가입하기" onclick="checkValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
+								<input type="button" name="submit-btn" id="submit-btn" value="가입하기" onclick="pJoinCheckValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
 								<a href="index"> 
 									<div id="index">메인 페이지로 돌아가기</div>
 								</a>

@@ -1,11 +1,7 @@
 package controller.corp;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,21 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
-import model.JobPost.JobPost;
-import model.JobPost.JobPostDao;
 import model.JobPost.JobPostDto;
-import model.corp.CorpDao;
-import model.job.Job;
-import model.job.JobDao;
-import model.region.MainRegion;
-import model.region.RegionDao;
-import model.region.SemiRegion;
 import model.search.JobPostSearchDao;
-import model.user_corp.CorpUser;
-import model.user_corp.CorpUserDao;
-import util.DBManager;
 
 /**
  * Servlet implementation class SearchAction
@@ -111,11 +95,12 @@ public class SearchAction extends HttpServlet {
 			ArrayList<JobPostDto> postList = new ArrayList<JobPostDto>();
 			for(JobPostDto post : list) {				
 				
+				int post_id = post.getPost_id();
 				String corp_name =  post.getCorp_name();
 				String postDate = post.getPostDate();
-				String desc = post.getJobDetail();
+				String desc = post.getJobDetail();				
 				
-				JobPostDto dto = new JobPostDto(corp_name, postDate, desc);				
+				JobPostDto dto = new JobPostDto(post_id, corp_name, postDate, desc);				
 				postList.add(dto);
 			}				
 			JSONArray responseList = new JSONArray(postList);

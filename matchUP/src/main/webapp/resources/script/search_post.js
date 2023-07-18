@@ -23,28 +23,33 @@ function search(){
 			const list = response;
 			console.log('typeof list : ', typeof list);
 			
-			if(typeof list === 'string'){
-				alert('ㅈㅅ');
-			}else{
+			if(typeof list === 'object'){
 				list.forEach(post => {
+					const post_id = post.post_id;
 					const corp_name = post.corp_name;
 					const postDate = post.postDate;
 					const desc = post.jobDetail;
 					
 					if (corp_name !== "") {
-						$('#contents-container').append(
-							`<div class="post">		
-								<a href="#${corp_name}" class="detail_btn">					                  
+						$('#jobpost-list').append(
+							`<li class="post">		
+								<a href="viewDtail?post_id=${post_id}" class="detail_btn" id="detail_btn" target="detail_post" onclick="detail()">					                  
 				                 	<span class="post-cname">${corp_name}</span>
 				                    <span class="post-postDate">${postDate}</span>
 				                    <span class="post-desc">${desc}</span>
 				                </a>
-	                    	 </div>
+	                    	 </li>
 	                    	 `
 						);
 					}
 				});
-			}			
+			}		
 		});	
 	}	
 }
+function detail(){
+	$('#detail_tab').show();
+}
+
+
+ 

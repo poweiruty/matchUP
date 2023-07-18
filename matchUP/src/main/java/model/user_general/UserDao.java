@@ -41,8 +41,8 @@ public class UserDao {
 		if(id != null && password != null && name != null && birth != 0 && tel != null) {
 			this.conn = DBManager.getConnection();
 			if(this.conn != null) {
-				if(!email.equals("") && emailCheck == 1) {
-					String sql = "INSERT INTO pusers_tb (pid,ppassword,pname,birth,tel,email,userEmailCheck) VALUES(?, ?, ?, DATE(?), ?, ?, ?)";
+				if(!address.equals("")) {
+					String sql = "INSERT INTO pusers_tb (pid,ppassword,pname,birth,tel,email,user_address,userEmailCheck) VALUES(?, ?, ?, DATE(?), ?, ?, ?, ?)";
 					try {
 						this.pstmt = this.conn.prepareStatement(sql);
 						this.pstmt.setString(1, id);
@@ -51,25 +51,8 @@ public class UserDao {
 						this.pstmt.setInt(4, birth);
 						this.pstmt.setString(5, tel);
 						this.pstmt.setString(6, email);
-						this.pstmt.setInt(7, emailCheck);
-						
-						this.pstmt.execute();
-						
-					}catch (Exception e) {
-						e.printStackTrace();					
-					}finally {
-						DBManager.close(this.conn, this.pstmt);
-					}
-				}else if(!address.equals("")){
-					String sql = "INSERT INTO pusers_tb (pid,ppassword,pname,birth,tel,user_address) VALUES(?, ?, ?, DATE(?), ?, ?)";
-					try {
-						this.pstmt = this.conn.prepareStatement(sql);
-						this.pstmt.setString(1, id);
-						this.pstmt.setString(2, password);
-						this.pstmt.setString(3, name);
-						this.pstmt.setInt(4, birth);
-						this.pstmt.setString(5, tel);
-						this.pstmt.setString(6, address);
+						this.pstmt.setString(7, address);
+						this.pstmt.setInt(8, emailCheck);
 						
 						this.pstmt.execute();
 						
@@ -143,7 +126,41 @@ public class UserDao {
 		
 		return user;
 	}
-	
+	public User getUserbyEmail(String email) {
+		User user = null;
+		
+		this.conn = DBManager.getConnection();
+		
+		if(this.conn != null) {
+			String sql = "SELECT * FROM pusers_tb WHERE email=?";
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setString(1, email);
+				this.rs = this.pstmt.executeQuery();
+				if(this.rs.next()) {
+					int puserIdx=this.rs.getInt(1);		// 황인규 작성
+					String id = this.rs.getString(2);
+					String password = this.rs.getString(3);
+					String name = this.rs.getString(4);
+					Date birth = this.rs.getDate(5);
+					int birthNum = Integer.parseInt(sdf.format(birth));					
+					String tel = this.rs.getString(6);	
+					String address = this.rs.getString(8);		
+					int emailCheck = this.rs.getInt(9);
+					
+					// 이 부분 황인규가 건드림(+puserIdx)
+					user = new User(puserIdx, id, password, name, birthNum, tel, email, address, emailCheck);					
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBManager.close(this.conn, this.pstmt, this.rs);
+			}
+		}
+		
+		return user;
+	}
 
 	public ArrayList<User> getUserAll(){
 		ArrayList<User> list = new ArrayList<User>();
@@ -186,7 +203,8 @@ public class UserDao {
 		User user = getUserbyId(dto.getPid());
 		
 		this.conn = DBManager.getConnection();		
-		if(this.conn != null) {			
+		if(this.conn != null  && dto.getPpassword() != null && dto.getEmail() != null && dto.getPid() != null) {			
+			if(dto.getPpassword() != "") {
 			String sql = "UPDATE pusers_tb SET ppassword=?, tel=?, email=?, user_address=?, userEmailCheck=? WHERE pid=? AND ppassword=?";					
 			
 			try {
@@ -224,12 +242,12 @@ public class UserDao {
 				this.pstmt.setString(7, password);
 				
 				this.pstmt.execute();				
-				
 			}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
 				DBManager.close(this.conn, this.pstmt);
 			}			
+			}
 		}
 	}
 	

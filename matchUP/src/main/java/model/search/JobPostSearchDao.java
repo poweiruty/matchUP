@@ -122,6 +122,7 @@ public class JobPostSearchDao {
     			this.pstmt.setInt(1, Integer.parseInt(main_region));
     			this.rs = this.pstmt.executeQuery();
     			while(this.rs.next()) {
+    				int postId = this.rs.getInt(1);
     				String cname = this.rs.getString(2);
     				String staffs = this.rs.getString(3);
     				String ceo = this.rs.getString(4);
@@ -135,7 +136,7 @@ public class JobPostSearchDao {
     				Timestamp created_post = this.rs.getTimestamp(13);
     				String create_postToString = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(created_post);
     				
-    				JobPostDto post = new JobPostDto(cname, staffs, ceo, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
+    				JobPostDto post = new JobPostDto(postId, cname, staffs, ceo, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
     				list.add(post);
     			}
     		}catch (Exception e) {
@@ -158,6 +159,7 @@ public class JobPostSearchDao {
     			this.pstmt.setInt(2, Integer.parseInt(main_region));
     			this.rs = this.pstmt.executeQuery();
     			while(this.rs.next()) {
+    				int postId = this.rs.getInt(1);
     				String staffs = this.rs.getString(3);
     				String ceo = this.rs.getString(4);
     				String recruit_people = this.rs.getString(8);
@@ -168,7 +170,7 @@ public class JobPostSearchDao {
     				Timestamp created_post = this.rs.getTimestamp(13);
     				String create_postToString = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(created_post);
     				
-    				JobPostDto post = new JobPostDto(name, staffs, ceo, recruit_people, recruit_period, salary, welfare, desc, create_postToString);
+    				JobPostDto post = new JobPostDto(postId, name, staffs, ceo, recruit_people, recruit_period, salary, welfare, desc, create_postToString);
     				list.add(post);
     			}
     		}catch (Exception e) {
@@ -191,6 +193,7 @@ public class JobPostSearchDao {
     			this.pstmt.setInt(2, Integer.parseInt(semi_region));
     			this.rs = this.pstmt.executeQuery();
     			while(this.rs.next()) {
+    				int postId = this.rs.getInt(1);
     				String staffs = this.rs.getString(3);
     				String ceo = this.rs.getString(4);
     				String recruit_people = this.rs.getString(8);
@@ -201,7 +204,7 @@ public class JobPostSearchDao {
     				Timestamp created_post = this.rs.getTimestamp(13);
     				String create_postToString = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(created_post);
     				
-    				JobPostDto post = new JobPostDto(name, staffs, ceo, recruit_people, recruit_period, salary, welfare, desc, create_postToString);
+    				JobPostDto post = new JobPostDto(postId, name, staffs, ceo, recruit_people, recruit_period, salary, welfare, desc, create_postToString);
     				list.add(post);
     			}
     		}catch (Exception e) {
@@ -223,6 +226,7 @@ public class JobPostSearchDao {
     			this.pstmt.setInt(1, Integer.parseInt(semi_region));
     			this.rs = this.pstmt.executeQuery();
     			while(this.rs.next()) {
+    				int postId = this.rs.getInt(1);
     				String cname = this.rs.getString(2);
     				String staffs = this.rs.getString(3);
     				String ceo = this.rs.getString(4);
@@ -236,7 +240,7 @@ public class JobPostSearchDao {
     				Timestamp created_post = this.rs.getTimestamp(13);
     				String create_postToString = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(created_post);
     				
-    				JobPostDto post = new JobPostDto(cname, staffs, ceo, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
+    				JobPostDto post = new JobPostDto(postId, cname, staffs, ceo, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
     				list.add(post);
     			}
     		}catch (Exception e) {
@@ -258,6 +262,7 @@ public class JobPostSearchDao {
     			this.pstmt.setString(1, "%" + cname + "%");
     			this.rs = this.pstmt.executeQuery();
     			while(this.rs.next()) {
+    				int postId = this.rs.getInt(1);
     				String corp_name = this.rs.getString(2);
     				String staffs = this.rs.getString(3);
     				String ceo = this.rs.getString(4);
@@ -272,7 +277,7 @@ public class JobPostSearchDao {
     				Timestamp created_post = this.rs.getTimestamp(13);
     				String create_postToString = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(created_post);
     				
-    				JobPostDto post = new JobPostDto(corp_name, staffs, ceo, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
+    				JobPostDto post = new JobPostDto(postId, corp_name, staffs, ceo, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
     				list.add(post);
     			}
 			}catch (Exception e) {
@@ -295,6 +300,7 @@ public class JobPostSearchDao {
     			this.pstmt.setInt(2, Integer.parseInt(main_region));
     			this.rs = this.pstmt.executeQuery();
     			while(this.rs.next()) {
+    				int postId = this.rs.getInt(1);
     				String cname = this.rs.getString(2);
     				String staffs = this.rs.getString(3);
     				String ceo = this.rs.getString(4);
@@ -308,7 +314,7 @@ public class JobPostSearchDao {
     				Timestamp created_post = this.rs.getTimestamp(13);
     				String create_postToString = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(created_post);
     				
-    				JobPostDto post = new JobPostDto(cname, staffs, ceo, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
+    				JobPostDto post = new JobPostDto(postId,cname, staffs, ceo, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
     				list.add(post);
     			}
     		}catch (Exception e) {
@@ -330,6 +336,7 @@ public class JobPostSearchDao {
     			this.pstmt.setInt(2, Integer.parseInt(semi_region));
     			this.rs = this.pstmt.executeQuery();
     			while(this.rs.next()) {
+    				int postId = this.rs.getInt(1);
     				String cname = this.rs.getString(2);
     				String staffs = this.rs.getString(3);
     				String ceo = this.rs.getString(4);
@@ -343,7 +350,7 @@ public class JobPostSearchDao {
     				Timestamp created_post = this.rs.getTimestamp(13);
     				String create_postToString = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(created_post);
     				
-    				JobPostDto post = new JobPostDto(cname, staffs, ceo, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
+    				JobPostDto post = new JobPostDto(postId, cname, staffs, ceo, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
     				list.add(post);
     			}
     		}catch (Exception e) {
@@ -364,6 +371,7 @@ public class JobPostSearchDao {
     			this.pstmt.setString(1, jobName);
     			this.rs = this.pstmt.executeQuery();
     			while(this.rs.next()) {
+    				int postId = this.rs.getInt(1);
     				String corp_name = this.rs.getString(2);
     				String staffs = this.rs.getString(3);
     				String ceo = this.rs.getString(4);
@@ -378,7 +386,7 @@ public class JobPostSearchDao {
     				Timestamp created_post = this.rs.getTimestamp(13);
     				String create_postToString = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(created_post);
     				
-    				JobPostDto post = new JobPostDto(corp_name, staffs, ceo, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
+    				JobPostDto post = new JobPostDto(postId, corp_name, staffs, ceo, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
     				list.add(post);
     			}
 			}catch (Exception e) {
@@ -400,6 +408,7 @@ public class JobPostSearchDao {
 				this.pstmt = this.conn.prepareStatement(sql);
     			this.rs = this.pstmt.executeQuery();
     			while(this.rs.next()) {
+    				int postId = this.rs.getInt(1);
     				String corp_name = this.rs.getString(2);
     				String staffs = this.rs.getString(3);
     				String ceo = this.rs.getString(4);
@@ -414,7 +423,7 @@ public class JobPostSearchDao {
     				Timestamp created_post = this.rs.getTimestamp(13);
     				String create_postToString = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(created_post);
     				
-    				JobPostDto post = new JobPostDto(corp_name, staffs, ceo, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
+    				JobPostDto post = new JobPostDto(postId, corp_name, staffs, ceo, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
     				list.add(post);
     			}
 			}catch (Exception e) {

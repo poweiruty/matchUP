@@ -17,7 +17,7 @@
     <!-- header 끝 -->
     <!-- body 시작 -->
     <section class="container">
-        <form action="" method="post" name="corpReview" class="corpReview" enctype="multipart/form-data">
+        <form action="Review" method="post" name="corpReview" class="corpReview" enctype="multipart/form-data">
 
             <div class="msg">
                 <p id="msg_title">기업리뷰</p>
@@ -29,9 +29,9 @@
                     <ul>
                         <li class="main_search">
                             <label for="search_bar">
-                                <h2>기업명 또는 직무</h2>
+                                <h2>기업명</h2>
                             </label>
-                            <input type="text" id="search_bar" placeholder="직무 혹은 회사명">
+                            <input type="text" id="search_bar" placeholder="회사명">
                         </li>
                     </ul>
                 </div>
@@ -39,6 +39,10 @@
                     <li class="search_btn">
                         <input type="button" value="검색" id="search_btn">
                     </li>
+                    
+                    <li>
+						<a class="btn_join" href="reviewCreate">리뷰 작성</a>
+					</li>
                 </ul>
             </div>
         </form>

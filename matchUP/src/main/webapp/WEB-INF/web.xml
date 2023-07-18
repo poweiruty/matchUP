@@ -126,16 +126,26 @@
 		<url-pattern>/Plogout</url-pattern>
 	</servlet-mapping>
 
-	<!-- 이력서 양식 -->
+	<!-- resumeCreate -->
 	<servlet>
-		<servlet-name>ResumeFormAction</servlet-name>
-		<servlet-class>controller.resume.ResumeFormAction</servlet-class>
+		<servlet-name>ResumeCreateFormAction</servlet-name>
+		<servlet-class>controller.resume.ResumeCreateFormAction</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>ResumeFormAction</servlet-name>
-		<url-pattern>/Resume</url-pattern>
+		<servlet-name>ResumeCreateFormAction</servlet-name>
+		<url-pattern>/ResumeCreate</url-pattern>
 	</servlet-mapping>
-
+	
+	<!-- resumeRead -->
+	<servlet>
+		<servlet-name>ResumeReadFormAction</servlet-name>
+		<servlet-class>controller.resume.ResumeReadFormAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ResumeReadFormAction</servlet-name>
+		<url-pattern>/ResumeRead</url-pattern>
+	</servlet-mapping>
+	
 	<!-- 개인 정보수정 -->
 	<servlet>
 		<servlet-name>UserUpdateAction</servlet-name>
@@ -179,16 +189,48 @@
 	</servlet-mapping>
 	
 	<!--  리뷰 양식 -->
-	<!-- <servlet>
+	<servlet>
 		<servlet-name>ReviewFormAction</servlet-name>
-		<servlet-class>controller.resume.ReviewFormAction</servlet-class>
+		<servlet-class>controller.review.ReviewFormAction</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>ReviewFormAction</servlet-name>
 		<url-pattern>/Review</url-pattern>
-	</servlet-mapping> -->
+	</servlet-mapping>
 	
+	<!--  리뷰 작성 양식 -->
+	<servlet>
+		<servlet-name>ReviewCreateAction</servlet-name>
+		<servlet-class>controller.review.ReviewCreateAction</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ReviewCreateAction</servlet-name>
+		<url-pattern>/ReviewCreate</url-pattern>
+	</servlet-mapping>
+	
+	<!--  이메일 인증메일 전송 -->
+	<servlet>
+		<servlet-name>SendEmailAction</servlet-name>
+		<servlet-class>controller.common.SendEmailAction</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>SendEmailAction</servlet-name>
+		<url-pattern>/SendEmail</url-pattern>
+	</servlet-mapping>
+	
+	<!--  이메일 인증메일 확인 -->
+<!-- 	<servlet>
+		<servlet-name>EmailCheckAction</servlet-name>
+		<servlet-class>controller.common.EmailCheckAction</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>EmailCheckAction</servlet-name>
+		<url-pattern>/EmailCheck</url-pattern>
+	</servlet-mapping> -->
 	<!-- 2. JSP 페이지 맵핑 -->
 	
 	<!-- index -->
@@ -244,17 +286,6 @@
 	<servlet-mapping>
 		<servlet-name>footer</servlet-name>
 		<url-pattern>/footer</url-pattern>
-	</servlet-mapping>
-	
-	<!-- review -->
-	<servlet>
-		<servlet-name>corpReview</servlet-name>
-		<jsp-file>/views/corpReview.jsp</jsp-file>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>corpReview</servlet-name>
-		<url-pattern>/review</url-pattern>
 	</servlet-mapping>
 	
 	<!-- search -->
@@ -381,16 +412,49 @@
 		<url-pattern>/cleave</url-pattern>
 	</servlet-mapping>	
 	
-	<!-- resume -->
+	<!-- resumeCreate -->
 	<servlet>
-		<servlet-name>resumeForm</servlet-name>
-		<jsp-file>/views/resumeForm.jsp</jsp-file>
+		<servlet-name>resumeCreateForm</servlet-name>
+		<jsp-file>/views/resumeCreateForm.jsp</jsp-file>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>resumeForm</servlet-name>
-		<url-pattern>/resume</url-pattern>
-	</servlet-mapping>	
+		<servlet-name>resumeCreateForm</servlet-name>
+		<url-pattern>/resumeCreate</url-pattern>
+	</servlet-mapping>
+	
+	<!-- resumeRead -->
+	<servlet>
+		<servlet-name>resumeReadForm</servlet-name>
+		<jsp-file>/views/resumeReadForm.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>resumeReadForm</servlet-name>
+		<url-pattern>/resumeRead</url-pattern>
+	</servlet-mapping>
+	
+	<!--  review -->
+	<servlet>
+		<servlet-name>reviewForm</servlet-name>
+		<jsp-file>/views/reviewForm.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>reviewForm</servlet-name>
+		<url-pattern>/review</url-pattern>
+	</servlet-mapping>
+	
+	<!--  review create -->
+	<servlet>
+		<servlet-name>reviewCreateForm</servlet-name>
+		<jsp-file>/views/reviewCreateForm.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>reviewCreateForm</servlet-name>
+		<url-pattern>/reviewCreate</url-pattern>
+	</servlet-mapping>
 	
 	<!-- scrap -->
 	<servlet>
@@ -424,6 +488,24 @@
 		<servlet-name>term2</servlet-name>
 		<url-pattern>/term2</url-pattern>
 	</servlet-mapping>	
-	
-	
+	<!-- emailCheck -->
+	<servlet>
+		<servlet-name>emailCheckAction</servlet-name>
+		<jsp-file>/views/emailCheckAction.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>emailCheckAction</servlet-name>
+		<url-pattern>/emailCheck</url-pattern>
+	</servlet-mapping>	
+	<!-- viewDtail -->
+	<servlet>
+		<servlet-name>viewDtailForm</servlet-name>
+		<jsp-file>/views/viewDtailForm.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>viewDtailForm</servlet-name>
+		<url-pattern>/viewDtail</url-pattern>
+	</servlet-mapping>
 </web-app>

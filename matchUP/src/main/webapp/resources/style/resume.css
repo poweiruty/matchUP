@@ -24,14 +24,29 @@ ul{
 }
 
 li{
-    margin: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 input, textarea{
-    border: solid 1px gray;
     border-radius: 10px;   
+}
+
+input{
+    border: solid 1px gray;
     width: 20%;
     padding: 4px;
+}
+
+input:hover{
+    cursor: pointer;
+    background-color: gray;
+}
+
+textarea{
+    height: 35px;
 }
 
 .bottom{
@@ -50,7 +65,5 @@ select{
 
 label{
     font-weight: 700;
+    margin-right: 10px;
 }
-
-
-

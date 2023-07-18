@@ -15,18 +15,19 @@
 <title>Document</title>
 <link rel="stylesheet" href="resources/style/corpSearch.css">
 <style>
-	.search_con .post{
-		margin:15px;
-	}
-	
+
 </style>
+
 </head>
+
 <body>
 <!-- header 시작 -->
     <jsp:include page="header"></jsp:include>
 
     <!-- header 끝 -->
- 	<!-- body 시작 -->
+
+    
+    <!-- body 시작 -->
 	<section class="container">
 		<div class="msg">
 			<p id="msg_title">기업검색</p>
@@ -39,7 +40,9 @@
 				</label>
 				<input type="text" id="search_bar" placeholder="업종 및 회사명(업종 ex -> 디자인, 교육, 회계...)">
 			</ul>
-			<ul class="region">
+	
+	
+			 <ul class="region">
 				<li class ="region_li" style="width: 1000px;">
 							<label for="region">지역</label> 
 							<select name="region" id="region" size="1">
@@ -117,22 +120,29 @@
                    					}catch(Exception e){
                    						e.printStackTrace();
                    					}
-                   				}
+                   				}                   				
                    				%>
                    			</select>
 						</li>
-			</ul>
+			</ul>  
+						
 			<ul>
-				<li class="search_btn">
-					<button onclick="search()">검색</button>
+				<li class="search_btn_li">
+					<button class="search_btn" onclick="search()">검색</button>
 				</li>
 			</ul>
 		</div>
 		<!-- 검색 내역 부분 -->
 		<div class="con_wrap">
-			<div class="search_con" id="contents-container">
-				
-			</div>						 
+			<div class="search_con">
+				<div class="contents-container">
+					<ul id="jobpost-list">
+					</ul>
+				</div>
+				<div id="detail_tab">			
+			 		<iframe src="search" name="detail_post" id="detail_post" width="630" height="500"></iframe>
+			 	</div>
+			</div>
 		</div>
 	</section>
 

@@ -48,11 +48,13 @@
 
 
 .btn_find{
-    width: 25%;
+    width: 150px;
+    height: 30px;
 }
 
-.btn_login:hover, .btn_join:hover, .btn_find:hover{
+.btn_login:hover, .btn_find:hover, .btn_join:hover{
     cursor: pointer;
+    color: black;
     background-color: gray;
 }
 
@@ -143,14 +145,13 @@ form.index_form>div.number {
 
 /* 버튼공통 */
 
-#login_btn, .btn_join {
+#login_btn, .btn_join{
     padding: 10px 0px;
     border-radius: 50px;
     border: 1px solid black;
     display: inline-block;
     text-align: center;
     box-sizing: border-box;
-    color: #061f5c;
     width: 40%;
 }
 

@@ -5,6 +5,35 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
+    
+<style>
+
+.title{
+	font-size: 1.8rem;
+	font-weight: 700;
+}
+
+ul.delete_main{
+    text-align: center;
+}
+
+input{
+	border: solid 1px gray;
+    width: 20%;
+    padding: 4px;
+    margin-bottom: 10px;
+}
+
+#submit{
+	width: 5%;
+}
+
+#submit:hover{
+    cursor: pointer;
+    background-color: gray;
+}
+</style>
+
 </head>
 
 <body>
@@ -14,7 +43,7 @@
 
 	<div id="wrap">
 		<div class="section">
-			<form method="POST" action="CLeave">
+			<form method="POST" action="PLeave">
 				<ul class="delete_main">
 					<li>
 						<p class="title">회원탈퇴</p>
@@ -26,17 +55,18 @@
 						value="${sessionScope.log}" readonly></li>
 
 					<!-- 비밀번호 부분 -->
-					<li>
-					<h2>
-						비밀번호<span class="pwd_warning"> 비밀번호를 입력하세요.</span>
-					</h2>
-					</li>
+					<li><label for="pwd">
+						<h2>비밀번호</h2>
+					</label></li>
 					<li id="pwd">
 					<input type="password" name="password" id="password" required> 
-					<input type="submit" id="submit-btn" value="회원탈퇴"
-						onclick="checkValue(form)">						
-						<a href="index">취소</a></li>
-				</ul>
+
+					<!-- 버튼 -->
+					<li>
+					<input type="submit" id="submit" value="회원탈퇴" onclick="checkValue(form)">						
+					<a href="index"><input type="button" id="submit" value="취소"></a>
+					</li>
+					</ul>
 			</form>
 		</div>
 	</div>

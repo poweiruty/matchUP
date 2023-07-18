@@ -12,7 +12,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +23,6 @@ import util.Gmail;
 /**
  * Servlet implementation class SendSMSAction
  */
-//@WebServlet("/sendEmail")
 public class SendEmailAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -49,12 +47,12 @@ public class SendEmailAction extends HttpServlet {
 		PrintWriter script = null;
 		System.out.println(email);
 
-		String host = "http://localhost:8081/";
+		String host = "http://localhost:8080/";
 		String from = "rbxo0032@gmail.com";
 		String to = email;
 		String subject = "Match-UP 이메일인증 메일";
 		new SHA256();
-		String content = "링크에 접속해 이메일인증을 진행해주세요.<br>" + "<a href='" + host + "views/emailCheckAction.jsp?code="
+		String content = "링크에 접속해 이메일인증을 진행해주세요.<br>" + "<a href='" + host + "emailCheck?code="
 				+ SHA256.getSHA256(to) + "'>이메일 인증하기 </a>";
 		Properties p = new Properties();
 		p.put("mail.smtp.user", from);
@@ -81,20 +79,17 @@ public class SendEmailAction extends HttpServlet {
 			Address toAddr = new InternetAddress(to);
 			msg.addRecipient(Message.RecipientType.TO, toAddr);
 			msg.setContent(content, "text/html;charset=UTF-8");
-			Transport.send(msg);
-			
+			Transport.send(msg);			
 			script = response.getWriter(); 
 			script.println("<script>");			
 			script.println("location.href = 'javascript:history.back();'");
-			script.println("console.log(localStorage.getItem('email'))");
 			script.println("</script>"); 
-			script.close();			 
-
+			script.close();			
 		} catch (Exception e) {
 			e.printStackTrace();
 			script = response.getWriter();
 			script.println("<script>");
-			script.println("location.href = 'index'");
+			script.println("location.href = 'javascript:history.back();'");
 			script.println("</script>");
 			script.close();
 		}

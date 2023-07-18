@@ -44,11 +44,10 @@ public class DeletePuserFormAction extends HttpServlet {
         UserDao userDao = UserDao.getInstance();
         boolean result = userDao.deleteUser(id, password);
 
-        String url = "cleave";
+        String url = "leave";
 
         if (result) {
             request.getSession().removeAttribute("log");
-    		request.getSession().removeAttribute("cname");
             url = "index";
         }
 

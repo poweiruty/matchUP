@@ -1,3 +1,7 @@
+<%@page import="util.DBManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,13 +24,13 @@
     <!-- body 시작 -->
     <section class="container">
         <div class="msg">
-            <p class="msg_title">리뷰 작성</p>
+            <p class="msg_title">이력서 등록</p>
         </div>
         <div class="main_con">
             <p class="resume_title">나의 이력서</p>
             <div class="main_resume">
                 <!-- 이름, 생년월일, 연락처, 이메일, 주소 -->
-                <form action="Resume" method="post">
+                <form action="ResumeCreate" method="post">
                 
                 	<!--  테스토 : 황인규 작성
                 	<div calss="test">
@@ -36,29 +40,75 @@
                 	
                     <ul>
                         <li>
-                            <span class="pname">이름 : </span>
+                            <label for="pname">이름 </label>
                             <span>${sessionScope.pname}</span>
                         </li>
                         
                         <li>
-                            <span class="birth">생년월일 : </span>
+                            <label for="birth">생년월일 </label>
                             <span>${sessionScope.birth}</span>
                         </li>
                         
                         <li>                   
-                            <span class="tel">전화번호 : </span>
+                            <label for="tel">연락처 </label>
                             <span>${sessionScope.phone}</span>
                         </li>
                         
                         <li>
-                            <span class="email_resume">이메일 : </span>
+                            <label for="email_resume">이메일 </label>
                             <span>${sessionScope.email}</span>
                         </li>
                         
                         <li>
-                            <span class="user_address">주소 : </span>
+                            <label for="user_address">주소 </label>
                             <span>${sessionScope.address}</span>
                         </li> 
+                   		
+                   		<li>
+                   			<label for="job">희망직종</label>                        				
+                   				<%
+                   				Connection conn = null;
+                   				PreparedStatement pstmt=null;
+                   				ResultSet rs=null;
+                   				
+                   				try{
+                   					conn=DBManager.getConnection();
+                   					String sql="select job_id, job from job_tb group by job order by job_id ASC";
+                   					
+                   					pstmt=conn.prepareStatement(sql);
+                   					rs=pstmt.executeQuery();
+                   				%>
+                   					<select name="job" id="job" size="1">
+                   						<option value="" selected></option>
+                   				<% 
+                   					while(rs.next()){
+                   						int job_id=rs.getInt("job_id");
+                   						String job=rs.getString("job");
+                   				%>
+                   						<option value="<%= job_id%>"><%= job%></option>		
+                   				<%
+                   					}
+                   				}catch(Exception e){
+                   					e.printStackTrace();
+                   					System.out.println("직업 데이터 연동 및 출력 실패");
+                   				}finally{
+                   					try{
+                   						if(rs!=null){
+                   							rs.close();
+                   						}
+                   						if(pstmt!=null){
+                   							pstmt.close();
+                   						}
+                   						if(conn!=null){
+                   							conn.close();
+                   						}
+                   					}catch(Exception e){
+                   						e.printStackTrace();
+                   					}
+                   				}
+                   				%>
+                   			</select>
+                   		</li>
                    		            
                         <li>
                             <label for="graduation">최종학력</label>
@@ -71,7 +121,7 @@
                                 <option value="5">대졸(4년제)</option>
                                 <option value="6">대학원졸</option>                             
                             </select>
-                            <textarea name="degree" id="degree" cols="30" rows="10"></textarea>
+                            <textarea name="degree" id="degree" cols="30" rows="10" placeholder="그 밖의 학력에 관련된 세부사항을 적어주세요."></textarea>
                         </li>
                         
                         <li>
@@ -95,7 +145,7 @@
                     </ul>
                     <div class="bottom">
                 		<input type="submit" name="submit" id="submit" value="이력서 등록">
-                		<span><a href="index"> 메인 페이지로 돌아가기</a></span> 
+                		<a href="index"><input type="button" value="메인 페이지로 돌아가기"></a>
             		</div>
                 </form>
             </div>           

@@ -1,9 +1,11 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gasoek+One&family=IBM+Plex+Sans+KR:wght@300&display=swap');
+
 * {
     padding : 0;
     margin : 0;
-    font-family: 'Orbit', sans-serif;
+    font-family: 'IBM Plex Sans KR', sans-serif;
 }
 /* header */
 a{
@@ -15,10 +17,12 @@ a:hover{
     color: gray;
 }
 
+
 header {
 	padding: 10px;
 	margin-bottom: 50px;
 	border-bottom: solid 1px gray;
+    background: linear-gradient(white, lightgray);
 }
 
 
@@ -32,6 +36,9 @@ header {
     font-size: 1.7rem;
     text-align: center;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* footer */
@@ -42,6 +49,31 @@ header {
     border-top: solid 1px gray;
     padding: 20px 0;
     margin-top: 10%;
+    background: linear-gradient(lightgray, white);
+}
+
+.logout_btn, .leave_btn{
+    width: 100px;
+    height: 30px;
+}
+
+.logout_btn:hover, .leave_btn:hover{
+    cursor: pointer;
+    background-color: gray;
+}
+
+.login_link{
+    width: 150px;
+    height: 30px;
+}
+
+.login_link:hover{
+    cursor: pointer;
 }
 
 
+.error {
+	display: none;
+	color: red;
+	font-size: 0.7em;
+}
