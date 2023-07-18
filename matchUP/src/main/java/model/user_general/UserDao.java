@@ -81,6 +81,7 @@ public class UserDao {
 						DBManager.close(this.conn, this.pstmt);
 					}
 				}
+			}else {
 				check = false;
 			}
 		}else {
