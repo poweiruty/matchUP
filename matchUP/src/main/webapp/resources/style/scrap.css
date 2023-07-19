@@ -48,3 +48,18 @@
 .hr{
     padding: 5% 0;
 }
+
+.li_title_1:hover{
+    cursor: pointer;
+    background: linear-gradient(lightblue, white);
+}
+
+.li_title_2:hover{
+    cursor: pointer;
+    background: linear-gradient(indianred, white);
+}
+
+p{
+    font-weight: 700;
+
+}

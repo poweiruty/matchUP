@@ -250,16 +250,17 @@
         <% for (Map<String, String> activePosting : activeJobPostings) { %>
         <div class="con">
         <ul class="menu">
-      <li>
+      <li class="li_title_1">
+        <br> 
         <a href="#"><h2><%= activePosting.get("title") %></h2></a>  
-        <p>기업명: <%= activePosting.get("corp_name") %><br>
+        <p> 기업명: <%= activePosting.get("corp_name") %><br>
             직종: <%= intToStringJob(Integer.parseInt(activePosting.get("job"))) %><br>
             채용 인원수: <%= activePosting.get("people") %>명<br>
             지역: <%= activePosting.get("region") + " " + activePosting.get("regionDetail") %><br>
             급여(연봉): <%= activePosting.get("salary") %>만원<br>
             채용공고 마감일: <%= activePosting.get("postDate") %><br>
             복리후생: <%= activePosting.get("welfare") %><br>
-            직무 상세: <%= activePosting.get("jobDetail") %><br><b</p><br>
+            직무 상세: <%= activePosting.get("jobDetail") %><br></p><br>
       </li>
       </ul>
         </div>
@@ -268,8 +269,11 @@
 </div>
 </div>
 </div>		                            
+
 <!-- 세로선 -->
 <hr class="hr">
+
+
 <div class="completed_wrap">
 <!-- Display Completed Job Postings -->
 <div class="completed">
@@ -277,9 +281,11 @@
     <span id="if">*오늘 마감되는 채용공고도 함께 표시됩니다.</span>
     <div class="completed_con_detail">
         <% for (Map<String, String> completedPosting : completedJobPostings) { %>
-            <div class="con" style="background-color:indianred">
+            <div class="con" >
                 <ul class="menu">
-              <li><a href="#"> <%= completedPosting.get("title") %></a>          
+              <li class="li_title_2">
+                <br>
+                <a href="#"> <h2><%= completedPosting.get("title") %></h2></a>          
             <p>기업명: <%= completedPosting.get("corp_name") %><br>
             직종: <%= intToStringJob(Integer.parseInt(completedPosting.get("job"))) %><br>
             채용 인원수: <%= completedPosting.get("people") %>명<br>

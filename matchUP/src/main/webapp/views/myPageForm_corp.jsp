@@ -89,7 +89,7 @@
 							<div class="add_wrap">
 								<h2 id="caddress">주소</h2>
 								<input type="text" name="caddress" id="caddress"
-									value="${sessionScope.address}">
+									value="${sessionScope.map}">
 							</div>
 							<!-- 주소 끝 -->
 
