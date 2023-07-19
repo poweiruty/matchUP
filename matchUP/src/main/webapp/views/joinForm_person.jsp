@@ -75,6 +75,7 @@
 								<input type="password" name="passwordChk" id=passwordChk placeholder="비밀번호 확인" required>								
 								<span id="chkNotice" size="1"></span>
 								<li class="error" id="error-password">* 비밀번호는 필수 정보입니다.</li>
+								<li class="error" id="error-passwordRegex">* 비밀번호: 8~20자의 영어 대/소문자, 숫자, 특수문자를 이용해주세요.</li>
 								<li class="error" id="error-password_chk">* 비밀번호를 다시 입력해주세요.</li>
 								<li class="error" id="error-pwdEquals">* 비밀번호가 일치하지 않습니다.</li>
 							</li>
@@ -83,6 +84,7 @@
 							<li class="name">
 								<label for="name"><h2>이름</h2></label>
 								<input type="text" name="name" id="name" required>
+								<li class="error" id="error-name">* 이름은 필수 정보입니다.</li>
 							</li> 
 							<!-- 생년월일 부분 -->
 							<li>
@@ -93,6 +95,7 @@
 								</label>
 							</li>
 							<li class="birth">
+								<input type="hidden" name="tmpBirth" id="tmpBirth" value="">
 								<select name="year" id="year">
 									<option value="">연도 선택</option>
 									<option value="1980">1980</option>
@@ -174,13 +177,15 @@
 									<option value="29">29</option>
 									<option value="30">30</option>
 									<option value="31">31</option>
-								</select>
-							</li>
+								</select>								
+							</li>							
+							<li class="error" id="error-birth">* 생일은 필수 정보입니다.</li>
 							<!-- 휴대폰 부분 -->
 							<li>
 								<h2>휴대폰</h2>
 							</li>
 							<li class="phone">
+								<input type="hidden" name="tmpTel" id="tmpTel" value="">
 								<select name="phone" id="phone">
 									<option value="010">010</option>
 									<option value="011">011</option>
@@ -193,7 +198,8 @@
 								<input type="text" name="phone1" id="phone1" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
 								<span>-</span> 
 								<input type="text" name="phone2" id="phone2" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-							</li>					
+							</li>
+							<li class="error" id="error-tel">* 휴대폰번호는 필수 정보입니다.</li>					
 							<!-- 이메일 부분 -->
 							<li>
 								<label for="email">
@@ -203,13 +209,14 @@
 							<li class="email">
 								<input type="text" name="email" id="email">@
 								<input type="text" name="email2" id="email2" value="naver.com">
-						
+								<li class="error" id="error-email">* 이메일은 필수 정보입니다.</li>
 							</li>
 							<!-- 인증 이메일 부분 -->
 							<li>
 								<input type="hidden" name="emailchk" id="emailchk" value="0">
 								<input type="button" name="btn2" id="btn2" value="인증메일 전송" onclick="sendEmail()">
 								<input type="button" name="btn3" id="btn3" value="인증번호 확인" onclick="emailAuthChk()">
+								<li class="error" id="error-emailChk">* 이메일 인증을 완료해주세요.</li>
 							</li>
 							<li>
 								<label for="address">
@@ -234,7 +241,7 @@
 							<!-- 가입하기 부분 -->
 
 							<li class="sub">
-								<input type="button" name="submit-btn" id="submit-btn" value="가입하기" onclick="pJoinCheckValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
+								<input type="button" name="submit-btn" id="submit-btn" value="가입하기" onclick="pJoinCheckValue()"> <!-- 메인 페이지로 돌아가기 부분 -->
 								<a href="index"> 
 									<div id="index">메인 페이지로 돌아가기</div>
 								</a>

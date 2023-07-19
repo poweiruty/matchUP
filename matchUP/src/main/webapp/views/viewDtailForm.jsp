@@ -14,10 +14,12 @@
 </head>
 <body>
 <% 
+if(request.getParameter("post_id") != null){
 	int post_id = Integer.parseInt(request.getParameter("post_id")); 
 	JobPostDao pdao = JobPostDao.getInstance();
 	JobPostDto dto = pdao.getJobPostbyId(post_id);
 	RegionDao rdao = RegionDao.getInstance();
+	
 	int main_id = Integer.parseInt(dto.getRegion());
 	int semi_id = Integer.parseInt(dto.getRegionDetail());
 	MainRegion main = rdao.getMainRegion(main_id);
@@ -28,8 +30,13 @@
 	
 	dto.setRegion(main_region);
 	dto.setRegionDetail(semi_region);
+	%>
+		<p><%=dto %></p>
+	<%
+}
+		
 %>
-	<p><%=dto %></p>
+	
 	
 </body>
 </html>

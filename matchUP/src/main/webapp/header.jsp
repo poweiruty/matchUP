@@ -147,21 +147,26 @@
 						</c:choose>
 					</div>
 					<!-- 이력서 / 채용관리 -->
-					<div class="resumeForm">
+					<div class="resumeForm">  <!-- 로그인 상태에서는 이력서관리 페이지 이동 불가 -->
 						<c:choose>
 							<c:when test="${not empty sessionScope.cname }">
 								<a href="jobPost">
 									<h3>채용공고등록</h3>
 								</a>
 							</c:when>
-
-							<c:otherwise>
+							
+							<c:when test="${not empty sessionScope.pname }">
 								<a href="resumeRead">
 									<h3>이력서 관리</h3>
 								</a>
-							</c:otherwise>
+							</c:when>
+							
+							<c:otherwise>
+								<a href="login">								
+									<h3>이력서 관리</h3>
+								</a>
+							</c:otherwise>													
 						</c:choose>
-
 					</div>
 
 				</div>

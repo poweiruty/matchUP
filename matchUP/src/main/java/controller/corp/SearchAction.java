@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +16,6 @@ import model.search.JobPostSearchDao;
 /**
  * Servlet implementation class SearchAction
  */
-@WebServlet("/Search")
 public class SearchAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,8 +39,7 @@ public class SearchAction extends HttpServlet {
 		String region_detail = request.getParameter("region_detail");
 		
 		ArrayList<JobPostDto> list = null;
-		JobPostSearchDao jpsDao = JobPostSearchDao.getInstance();
-		
+		JobPostSearchDao jpsDao = JobPostSearchDao.getInstance();		
 		
 		String cname = null;
 		String jobName = null;
@@ -71,6 +68,7 @@ public class SearchAction extends HttpServlet {
 		}else if (main_region != null && semi_region == null) { 
 			list = jpsDao.getPostbyMainRegion(main_region);
 			System.out.println(3);
+			System.out.println("job : " + job);
 		}else if (jobName != null && main_region != null && semi_region == null) {
 			list = jpsDao.getPostbyJobNameAndMain(jobName, main_region);
 			System.out.println(4);

@@ -108,6 +108,7 @@ public class JobPostDao {
                 if (this.rs.next()) {
                 	String title = rs.getString("title");
                 	String corp_name = rs.getString("corp_name");
+                	String title = rs.getString("title");
                 	String staffs = rs.getString("staffs");
                 	String ceo = rs.getString("ceo");
                     String jobId = rs.getString("job_id");
@@ -118,7 +119,7 @@ public class JobPostDao {
                     String salary = rs.getString("salary");
                     String welfare = rs.getString("welfare");
                     String description = rs.getString("description");
-    				Timestamp created_post = this.rs.getTimestamp(13);
+    				Timestamp created_post = this.rs.getTimestamp("created_post");
     				String create_postToString = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(created_post);
                     
                     
