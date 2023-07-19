@@ -144,6 +144,7 @@ public class ResumeDao {
 		
 		if(this.conn != null) {
 			String sql = "select * from resume_tb where pusers_id=?";
+		
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
 				this.pstmt.setInt(1, pusersIdx);
@@ -177,7 +178,8 @@ public class ResumeDao {
 	}
 	
 
-	public ArrayList<Resume> getResumesByLogin(){
+	// READ : 특정회원 데이터 읽기(리스트)
+	public ArrayList<Resume> getResumesByLogin(int puserIdx){
 		ArrayList<Resume> list=new ArrayList<Resume>();
 			this.conn = DBManager.getConnection();
 			
@@ -218,15 +220,17 @@ public class ResumeDao {
 		}
 	
 	// READ : 데이터 전체 읽기
-	public ArrayList<Resume> getResumeAll(){
+	public ArrayList<Resume> getResumeAll(int puserIdx){
 		ArrayList<Resume> list = new ArrayList<Resume>();
 		this.conn = DBManager.getConnection();
 		
 		if(this.conn != null) {
-			String sql = "select * from resume_tb where pusers_id";
+			String sql = "select * from resume_tb where pusers_id=?";
 			
 			try {
-				this.pstmt = this.conn.prepareStatement(sql);				
+
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setInt(1, puserIdx);
 				this.rs = this.pstmt.executeQuery();
 				
 				while(this.rs.next()) {

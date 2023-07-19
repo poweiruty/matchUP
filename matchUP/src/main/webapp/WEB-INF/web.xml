@@ -126,7 +126,7 @@
 		<url-pattern>/Plogout</url-pattern>
 	</servlet-mapping>
 
-	<!-- resumeCreate -->
+	<!-- 이력서 작성 -->
 	<servlet>
 		<servlet-name>ResumeCreateFormAction</servlet-name>
 		<servlet-class>controller.resume.ResumeCreateFormAction</servlet-class>
@@ -136,7 +136,7 @@
 		<url-pattern>/ResumeCreate</url-pattern>
 	</servlet-mapping>
 	
-	<!-- resumeRead -->
+	<!-- 이력서 불러오기 -->
 	<servlet>
 		<servlet-name>ResumeReadFormAction</servlet-name>
 		<servlet-class>controller.resume.ResumeReadFormAction</servlet-class>
@@ -144,6 +144,16 @@
 	<servlet-mapping>
 		<servlet-name>ResumeReadFormAction</servlet-name>
 		<url-pattern>/ResumeRead</url-pattern>
+	</servlet-mapping>
+	
+	<!--  이력서 삭제 양식 -->
+	<servlet>
+		<servlet-name>ResumeDeleteFormAction</servlet-name>
+		<servlet-class>controller.resume.ResumeDeleteFormAction</servlet-class>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>ResumeDeleteFormAction</servlet-name>
+		<url-pattern>/ResumeDelete</url-pattern>
 	</servlet-mapping>
 	
 	<!-- 개인 정보수정 -->
@@ -209,7 +219,7 @@
 		<servlet-name>ReviewCreateAction</servlet-name>
 		<url-pattern>/ReviewCreate</url-pattern>
 	</servlet-mapping>
-	
+		
 	<!--  이메일 인증메일 전송 -->
 	<servlet>
 		<servlet-name>SendEmailAction</servlet-name>

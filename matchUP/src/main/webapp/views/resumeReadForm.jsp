@@ -17,6 +17,30 @@
     <link rel="stylesheet" href="resources/style/resume.css">
 </head>
 
+<<<<<<< HEAD
+=======
+<script>
+    function deleteResume(resumeId) {
+        // AJAX를 사용하여 서버로 이력서 삭제 요청 전송
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'ResumeDelete', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // 서버 응답을 처리할 수 있는 코드 작성
+                    console.log('이력서 삭제 성공');
+                } else {
+                    // 서버 응답이 실패인 경우 처리할 코드 작성
+                    console.log('이력서 삭제 실패');
+                }
+            }
+        };
+        xhr.send('resumeId=' + resumeId);
+    }
+</script>
+
+>>>>>>> refs/remotes/origin/#3-HwangIngyu
 <style>
 	.main_con{
     	text-align: center;
@@ -166,6 +190,18 @@
 			                                	<span><%= index++ %></span>
 			                            	</li>
 			                            </div>
+
+			                            
+			                            <%-- <div class="resume_index">			                            	                              	
+			                                <%= resume.getResumeId() %>			                            	
+			                            </div> --%>
+			                            
+			                            <div class="resume_index">
+			                            	<li>
+			                                	<label for="resume_index">확인용</label>
+			                                	<span><%= resume.getResumeId() %></span>
+			                            	</li>
+			                            </div>
 		                        		
 		                        		
 		                        		<div class="resume_title">
@@ -176,8 +212,9 @@
 			                            
 			                            <div class="resume_function">
 			                            	<li>
-			                            		<input class="modify" type="button" value="수정">
-			                            		<input class="delete" type="button" value="삭제">
+			                            		<input class="modify" type="button" value="수정">			                       		
+			                            		<input class="delete" type="button" value="삭제" onclick="deleteResume(<%= resume.getResumeId() %>)">		                            		
+
 			                            	</li>
 			                            </div>
 			                            
@@ -200,5 +237,7 @@
 
     <!-- footer 끝 -->
 </body>
+
+
 
 </html>
