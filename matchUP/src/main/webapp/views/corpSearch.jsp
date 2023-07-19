@@ -40,8 +40,8 @@
 				<input type="text" name="search_bar" id="search_bar" placeholder="업종 및 회사명(업종 ex -> 디자인, 교육, 회계...)">
 			</ul>	
 			 <ul class="region">
-				<li class ="region_li" style="width: 1000px;">
-							<label for="region">지역</label> 
+				<li class ="region_li">
+							<label for="region"><h2>지역</h2></label> 
 							<select name="region" id="region" size="1">
                    				<option value="" selected>선택</option>
                    				<%

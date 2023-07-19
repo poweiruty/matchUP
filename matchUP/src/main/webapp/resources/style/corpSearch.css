@@ -86,8 +86,12 @@ li:hover, h2:hover{
 	border: solid 1px gray;
 	border-radius: 5px;
 }
+
+
+
 .region_li{
-	width: 800px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .search_con .post {
@@ -98,4 +102,17 @@ li:hover, h2:hover{
 } */
 #detail_tab {
 	display: none;
+}
+
+.search_btn{
+	width: 100px;
+    height: 40px;
+}
+
+.search_btn:hover{
+	cursor:pointer;
+}
+
+select{
+    width: 30%;
 }
