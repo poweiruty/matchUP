@@ -48,12 +48,7 @@ public class JoinFormAction extends HttpServlet {
 		String birth = request.getParameter("year") + request.getParameter("month") + request.getParameter("date");
 		int birthNum = Integer.parseInt(birth);
 		String tel = request.getParameter("phone") + request.getParameter("phone1") + request.getParameter("phone2");
-		String email = request.getParameter("email");
-		if(request.getParameter("selectEmail").equals("1")) {
-			email += request.getParameter("email2");
-		}else {
-			email += request.getParameter("selectEmail");
-		}
+		String email = request.getParameter("email") + "@" + request.getParameter("email2");		
 		String address = request.getParameter("address") + " " + request.getParameter("detailAddress") + request.getParameter("extraAddress");
 		int emailChk = Integer.parseInt(request.getParameter("emailchk"));
 			

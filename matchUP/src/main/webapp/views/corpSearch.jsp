@@ -2,8 +2,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
 <!DOCTYPE html>
@@ -19,7 +18,6 @@
 </style>
 
 </head>
-
 <body>
 <!-- header 시작 -->
     <jsp:include page="header"></jsp:include>
@@ -42,14 +40,13 @@
 			</ul>	
 			 <ul class="region">
 				<li class ="region_li" style="width: 1000px;">
-							<label for="region">지역</label> 
-							<select name="region" id="region" size="1">
+							<label for="region">지역</label>							
+							<select name="region" id="region" size="1" onchange="updateValue()">
                    				<option value="" selected>선택</option>
-                   				<%
+                   				<%                   				
                    				Connection conn = null;
                    				PreparedStatement pstmt=null;
                    				ResultSet rs=null;
-                   				
                    				                   				
                    				try{
                    					conn = DBManager.getConnection();
@@ -59,76 +56,65 @@
                    					rs=pstmt.executeQuery();
                    					
                    					while(rs.next()){
-                   						String main_region=rs.getString("main_region");
+                   						String main_region=rs.getString("main_region");                           			
                    				%>
-                   						<option value="<%= main_region %>"><%= main_region%></option>
-                   				<%
+                   						<option value="<%= main_region %>"><%= main_region%></option>                   						
+                   				<%		                   			
                    					}
                    				}catch(Exception e){
                    					e.printStackTrace();
                    					System.out.println("직업 데이터 연동 및 출력 실패");
-                   				}finally{
-                   					try{
-                   						if(rs!=null){
-                   							rs.close();
-                   						}
-                   						if(pstmt!=null){
-                   							pstmt.close();
-                   						}
-                   						if(conn!=null){
-                   							conn.close();
-                   						}
-                   					}catch(Exception e){
-                   						e.printStackTrace();
-                   					}
+                   				}finally{                   					
+                   					DBManager.close(conn, pstmt, rs);
                    				}
                    				%>
-                   			</select>
-							<select name="region_detail" id="region_detail" size="1">
+                   			</select>                   			
+							<select name="region_detail" id="region_detail" size="1">							
                    				<option value="" selected>선택</option>
-                   				<%
-                   				                   				
-                   				try{
-                   					conn=DBManager.getConnection();
-                   					String sql="select semi_region from semi_region_tb group by semi_region order by semi_region_id ASC";
+                   				<%-- <%  
+	               				String main = request.getParameter("main");
+	               				//if(main != null){
+	                   				try{
+	                   					//System.out.println(main);
+	                   					conn = DBManager.getConnection();
+	                   					//String sql="select semi_region from semi_region_tb group by semi_region order by semi_region_id ASC;";	                   						                   					
+	                   					
+		                   				String sql="select semi_region from semi_region_tb semi join main_region_tb main on semi.main_region_id = main.main_region_id where main.main_region=? group by semi.semi_region order by semi.semi_region_id ASC";	                   					
+	                   					
+	                   					
+	                   					pstmt=conn.prepareStatement(sql);
                    					
-                   					pstmt=conn.prepareStatement(sql);
-                   					rs=pstmt.executeQuery();
-                   					
-                   					while(rs.next()){
-                   						String semi_region=rs.getString("semi_region");
-                   				%>
-                   						<option value="<%= semi_region %>"><%= semi_region%></option>
-                   				<%
-                   					}
-                   				}catch(Exception e){
-                   					e.printStackTrace();
-                   					System.out.println("직업 데이터 연동 및 출력 실패");
-                   				}finally{
-                   					try{
-                   						if(rs!=null){
-                   							rs.close();
+	                   					pstmt.setString(1, main);
+
+	                   					rs=pstmt.executeQuery();
+	                   					while(rs.next()){                   							
+	                   						String semi_region = rs.getString("semi_region");
+	                   						System.out.println(semi_region);
+                   						%>
+                   							<option value=""><%=rs.getString("semi_region") %></option> 
+                   						<%
                    						}
-                   						if(pstmt!=null){
-                   							pstmt.close();
-                   						}
-                   						if(conn!=null){
-                   							conn.close();
-                   						}
-                   					}catch(Exception e){
-                   						e.printStackTrace();
-                   					}
-                   				}                   				
-                   				%>
+	                   				}catch(Exception e){
+	                   					e.printStackTrace();
+	                   					System.out.println("직업 데이터 연동 및 출력 실패");
+	                   				}finally{	                   					
+	                   					DBManager.close(conn, pstmt, rs);
+	                   				} 
+                   				//}
+                   				%>--%>
                    			</select>
+                   			<input type="hidden" name="myHiddenInput" id="myHiddenInput" value="">
 						</li>
-			</ul>  
-						
-			<ul>
+					</ul>  						
+				<ul>
 				<li class="search_btn_li">
 					<button class="search_btn" onclick="search()">검색</button>
 				</li>
 			</ul>
+			 <%
+			    String selectedValue = request.getParameter("region");
+			 %> 
+			<p class="selectedValue"></p>
 		</div>
 		<!-- 검색 내역 부분 -->
 		<div class="con_wrap">
@@ -138,7 +124,7 @@
 					</ul>
 				</div>
 				<div id="detail_tab">			
-			 		<iframe src="viewDtail" name="detail_post" id="detail_post" width="630" height="500"></iframe>
+			 		<iframe src="viewDtail" name="detail_post" id="detail_post"></iframe>
 			 	</div>
 			</div>
 		</div>
@@ -148,8 +134,7 @@
 
 	<!-- footer 시작 -->
     <jsp:include page="footer"></jsp:include>
-    <!-- footer 끝 -->
-    
+    <!-- footer 끝 -->      
 	<script src="resources/script/search_post.js"></script>    
 </body>
 

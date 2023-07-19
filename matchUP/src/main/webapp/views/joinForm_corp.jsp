@@ -18,12 +18,14 @@
 <body>
 	<%		
 		String id = "";
-		/* if(request.getAttribute("id") != null){
-			id = request.getAttribute("id").toString();
-		} */
-		if(session.getAttribute("id") != null){
-			id = session.getAttribute("id").toString();
-		}
+		String notice = "";
+		String status = "none";
+
+		if(session.getAttribute("cid") != null && session.getAttribute("notice") != null){
+			id = session.getAttribute("cid").toString();
+			notice = session.getAttribute("notice").toString();
+			status = "block";
+		}		
 	%>
 	<!-- header 시작 -->
 	<jsp:include page="header_form"></jsp:include>
@@ -56,7 +58,9 @@
 								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" value="<%=id %>"> 
 								<input type="button" form="idForm" name="btn1" id="btn1" value="중복확인" onclick="idChk(form)"><br/>
 							</li>
-
+							<li class="error" id="error-duplId" style="display:<%=status%>"><%=notice %></li>								
+							<li class="error" id="error-noneId">* 아이디는 필수 정보입니다.</li>
+							<li class="error" id="error-regexId">* 아이디: 4~12자의 영어 대/소문자, 숫자를 이용해주세요.</li>
 							<!-- 비밀번호 부분 -->
 							<li>
 								<label for="pwd1">
@@ -67,25 +71,34 @@
 								</label>
 							</li>
 							<li class="pwd">
-								<input type="password" name="password" id="password" placeholder="4-10자의 영문, 특수문자, 숫자 조합" required>
-								<input type="password" name=passwordChk id="passwordChk" placeholder="비밀번호 확인" required>								
-								<span id="chkNotice" size="1"></span>
+								<input type="password" name="password" id="password" placeholder="8~20자의 영문, 특수문자, 숫자 조합" required>
+								<input type="password" name="passwordChk" id="passwordChk" placeholder="비밀번호 확인" required>		
+								<li class="error" id="error-password">* 비밀번호는 필수 정보입니다.</li>
+								<li class="error" id="error-passwordRegex">* 비밀번호: 8~20자의 영어 대/소문자, 숫자, 특수문자를 이용해주세요.</li>
+								<li class="error" id="error-password_chk">* 비밀번호를 다시 입력해주세요.</li>
+								<li class="error" id="error-pwdEquals">* 비밀번호가 일치하지 않습니다.</li>
 							</li>
 							<!-- 회사명 부분 -->
-							<li class="corp_name"><label for="corp_name">
+							<li class="corp_name">
+								<label for="corp_name">
 									<h2>회사명</h2>
-							</label> <input type="text" name="cname" id="cname"
-								placeholder="본사 주소를 기준으로 기입해 주세요." required></li>
-							
+								</label>
+								<input type="text" name="cname" id="cname" placeholder="본사 주소를 기준으로 기입해 주세요." required>								
+							</li>							
+							<li class="error" id="error-cname">* 회사이름은 필수 정보입니다.</li>
 							<!-- 사업자등록번호 부분 -->
-							<li><label for="corp_num">
+							<li>
+								<label for="corp_num">
 									<h2 id="birth_center">
-										사업자등록번호<br><span class="corp_warning"> *사업자등록번호는 추후 수정이 불가능 합니다.
-											정확히 입력해 주세요.</span>
+										사업자등록번호<br>
+										<span class="corp_warning"> *사업자등록번호는 추후 수정이 불가능 합니다. 정확히 입력해 주세요.</span>
 									</h2>
-							</label></li>
-							<li class="corp_num"><input type="text" name="corp_num"
-								id="corp_num" required></li>
+								</label>
+							</li>
+							<li class="corp_num">
+								<input type="text" name="corp_num" id="corp_num" required>								
+							</li>
+							<li class="error" id="error-cname">* 회사이름은 필수 정보입니다.</li>
 							<!-- 담당자 이름 부분 -->
 							<li><label for="mgr_name"><h2>채용 담당자 성명</h2></label></li>
 							<li><input type="text" name="mgr_name" id="mgr_name" required>
@@ -94,21 +107,22 @@
 							<li>
 								<h2>채용 담당자 연락처</h2>
 							</li>
-							<li class="phone"><select name="phone" id="phone">
+							<li class="phone">
+								<input type="hidden" name="tmpTel" id="tmpTel" value="">
+								<select name="phone" id="phone">									
 									<option value="010">010</option>
 									<option value="011">011</option>
 									<option value="016">016</option>
 									<option value="017">017</option>
 									<option value="018">018</option>
 									<option value="019">019</option>
-							</select> <span>-</span> <input type="text" name="phone1" id="phone1"
-								maxlength="4"
-								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-								<span>-</span> <input type="text" name="phone2" id="phone2"
-								maxlength="4"
-								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+								</select>
+								<span>-</span> 
+								<input type="text" name="phone1" id="phone1" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+								<span>-</span> 
+								<input type="text" name="phone2" id="phone2" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
 							</li>
-							
+							<li class="error" id="error-tel">* 휴대폰번호는 필수 정보입니다.</li>
 							<!-- 이메일 부분 -->
 							<li>
 								<label for="email">
@@ -118,34 +132,16 @@
 							<li class="email">
 								<input type="text" name="email" id="email">@
 								<input type="text" name="email2" id="email2" value="naver.com">
-						
-							<select name="selectEmail" id="selectEmail">
-								<option value="1">직접입력</option>
-								<option value="@naver.com" selected>naver.com</option>
-								<option value="@hanmail.net">hanmail.net</option>
-								<option value="@gmail.com">gmail.com</option>
-								<option value="@nate.com">nate.com</option>
-								<option value="@hotmail.com">hotmail.com</option>
-								<option value="@yahoo.co.kr">yahoo.co.kr</option>
-								<option value="@empas.com">empas.com</option>
-								<option value="@dreamwiz.com">dreamwiz.com</option>
-								<option value="@freechal.com">freechal.com</option>
-								<option value="@lycos.co.kr">lycos.co.kr</option>
-								<option value="@korea.com">korea.com</option>
-								<option value="@hanmir.com">hanmir.com</option>
-								<option value="@paran.com">paran.com</option>
-							</select>
 							</li>
-							<!-- 인증번호 전송 부분 -->
 							<li>
-								<input type="hidden" name="emailchk" id="emailchk" value="0">
+								<input type="hidden" name="emailchk" id="emailchk" value="0">								
 								<input type="button" name="btn2" id="btn2" value="인증메일 전송" onclick="sendEmail()">
-							</li>
-							<!-- 인증번호 입력 부분 -->
-							<li class="number">
-								<input type="text" name="num" id="num" maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
 								<input type="button" name="btn3" id="btn3" value="인증번호 확인" onclick="emailAuthChk()">
-							</li>
+								<li class="error" id="error-email">* 이메일은 필수 정보입니다.</li>
+								<li class="error" id="error-emailChk">* 이메일 인증을 완료해주세요.</li>
+								<li class="error" id="error-emailClick">* 인증메일 발송 후 확인해주세요.</li>
+								<li class="error" id="error-chkFalse">* 이미 사용중인 이메일입니다.</li>
+							</li>						
 							<li>
 								<label for="address">
 									<h2>주소</h2>
@@ -153,7 +149,7 @@
 							</li>
 							<li class="address">
 								<input type="text" name="postcode" id="postcode" placeholder="우편번호">
-								<input type="button" onclick="daumPostCode()" value="우편번호 찾기">								
+								<input type="button" class="postcode_find" onclick="daumPostCode()" value="우편번호 찾기">								
 							</li>
 							<li>
 								<input type="text" name="address" id="address" placeholder="주소">
@@ -181,9 +177,9 @@
 									<div class="agree">
 										<p>
 										<h3>약관동의</h3>
-										<input type="checkbox" name="chk3" id="chk" required>
+										<input type="checkbox" name="chk3" id="chk">
 										<a href="term">이용약관</a> 동의 (필수) <br /> 
-										<input type="checkbox" name="chk4" id="chk" required>
+										<input type="checkbox" name="chk4" id="chk">
 										<a href="term2">개인정보처리방침</a> 동의 (필수) <br />
 										</p>
 									</div>
@@ -192,7 +188,7 @@
 							<!-- 가입하기 부분 -->
 
 							<li class="sub">
-								<input type="button" name="submit-btn" id="submit-btn" value="가입하기" onclick="cJoinCheckValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
+								<input type="button" name="submit-btn" id="submit-btn" value="가입하기" onclick="cJoinCheckValue()"> <!-- 메인 페이지로 돌아가기 부분 -->
 								<a href="index"> <!-- 초기 화면으로 돌아감 -->
 									<div id="index">메인 페이지로 돌아가기</div>
 								</a>
@@ -202,7 +198,12 @@
 				</form>
 			</div>
 		</div>
-	</div>       
+	</div>   	
+	<%
+		session.removeAttribute("cid");
+		session.removeAttribute("idDupl");
+		session.removeAttribute("notice");
+	%>    
 	<script src="resources/script/validation_join.js"></script>                
 </body>
 <!-- footer 시작 -->

@@ -230,6 +230,16 @@
 		<servlet-name>SearchAction</servlet-name>
 		<url-pattern>/Search</url-pattern>
 	</servlet-mapping>	
+	<!--  채용공고 검색 -->
+	<servlet>
+		<servlet-name>SemibyMainAction</servlet-name>
+		<servlet-class>controller.corp.SemibyMainAction</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>SemibyMainAction</servlet-name>
+		<url-pattern>/semi</url-pattern>
+	</servlet-mapping>	
 	<!--  이메일 인증메일 확인 -->
 <!-- 	<servlet>
 		<servlet-name>EmailCheckAction</servlet-name>

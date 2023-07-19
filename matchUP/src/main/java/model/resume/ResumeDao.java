@@ -177,15 +177,16 @@ public class ResumeDao {
 	}
 	
 	// READ : 데이터 부분 읽기(리스트)
-	public ArrayList<Resume> getResumesByLogin(){
+	public ArrayList<Resume> getResumesByLogin(int pusers_id){
 		ArrayList<Resume> list=new ArrayList<Resume>();
 		this.conn = DBManager.getConnection();
 		
 		if(this.conn != null) {
-			String sql = "select * from resume_tb where pusers_id";
+			String sql = "select * from resume_tb where pusers_id=?";
 			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setInt(1, pusers_id);
 				this.rs = this.pstmt.executeQuery();
 				
 				while(this.rs.next()) {

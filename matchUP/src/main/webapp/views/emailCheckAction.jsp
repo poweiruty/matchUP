@@ -35,12 +35,20 @@
 	// hash 처리한 결과를 비교해 결과 값 반환
 	boolean isRight = (SHA256.getSHA256(tempEmail).equals(code)) ? true : false;
 	if(res && isRight){		
-		PrintWriter script = response.getWriter();
+		/* PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('인증에 성공했습니다.');");		
 		script.println("window.close();");
 		script.println("</script>");
-		script.close();		
+		script.close(); */	
+		%>
+		<script>
+			alert('인증에 성공했습니다.');
+			localStorage.clear();
+			localStorage.setItem("result", "인증성공");
+			window.close();
+		</script>		
+		<%
 		return;
 	}else{
 		/* PrintWriter script = response.getWriter();		
@@ -50,7 +58,7 @@
 		script.println("window.close();");
 		script.println("</script>"); */
 		%>
-		<script type="text/javascript">
+		<script>
 			alert('이미 사용중인 이메일입니다.');
 			localStorage.clear();
 			window.close();

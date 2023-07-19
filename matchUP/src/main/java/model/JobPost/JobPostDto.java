@@ -24,7 +24,13 @@ public class JobPostDto {
 		this.postDate = postDate;
 		this.jobDetail = jobDetail;
 	}
-
+	public JobPostDto(int post_id, String title, String corp_name, String postDate, String jobDetail) {
+		this.post_id = post_id;
+		this.title = title;
+		this.corp_name = corp_name;
+		this.postDate = postDate;
+		this.jobDetail = jobDetail;
+	}
 	public JobPostDto(String title, String corp_name, String staffs, String ceo, String job, String region, String regionDetail,
 			String people, String postDate, String salary, String welfare, String jobDetail, String create_post) {		
 		this.title = title;
