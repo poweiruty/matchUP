@@ -5,6 +5,7 @@ package model.resume;
 public class Resume {
 	private int resume_id;
 	private int pusers_id;
+	private String resume_title;
 	private int job_id;
 	private String graduation;
 	private String degree;
@@ -15,8 +16,9 @@ public class Resume {
 	private int resume_created;
 	private int resume_modified;
 	
-	public Resume(int jobId,String graduation,String degree, 
+	public Resume(String resumeTitle, int jobId,String graduation,String degree, 
 			  String career, String activity, String certificate, String intro) {
+		this.resume_title=resumeTitle;
 		this.job_id=jobId;
 		this.graduation=graduation;
 		this.degree=degree;
@@ -25,9 +27,10 @@ public class Resume {
 		this.certificate=certificate;
 		this.intro=intro;
 	}
-	public Resume(int puserIdx,int jobId,String graduation,String degree, 
+	public Resume(int puserIdx,String resumeTitle,int jobId,String graduation,String degree, 
 				  String career, String activity, String certificate, String intro) {
 		this.pusers_id=puserIdx;
+		this.resume_title=resumeTitle;
 		this.job_id=jobId;
 		this.graduation=graduation;
 		this.degree=degree;
@@ -36,11 +39,12 @@ public class Resume {
 		this.certificate=certificate;
 		this.intro=intro;
 	} 
-	public Resume(int resumeId,int pusersId,int jobId, 
+	public Resume(int resumeId, int pusersId, String resumeTitle, int jobId, 
 		  	  	  String graduation, String degree, String career, 
 		  	      String activity, String certificate, String intro, int resumeCreated, int resumeModified) {
 		this.resume_id=resumeId;
 		this.pusers_id = pusersId;
+		this.resume_title=resumeTitle;
 		this.job_id=jobId;
 		this.graduation=graduation;
 		this.degree=degree;
@@ -58,6 +62,9 @@ public class Resume {
 	}
 	public int getPusersId() {
 		return pusers_id;
+	}
+	public String getResumeTitle() {
+		return resume_title;
 	}
 	public int getJobId() {
 		return job_id;

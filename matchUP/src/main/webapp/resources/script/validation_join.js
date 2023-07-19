@@ -1,15 +1,53 @@
+const year = document.getElementById('year');
+const month = document.getElementById('month');
+const date = document.getElementById('date');
+const output = document.getElementById('tmpBirth');
+
+year.addEventListener('change', birthUpdate);
+month.addEventListener('change', birthUpdate);
+date.addEventListener('change', birthUpdate);
+
+function birthUpdate() {
+	const value1 = year.value;
+	const value2 = month.value;
+	const value3 = date.value;
+
+	const result = value1 + value2 + value3;
+	output.value = result;
+	if (result.length === 8) {			
+		$('#error-birth').hide();	
+	}
+}
+
+const phone1 = document.getElementById('phone1');
+const phone2 = document.getElementById('phone2');
+const tmpTel = document.getElementById('tmpTel');
+
+phone1.addEventListener('change', telUpdate);
+phone2.addEventListener('change', telUpdate);
+
+function telUpdate() {
+	const value1 = phone1.value;
+	const value2 = phone2.value;
+
+	const result = value1 + value2;
+	tmpTel.value = result;
+	if (result.length === 8) {			
+		$('#error-tel').hide();	
+	}
+}
 $('#id').on('change', e => {
 	//&& id.match(/^[a-zA-Z0-9]{3,11}$/) !== null
 	if($('#id').val() !== "") {
 		$('#error-noneId').hide();
-		$('#id').parent().css('border-color', 'lightgrey');
 	}
 });
 $('#password').on('change', e => {
 	if($('#password').val() !== "") {
 		$('#error-password').hide();
-		$('#password').parent().css('border-color', 'red');
-		$('#password').parent().css('border-top', 'solid 1px red');
+	}
+	if($('#password').val().match(/^[a-zA-Z0-9!@#$%]{8,20}$/) !== null){
+		$('#error-passwordRegex').hide();
 	}
 });
 
@@ -25,13 +63,8 @@ $('#name').on('change', e => {
 		$('#error-name').hide();
 	}
 });
-$('#birth').on('change', e => {
-	if($('#year').val() !== "" && $('#month').val() !== "" && $('#date').val() !== "") {
-		$('#error-birth').hide();
-	}
-});
 $('#pnum').on('change', e => {
-	if(tel.length === 11 && tel.match(/\d{11}/) !== null){
+	if($('#error-password_chk').length === 11 && $('#error-password_chk').match(/\d{11}/) !== null){
 		$('#error-tel').hide();		
 	}
 });	
@@ -55,64 +88,62 @@ function idNotice(){
 		$('#error-duplId').show();
 	}
 }
-function pJoinCheckValue(htmlForm){
-	const id = htmlForm.id.value;
-	const password = htmlForm.password.value;
-	const passwordChk = htmlForm.passwordChk.value;
-	const name = htmlForm.name.value;
-	const birth = htmlForm.year.value + htmlForm.month.value + htmlForm.date.value;	
-	console.log(birth);
-	const tel = htmlForm.phone.value + htmlForm.phone1.value + htmlForm.phone2.value;
-	var idchk = document.getElementById('idchk').value;	
-	var email = htmlForm.email.value;	
+function pJoinCheckValue(){
+	const id = $('#id').val();
+	const password = $('#password').val();
+	const passwordChk = $('#passwordChk').val();
+	const name = $('#name').val();
+	const birth = $('#year').val() + $('#month').val() + $('#date').val(); 	
+	const tel = $('#phone').val() + $('#phone1').val() + $('#phone2').val();
+	const idchk = $('#idchk').val();
+	var email = $('#email').val() + $('#email').val();
 	
-	if(htmlForm.selectEmail.value === "1"){
-		email += htmlForm.email2.value;
-	}else{
-		email += htmlForm.selectEmail.value;
-	}	
-	const emailChk = htmlForm.emailchk.value;
-	const address = htmlForm.address.value + htmlForm.detailAddress.value + htmlForm.extraAddress.value;
+	const emailChk = $('#emailchk').val();
+	const address = $('#address').val() +$('#detailAddress').val() + $('#extraAddress').val();
 	
 	let check = true;
 	
 	if(id === "" || id.match(/^[a-zA-Z0-9]{3,11}$/) === null){
-		$('#error-noneId').show();	
-		console.log("1 : " + check);
+		$('#error-noneId').show();				
+		$('#id').focus();		
 		check = false;
-	}else if(idchk === "중복" || idchk === null){	
+	}else if(idchk === "중복" || idchk === null){			
+		$('#id').focus();	
 		check = false;		
-	}else if(password === "" || password.match(/^[a-zA-Z0-9!@#$%]{8,20}$/) === null){
-		$('#error-password').show();
-		console.log("3 : " + check);		
+	}else if(password === ""){
+		$('#error-password').show();		
+		$('#password').focus();	
+		check = false;
+	}else if(password.match(/^[a-zA-Z0-9!@#$%]{8,20}$/) === null){
+		$('#error-passwordRegex').show();					
+		$('#password').focus();	
 		check = false;
 	}else if(passwordChk === ""){
-		$('#error-password_chk').show();
-		console.log("4 : " + check);		
+		$('#error-password_chk').show();				
+		$('#passwordChk').focus();			
 		check = false;
 	}else if(password !== passwordChk){
 		$('#error-pwdEquals').show();
-		console.log("5 : " + check);
+		$('#passwordChk').focus();
 		check = false;
 	}else if(name === ""){		
-		$('#error-name').show();
-		console.log("6 : " + check);		
+		$('#error-name').show();	
+		$('#name').focus();	
 		check = false;
 	}else if(birth === "" || birth.length !== 8){
 		$('#error-birth').show();
-		console.log("7 : " + check);		
+		$('#birth').focus();			
 		check = false;
 	}else if(tel.length !== 11){
-		$('#error-tel').show();		
-		console.log("8 : " + check);		
+		$('#error-tel').show();	
+		$('#phone1').focus();				
 		check = false;
 	}else if(email === ""){
-		$('#error-email').show();
-		console.log("10 : " + check);		
+		$('#error-email').show();	
+		$('#email').focus();		
 		check = false;
 	}else if(emailChk === "인증실패" || emailChk === "인증중" || emailChk === "0"){
 		$('#error-emailChk').show();
-		console.log(9 + check);		
 		check = false;
 	}
 	
@@ -152,6 +183,7 @@ function cJoinCheckValue(htmlForm){
 		check = false;		
 	}else if(password === "" || password.match(/^[a-zA-Z0-9!@#$%]{8,20}$/) === null){
 		$('#error-password').show();
+		$('#error-password').focus();
 		console.log("3 : " + check);		
 		check = false;
 	}else if(passwordChk === ""){

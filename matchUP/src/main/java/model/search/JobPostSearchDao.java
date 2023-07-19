@@ -47,7 +47,7 @@ public class JobPostSearchDao {
 		String cname = null;
 		this.conn = DBManager.getConnection();
 		if(this.conn != null) {
-			String sql = "select corp_name from corporation_tb where corp_name like ?";
+			String sql = "select corp_name from job_posting_tb where corp_name like ?";
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
 				this.pstmt.setString(1, "%" + job + "%");

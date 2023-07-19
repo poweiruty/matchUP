@@ -51,6 +51,7 @@ public class ResumeCreateFormAction extends HttpServlet{
 				}
 				
 				// 그 이외의 값들 파라미터로 불러오기
+				String resumeTitle=request.getParameter("resume_title");
 				int jobIdx = Integer.parseInt(request.getParameter("job"));
 				int graduationIdx = Integer.parseInt(request.getParameter("graduation"));
 				String graduation="";
@@ -76,6 +77,7 @@ public class ResumeCreateFormAction extends HttpServlet{
 				}
 				
 				// 화면에서 넘겨준 데이터 확인
+				System.out.println("제목 : "+resumeTitle);
 				System.out.println("유저 인덱스 :"+puserIdx);
 				System.out.println("직종 인덱스 :"+jobIdx);
 				System.out.println("최종학력 : " + graduation);				
@@ -86,7 +88,7 @@ public class ResumeCreateFormAction extends HttpServlet{
 				System.out.println("자기소개 : " + intro);
 				
 				// DTO 객체 생성
-				ResumeRequestDto resume = new ResumeRequestDto(puserIdx,jobIdx,graduation,degree,career,activity,certificate,intro);
+				ResumeRequestDto resume = new ResumeRequestDto(puserIdx,resumeTitle,jobIdx,graduation,degree,career,activity,certificate,intro);
 
 				// DAO 객체 생성
 				ResumeDao dao = ResumeDao.getInstance();
@@ -94,7 +96,7 @@ public class ResumeCreateFormAction extends HttpServlet{
 				boolean result = dao.createResume(resume);
 				System.out.println(result);	// 이력서 create 확인용
 				
-				String url = "index";
+				String url = "resumeRead";
 				response.sendRedirect(url);
 			}
 	}

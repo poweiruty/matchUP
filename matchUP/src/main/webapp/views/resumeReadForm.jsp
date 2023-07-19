@@ -32,7 +32,10 @@
             <div class="main_resume">
                 <!-- 이름, 생년월일, 연락처, 이메일, 주소 -->
                 <form action="ResumeRead" method="post">
-
+					<div class="createResume">
+                		<a href="resumeCreate"><input type="button" value="이력서 작성하기"></a>                		
+            		</div>
+            		
                     <!-- 테스토 : 황인규 작성
                     <div calss="test">
                         <span>세션값을 뽑아와보자 : </span>
@@ -40,6 +43,20 @@
                     </div> -->
 
                     <ul>
+                    	<li>
+                            <label for="resume_title">최종학력 </label>
+                            <span>
+                            <% 
+                            	ResumeDao resumeDao = ResumeDao.getInstance();
+                        		Resume resume = resumeDao.getResumeInfo((int) session.getAttribute("puserIdx"));
+                            		
+                            	if (resume != null) {
+                               		out.print(resume.getResumeTitle());                                 
+                            	}
+                            %>
+                            </span>
+                        </li>
+                        
                         <li>
                             <label for="pname">이름 </label>
                             <span>${sessionScope.pname}</span>
@@ -69,10 +86,7 @@
                             <label for="job">희망직종 </label>
                             <span>
                                 <%-- getResumeInfo 메소드를 호출하여 데이터 가져오기 --%>
-                                <% 
-                                	ResumeDao resumeDao = ResumeDao.getInstance();
-                                	Resume resume = resumeDao.getResumeInfo((int) session.getAttribute("puserIdx"));
-                                	                          
+                                <%                                 	                   	                          
                             		JobDao jobDao = JobDao.getInstance();
                             		Job job=jobDao.getJobByJobId(resume.getJobId());
                             		

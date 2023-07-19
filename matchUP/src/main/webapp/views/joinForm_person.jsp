@@ -9,6 +9,7 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- header css -->
 <link rel="stylesheet" href="resources/style/join.css">
+
 </head>
 
 <body>
@@ -70,10 +71,11 @@
 								</label>
 							</li>
 							<li class="pwd">
-								<input type="password" name="password" id="password" placeholder="4-10자의 영문, 특수문자, 숫자 조합" required>
+								<input type="password" name="password" id="password" placeholder="최소 8자리 이상 입력하세요." required>
 								<input type="password" name="passwordChk" id=passwordChk placeholder="비밀번호 확인" required>								
 								<span id="chkNotice" size="1"></span>
 								<li class="error" id="error-password">* 비밀번호는 필수 정보입니다.</li>
+								<li class="error" id="error-passwordRegex">* 비밀번호: 8~20자의 영어 대/소문자, 숫자, 특수문자를 이용해주세요.</li>
 								<li class="error" id="error-password_chk">* 비밀번호를 다시 입력해주세요.</li>
 								<li class="error" id="error-pwdEquals">* 비밀번호가 일치하지 않습니다.</li>
 							</li>
@@ -82,6 +84,7 @@
 							<li class="name">
 								<label for="name"><h2>이름</h2></label>
 								<input type="text" name="name" id="name" required>
+								<li class="error" id="error-name">* 이름은 필수 정보입니다.</li>
 							</li> 
 							<!-- 생년월일 부분 -->
 							<li>
@@ -92,6 +95,7 @@
 								</label>
 							</li>
 							<li class="birth">
+								<input type="hidden" name="tmpBirth" id="tmpBirth" value="">
 								<select name="year" id="year">
 									<option value="">연도 선택</option>
 									<option value="1980">1980</option>
@@ -173,13 +177,15 @@
 									<option value="29">29</option>
 									<option value="30">30</option>
 									<option value="31">31</option>
-								</select>
-							</li>
+								</select>								
+							</li>							
+							<li class="error" id="error-birth">* 생일은 필수 정보입니다.</li>
 							<!-- 휴대폰 부분 -->
 							<li>
 								<h2>휴대폰</h2>
 							</li>
 							<li class="phone">
+								<input type="hidden" name="tmpTel" id="tmpTel" value="">
 								<select name="phone" id="phone">
 									<option value="010">010</option>
 									<option value="011">011</option>
@@ -192,7 +198,8 @@
 								<input type="text" name="phone1" id="phone1" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
 								<span>-</span> 
 								<input type="text" name="phone2" id="phone2" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-							</li>					
+							</li>
+							<li class="error" id="error-tel">* 휴대폰번호는 필수 정보입니다.</li>					
 							<!-- 이메일 부분 -->
 							<li>
 								<label for="email">
@@ -202,33 +209,14 @@
 							<li class="email">
 								<input type="text" name="email" id="email">@
 								<input type="text" name="email2" id="email2" value="naver.com">
-						
-							<select name="selectEmail" id="selectEmail">
-								<option value="1">직접입력</option>
-								<option value="@naver.com" selected>naver.com</option>
-								<option value="@hanmail.net">hanmail.net</option>
-								<option value="@gmail.com">gmail.com</option>
-								<option value="@nate.com">nate.com</option>
-								<option value="@hotmail.com">hotmail.com</option>
-								<option value="@yahoo.co.kr">yahoo.co.kr</option>
-								<option value="@empas.com">empas.com</option>
-								<option value="@dreamwiz.com">dreamwiz.com</option>
-								<option value="@freechal.com">freechal.com</option>
-								<option value="@lycos.co.kr">lycos.co.kr</option>
-								<option value="@korea.com">korea.com</option>
-								<option value="@hanmir.com">hanmir.com</option>
-								<option value="@paran.com">paran.com</option>
-							</select>
+								<li class="error" id="error-email">* 이메일은 필수 정보입니다.</li>
 							</li>
-							<!-- 인증번호 전송 부분 -->
+							<!-- 인증 이메일 부분 -->
 							<li>
 								<input type="hidden" name="emailchk" id="emailchk" value="0">
 								<input type="button" name="btn2" id="btn2" value="인증메일 전송" onclick="sendEmail()">
-							</li>
-							<!-- 인증번호 입력 부분 -->
-							<li class="number">
-								<input type="text" name="num" id="num" maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
 								<input type="button" name="btn3" id="btn3" value="인증번호 확인" onclick="emailAuthChk()">
+								<li class="error" id="error-emailChk">* 이메일 인증을 완료해주세요.</li>
 							</li>
 							<li>
 								<label for="address">
@@ -237,7 +225,7 @@
 							</li>
 							<li class="address">
 								<input type="text" name="postcode" id="postcode" placeholder="우편번호">
-								<input type="button" onclick="daumPostCode()" value="우편번호 찾기">								
+								<input type="button" class="postcode_find" onclick="daumPostCode()" value="우편번호 찾기">								
 							</li>
 							<li>
 								<input type="text" name="address" id="address" placeholder="주소">
@@ -249,34 +237,11 @@
 							<!-- <li>							
 								<input type="text" id="extraAddress" placeholder="참고항목">
 							</li>							 -->
-							<!-- 마케팅 정보 수신동의 부분 -->
-							<li>
-								<div class="marketing_wrap">
-									<div class="marketing">
-										<h3>마케팅 정보 수신동의</h3>
-										<br /> 중요한 알림 및 각종 혜택 알림을 수신합니다. 
-										<br /> 수업과 관련된 사항은 수신동의와	관련없이 보내드립니다. <br />
-										<br /> 
-										<input type="checkbox" name="chk1" id="chk">SNS	서비스 동의 (선택) <br /> 
-										<input type="checkbox" name="chk2" id="chk">메일 수신 동의 (선택) <br />
-									</div>
-								</div> <!-- 약관동의 부분 -->
-								<div class="agree_wrap">
-									<div class="agree">
-										<p>
-										<h3>약관동의</h3>
-										<input type="checkbox" name="chk3" id="chk" required>
-										<a href="term">이용약관</a> 동의 (필수) <br /> 
-										<input type="checkbox" name="chk4" id="chk" required>
-										<a href="term2">개인정보처리방침</a> 동의 (필수) <br />
-										</p>
-									</div>
-								</div>
-							</li>
+							
 							<!-- 가입하기 부분 -->
 
 							<li class="sub">
-								<input type="button" name="submit-btn" id="submit-btn" value="가입하기" onclick="pJoinCheckValue(form)"> <!-- 메인 페이지로 돌아가기 부분 -->
+								<input type="button" name="submit-btn" id="submit-btn" value="가입하기" onclick="pJoinCheckValue()"> <!-- 메인 페이지로 돌아가기 부분 -->
 								<a href="index"> 
 									<div id="index">메인 페이지로 돌아가기</div>
 								</a>

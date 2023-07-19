@@ -14,6 +14,7 @@
 </head>
 <body>
 <% 
+if(request.getParameter("post_id") != null){
 	int post_id = Integer.parseInt(request.getParameter("post_id")); 
 	JobPostDao pdao = JobPostDao.getInstance();
 	JobPostDto dto = pdao.getJobPostbyId(post_id);
@@ -29,8 +30,13 @@
 	
 	dto.setRegion(main_region);
 	dto.setRegionDetail(semi_region);
+	%>
+		<p><%=dto %></p>
+	<%
+}
+		
 %>
-	<p><%=dto %></p>
+	
 	
 </body>
 </html>
