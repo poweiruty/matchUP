@@ -50,7 +50,7 @@
 					<p><img src="resources/img/Rlogo.png"></p>
 					<span>Gyu-Tae Park</span>
 					<p>Git: https://github.com/poweiruty</p>
-					<p>Email: </p>
+					<p>Email: qkrrb0032@naver.com</p>
 				</div>
 			</section>
 
