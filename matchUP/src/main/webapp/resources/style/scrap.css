@@ -8,10 +8,9 @@
     font-weight: 700;
 }
 
-/* 저장됨, 지원완료 탭 */
 .main{
     display: flex;
-    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 /* 저장됨 */
@@ -19,7 +18,6 @@
 .saved, .completed{
     padding: 5px;
     height: 800px;
-    width: 50%;
 }
 
 .saved_con, .completed_con{
@@ -27,8 +25,11 @@
     height: 95%;
 }
 
+#saved_title{
+    margin-bottom: 35px;
+}
+
 #saved_title, #completed_title{
-    margin-bottom: 10px;
     font-size: 2rem;
     font-weight: 700;
 }
@@ -37,4 +38,13 @@
 	font-size:0.8rem;
 	font-weight:700;
 	color:red;
+}
+
+.saved_con_detail{
+    display: flex;
+    flex-direction: row;
+}
+
+.hr{
+    padding: 5% 0;
 }
