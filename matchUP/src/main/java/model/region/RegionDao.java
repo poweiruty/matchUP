@@ -1,7 +1,10 @@
 package model.region;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
+
+import model.JobPost.JobPostDto;
 import util.DBManager;
 
 public class RegionDao {
@@ -175,6 +178,30 @@ public class RegionDao {
 			} finally {
 				DBManager.close(this.conn, this.pstmt, this.rs);
 			}
+		}
+		return list;
+	}
+
+	public ArrayList<SemiRegion> getSemibyMain(String main) {
+		ArrayList<SemiRegion> list = new ArrayList<SemiRegion>();	
+		this.conn = DBManager.getConnection();
+		if(this.conn != null) {
+			String sql="select semi_region from semi_region_tb semi join main_region_tb main on semi.main_region_id = main.main_region_id where main.main_region=? group by semi.semi_region order by semi.semi_region_id ASC";
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+    			this.pstmt.setString(1, main);
+    			this.rs = this.pstmt.executeQuery();
+    			while(this.rs.next()) {
+    				String semi_region = this.rs.getString("semi_region");
+    				
+    				SemiRegion semi = new SemiRegion(semi_region);
+    				list.add(semi);
+    			}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBManager.close(this.conn, this.pstmt, this.rs);
+			}			
 		}
 		return list;
 	}
