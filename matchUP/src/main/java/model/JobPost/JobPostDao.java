@@ -108,7 +108,6 @@ public class JobPostDao {
                 if (this.rs.next()) {
                 	String title = rs.getString("title");
                 	String corp_name = rs.getString("corp_name");
-                	String title = rs.getString("title");
                 	String staffs = rs.getString("staffs");
                 	String ceo = rs.getString("ceo");
                     String jobId = rs.getString("job_id");

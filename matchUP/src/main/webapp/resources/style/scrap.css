@@ -12,7 +12,6 @@
 .main{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
 }
 
 /* 저장됨 */
@@ -21,7 +20,6 @@
     padding: 5px;
     height: 800px;
     width: 50%;
-    border-right: solid 1px gray;
 }
 
 .saved_con, .completed_con{
@@ -31,4 +29,12 @@
 
 #saved_title, #completed_title{
     margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+#if{
+	font-size:0.8rem;
+	font-weight:700;
+	color:red;
 }

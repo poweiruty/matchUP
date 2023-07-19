@@ -147,7 +147,7 @@
 				<c:choose>
 					<c:when test="${not empty sessionScope.cname }">
 						<a href="jobPost">
-							<h3>채용공고등록</h3>
+							<h3>채용공고조회</h3>
 						</a>
 					</c:when>
 					
