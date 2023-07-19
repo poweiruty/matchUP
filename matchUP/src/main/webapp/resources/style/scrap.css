@@ -56,10 +56,9 @@
 
 .li_title_2:hover{
     cursor: pointer;
-    background: linear-gradient(indianred, white);
+    background: linear-gradient(lightcoral, white);
 }
 
 p{
     font-weight: 700;
-
 }

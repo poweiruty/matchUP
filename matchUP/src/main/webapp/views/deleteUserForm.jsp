@@ -9,6 +9,7 @@
 <style>
 .section{
 	border: solid 1px gray;
+	border-radius: 10px;
 	margin: 0 15%;
 }
 

@@ -10,6 +10,7 @@
 		.section{
 			border: solid 1px gray;
 			margin: 0 15%;
+			border-radius: 10px;
 		}
 		
 		.title{
