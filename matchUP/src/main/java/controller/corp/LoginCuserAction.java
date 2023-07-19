@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.JobPost.JobPostDto;
 import model.corp.Corp;
 import model.corp.CorpDao;
+import model.search.JobPostSearchDao;
 import model.user_corp.CorpUser;
 import model.user_corp.CorpUserDao;
 
@@ -72,6 +74,9 @@ public class LoginCuserAction extends HttpServlet {
 	            session.setAttribute("ceo", ceo);
 	            session.setAttribute("staffs", staffs);
 	        }
+	        
+//	        JobPostSearchDao jobPostSearchDao = new JobPostSearchDao();
+//	        JobPostDto jobPostDto = jobPostSearchDao.getPostByCorpName(cname);
 	        
 			System.out.println(session.getAttribute("log"));
 			System.out.println(session.getAttribute("cpassword"));
