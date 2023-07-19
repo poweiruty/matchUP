@@ -90,6 +90,7 @@ li:hover, h2:hover{
 
 
 .region_li{
+	width:100%;
     display: flex;
     justify-content: space-around;
 }
