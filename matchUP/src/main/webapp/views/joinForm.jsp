@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <title>회원가입</title>
     <link rel="stylesheet" href="resources/style/join.css">
+    <link rel="shortcut icon" href="resources/img/favicon.png">
+    
 </head>
 
 <body>

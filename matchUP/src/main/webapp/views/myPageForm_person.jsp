@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>마이페이지(개인)</title>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<link rel="shortcut icon" href="resources/img/favicon.png">
 
 <!-- header css -->
 <link rel="stylesheet" href="resources/style/join.css">

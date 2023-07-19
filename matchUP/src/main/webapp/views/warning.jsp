@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="shortcut icon" href="resources/img/favicon.png">
+
 </head>
 <body>
 	기업 회원만 접근 가능합니다.

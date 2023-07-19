@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="resources/style/reset_form.css">
 <!-- header css -->
 <link rel="stylesheet" href="resources/style/grid.css">
+<link rel="shortcut icon" href="resources/img/favicon.png">
 
 <link rel="stylesheet" href="resources/style/join.css">
 </head>
@@ -71,13 +72,14 @@
 								</label>
 							</li>
 							<li class="pwd">
-								<input type="password" name="password" id="password" placeholder="8~20자의 영문, 특수문자, 숫자 조합" required>
+								<input type="password" name="password" id="password" placeholder="8~20자의 영문, 특수문자, 숫자 조합">
 								<input type="password" name="passwordChk" id="passwordChk" placeholder="비밀번호 확인" required>		
 								<li class="error" id="error-password">* 비밀번호는 필수 정보입니다.</li>
 								<li class="error" id="error-passwordRegex">* 비밀번호: 8~20자의 영어 대/소문자, 숫자, 특수문자를 이용해주세요.</li>
 								<li class="error" id="error-password_chk">* 비밀번호를 다시 입력해주세요.</li>
 								<li class="error" id="error-pwdEquals">* 비밀번호가 일치하지 않습니다.</li>
 							</li>
+							
 							<!-- 회사명 부분 -->
 							<li class="corp_name">
 								<label for="corp_name">
@@ -157,36 +159,7 @@
 							<li>
 								<input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소">
 								<input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목">
-							</li>							
-							<!-- <li>							
-								<input type="text" id="extraAddress" placeholder="참고항목">
-							</li>							 -->
-							<!-- 마케팅 정보 수신동의 부분 -->
-							<li>
-								<div class="marketing_wrap">
-									<div class="marketing">
-										<h3>마케팅 정보 수신동의</h3>
-										<br /> 중요한 알림 및 각종 혜택 알림을 수신합니다. 
-										<br /> 수업과 관련된 사항은 수신동의와	관련없이 보내드립니다. <br />
-										<br /> 
-										<input type="checkbox" name="chk1" id="chk">SNS	서비스 동의 (선택) <br /> 
-										<input type="checkbox" name="chk2" id="chk">메일 수신 동의 (선택) <br />
-									</div>
-								</div> <!-- 약관동의 부분 -->
-								<div class="agree_wrap">
-									<div class="agree">
-										<p>
-										<h3>약관동의</h3>
-										<input type="checkbox" name="chk3" id="chk">
-										<a href="term">이용약관</a> 동의 (필수) <br /> 
-										<input type="checkbox" name="chk4" id="chk">
-										<a href="term2">개인정보처리방침</a> 동의 (필수) <br />
-										</p>
-									</div>
-								</div>
 							</li>
-							<!-- 가입하기 부분 -->
-
 							<li class="sub">
 								<input type="button" name="submit-btn" id="submit-btn" value="가입하기" onclick="cJoinCheckValue()"> <!-- 메인 페이지로 돌아가기 부분 -->
 								<a href="index"> <!-- 초기 화면으로 돌아감 -->

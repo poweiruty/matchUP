@@ -7,6 +7,8 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import model.JobPost.JobPostDto;
 import util.DBManager;
 
@@ -454,4 +456,7 @@ public class JobPostSearchDao {
 		}
 		return list;
 	}
+	
+	 
+	 
 }

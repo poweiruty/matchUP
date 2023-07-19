@@ -92,8 +92,13 @@ li:hover, h2:hover{
 	cursor:pointer;
 	box-shadow : 0px 5px 5px 0px gray;
 }
+
+
+
 .region_li{
-	width: 800px;
+	width:100%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .search_con .post {
@@ -132,4 +137,16 @@ li:hover, h2:hover{
 #apply:hover{
 	background-color: #C8C8C8;	
 	cursor: pointer;
+}
+.search_btn{
+	width: 100px;
+    height: 40px;
+}
+
+.search_btn:hover{
+	cursor:pointer;
+}
+
+select{
+    width: 30%;
 }

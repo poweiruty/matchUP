@@ -12,6 +12,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="shortcut icon" href="resources/img/favicon.png">
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/style/corpSearch.css">

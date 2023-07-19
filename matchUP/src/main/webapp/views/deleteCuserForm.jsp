@@ -5,11 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
+<link rel="shortcut icon" href="resources/img/favicon.png">
 
 	<style>
 		.section{
 			border: solid 1px gray;
 			margin: 0 15%;
+			border-radius: 10px;
 		}
 		
 		.title{

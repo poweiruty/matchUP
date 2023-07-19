@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="resources/style/reset_form.css">
     <!-- header css -->
     <link rel="stylesheet" href="resources/style/grid.css">
+    <!-- favicon -->
+    
 <!-- 로고 css -->
 <style>
 	.logo{
@@ -132,7 +134,7 @@
             <div class="scrap">              
                 <c:choose>
 					<c:when test="${not empty sessionScope.cname }">
-						<a href="jobPostUpdate"><h3>채용공고관리</h3></a>
+						<a href="jobPostUpdate"><h3>채용공고조회</h3></a>
 					</c:when>
 					
 					<c:otherwise>

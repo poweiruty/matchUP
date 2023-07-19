@@ -19,6 +19,7 @@
 
 	<!-- main 시작 -->
 	<section class="container">
+	<br>
 	<p class="idx_title">
 		당신(yoU)과 사람들(People)을 잇습니다. <br> 구인구직 플랫폼, Match-UP
 	</p>

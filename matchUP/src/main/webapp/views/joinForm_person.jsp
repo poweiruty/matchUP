@@ -9,6 +9,7 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- header css -->
 <link rel="stylesheet" href="resources/style/join.css">
+<link rel="shortcut icon" href="resources/img/favicon.png">
 
 </head>
 
