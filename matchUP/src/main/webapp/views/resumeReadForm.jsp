@@ -12,13 +12,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<link rel="shortcut icon" href="resources/img/favicon.png">
 
     <link rel="stylesheet" href="resources/style/resume.css">
 </head>
 
-<<<<<<< HEAD
-=======
 <script>
     function deleteResume(resumeId) {
         // AJAX를 사용하여 서버로 이력서 삭제 요청 전송
@@ -40,7 +37,6 @@
     }
 </script>
 
->>>>>>> refs/remotes/origin/#3-HwangIngyu
 <style>
 	.main_con{
     	text-align: center;
@@ -190,7 +186,6 @@
 			                                	<span><%= index++ %></span>
 			                            	</li>
 			                            </div>
-
 			                            
 			                            <%-- <div class="resume_index">			                            	                              	
 			                                <%= resume.getResumeId() %>			                            	
@@ -213,8 +208,7 @@
 			                            <div class="resume_function">
 			                            	<li>
 			                            		<input class="modify" type="button" value="수정">			                       		
-			                            		<input class="delete" type="button" value="삭제" onclick="deleteResume(<%= resume.getResumeId() %>)">		                            		
-
+			                            		<input class="delete" type="button" value="삭제" onclick="deleteResume(<%= resume.getResumeId() %>)">			                            		
 			                            	</li>
 			                            </div>
 			                            
