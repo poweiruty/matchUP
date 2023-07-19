@@ -18,11 +18,18 @@
 <body>
 	<%		
 		String id = "";
+		String notice = "";
+		String status = "none";
 		/* if(request.getAttribute("id") != null){
 			id = request.getAttribute("id").toString();
 		} */
 		if(session.getAttribute("id") != null){
 			id = session.getAttribute("id").toString();
+		}
+		
+		if(session.getAttribute("notice") != null){
+			notice = session.getAttribute("notice").toString();
+			status = "block";
 		}
 	%>
 	<!-- header 시작 -->
@@ -56,7 +63,8 @@
 								<input type="text" name="id" id="id" placeholder="길이 4-12자 이내" value="<%=id %>"> 
 								<input type="button" form="idForm" name="btn1" id="btn1" value="중복확인" onclick="idChk(form)"><br/>
 							</li>
-
+							<li class="error" id="error-duplId" style="display:<%=status%>"><%=notice %></li>								
+							<li class="error" id="error-noneId">* 아이디는 필수 정보입니다.</li>
 							<!-- 비밀번호 부분 -->
 							<li>
 								<label for="pwd1">
@@ -68,24 +76,33 @@
 							</li>
 							<li class="pwd">
 								<input type="password" name="password" id="password" placeholder="4-10자의 영문, 특수문자, 숫자 조합" required>
-								<input type="password" name=passwordChk id="passwordChk" placeholder="비밀번호 확인" required>								
-								<span id="chkNotice" size="1"></span>
+								<input type="password" name=passwordChk id="passwordChk" placeholder="비밀번호 확인" required>		
+								<li class="error" id="error-password">* 비밀번호는 필수 정보입니다.</li>
+								<li class="error" id="error-passwordRegex">* 비밀번호: 8~20자의 영어 대/소문자, 숫자, 특수문자를 이용해주세요.</li>
+								<li class="error" id="error-password_chk">* 비밀번호를 다시 입력해주세요.</li>
+								<li class="error" id="error-pwdEquals">* 비밀번호가 일치하지 않습니다.</li>
 							</li>
 							<!-- 회사명 부분 -->
-							<li class="corp_name"><label for="corp_name">
+							<li class="corp_name">
+								<label for="corp_name">
 									<h2>회사명</h2>
-							</label> <input type="text" name="cname" id="cname"
-								placeholder="본사 주소를 기준으로 기입해 주세요." required></li>
-							
+								</label>
+								<input type="text" name="cname" id="cname" placeholder="본사 주소를 기준으로 기입해 주세요." required>								
+							</li>							
+							<li class="error" id="error-cname">* 회사이름은 필수 정보입니다.</li>
 							<!-- 사업자등록번호 부분 -->
-							<li><label for="corp_num">
+							<li>
+								<label for="corp_num">
 									<h2 id="birth_center">
-										사업자등록번호<br><span class="corp_warning"> *사업자등록번호는 추후 수정이 불가능 합니다.
-											정확히 입력해 주세요.</span>
+										사업자등록번호<br>
+										<span class="corp_warning"> *사업자등록번호는 추후 수정이 불가능 합니다. 정확히 입력해 주세요.</span>
 									</h2>
-							</label></li>
-							<li class="corp_num"><input type="text" name="corp_num"
-								id="corp_num" required></li>
+								</label>
+							</li>
+							<li class="corp_num">
+								<input type="text" name="corp_num" id="corp_num" required>								
+							</li>
+							<li class="error" id="error-cname">* 회사이름은 필수 정보입니다.</li>
 							<!-- 담당자 이름 부분 -->
 							<li><label for="mgr_name"><h2>채용 담당자 성명</h2></label></li>
 							<li><input type="text" name="mgr_name" id="mgr_name" required>
@@ -94,13 +111,15 @@
 							<li>
 								<h2>채용 담당자 연락처</h2>
 							</li>
-							<li class="phone"><select name="phone" id="phone">
-									<option value="010">010</option>
-									<option value="011">011</option>
-									<option value="016">016</option>
-									<option value="017">017</option>
-									<option value="018">018</option>
-									<option value="019">019</option>
+							<li class="phone">
+							<select name="phone" id="phone">
+								<input type="hidden" name="tmpTel" id="tmpTel" value="">
+								<option value="010">010</option>
+								<option value="011">011</option>
+								<option value="016">016</option>
+								<option value="017">017</option>
+								<option value="018">018</option>
+								<option value="019">019</option>
 							</select> <span>-</span> <input type="text" name="phone1" id="phone1"
 								maxlength="4"
 								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
