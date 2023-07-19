@@ -15,7 +15,7 @@
             <span><a href="#">고객센터</a></span>
             <span><a href="term">이용약관</a></span>
             <span><a href="term2">개인정보 취급방침</a></span>
-            <span><a href="#">오류신고</a></span>
+            <span><a href="makers">만든이들</a></span>
         </div>
     </footer>
     <!-- footer 끝 -->

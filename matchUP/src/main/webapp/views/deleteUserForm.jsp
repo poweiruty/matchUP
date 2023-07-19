@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>회원탈퇴</title>
+    <link rel="shortcut icon" href="resources/img/favicon.png">
+    <link rel="shortcut icon" href="resources/img/favicon.png">
     
 <style>
 .section{

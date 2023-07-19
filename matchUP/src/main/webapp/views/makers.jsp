@@ -4,11 +4,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Makers</title>
 <link rel="shortcut icon" href="resources/img/favicon.png">
 
 </head>
 <body>
-	기업 회원만 접근 가능합니다.
+<!-- header -->
+	<jsp:include page="header"></jsp:include>
+<section>
+	<div>
+
+	</div>
+	<div>
+
+	</div>
+	<div>
+
+	</div>
+</section>	
+
+	<!-- footer -->
+	<jsp:include page="footer"></jsp:include>
 </body>
 </html>

@@ -12,7 +12,7 @@
 			<!-- header css -->
 			<link rel="stylesheet" href="resources/style/grid.css">
 			<!-- favicon -->
-
+			<link rel="shortcut icon" href="resources/img/favicon.png">
 			<!-- 로고 css -->
 			<style>
 				.logo {

@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="resources/style/reset.css">
     <!-- header css -->
     <link rel="stylesheet" href="resources/style/grid.css">
+	<!-- favicon -->
+
 <!-- 로고 css -->
 <style>
     .logo{

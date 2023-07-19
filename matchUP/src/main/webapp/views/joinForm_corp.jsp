@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="resources/style/reset_form.css">
 <!-- header css -->
 <link rel="stylesheet" href="resources/style/grid.css">
+<link rel="shortcut icon" href="resources/img/favicon.png">
 
 <link rel="stylesheet" href="resources/style/join.css">
 </head>

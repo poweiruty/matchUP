@@ -11,7 +11,7 @@
 		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>default.html</welcome-file>
 		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.jsp</welcome-file> 
 	</welcome-file-list>
 	
 	<!-- 1. 서블릿 페이지 맵핑 -->
@@ -251,6 +251,17 @@
 	<servlet-mapping>
 		<servlet-name>index</servlet-name>
 		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
+
+	<!-- 만든이들 -->
+	<servlet>
+		<servlet-name>makers</servlet-name>
+		<jsp-file>/makers.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>makers</servlet-name>
+		<url-pattern>/views/makers</url-pattern>
 	</servlet-mapping>
 	
 	<!-- header -->

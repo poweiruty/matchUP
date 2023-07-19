@@ -14,9 +14,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <link rel="stylesheet" href="resources/style/corpSearch.css">
-<style>
+<link rel="shortcut icon" href="resources/img/favicon.png">
 
-</style>
 
 </head>
 

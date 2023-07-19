@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
+<link rel="shortcut icon" href="resources/img/favicon.png">
 
 	<style>
 		.section{
