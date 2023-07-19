@@ -2,44 +2,50 @@ const year = document.getElementById('year');
 const month = document.getElementById('month');
 const date = document.getElementById('date');
 const output = document.getElementById('tmpBirth');
-
-year.addEventListener('change', birthUpdate);
-month.addEventListener('change', birthUpdate);
-date.addEventListener('change', birthUpdate);
-
-function birthUpdate() {
-	const value1 = year.value;
-	const value2 = month.value;
-	const value3 = date.value;
-
-	const result = value1 + value2 + value3;
-	output.value = result;
-	if (result.length === 8) {			
-		$('#error-birth').hide();	
+if(year !== null && month !== null && date !== null && output !== null){
+	year.addEventListener('change', birthUpdate);
+	month.addEventListener('change', birthUpdate);
+	date.addEventListener('change', birthUpdate);
+	
+	function birthUpdate() {
+		const value1 = year.value;
+		const value2 = month.value;
+		const value3 = date.value;
+	
+		const result = value1 + value2 + value3;
+		output.value = result;
+		if (result.length === 8) {			
+			$('#error-birth').hide();	
+		}
 	}
 }
-
 const phone1 = document.getElementById('phone1');
 const phone2 = document.getElementById('phone2');
 const tmpTel = document.getElementById('tmpTel');
-
-phone1.addEventListener('change', telUpdate);
-phone2.addEventListener('change', telUpdate);
-
-function telUpdate() {
-	const value1 = phone1.value;
-	const value2 = phone2.value;
-
-	const result = value1 + value2;
-	tmpTel.value = result;
-	if (result.length === 8) {			
-		$('#error-tel').hide();	
+if(phone1 !== null && phone2 !== null && tmpTel !== null){
+	phone1.addEventListener('change', telUpdate);
+	phone2.addEventListener('change', telUpdate);
+	
+	function telUpdate() {
+		const value1 = phone1.value;
+		const value2 = phone2.value;
+	
+		const result = value1 + value2;
+		tmpTel.value = result;
+		if (result.length === 8) {			
+			$('#error-tel').hide();	
+		}
 	}
 }
-$('#id').on('change', e => {
-	//&& id.match(/^[a-zA-Z0-9]{3,11}$/) !== null
+$('#id').on('change', e => {	
 	if($('#id').val() !== "") {
 		$('#error-noneId').hide();
+	}
+	if($('#id').val().match(/^[a-zA-Z0-9]{4,12}$/) !== null){
+		$('#error-regexId').hide();
+	}
+	if($('#id').val() === ""){
+		$('#error-duplId').hide();
 	}
 });
 $('#password').on('change', e => {
@@ -50,7 +56,6 @@ $('#password').on('change', e => {
 		$('#error-passwordRegex').hide();
 	}
 });
-
 $('#passwordChk').on('change', e => {
 	if($('#passwordChk').val() !== "") {
 		$('#error-password_chk').hide();
@@ -63,6 +68,16 @@ $('#name').on('change', e => {
 		$('#error-name').hide();
 	}
 });
+$('#email').on('change', e => {
+	if($('#email').val() !== "") {
+		$('#error-email').hide();
+	}
+});
+$('#btn2').onclick = function(){
+	if($('#email').val() !== ""){
+		console.log('이거라도?');
+	}
+}
 $('#pnum').on('change', e => {
 	if($('#error-password_chk').length === 11 && $('#error-password_chk').match(/\d{11}/) !== null){
 		$('#error-tel').hide();		
@@ -96,7 +111,7 @@ function pJoinCheckValue(){
 	const birth = $('#year').val() + $('#month').val() + $('#date').val(); 	
 	const tel = $('#phone').val() + $('#phone1').val() + $('#phone2').val();
 	const idchk = $('#idchk').val();
-	var email = $('#email').val() + $('#email').val();
+	const email = $('#email').val() + $('#email2').val();
 	
 	const emailChk = $('#emailchk').val();
 	const address = $('#address').val() +$('#detailAddress').val() + $('#extraAddress').val();
@@ -162,50 +177,77 @@ function cJoinCheckValue(){
 	const mname = $('#mgr_name').val();
 	const tel = $('#phone').val() + $('#phone1').val() + $('#phone2').val();
 	const idchk = $('#idchk').val();	
-	const email =  $('#email').val() + $('#email').val();	
-
+	const email =  $('#email').val();	
+	const chk3 = $('input:checkbox[name="chk3"]').is(':checked');
+	const chk4 = $('input:checkbox[name="chk4"]').is(':checked');
 	const emailChk = $('#emailchk').val();
 	const address = $('#address').val() +$('#detailAddress').val() + $('#extraAddress').val();
+	
+	
 	
 	let check = true;
 	
 	if(id === "" || id.match(/^[a-zA-Z0-9]{3,11}$/) === null){
-		$('#error-noneId').show();	
-		console.log("1 : " + check);
+		$('#error-noneId').show();				
+		$('#id').focus();		
 		check = false;
-	}else if(idchk === "중복" || idchk === null){
-		console.log("2 : " + check);		
+	}else if(idchk === "중복" || idchk === null){			
+		$('#id').focus();	
 		check = false;		
-	}else if(password === "" || password.match(/^[a-zA-Z0-9!@#$%]{8,20}$/) === null){
-		$('#error-password').show();
-		$('#error-password').focus();		
+	}else if(password === ""){
+		$('#error-password').show();		
+		$('#password').focus();	
+		check = false;
+	}else if(password.match(/^[a-zA-Z0-9!@#$%]{8,20}$/) === null){
+		$('#error-passwordRegex').show();					
+		$('#password').focus();	
 		check = false;
 	}else if(passwordChk === ""){
-		$('#error-password_chk').show();	
+		$('#error-password_chk').show();				
+		$('#passwordChk').focus();			
 		check = false;
 	}else if(password !== passwordChk){
 		$('#error-pwdEquals').show();
+		$('#passwordChk').focus();
 		check = false;
 	}else if(cname === ""){		
-		$('#error-cname').show();		
+		$('#error-cname').show();	
+		$('#cname').focus();		
 		check = false;
 	}else if(cnum === ""){
-		$('#error-cnum').show();	
+		$('#error-cnum').show();
+		$('#corp_num').focus();		
 		check = false;
 	}else if(mname === ""){
 		$('#error-mname').show();	
+		$('#mgr_name').focus();	
 		check = false;
 	}else if(tel.length !== 11){
-		$('#error-tel').show();				
+		$('#error-tel').show();	
+		if($('#phone1').val() === ""){
+			$('#phone1').focus();
+		}else{
+			$('#phone2').focus();
+		}
 		check = false;
 	}else if(email === ""){
-		$('#error-email').show();	
+		$('#error-email').show();
+		$('#email').focus();	
 		check = false;
 	}else if(emailChk === "인증실패" || emailChk === "인증중" || emailChk === "0"){		
-		$('#error-emailChk').show();		
+		$('#error-emailChk').show();
+		$('#btn3').focus();		
 		check = false;
+	}else if(chk3 && chk4){
+		alert('필수 약관동의를 확인해주세요.');
+		if(chk3){		
+			$('input:checkbox[name="chk3"]').focus();
+			check = false;
+		}else if(chk4){
+			$('input:checkbox[name="chk4"]').focus();
+			check = false;
+		}
 	}
-	
 	
 	if(check === true){
 		alert("회원가입에 성공했습니다.");
@@ -327,45 +369,56 @@ function daumPostCode(){
     	}        
     }).open();
 }
-function sendEmail(){
-	document.getElementById("emailchk").value = "인증중";
-		
-	var emailId = document.getElementById('email').value;
-	var email = "";
+function sendEmail(){		
+	const emailId = $('#email').val();
+	const email = $('#email2').val();
 	var res = ""
-	console.log(emailId);
-	if(document.getElementById('selectEmail').value === '1'){
-		email += document.getElementById("email2").value;
-	}else{
-		email += document.getElementById("selectEmail").value;
-	}
 	
 	if(emailId !== "" && email !== ""){
-		res = emailId + email;
-		alert("인증메일이 전송되었습니다.");
-		console.log(res);		
+		$('#error-email').hide();
+		$('#error-emailClick').hide();
+		$('#error-emailChk').hide();
+		document.getElementById("emailchk").value = "인증중";
+		res = emailId + "@" + email;
+		alert("인증메일이 전송되었습니다.");	
 		localStorage.setItem("email", res);		
 		location.href='SendEmail?email=' + res;
 	}else{
-		alert("이메일을 확인해주세요.");
+		$('#error-emailClick').hide();
+		$('#error-emailChk').hide();
+		$('#error-email').show();
 	}
 }
 
 function emailAuthChk(){	
-	var email = document.getElementById('email').value;	
-	if(document.getElementById('selectEmail').value === '1'){
-		email += document.getElementById("email2").value;
-	}else{
-		email += document.getElementById("selectEmail").value;
-	}
+	var email = $('#email').val() + "@" + $('#email2').val();	
 	
-	if(localStorage.getItem("email") === email){
+	if($('#emailchk').val() === "인증중" && localStorage.getItem("result") !== null){
 		document.getElementById("emailchk").value = "1";
+		$('#error-email').hide();
+		$('#error-emailClick').hide();
+		$('#error-emailChk').hide();
+		$('#error-chkFalse').hide();
 		alert("인증된 이메일입니다.");
+		
+	}else if($('#emailchk').val() === "0" && localStorage.getItem("result") === null){		
+		$('#error-email').hide();
+		$('#error-emailChk').hide();
+		$('#error-emailClick').show();
+		
+	}else if($('#emailchk').val() === "인증중" && localStorage.getItem("result") === null){
+		$('#error-email').hide();
+		$('#error-emailClick').hide();
+		$('#error-emailChk').show();
+		
 	}else{
 		document.getElementById("emailchk").value = "인증실패";
+		$('#error-email').hide();
+		$('#error-emailClick').hide();
+		$('#error-emailChk').hide();
 		$('#error-chkFalse').show();
-	}	
+	}
+	localStorage.clear();
 }
 
 function leave(id) {

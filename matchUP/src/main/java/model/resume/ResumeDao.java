@@ -176,17 +176,57 @@ public class ResumeDao {
 		return resume;
 	}
 	
+
+	public ArrayList<Resume> getResumesByLogin(){
+		ArrayList<Resume> list=new ArrayList<Resume>();
+			this.conn = DBManager.getConnection();
+			
+			if(this.conn != null) {
+				String sql = "select * from resume_tb where pusers_id";
+				
+				try {
+					this.pstmt = this.conn.prepareStatement(sql);
+					this.rs = this.pstmt.executeQuery();
+					
+					while(this.rs.next()) {
+						int resumeId = this.rs.getInt(1);
+						int pusersId = this.rs.getInt(2);
+						String resumeTitle = this.rs.getString(3);
+						int jobId = this.rs.getInt(4);					
+						String graduation = this.rs.getString(5);
+						String degree = this.rs.getString(6);
+						String career = this.rs.getString(7);
+						String activity = this.rs.getString(8);
+						String certificate = this.rs.getString(9);
+						String intro=this.rs.getString(10);
+						Timestamp createdTime =this.rs.getTimestamp(11);
+						int createdTimeNum=Integer.parseInt(sdf.format(createdTime));
+						Timestamp modifiedTime =this.rs.getTimestamp(12); 
+						int modifiedTimeNum=Integer.parseInt(sdf.format(modifiedTime)); 
+						
+						Resume resume = new Resume(resumeId,pusersId,resumeTitle,jobId,graduation,degree,career,activity,certificate,intro,createdTimeNum,modifiedTimeNum);
+						
+						list.add(resume);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					DBManager.close(this.conn, this.pstmt, this.rs);
+				}
+			}	
+			return list;
+		}
+	
 	// READ : 데이터 전체 읽기
 	public ArrayList<Resume> getResumeAll(){
 		ArrayList<Resume> list = new ArrayList<Resume>();
-		
 		this.conn = DBManager.getConnection();
 		
 		if(this.conn != null) {
-			String sql = "select * from resume_tb";
+			String sql = "select * from resume_tb where pusers_id";
 			
 			try {
-				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt = this.conn.prepareStatement(sql);				
 				this.rs = this.pstmt.executeQuery();
 				
 				while(this.rs.next()) {
@@ -214,9 +254,51 @@ public class ResumeDao {
 			} finally {
 				DBManager.close(this.conn, this.pstmt, this.rs);
 			}
-		}		
+		}	
 		return list;
 	}
+	
+//	// READ : 데이터 전체 읽기(리스트)
+//	public ArrayList<Resume> getResumeAll(){
+//		ArrayList<Resume> list = new ArrayList<Resume>();
+//		
+//		this.conn = DBManager.getConnection();
+//		
+//		if(this.conn != null) {
+//			String sql = "select * from resume_tb";
+//			
+//			try {
+//				this.pstmt = this.conn.prepareStatement(sql);
+//				this.rs = this.pstmt.executeQuery();
+//				
+//				while(this.rs.next()) {
+//					int resumeId = this.rs.getInt(1);
+//					int pusersId = this.rs.getInt(2);
+//					String resumeTitle = this.rs.getString(3);
+//					int jobId = this.rs.getInt(4);					
+//					String graduation = this.rs.getString(5);
+//					String degree = this.rs.getString(6);
+//					String career = this.rs.getString(7);
+//					String activity = this.rs.getString(8);
+//					String certificate = this.rs.getString(9);
+//					String intro=this.rs.getString(10);
+//					Timestamp createdTime =this.rs.getTimestamp(11);
+//					int createdTimeNum=Integer.parseInt(sdf.format(createdTime));
+//					Timestamp modifiedTime =this.rs.getTimestamp(12); 
+//					int modifiedTimeNum=Integer.parseInt(sdf.format(modifiedTime)); 
+//					
+//					Resume resume = new Resume(resumeId,pusersId,resumeTitle,jobId,graduation,degree,career,activity,certificate,intro,createdTimeNum,modifiedTimeNum);
+//					
+//					list.add(resume);
+//				}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			} finally {
+//				DBManager.close(this.conn, this.pstmt, this.rs);
+//			}
+//		}		
+//		return list;
+//	}
 		
 	// Update
 	public void updateResume(ResumeRequestDto dto) {	

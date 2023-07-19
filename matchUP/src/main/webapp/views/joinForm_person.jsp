@@ -9,6 +9,7 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- header css -->
 <link rel="stylesheet" href="resources/style/join.css">
+<link rel="shortcut icon" href="resources/img/favicon.png">
 
 </head>
 
@@ -16,15 +17,11 @@
 	<%		
 		String id = "";
 		String notice = "";
-		String status = "none";
-		/* if(request.getAttribute("id") != null){
-			id = request.getAttribute("id").toString();
-		} */
-		if(session.getAttribute("id") != null){
-			id = session.getAttribute("id").toString();
-		}
-		
-		if(session.getAttribute("notice") != null){
+		String idDupl = "";
+		String status = "none";	
+		if(session.getAttribute("pid") != null && session.getAttribute("notice") != null){
+			id = session.getAttribute("pid").toString();
+			idDupl = session.getAttribute("idDupl").toString();
 			notice = session.getAttribute("notice").toString();
 			status = "block";
 		}
@@ -37,9 +34,8 @@
 			<div class="section_box">	
 				<form action="UserIdCheck" method="POST" name="idForm" id="idForm" style="display: none;">
 					<input type="hidden" name="pageInfo" id="pageInfo" value="puser">					
-					<input type="hidden" name="tmpId" id="tmpId" value="">
-					<%-- <input type="hidden" name="idchk" id="idchk" value="<%=request.getAttribute("idDupl")%>"> --%>
-					<input type="hidden" name="idchk" id="idchk" value="<%=session.getAttribute("idDupl")%>">	
+					<input type="hidden" name="tmpId" id="tmpId" value="">					
+					<input type="hidden" name="idchk" id="idchk" value="<%=idDupl%>">	
 				</form>			
 				<form action="PJoin" method="POST" name="joinForm" id="joinForm">
 					<ul>
@@ -60,6 +56,7 @@
 							</li>														
 							<li class="error" id="error-duplId" style="display:<%=status%>"><%=notice %></li>								
 							<li class="error" id="error-noneId">* 아이디는 필수 정보입니다.</li>
+							<li class="error" id="error-regexId">* 아이디: 4~12자의 영어 대/소문자, 숫자를 이용해주세요.</li>
 							
 							<!-- 비밀번호 부분 -->
 							<li>
@@ -72,7 +69,7 @@
 							</li>
 							<li class="pwd">
 								<input type="password" name="password" id="password" placeholder="최소 8자리 이상 입력하세요." required>
-								<input type="password" name="passwordChk" id=passwordChk placeholder="비밀번호 확인" required>								
+								<input type="password" name="passwordChk" id="passwordChk" placeholder="비밀번호 확인" required>								
 								<span id="chkNotice" size="1"></span>
 								<li class="error" id="error-password">* 비밀번호는 필수 정보입니다.</li>
 								<li class="error" id="error-passwordRegex">* 비밀번호: 8~20자의 영어 대/소문자, 숫자, 특수문자를 이용해주세요.</li>
@@ -83,7 +80,7 @@
 							<!-- 이름 부분 -->
 							<li class="name">
 								<label for="name"><h2>이름</h2></label>
-								<input type="text" name="name" id="name" required>
+								<input type="text" name="name" id="name">
 								<li class="error" id="error-name">* 이름은 필수 정보입니다.</li>
 							</li> 
 							<!-- 생년월일 부분 -->
@@ -217,6 +214,7 @@
 								<input type="button" name="btn2" id="btn2" value="인증메일 전송" onclick="sendEmail()">
 								<input type="button" name="btn3" id="btn3" value="인증번호 확인" onclick="emailAuthChk()">
 								<li class="error" id="error-emailChk">* 이메일 인증을 완료해주세요.</li>
+								<li class="error" id="error-emailClick">* 인증메일 발송 후 확인해주세요.</li>
 							</li>
 							<li>
 								<label for="address">
@@ -251,7 +249,12 @@
 				</form>
 			</div>
 		</div>		
-	</div>       
+	</div>     
+	<%
+		session.removeAttribute("pid");
+		session.removeAttribute("idDupl");
+		session.removeAttribute("notice");
+	%>  
 	<script src="resources/script/validation_join.js"></script>                
 </body>
 <!-- footer 시작 -->

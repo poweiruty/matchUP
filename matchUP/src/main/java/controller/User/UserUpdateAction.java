@@ -56,6 +56,6 @@ public class UserUpdateAction extends HttpServlet {
 		userDao.updateUser(userDto, password);
 		
 		String url = "UserUpdateRequest";
-		response.sendRedirect(url);	}
-
+		response.sendRedirect(url);	
 	}
+}

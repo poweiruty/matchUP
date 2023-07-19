@@ -62,22 +62,20 @@ public class UserIdCheckAction extends HttpServlet {
 			notice = "* 이미 사용 중인 아이디입니다.";
 		}
 		
-		String url = "joinPerson";
+		String url = "";
 		if(pageInfo.equals("cuser")) {
 			url = "joinCorp";
+			session.setAttribute("cid", id);
+		}else if(pageInfo.equals("puser")) {
+			url = "joinPerson";
+			session.setAttribute("pid", id);
 		}
 		
-		System.out.println(res);		
-//		request.setAttribute("idDupl", res);	
-//		request.setAttribute("id", id);
-		session.setAttribute("idDupl", res);
-		session.setAttribute("id", id);
-		
-		
+		System.out.println(res);	
+
+		session.setAttribute("idDupl", res);	
 		session.setAttribute("notice", notice);		
-//		ServletContext app = this.getServletContext();
-//		RequestDispatcher dispatcher = app.getRequestDispatcher("/joinPerson");
-//		dispatcher.forward(request, response);		
+	
 		response.sendRedirect(url);
 	}
 }

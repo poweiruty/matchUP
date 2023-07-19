@@ -5,6 +5,44 @@ $(window).on('load',function(){
 		}
 	});	
 });
+function updateValue() {
+	var selectElement = document.getElementById("region");
+	var selectedValue = selectElement.value; 
+	var myHiddenInput = document.getElementById("myHiddenInput");
+	
+	console.log(selectedValue);	
+	document.getElementById('myHiddenInput').value = document.getElementById('region').value;
+	
+/*	var xhr = new XMLHttpRequest();
+    xhr.open("POST", "search", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+
+    var data = "myHiddenInput=" + encodeURIComponent(selectedValue);
+    xhr.send(data);	
+    */
+    console.log();
+    $.ajax({
+		url:`/semi?main=${selectedValue}`,
+		method:"GET",								
+	}).done(function(data){
+		$('#region_detail').empty();
+			
+			const list = response;
+			console.log('typeof list : ', typeof list);
+			
+			if(typeof list === 'object'){
+				list.forEach(region => {
+					const semi_region = region.semi_region;
+					
+					if (corp_name !== "") {
+						$('#jobpost-list').append(
+							`<option value="${semi_region}">${semi_region}</option>`
+						);
+					}
+				});
+			}
+	});
+}
 
 function search(){
 	const job = $('#search_bar').val();
@@ -29,6 +67,7 @@ function search(){
 			if(typeof list === 'object'){
 				list.forEach(post => {
 					const post_id = post.post_id;
+					const title = post.title;
 					const corp_name = post.corp_name;
 					const postDate = post.postDate;
 					const desc = post.jobDetail;
@@ -36,10 +75,11 @@ function search(){
 					if (corp_name !== "") {
 						$('#jobpost-list').append(
 							`<li class="post">		
-								<a href="viewDtail?post_id=${post_id}" class="detail_btn" id="detail_btn" target="detail_post" onclick="detail()">					                  
-				                 	<span class="post-cname">${corp_name}</span>
-				                    <span class="post-postDate">${postDate}</span>
-				                    <span class="post-desc">${desc}</span>
+								<a href="viewDtail?post_id=${post_id}" class="detail_btn" id="detail_btn" target="detail_post" onclick="detail()">	
+									<h2 class="post-title">${title}</h2>				                  
+				                 	<p class="post-cname">${corp_name}</p>				                 					                    
+				                    <p class="post-desc">${desc}</p>
+				                    <p class="post-postDate">~${postDate}까지</p>
 				                </a>
 	                    	 </li>
 	                    	 `

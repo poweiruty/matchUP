@@ -1,7 +1,4 @@
-<%@page import="util.DBManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.resume.Resume"%>
 <%@page import="model.resume.ResumeDao"%>
 <%@page import="model.job.Job"%>
@@ -15,9 +12,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+<link rel="shortcut icon" href="resources/img/favicon.png">
 
     <link rel="stylesheet" href="resources/style/resume.css">
 </head>
+
+<style>
+	.main_con{
+    	text-align: center;
+    	height: 800px;
+	    border: solid 1px gray;
+	    margin: 5% 10%;
+	    overflow:auto;
+    	margin-bottom: 10px;
+	}
+	
+	.resume_theme{	    
+	    margin-bottom: 20px;
+	    font-size: 3rem;
+	    font-weight: 700;
+	}
+
+	ul{
+	    display: flex;
+	    flex-direction: column;
+	}
+	
+	li{
+	    margin:10px;
+	}
+	
+	.resume_create > a> input{
+	    border: 2px solid gray;
+	    border-radius : 10px;
+	    width: 20%;
+	    margin-bottom : 20px;
+	    padding: 10px;
+	    font-weight:900;
+	}
+	
+	.resume_create > a> input:hover{
+	    cursor: pointer;
+	    background-color: gray;
+	}
+	
+	textarea{
+	    height: 35px;
+	}
+	
+	select{
+	    border-radius: 10px;
+	}
+	
+	label{
+	    font-weight: 700;
+	    margin-right: 10px;
+	}
+			
+	.resume-item {		
+    	width : 900px;
+    	border: 2px solid black;
+    	border-radius: 10px;    	
+    	margin : 0 auto;
+    	text-align:left;
+    	padding : 20px;
+	}
+		
+	.resume-item:hover{
+		cursor:pointer;
+		box-shadow : 0px 5px 5px 0px gray;
+	}
+	
+	.resume_number{
+		font-size : 1.4rem;
+	}
+	
+	.resume_title{
+		margin-left : 20px;	    
+	    margin-bottom: 10px;
+	    font-size: 2rem;
+	    font-weight: 700;
+	}
+	
+	.resume_function{
+		text-align:right;
+	}
+	
+	.resume_function > li> input{
+		border: 1px solid gray;
+	    border-radius : 10px;
+	    width: 10%;
+	    padding: 5px;
+	    font-weight:900;
+	}
+	
+	.resume_function > li> input.modify{
+		background-color:black;
+		color:white;
+	}
+	
+	.resume_function > li> input.modify:hover{
+		cursor: pointer;
+	    background-color: gray;
+	    color : black;			
+	}
+	
+	.resume_function > li> input.delete:hover{
+		cursor: pointer;
+	    background-color: gray;			
+	}
+		
+</style>
 
 <body>
     <!-- header 시작 -->
@@ -28,136 +133,62 @@
     <!-- body 시작 -->
     <section class="container">
         <div class="main_con">
-            <p class="resume_title">나의 이력서</p>
+            <p class="resume_theme">나의 이력서</p>
             <div class="main_resume">
                 <!-- 이름, 생년월일, 연락처, 이메일, 주소 -->
                 <form action="ResumeRead" method="post">
-					<div class="createResume">
-                		<a href="resumeCreate"><input type="button" value="이력서 작성하기"></a>                		
-            		</div>
-            		
-                    <!-- 테스토 : 황인규 작성
-                    <div calss="test">
-                        <span>세션값을 뽑아와보자 : </span>
-                        <span>${sessionScope.puserIdx}</span>
-                    </div> -->
-
-                    <ul>
-                    	<li>
-                            <label for="resume_title">최종학력 </label>
-                            <span>
-                            <% 
-                            	ResumeDao resumeDao = ResumeDao.getInstance();
-                        		Resume resume = resumeDao.getResumeInfo((int) session.getAttribute("puserIdx"));
-                            		
-                            	if (resume != null) {
-                               		out.print(resume.getResumeTitle());                                 
-                            	}
-                            %>
-                            </span>
-                        </li>
-                        
-                        <li>
-                            <label for="pname">이름 </label>
-                            <span>${sessionScope.pname}</span>
-                        </li>
-
-                        <li>
-                            <label for="birth">생년월일 </label>
-                            <span>${sessionScope.birth}</span>
-                        </li>
-
-                        <li>
-                            <label for="tel">연락처 </label>
-                            <span>${sessionScope.phone}</span>
-                        </li>
-
-                        <li>
-                            <label for="email_resume">이메일 </label>
-                            <span>${sessionScope.email}</span>
-                        </li>
-
-                        <li>
-                            <label for="user_address">주소 </label>
-                            <span>${sessionScope.address}</span>
-                        </li>
-
-                        <li>
-                            <label for="job">희망직종 </label>
-                            <span>
-                                <%-- getResumeInfo 메소드를 호출하여 데이터 가져오기 --%>
-                                <%                                 	                   	                          
-                            		JobDao jobDao = JobDao.getInstance();
-                            		Job job=jobDao.getJobByJobId(resume.getJobId());
-                            		
-                            		System.out.println("잡인덱스 : "+resume.getJobId());
-                            		System.out.println("직업확인용 : "+job.getJob());
-                            		                           		                          		
-                            		if (resume != null) {
-                                    	out.print(job.getJob());
-                                	}                            		                            		
-                                %>
-                            </span>
-                        </li>
-
-                        <li>
-                            <label for="graduation">최종학력 </label>
-                            <% 
-                                if (resume != null) {
-                                    out.print(resume.getGraduation());                                 
-                                }
-                            %>
-                        </li>
-                        
-                        <li>
-                            <label for="degree">학력 </label>
-                            <% 
-                                if (resume != null) {                                    
-                                    out.print(resume.getDegree());
-                                }
-                            %>
-                        </li>
-
-                        <li>
-                            <label for="career">경력 </label>
-                            <% 
-                                if (resume != null) {
-                                	if(resume.getCareer()!=null){
-                                		out.print(resume.getCareer());	
-                                	}else{
-                                		out.print("-");
-                                	}                                 
-                                }
-                            %>
-                        </li>
-
-                        <li>
-                            <label for="activity">대외활동/수상이력 </label>
-                            <% 
-                                if (resume != null) {
-                                    out.print(resume.getActivity());
-                                }
-                            %>
-                        </li>
-
-                        <li>
-                            <label for="certificate">보유자격증 </label>
-                            <% 
-                                if (resume != null) {
-                                    out.print(resume.getCertificate());
-                                }
-                            %>
-                        </li>
-
-                        <li>
-                            <label for="intro">자기소개 </label>
-                            <% 
-                                if (resume != null) {
-                                    out.print(resume.getIntro());
-                                }
-                            %>
-                        </li>
-                    </ul>
+                    <div class="resume_create">
+                        <a href="resumeCreate">
+                        	<input type="button" value="이력서 작성하기">
+                        </a>                		
+                    </div>
+                    
+                    
+                    <%-- 데이터 리스트를 가져오기 --%>
+                    <% 
+                    	int puserIdx = (int) session.getAttribute("puserIdx");
+                    
+                        ResumeDao resumeDao = ResumeDao.getInstance();
+                        ArrayList<Resume> resumeList = resumeDao.getResumesByLogin(puserIdx);
+                    %>
+					
+	                    <ul>
+	                        <%-- 데이터 리스트를 반복해서 출력 --%>
+	                        <% int index=1; %>
+	                        <% for (Resume resume : resumeList) { %>
+	                        	<div class="resume-item">
+		                        	<div class="resume-content">
+		                        		
+		                        		
+		                        		<div class="resume_number">
+			                            	<li>
+			                                	<label for="resume_number">NO.</label>
+			                                	<span><%= index++ %></span>
+			                            	</li>
+			                            </div>
+		                        		
+		                        		
+		                        		<div class="resume_title">
+			                            	<li>		                                	
+			                                	<span><%= resume.getResumeTitle() %></span>
+			                            	</li>
+			                            </div>
+			                            
+			                            <div class="resume_function">
+			                            	<li>
+			                            		<input class="modify" type="button" value="수정">
+			                            		<input class="delete" type="button" value="삭제">
+			                            	</li>
+			                            </div>
+			                            
+			                        </div>
+		                        </div>
+		                        
+		                        <br>
+		                        
+	                        <% } %>
+	                    </ul>
+                    
                 </form>
             </div>
         </div>
