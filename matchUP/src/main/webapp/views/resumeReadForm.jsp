@@ -16,6 +16,27 @@
     <link rel="stylesheet" href="resources/style/resume.css">
 </head>
 
+<script>
+    function deleteResume(resumeId) {
+        // AJAX를 사용하여 서버로 이력서 삭제 요청 전송
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'ResumeDelete', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // 서버 응답을 처리할 수 있는 코드 작성
+                    console.log('이력서 삭제 성공');
+                } else {
+                    // 서버 응답이 실패인 경우 처리할 코드 작성
+                    console.log('이력서 삭제 실패');
+                }
+            }
+        };
+        xhr.send('resumeId=' + resumeId);
+    }
+</script>
+
 <style>
 	.main_con{
     	text-align: center;
@@ -109,6 +130,17 @@
 		background-color:black;
 		color:white;
 	}
+	
+	.resume_function > li> input.modify:hover{
+		cursor: pointer;
+	    background-color: gray;
+	    color : black;			
+	}
+	
+	.resume_function > li> input.delete:hover{
+		cursor: pointer;
+	    background-color: gray;			
+	}
 		
 </style>
 
@@ -134,8 +166,10 @@
                     
                     <%-- 데이터 리스트를 가져오기 --%>
                     <% 
+                    	int puserIdx = (int) session.getAttribute("puserIdx");
+                    
                         ResumeDao resumeDao = ResumeDao.getInstance();
-                        ArrayList<Resume> resumeList = resumeDao.getResumesByLogin();
+                        ArrayList<Resume> resumeList = resumeDao.getResumesByLogin(puserIdx);
                     %>
 					
 	                    <ul>
@@ -152,6 +186,17 @@
 			                                	<span><%= index++ %></span>
 			                            	</li>
 			                            </div>
+			                            
+			                            <%-- <div class="resume_index">			                            	                              	
+			                                <%= resume.getResumeId() %>			                            	
+			                            </div> --%>
+			                            
+			                            <div class="resume_index">
+			                            	<li>
+			                                	<label for="resume_index">확인용</label>
+			                                	<span><%= resume.getResumeId() %></span>
+			                            	</li>
+			                            </div>
 		                        		
 		                        		
 		                        		<div class="resume_title">
@@ -160,10 +205,10 @@
 			                            	</li>
 			                            </div>
 			                            
-			                            <div class=resume_function>
+			                            <div class="resume_function">
 			                            	<li>
-			                            		<input class="modify" type="button" value="수정">
-			                            		<input type="button" value="삭제">
+			                            		<input class="modify" type="button" value="수정">			                       		
+			                            		<input class="delete" type="button" value="삭제" onclick="deleteResume(<%= resume.getResumeId() %>)">			                            		
 			                            	</li>
 			                            </div>
 			                            
@@ -186,5 +231,7 @@
 
     <!-- footer 끝 -->
 </body>
+
+
 
 </html>
