@@ -43,7 +43,7 @@
 			<button class="leave_btn" onclick="location.href='leave'">회원탈퇴</button>
 		</c:when>
 		<c:otherwise>
-			<p class="welcome">환영합니다! <a class="login_link" href="login">로그인</a> 후 서비스를 이용해 주세요.</p>
+			<p class="welcome"><h2 style="color: burlywood; text-shadow: 2px 2px 4px black;">환영합니다! <a class="login_link" href="login" style="color: firebrick;">로그인</a> 후 서비스를 이용해 주세요.</h2></p>
 		</c:otherwise>
 
 	</c:choose>
