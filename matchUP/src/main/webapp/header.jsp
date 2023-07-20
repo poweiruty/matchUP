@@ -144,6 +144,7 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
+			
 			<!-- 채용공고조회/이력서관리 -->
 			<div class="scrap">
 				<c:choose>

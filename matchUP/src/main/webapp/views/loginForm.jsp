@@ -41,7 +41,7 @@
 							<div class="box">
 								<ul>
 									<li>
-										<input type="button" name="submit-btn" id="submit-btn" value="로그인" onclick="checkValue(form)">
+										<input type="button" name="login_btn" id="login_btn" value="로그인" onclick="checkValue(form)">
 									</li>
 									<!-- 회원가입 연결 -->
 									<li>
@@ -67,7 +67,7 @@
 							<div class="box">
 								<ul>
 									<li>
-										<input type="button" name="submit-btn" id="submit-btn" value="로그인" onclick="checkValue(form)">
+										<input type="button" name="login_btn" id="login_btn" value="로그인" onclick="checkValue(form)">
 									</li>
 									<!-- 회원가입 연결 -->
 									<li>

@@ -27,7 +27,6 @@
     <!-- header 끝 -->
     <!-- body 시작 -->
     <section class="container">
-        <form action="Review" method="post" name="corpReview" class="corpReview" enctype="multipart/form-data">
             <div class="msg">
 
                 <p id="msg_title">기업리뷰</p>
@@ -53,7 +52,6 @@
 					</li>
                 </ul>
             </div>
-        </form>
     <!-- body 끝 -->
 
     <!-- footer 시작 -->
