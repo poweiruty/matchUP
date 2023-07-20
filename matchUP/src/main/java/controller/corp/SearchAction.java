@@ -41,6 +41,7 @@ public class SearchAction extends HttpServlet {
 		ArrayList<JobPostDto> list = null;
 		JobPostSearchDao jpsDao = JobPostSearchDao.getInstance();		
 		
+		
 		String cname = null;
 		String jobName = null;
 		String main_region = null;

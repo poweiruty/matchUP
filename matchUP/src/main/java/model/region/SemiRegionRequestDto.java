@@ -8,8 +8,8 @@ public class SemiRegionRequestDto {
 	
 	// Constructor
 	public SemiRegionRequestDto(int mainRegionId, String semiRegion){
-		this.main_region_id=mainRegionId;
-		this.semi_region=semiRegion;
+		this.main_region_id = mainRegionId;
+		this.semi_region = semiRegion;
 	}
 
 	// Getter, Setter

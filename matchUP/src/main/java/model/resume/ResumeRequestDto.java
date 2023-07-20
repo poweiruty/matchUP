@@ -139,5 +139,3 @@ public class ResumeRequestDto {
 		this.resume_modified = resumeModified;
 	}
 }
-
-
