@@ -1,4 +1,6 @@
-
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.util.Comparator"%>
+<%@page import="java.util.Collections"%>
 <%@page import="model.JobPost.JobPostDto"%>
 <%@page import="model.job.Job"%>
 <%@page import="model.job.JobDao"%>
@@ -27,7 +29,7 @@
 
     <style>
         #saved_title, #completed_title{
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;}
     * {
   margin:0;
@@ -60,7 +62,15 @@
   line-height: 2;
   padding-top: 10px;
   } 
-
+.saved_con_detail, .completed{
+	height:80%;	
+	overflow : auto;
+}
+.if{
+			font-size:0.8rem;
+			font-weight:700;
+			color:red;
+			}
     </style>
 </head>
 
@@ -76,6 +86,7 @@
 	<section class="container">
         <div class="msg">
             <p id="msg_title">채용공고관리</p>
+            <span class="if">*가장 오래된 공고부터 표시됩니다.</span>
         </div>
         <div class="main">
             <div class="saved">
@@ -170,6 +181,7 @@
    		e.printStackTrace();
    	}
    }
+   
    %>
 
 
@@ -243,6 +255,22 @@
     }
 %>
 
+<%-- <%
+Collections.sort(activeJobPostings, new Comparator<Map<String, String>>() {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+    @Override
+    public int compare(Map<String, String> o1, Map<String, String> o2) {
+        try {
+            Date date1 = dateFormat.parse(o1.get("postDate"));
+            Date date2 = dateFormat.parse(o2.get("postDate"));
+            return date1.compareTo(date2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+});%> --%>
 
 <!-- 진행중인 모집공고 글 객체 -->
         <div class="active">
@@ -253,13 +281,13 @@
         <ul class="menu">
       <li class="li_title_1">
         <br> 
-        <a href="#"><h2><%= activePosting.get("title") %></h2></a>  
+        <a href="#"><h2><%= activePosting.get("title") %></h2> <h2 style="color: cadetblue;"> (마감일: <%= activePosting.get("postDate") %>)</h2></a>  
         <p> 기업명: <%= activePosting.get("corp_name") %><br>
             직종: <%= intToStringJob(Integer.parseInt(activePosting.get("job"))) %><br>
             채용 인원수: <%= activePosting.get("people") %>명<br>
             지역: <%= activePosting.get("region") + " " + activePosting.get("regionDetail") %><br>
             급여(연봉): <%= activePosting.get("salary") %>만원<br>
-            채용공고 마감일: <%= activePosting.get("postDate") %><br>
+            채용공고  마감일: <%= activePosting.get("postDate") %><br>
             복리후생: <%= activePosting.get("welfare") %><br>
             직무 상세: <%= activePosting.get("jobDetail") %><br></p><br>
       </li>
@@ -286,7 +314,7 @@
                 <ul class="menu">
               <li class="li_title_2">
                 <br>
-                <a href="#"> <h2><%= completedPosting.get("title") %></h2></a>          
+                <a href="#"> <h2><%= completedPosting.get("title") %></h2> <h2 style="color: indianred;"> (마감일: <%= completedPosting.get("postDate") %>)</h2></a>          
             <p>기업명: <%= completedPosting.get("corp_name") %><br>
             직종: <%= intToStringJob(Integer.parseInt(completedPosting.get("job"))) %><br>
             채용 인원수: <%= completedPosting.get("people") %>명<br>

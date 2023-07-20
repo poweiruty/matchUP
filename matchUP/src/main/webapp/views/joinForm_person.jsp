@@ -29,7 +29,7 @@
 	<!-- header 시작 -->
     <jsp:include page="header_form"></jsp:include>
 	<!-- header 끝 -->  
-	<div id="wrap">
+	<div class="container">
 		<div class="section">
 			<div class="section_box">	
 				<form action="UserIdCheck" method="POST" name="idForm" id="idForm" style="display: none;">

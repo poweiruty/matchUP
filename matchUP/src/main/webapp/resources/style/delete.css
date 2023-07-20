@@ -1,0 +1,43 @@
+.section {
+	border: solid 1px gray;
+	margin: 300px 15% 0 15%;
+	border-radius: 10px;
+	height: 90%
+}
+
+.title {
+	font-size: 1.8rem;
+	font-weight: 700;
+}
+
+ul.delete_main {
+	text-align: center;
+	height: 100%;
+}
+
+input {
+	border: solid 1px gray;
+	border-radius: 10px;
+	width: 20%;
+	padding: 4px;
+	margin-bottom: 10px;
+}
+
+#submit {
+	width: 5%;
+}
+
+#submit:hover {
+	cursor: pointer;
+	background-color: gray;
+}
+
+.container {
+	min-height: 50vh;
+}
+
+.if {
+	font-size: 0.8rem;
+	font-weight: 700;
+	color: red;
+}

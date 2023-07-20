@@ -17,8 +17,7 @@
     <link rel="stylesheet" href="resources/style/resume.css">
 </head>
 
-<<<<<<< HEAD
-=======
+
 <script>
     function deleteResume(resumeId) {
         // AJAX를 사용하여 서버로 이력서 삭제 요청 전송
@@ -40,7 +39,7 @@
     }
 </script>
 
->>>>>>> refs/remotes/origin/#3-HwangIngyu
+
 <style>
 	.main_con{
     	text-align: center;

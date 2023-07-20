@@ -19,7 +19,7 @@
 
 		<!-- body 시작 -->
 
-		<div class="containerwrap">
+		<div class="container">
 			<div class="login_box">
 				<ul class="login_tab">
 					<li class="login_person on"><a href="#">개인 로그인</a></li>

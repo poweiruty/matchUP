@@ -15,7 +15,7 @@
 
     <!-- header 끝 -->
     <!-- section 영역 -->
-    <section id="wrap">
+    <section class="container">
         <div class="section">
             <div class="text_title"><strong>개인정보처리방침</strong></div>
             <div class="text">

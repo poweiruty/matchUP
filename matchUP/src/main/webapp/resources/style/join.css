@@ -5,13 +5,18 @@
 	    font-weight: 400;
 	    font-style: normal;
 	} */
-	.section{
+	.container{
 		display: flex;
 		justify-content: center;
+		text-align: center;
+	}
+
+	.section{
 	    padding: 0 10px;
 	    border: 1px solid gainsboro;
 		width: 40%;
         padding: 30px;
+		height: 90%;
 	}
 	
 	.start{
