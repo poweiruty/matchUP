@@ -185,6 +185,7 @@
 			                                	<span><%= index++ %></span>
 			                            	</li>
 			                            </div>
+
 			                            <%-- <div class="resume_index">			                            	                              	
 			                                <%= resume.getResumeId() %>			                            	
 			                            </div> --%>
@@ -205,7 +206,7 @@
 			                            
 			                            <div class="resume_function">
 			                            	<li>
-			                            		<input class="modify" type="button" value="수정">                   		
+			                            		<input class="modify" type="button" value="수정">			                       		
 			                            		<input class="delete" type="button" value="삭제" onclick="deleteResume(<%= resume.getResumeId() %>)">			                            		
 			                            	</li>
 			                            </div>
