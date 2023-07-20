@@ -22,25 +22,28 @@ function updateValue() {
     */
     console.log();
     $.ajax({
-		url:`/semi?main=${selectedValue}`,
+		url:`/Semi?main=${document.getElementById('myHiddenInput').value}`,
 		method:"GET",								
-	}).done(function(data){
+	}).done(function(response) {
 		$('#region_detail').empty();
-			
-			const list = response;
-			console.log('typeof list : ', typeof list);
-			
-			if(typeof list === 'object'){
-				list.forEach(region => {
-					const semi_region = region.semi_region;
-					
-					if (corp_name !== "") {
-						$('#jobpost-list').append(
-							`<option value="${semi_region}">${semi_region}</option>`
-						);
-					}
-				});
-			}
+		
+		const list = response;				
+		console.log('typeof list : ', typeof list);		
+
+		if (typeof list === 'object') {
+			$('#region_detail').append(
+				`<option value="" selected>선택</option>`
+			);
+			list.forEach(semi => {
+				const semi_region = semi.semi_region;
+				console.log("semi : ", semi_region);
+				if (semi_region !== "") {
+					$('#region_detail').append(
+						`<option value="${semi_region}">${semi_region}</option>`
+					);
+				}
+			});
+		}
 	});
 }
 
@@ -59,12 +62,15 @@ function search(){
 			url:`/Search?job=${job}&region=${region}&region_detail=${region_detail}`,
 			method:"GET",						
 		}).done(function(response){
-			$('#jobpost-list').empty();
-			
+			$('#jobpost-list').empty();			
+			$('#detail_tab').empty();
 			const list = response;
-			console.log('typeof list : ', typeof list);
+			//console.log('typeof list : ', typeof list);
 			
 			if(typeof list === 'object'){
+				$('#detail_tab').append(
+					`<iframe src="viewDtail" name="detail_post" id="detail_post"></iframe>`
+				);
 				list.forEach(post => {
 					const post_id = post.post_id;
 					const title = post.title;
