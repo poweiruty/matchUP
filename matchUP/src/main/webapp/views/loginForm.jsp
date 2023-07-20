@@ -28,20 +28,20 @@
 				<div class="tab_cont">
 					<div class="tab on">
 						<!-- form -->
-						<form action="PLogin" class="index_form" method="POST">
+						<form action="PLogin" class="index_form" id="indexForm" method="POST">
 							<h2>아이디</h2>
 							<div class="id">
 								<input type="text" class="id" name="id" id="id" placeholder="아이디">
 							</div>
 							<h2>비밀번호</h2>
 							<div class="pwd">
-								<input type="text" class="pwd" name="pwd" placeholder="비밀번호">
+								<input type="password" class="pwd" name="pwd" placeholder="비밀번호">
 								<!-- 테스트 후 type = "password"로 변경 -->
 							</div>
 							<div class="box">
 								<ul>
 									<li>
-										<input type="submit" name="login_btn" id="login_btn" value="로그인">
+										<input type="button" name="submit-btn" id="submit-btn" value="로그인" onclick="checkValue(form)">
 									</li>
 									<!-- 회원가입 연결 -->
 									<li>
@@ -53,21 +53,21 @@
 					</div>
 					<div class="tab">
 						<!-- form -->
-						<form action="CLogin" class="index_form" method="POST">
+						<form action="CLogin" class="index_form" id="indexForm" method="POST">
 							<h2>아이디</h2>
 							<div class="id">
 								<input type="text" class="id" name="id" id="id" placeholder="아이디">
 							</div>
 							<h2>비밀번호</h2>
 							<div class="pwd">
-								<input type="text" class="pwd" name="pwd" placeholder="비밀번호">
+								<input type="password" class="pwd" name="pwd" placeholder="비밀번호">
 								<!-- 테스트 후 type = "password"로 변경 -->
 							</div>
 
 							<div class="box">
 								<ul>
 									<li>
-										<input type="submit" name="login_btn" id="login_btn" value="로그인">
+										<input type="button" name="submit-btn" id="submit-btn" value="로그인" onclick="checkValue(form)">
 									</li>
 									<!-- 회원가입 연결 -->
 									<li>
@@ -84,6 +84,8 @@
 		<jsp:include page="footer"></jsp:include>
 
 		<!-- footer 끝 -->
+	<script src="resources/script/validation_log.js"></script>                
+		
 	</body>
 
 	</html>

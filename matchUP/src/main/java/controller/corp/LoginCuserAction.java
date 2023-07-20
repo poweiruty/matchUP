@@ -63,11 +63,22 @@ public class LoginCuserAction extends HttpServlet {
 			session.setAttribute("email", cuser.getMgr_email());
 			session.setAttribute("map", cuser.getCaddress());
 			session.setAttribute("cnum", cuser.getCnum());
-			
+		
 	        
+			 CorpDao corpDao = CorpDao.getInstance();
+	           Corp corp = corpDao.getCorpbyId(id);
+	           if (corp != null) {
+	               int staffs = corp.getStaffs();
+	               String ceo = corp.getCeo();
+	               
+	               session.setAttribute("ceo", ceo);
+	               session.setAttribute("staffs", staffs);
+	           }
 //	        JobPostSearchDao jobPostSearchDao = new JobPostSearchDao();
 //	        JobPostDto jobPostDto = jobPostSearchDao.getPostByCorpName(cname);
 	        
+            System.out.println(session.getAttribute("ceo"));
+            System.out.println(session.getAttribute("staffs"));
 			System.out.println(session.getAttribute("log"));
 			System.out.println(session.getAttribute("cpassword"));
 			System.out.println(session.getAttribute("cname"));			

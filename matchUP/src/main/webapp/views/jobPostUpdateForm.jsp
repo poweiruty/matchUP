@@ -106,7 +106,7 @@
 
    	// Query to fetch job_posting_tb, job_tb, main_region_tb, semi_region_tb
    	String sql = "SELECT jp.title, jp.corp_name, corp.job_id, jp.recruit_people, "
-   	+ "mr.main_region, sr.semi_region, jp.salary, jp.recruit_period, " + "jp.welfare, jp.description, jp.ceo "
+   	+ "mr.main_region, sr.semi_region, jp.salary, jp.recruit_period, " + "jp.welfare, jp.description, jp.mgr_name "
    	+ "FROM job_posting_tb jp " + "JOIN job_tb corp ON jp.job_id = corp.job_id "
    	+ "JOIN main_region_tb mr ON jp.main_region_id = mr.main_region_id "
    	+ "JOIN semi_region_tb sr ON jp.semi_region_id = sr.semi_region_id";
@@ -125,7 +125,7 @@
    		String postDate = rs.getString("recruit_period");
    		String welfare = rs.getString("welfare");
    		String jobDetail = rs.getString("description");
-   		String ceo = rs.getString("ceo");
+   		String mgr_name = rs.getString("mgr_name");
 
    		// Convert the recruit_period string to a Date object for comparison
    		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

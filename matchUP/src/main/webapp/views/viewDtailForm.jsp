@@ -50,7 +50,6 @@ if(request.getParameter("post_id") != null){
 	String title = dto.getTitle();
 	String cname = dto.getCorp_name();
 	String staffs = dto.getStaffs();
-	String ceo = dto.getCeo();
 	
 	CorpUser cuser = cdao.getUserbyCname(cname);	
 	

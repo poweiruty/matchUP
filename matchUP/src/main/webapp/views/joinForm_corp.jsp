@@ -72,7 +72,7 @@
 								</label>
 							</li>
 							<li class="pwd">
-								<input type="password" name="password" id="password" placeholder="8~20자의 영문, 특수문자, 숫자 조합">
+								<input type="password" name="password" id="password" placeholder="최소 8자리 이상 입력하세요.">
 								<input type="password" name="passwordChk" id="passwordChk" placeholder="비밀번호 확인" required>		
 								<li class="error" id="error-password">* 비밀번호는 필수 정보입니다.</li>
 								<li class="error" id="error-passwordRegex">* 비밀번호: 8~20자의 영어 대/소문자, 숫자, 특수문자를 이용해주세요.</li>
@@ -85,7 +85,7 @@
 								<label for="corp_name">
 									<h2>회사명</h2>
 								</label>
-								<input type="text" name="cname" id="cname" placeholder="본사 주소를 기준으로 기입해 주세요." required>								
+								<input type="text" name="cname" id="cname" required>								
 							</li>							
 							<li class="error" id="error-cname">* 회사이름은 필수 정보입니다.</li>
 							<!-- 사업자등록번호 부분 -->

@@ -36,23 +36,15 @@ function checkValue(htmlform) {
 	let check = true;
 	
 	if(id === "") {
-		$('#error-pid').show();
+		alert("아이디를 입력하세요.")
 		check = false;
 	} else if(pwd === "") {
-		$('#error-ppwd').show();
+		alert("비밀번호를 입력하세요.")
 		check = false;
 	}
-	
-	if(id === "") {
-		$('#error-cid').show();
-		check = false;
-	} else if(pwd === "") {
-		$('#error-cpwd').show();
-		check = false;
-	}
-	
 	
 	if(check === true) {
+		alert("로그인에 성공하였습니다.")
 		htmlform.submit();
 	}
 }
