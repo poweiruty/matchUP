@@ -46,7 +46,7 @@
 					<ul>
 					<li>
 						<span>회사정보</span><br>
-						<span class="if">*입력된 정보가 상이할 시, 고객센터로 문의해 주시기 바랍니다.</span>
+						<span class="if">*회사명과 소재지를 변경하시길 원하시는 경우, 고객센터로 문의해 주시기 바랍니다.</span>
 					</li>
 					<div class="corpInfo">
 											
