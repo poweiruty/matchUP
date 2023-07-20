@@ -42,7 +42,7 @@
                         </li>                 
                      </div>
                     <li class="search_btn">
-                        <input type="button" value="검색" id="search_btn">
+                        <input type="button" value="검색" id="search_btn" onclick="search()">
                     </li>                                     					
 				   <li class="search_btn">
 						<a href="reviewCreate"><input type="button" id="create_btn" value="리뷰작성"></a>
