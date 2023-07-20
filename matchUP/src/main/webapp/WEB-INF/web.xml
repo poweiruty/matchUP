@@ -273,6 +273,17 @@
 		<url-pattern>/index</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 만든이들 -->	
+	<servlet>
+		<servlet-name>makers</servlet-name>
+		<jsp-file>/makers.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>makers</servlet-name>
+		<url-pattern>/maker</url-pattern>
+	</servlet-mapping>
+	
 	<!-- header -->
 	<servlet>
 		<servlet-name>header</servlet-name>

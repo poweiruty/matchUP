@@ -14,7 +14,7 @@
             <span><a href="#">고객센터</a></span>
             <span><a href="term">이용약관</a></span>
             <span><a href="term2">개인정보 취급방침</a></span>
-            <span><a href="makers.jsp">만든이들</a></span>
+            <span><a href="maker">만든이들</a></span>
     </footer>
     <!-- footer 끝 -->
 </body>

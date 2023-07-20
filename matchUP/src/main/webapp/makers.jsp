@@ -8,16 +8,25 @@
 			<meta charset="UTF-8">
 			<title>Makers</title>
 			<link rel="shortcut icon" href="resources/img/favicon.png">
+		
 		</head>
-
+		
 		<body>
 			<!-- header -->
 			<jsp:include page="header"></jsp:include>
 			<style>
 				@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gasoek+One&family=Gowun+Batang&family=IBM+Plex+Sans+KR:wght@300&family=Poor+Story&display=swap');
-
-				section {
+				section{
+				margin-top: 5%;
+				}
+				
+				.container{
+				min-height: 60vh;
+				}
+				
+				.div_wrap {
 					display: flex;
+					align-items: center;
 					justify-content: space-evenly;
 				}
 
@@ -29,11 +38,12 @@
 					text-align: center;
 				}
 				img{
-					width: 500px;
+					width: 450px;
 					height: 400px;
 				}
 			</style>
-			<section>
+			<section class="container">
+				<div class="div_wrap">
 				<div>
 					<p><img src="resources/img/1.jpg"></p>
 					<span>In-Gyu Hwang</span>
@@ -51,6 +61,7 @@
 					<span>Gyu-Tae Park</span>
 					<p>Git: https://github.com/poweiruty</p>
 					<p>Email: qkrrb0032@naver.com</p>
+				</div>
 				</div>
 			</section>
 
