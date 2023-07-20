@@ -47,7 +47,7 @@ public class SendEmailAction extends HttpServlet {
 		PrintWriter script = null;
 		System.out.println(email);
 
-		String host = "http://localhost:8080/";
+		String host = "/";
 		String from = "rbxo0032@gmail.com";
 		String to = email;
 		String subject = "Match-UP 이메일인증 메일";
