@@ -57,7 +57,7 @@ label, span{
 }
 
 #submit:hover, .cancel:hover{
-    background-color: gray;
+	background-color:cornflowerblue;
     cursor: pointer;
     color: black;
 }

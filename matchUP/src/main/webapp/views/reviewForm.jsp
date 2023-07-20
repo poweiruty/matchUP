@@ -20,6 +20,9 @@
     .container div{
         margin-top: 20px;
     }
+    div.main{
+        margin-top: 0;
+    }
 </style>
     <!-- header 끝 -->
     <!-- body 시작 -->
@@ -40,15 +43,13 @@
                             </label>
                             <input type="text" id="search_bar" placeholder="회사명">
                         </li>
-                    </ul>
-                </div>
-                <ul>
+                        </div>
                     <li class="search_btn">
                         <input type="button" value="검색" id="search_btn">
                     </li>
                     
-                    <li>
-						<a class="btn_join" href="reviewCreate">리뷰 작성</a>
+                    <li class="search_btn">
+						<a href="reviewCreate"><input type="button" id="create_btn" value="리뷰작성"></a>
 					</li>
                 </ul>
             </div>

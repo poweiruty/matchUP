@@ -24,7 +24,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-       <link rel="stylesheet" href="resources/style/scrap.css">
+       <link rel="stylesheet" href="resources/style/jobpostupdate.css">
 <link rel="shortcut icon" href="resources/img/favicon.png">
 
     <style>

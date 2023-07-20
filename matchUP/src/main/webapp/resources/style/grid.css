@@ -19,6 +19,10 @@
     margin-top: 20px;
 }
 
+div button:hover{
+	background-color:cornflowerblue;
+}
+
 /* header */
 a{
     color: black;
@@ -70,7 +74,7 @@ header {
 
 .logout_btn:hover, .leave_btn:hover{
     cursor: pointer;
-    background-color: gray;
+    background-color:cornflowerblue;
 }
 
 .login_link{
