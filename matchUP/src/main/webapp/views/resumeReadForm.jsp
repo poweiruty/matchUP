@@ -53,8 +53,9 @@
    									 // 이력서 리스트에서 전달된 resume_id를 가져옵니다.
     								int resumeId = resume.getResumeId();
 								%>
-	                        	<a href="resumeReadDetail?resume_id=<%= resumeId %>">
-		                        	<div class="resume-item" id="resume_<%= resume.getResumeId() %>">	                        	
+	                        	
+		                        <div class="resume-item" id="resume_<%= resume.getResumeId() %>">	
+		                        	<a href="resumeReadDetail?resume_id=<%= resumeId %>">                        	
 			                        	<div class="resume-content">		                        				                        		
 			                        		<div class="resume_number">
 				                            	<li>
@@ -68,16 +69,17 @@
 				                                	<span><%= resume.getResumeTitle() %></span>
 				                            	</li>
 				                            </div>
+				                         </div>
+				                       </a>  
+				                       <div class="resume_function">
+				                          	<li>				                            					                       		
+				                          		<input class="delete" type="button" value="삭제" onclick="deleteResume(<%= resume.getResumeId() %>)">			                            					                            		
+				                           	</li>
+				                       </div>
 				                            
-				                            <div class="resume_function">
-				                            	<li>				                            					                       		
-				                            		<input class="delete" type="button" value="삭제" onclick="deleteResume(<%= resume.getResumeId() %>)">			                            					                            		
-				                            	</li>
-				                            </div>
-				                            
-				                        </div>
+				                        
 			                        </div>
-		                        </a>
+		                        
 		                        <br>
 		                        
 	                        <% } %>

@@ -6,7 +6,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import model.resume.ResumeDao;
-import model.resume.ResumeRequestDto;
+import model.resume.Resume;
 
 
 /**
@@ -88,7 +88,7 @@ public class ResumeCreateFormAction extends HttpServlet{
 				System.out.println("자기소개 : " + intro);
 				
 				// DTO 객체 생성
-				ResumeRequestDto resume = new ResumeRequestDto(puserIdx,resumeTitle,jobIdx,graduation,degree,career,activity,certificate,intro);
+				Resume resume = new Resume(puserIdx,resumeTitle,jobIdx,graduation,degree,career,activity,certificate,intro);
 
 				// DAO 객체 생성
 				ResumeDao dao = ResumeDao.getInstance();
@@ -100,4 +100,3 @@ public class ResumeCreateFormAction extends HttpServlet{
 				response.sendRedirect(url);
 			}
 	}
-

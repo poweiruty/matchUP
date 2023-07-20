@@ -173,7 +173,7 @@
 
 					<c:otherwise>
 						<a href="login">
-							<h3>이력서 관리</h3>
+							<h3>로그인</h3>
 						</a>
 					</c:otherwise>
 				</c:choose>

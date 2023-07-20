@@ -203,9 +203,6 @@ span{
                                 <option value="5">대졸(4년제)</option>
                                 <option value="6">대학원졸</option>                             
                             </select>
-                            
-                            
-                            
                             <textarea name="degree" id="degree" cols="30" rows="10" placeholder="그 밖의 학력에 관련된 세부사항을 적어주세요."></textarea>
                         </li>
                         
@@ -243,7 +240,7 @@ span{
 
   <!-- footer 시작 -->
    	<jsp:include page="footer"></jsp:include>
-
+	
     <!-- footer 끝 -->
 </body>
 

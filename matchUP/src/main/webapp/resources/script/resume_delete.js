@@ -22,7 +22,7 @@ function deleteResume(resumeId) {
              }
          }
      };
-     xhr.send('resumeId=' + resumeId);	
+     xhr.send('resumeId=' + resumeId);
 	}else{
 		return false;
 	}    	

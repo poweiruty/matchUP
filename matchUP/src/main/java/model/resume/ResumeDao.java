@@ -24,7 +24,7 @@ public class ResumeDao {
 	
 	
 	// CREATE
-	public boolean createResume(ResumeRequestDto dto) {
+	public boolean createResume(Resume dto) {
 		int puserIdx=dto.getPusersId();
 		String resumeTitle=dto.getResumeTitle();
 		int jobId=dto.getJobId();
@@ -64,9 +64,7 @@ public class ResumeDao {
 		return true;
 	}
 	
-	// READ
-	
-	// READ 1 : 특정DB만 뽑아오기
+	// READ : 특정DB만 뽑아오기
 	public Resume getResumeInfo(int puserIdx) {
 	    Connection conn = null;
 	    PreparedStatement pstmt = null;
@@ -101,7 +99,41 @@ public class ResumeDao {
 	    return resume;
 	}
 	
-	// READ2 : 이력서 번호로 데이터베이스 읽기
+//	public Resume getResumeInfo(int pusersIdx) {
+//		Resume resume = null;
+//		
+//		this.conn=DBManager.getConnection();
+//		
+//		if(this.conn!=null) {
+//			String sql = "SELECT pusers_id, job_id, graduation, degree, career, activity, certificate, intro FROM resume_tb WHERE pusers_id = ?";
+//			
+//			try {    
+//		        this.pstmt = conn.prepareStatement(sql);
+//		        this.pstmt.setInt(1, pusersIdx);
+//		        this.rs = pstmt.executeQuery();
+//
+//		        if (rs.next()) {
+//		        	int puserId=rs.getInt("pusers_id");
+//		            int jobId = rs.getInt("job_id");
+//		            String graduation = rs.getString("graduation");
+//		            String degree = rs.getString("degree");
+//		            String career = rs.getString("career");
+//		            String activity = rs.getString("activity");
+//		            String certificate = rs.getString("certificate");
+//		            String intro = rs.getString("intro");
+//
+//		            resume = new Resume(puserId, jobId, graduation, degree, career, activity, certificate, intro);
+//		        }
+//		    } catch (SQLException e) {
+//		        e.printStackTrace();
+//		    } finally {
+//		        DBManager.close(conn, pstmt, rs);
+//		    }
+//		}
+//			
+//		return resume;
+//	}
+	
 	public Resume getResumeByResumeIdx(int resumeIdx) {
 	    Connection conn = null;
 	    PreparedStatement pstmt = null;
@@ -136,9 +168,9 @@ public class ResumeDao {
 	    }
 	    return resume;
 	}
-			
-		
-	// READ3 : 1개의 데이터베이스 전체컬럼 읽기
+	
+	
+	// READ : 1개의 데이터베이스 전체컬럼 읽기
 	public Resume getResumeByPusersId(int pusersIdx) {
 		Resume resume = null;
 		
@@ -178,8 +210,8 @@ public class ResumeDao {
 		}		
 		return resume;
 	}
-
-	// READ4 : 특정회원 데이터 읽기(리스트)
+	
+	// READ : 특정회원 데이터 읽기(리스트)
 	public ArrayList<Resume> getResumesByLogin(int puserIdx){
 		ArrayList<Resume> list=new ArrayList<Resume>();
 		this.conn = DBManager.getConnection();
@@ -221,7 +253,49 @@ public class ResumeDao {
 		}	
 		return list;
 	}
-			
+	
+//	// READ : 데이터 전체 읽기(리스트)
+//	public ArrayList<Resume> getResumeAll(){
+//		ArrayList<Resume> list = new ArrayList<Resume>();
+//		
+//		this.conn = DBManager.getConnection();
+//		
+//		if(this.conn != null) {
+//			String sql = "select * from resume_tb";
+//			
+//			try {
+//				this.pstmt = this.conn.prepareStatement(sql);
+//				this.rs = this.pstmt.executeQuery();
+//				
+//				while(this.rs.next()) {
+//					int resumeId = this.rs.getInt(1);
+//					int pusersId = this.rs.getInt(2);
+//					String resumeTitle = this.rs.getString(3);
+//					int jobId = this.rs.getInt(4);					
+//					String graduation = this.rs.getString(5);
+//					String degree = this.rs.getString(6);
+//					String career = this.rs.getString(7);
+//					String activity = this.rs.getString(8);
+//					String certificate = this.rs.getString(9);
+//					String intro=this.rs.getString(10);
+//					Timestamp createdTime =this.rs.getTimestamp(11);
+//					int createdTimeNum=Integer.parseInt(sdf.format(createdTime));
+//					Timestamp modifiedTime =this.rs.getTimestamp(12); 
+//					int modifiedTimeNum=Integer.parseInt(sdf.format(modifiedTime)); 
+//					
+//					Resume resume = new Resume(resumeId,pusersId,resumeTitle,jobId,graduation,degree,career,activity,certificate,intro,createdTimeNum,modifiedTimeNum);
+//					
+//					list.add(resume);
+//				}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			} finally {
+//				DBManager.close(this.conn, this.pstmt, this.rs);
+//			}
+//		}		
+//		return list;
+//	}
+		
 	// Update
 	public void updateResume(ResumeRequestDto dto) {	
 		this.conn = DBManager.getConnection();		

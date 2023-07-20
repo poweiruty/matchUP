@@ -50,7 +50,7 @@ public class LoginFormAction extends HttpServlet {
 		}
 		String url = "login";
 				
-		if(user != null && SHA256.verifyPassword(password, pwd)) {
+		if(user != null && password.equals(pwd)) {
 			url = "index";
 			
 			

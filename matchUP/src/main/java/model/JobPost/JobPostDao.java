@@ -28,14 +28,14 @@ public class JobPostDao {
 
 		conn = DBManager.getConnection();
 		if (conn != null) {
-			String sql = "INSERT INTO job_posting_tb (title, corp_name, staffs, ceo, job_id, main_region_id, semi_region_id, recruit_people, recruit_period, salary, welfare, description) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO job_posting_tb (title, corp_name, staffs, mgr_name, job_id, main_region_id, semi_region_id, recruit_people, recruit_period, salary, welfare, description) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, dto.getTitle());
 				pstmt.setString(2, dto.getCorp_name());
 				pstmt.setString(3, dto.getStaffs());				
-				pstmt.setString(4, dto.getCeo());
+				pstmt.setString(4, dto.getMgr_name());
 				pstmt.setInt(5, Integer.parseInt(dto.getJob()));
 				pstmt.setInt(6, Integer.parseInt(dto.getRegion()));
 				pstmt.setInt(7, Integer.parseInt(dto.getRegionDetail()));
@@ -109,7 +109,7 @@ public class JobPostDao {
                 	String title = rs.getString("title");
                 	String corp_name = rs.getString("corp_name");
                 	String staffs = rs.getString("staffs");
-                	String ceo = rs.getString("ceo");
+                	String mgr_name = rs.getString("mgr_name");
                     String jobId = rs.getString("job_id");
                     String main_region_id = rs.getString("main_region_id");
                     String semi_region_id = rs.getString("semi_region_id");
@@ -122,7 +122,7 @@ public class JobPostDao {
     				String create_postToString = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(created_post);
                     
                     
-    				jobPostDto = new JobPostDto(post_id, title, corp_name, staffs, ceo, jobId, main_region_id, semi_region_id, recruit_people, recruit_period, salary, welfare, description, create_postToString);
+    				jobPostDto = new JobPostDto(post_id, title, corp_name, staffs, mgr_name, jobId, main_region_id, semi_region_id, recruit_people, recruit_period, salary, welfare, description, create_postToString);
                    
                 }
             } catch (Exception e) {
@@ -156,7 +156,7 @@ public class JobPostDao {
                 	String title = this.rs.getString(2);
     				String corp_name = this.rs.getString(3);
     				String staffs = this.rs.getString(4);
-    				String ceo = this.rs.getString(5);
+    				String mgr_name = this.rs.getString(5);
     				String job_id = this.rs.getInt(6) + "";
     				String main_region = this.rs.getInt(7) + "";
     				String semi_region = this.rs.getInt(8) + "";
@@ -168,7 +168,7 @@ public class JobPostDao {
     				Timestamp created_post = this.rs.getTimestamp(14);
     				String create_postToString = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(created_post);
 
-    				JobPostDto post = new JobPostDto(postId, title, corp_name, staffs, ceo, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
+    				JobPostDto post = new JobPostDto(postId, title, corp_name, staffs, mgr_name, job_id, main_region, semi_region, recruit_people,recruit_period, salary, welfare, desc, create_postToString);
                 }
             }
         } catch (Exception e) {
