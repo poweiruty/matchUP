@@ -50,8 +50,11 @@ public class ReviewCreateAction extends HttpServlet{
 				    pusersId = Integer.parseInt(pusersIdObj.toString());
 				}
 				
+
 				// 그 이외의 값들 파라미터로 불러오기
-				String corpId = request.getParameter("corporation");
+				//String corpId = request.getParameter("corporation");
+				// 값들 파라미터로 불러오기
+				String corpName = request.getParameter("corp_name");
 				int star = Integer.parseInt(request.getParameter("star"));
 				String summary = request.getParameter("summary");
 				String review = request.getParameter("review");
@@ -74,7 +77,7 @@ public class ReviewCreateAction extends HttpServlet{
 				
 				// 화면에서 넘겨준 데이터 확인
 				System.out.println("유저 인덱스 :"+pusersId);
-				System.out.println("기업 인덱스 :"+corpId);
+				System.out.println("기업명 :"+corpName);
 				System.out.println("별점 : " + star);				
 				System.out.println("기업 한줄평 : " + summary);
 				System.out.println("리뷰 : " + review);
@@ -82,15 +85,15 @@ public class ReviewCreateAction extends HttpServlet{
 				System.out.println("기간 : " + period);
 				
 				// DTO 객체 생성
-				ReviewRequestDto reviews = new ReviewRequestDto(pusersId,corpId,star,summary,review,position,period);
+				ReviewRequestDto reviews = new ReviewRequestDto(pusersId,corpName,star,summary,review,position,period);
 
 				// DAO 객체 생성
 				ReviewDao dao = ReviewDao.getInstance();
 
 				boolean result = dao.createReview(reviews);
-				System.out.println(result);	// 이력서 create 확인용
+				System.out.println(result);	// 리뷰 create 확인용
 				
-				String url = "index";
+				String url = "review";
 				response.sendRedirect(url);
 			}
 	}

@@ -135,8 +135,13 @@
 		<servlet-name>ResumeCreateFormAction</servlet-name>
 		<url-pattern>/ResumeCreate</url-pattern>
 	</servlet-mapping>
+<<<<<<< HEAD
 
 	<!-- 이력서 불러오기 -->
+=======
+	
+	<!-- 로그인한 회원의 이력서 전체 불러오기 -->
+>>>>>>> refs/remotes/origin/#3-HwangIngyu
 	<servlet>
 		<servlet-name>ResumeReadFormAction</servlet-name>
 		<servlet-class>controller.resume.ResumeReadFormAction</servlet-class>
@@ -145,8 +150,23 @@
 		<servlet-name>ResumeReadFormAction</servlet-name>
 		<url-pattern>/ResumeRead</url-pattern>
 	</servlet-mapping>
+<<<<<<< HEAD
 
 	<!-- 이력서 삭제 양식 -->
+=======
+	
+	<!-- 클릭한 이력서 불러오기 -->
+	<servlet>
+		<servlet-name>ResumeReadDetailFormAction</servlet-name>
+		<servlet-class>controller.resume.ResumeReadDetailFormAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ResumeReadDetailFormAction</servlet-name>
+		<url-pattern>/ResumeReadDetail</url-pattern>
+	</servlet-mapping>
+	
+	<!--  이력서 삭제 양식 -->
+>>>>>>> refs/remotes/origin/#3-HwangIngyu
 	<servlet>
 		<servlet-name>ResumeDeleteFormAction</servlet-name>
 		<servlet-class>controller.resume.ResumeDeleteFormAction</servlet-class>
@@ -230,7 +250,12 @@
 		<servlet-name>SendEmailAction</servlet-name>
 		<url-pattern>/SendEmail</url-pattern>
 	</servlet-mapping>
+<<<<<<< HEAD
 	<!-- 채용공고 검색 -->
+=======
+	
+	<!--  채용공고 검색 -->
+>>>>>>> refs/remotes/origin/#3-HwangIngyu
 	<servlet>
 		<servlet-name>SearchAction</servlet-name>
 		<servlet-class>controller.corp.SearchAction</servlet-class>
@@ -240,7 +265,12 @@
 		<servlet-name>SearchAction</servlet-name>
 		<url-pattern>/Search</url-pattern>
 	</servlet-mapping>
+<<<<<<< HEAD
 	<!-- 채용공고 검색(세부지역 리스트) -->
+=======
+		
+	<!--  채용공고 검색 -->
+>>>>>>> refs/remotes/origin/#3-HwangIngyu
 	<servlet>
 		<servlet-name>SemibyMainAction</servlet-name>
 		<servlet-class>controller.corp.SemibyMainAction</servlet-class>
@@ -248,8 +278,17 @@
 
 	<servlet-mapping>
 		<servlet-name>SemibyMainAction</servlet-name>
+<<<<<<< HEAD
 		<url-pattern>/Semi</url-pattern>
 	</servlet-mapping>
+	<!-- 리뷰 검색 -->
+	<servlet>
+		<servlet-name>ReviewSearchAction</servlet-name>
+		<servlet-class>controller.corp.ReviewSearchAction</servlet-class>
+=======
+		<url-pattern>/semi</url-pattern>
+	</servlet-mapping>
+	
 	<!-- 리뷰 검색 -->
 	<servlet>
 		<servlet-name>ReviewSearchAction</servlet-name>
@@ -260,7 +299,31 @@
 		<servlet-name>ReviewSearchAction</servlet-name>
 		<url-pattern>/ReviewSearch</url-pattern>
 	</servlet-mapping>
+		
+	<!--  이메일 인증메일 확인 -->
+<!-- 	<servlet>
+		<servlet-name>EmailCheckAction</servlet-name>
+		<servlet-class>controller.common.EmailCheckAction</servlet-class>
+>>>>>>> refs/remotes/origin/#3-HwangIngyu
+	</servlet>
 
+	<servlet-mapping>
+<<<<<<< HEAD
+		<servlet-name>ReviewSearchAction</servlet-name>
+		<url-pattern>/ReviewSearch</url-pattern>
+	</servlet-mapping>
+
+=======
+		<servlet-name>EmailCheckAction</servlet-name>
+		<url-pattern>/EmailCheck</url-pattern>
+	</servlet-mapping> -->
+	
+	
+	
+	
+	<!-- 2. JSP 페이지 맵핑 -->
+	
+>>>>>>> refs/remotes/origin/#3-HwangIngyu
 	<!-- index -->
 	<servlet>
 		<servlet-name>index</servlet-name>
@@ -461,8 +524,24 @@
 		<servlet-name>resumeReadForm</servlet-name>
 		<url-pattern>/resumeRead</url-pattern>
 	</servlet-mapping>
+<<<<<<< HEAD
 
 	<!-- review -->
+=======
+	
+	<!-- resumeReadDetail -->
+	<servlet>
+		<servlet-name>resumeReadDetailForm</servlet-name>
+		<jsp-file>/views/resumeReadDetailForm.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>resumeReadDetailForm</servlet-name>
+		<url-pattern>/resumeReadDetail</url-pattern>
+	</servlet-mapping>
+	
+	<!--  review -->
+>>>>>>> refs/remotes/origin/#3-HwangIngyu
 	<servlet>
 		<servlet-name>reviewForm</servlet-name>
 		<jsp-file>/views/reviewForm.jsp</jsp-file>
@@ -483,7 +562,22 @@
 		<servlet-name>reviewCreateForm</servlet-name>
 		<url-pattern>/reviewCreate</url-pattern>
 	</servlet-mapping>
+<<<<<<< HEAD
 
+=======
+	
+	<!-- reviewForm -->
+	<servlet>
+		<servlet-name>viewReviewDetail</servlet-name>
+		<jsp-file>/views/viewReviewDetail.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>viewReviewDetail</servlet-name>
+		<url-pattern>/viewReview</url-pattern>
+	</servlet-mapping>
+	
+>>>>>>> refs/remotes/origin/#3-HwangIngyu
 	<!-- scrap -->
 	<servlet>
 		<servlet-name>scrapForm</servlet-name>
@@ -525,8 +619,14 @@
 	<servlet-mapping>
 		<servlet-name>emailCheckAction</servlet-name>
 		<url-pattern>/emailCheck</url-pattern>
+<<<<<<< HEAD
 	</servlet-mapping>
 	<!-- viewDtail -->
+=======
+	</servlet-mapping>	
+	
+	<!-- viewDtail : jobPosting -->
+>>>>>>> refs/remotes/origin/#3-HwangIngyu
 	<servlet>
 		<servlet-name>viewDtailForm</servlet-name>
 		<jsp-file>/views/viewDtailForm.jsp</jsp-file>

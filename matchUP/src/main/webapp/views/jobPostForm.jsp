@@ -54,9 +54,7 @@
 							<span>회사명: </span>
 							<input type = "text" name ="corp_name" id="corp_name" value="${sessionScope.cname }"></span>
 						</li>
-						
-						
-						
+																		
 						<li>
 							<span class="phone">담당자 연락처: </span> 
 							<input type="text" id="phone" value="${sessionScope.phone }">

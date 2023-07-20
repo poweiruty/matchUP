@@ -59,7 +59,6 @@
         <a href="index.jsp">
             <img class="logo" src="resources/img/Rlogo.png">
         </a>
-        <!-- 마이페이지 -->
         <div class="top_1">
             <c:choose>
                 <c:when test="${not empty sessionScope.cname }">
@@ -104,50 +103,66 @@
                     <h3>기업검색</h3>
                 </a>
             </div>
-            <!-- 기업리뷰 -->
-            <div class="corpReview">
-                <a href="review">
-                    <h3>기업리뷰</h3>
-                </a>
-            </div>
-           <!-- 기업회원 마이페이지 -->
+			<!-- 기업리뷰 -->
+			<div class="corpReview">
+				<c:choose>
+					<c:when test="${not empty sessionScope.cname }">
+						<a href="review">
+							<h3>기업리뷰</h3>
+						</a>
+					</c:when>
+					<c:when test="${not empty sessionScope.log}">
+						<a href="review">
+							<h3>기업리뷰</h3>
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a href="login">
+							<h3>기업리뷰</h3>
+						</a>
+					</c:otherwise>
+				</c:choose>
+			</div>
+          <!-- 마이페이지 -->
 			<c:choose>
 				<c:when test="${not empty sessionScope.cname }">
 					<a href="mypageCorp">
 						<h3>마이페이지</h3>
 					</a>
 				</c:when>
-				<c:when test="${not empty sessionScope.log}">
+				<c:when test="${not empty sessionScope. log}">
 					<a href="mypagePerson">
 						<h3>마이페이지</h3>
 					</a>
 				</c:when>
 				<c:otherwise>
-					<a href="login">
-						<h3>로그인</h3>
+					<a href="joinPerson">
+						<h3>개인 회원가입</h3>
 					</a>
 				</c:otherwise>
 			</c:choose>
-           <!-- 회원가입 -->
-					<div class="join">
-						<c:choose>
-							<c:when test="${not empty sessionScope.cname }">
-							<a href="cleave">
-								<h3>회원탈퇴</h3>
-							</a>
-						</c:when>
-						<c:when test="${not empty sessionScope. log}">
-							<a href="leave">
-								<h3>회원탈퇴</h3>
-							</a>
-						</c:when>
-							<c:otherwise>
-								<a href="join">
-									<h3>회원가입</h3>
-								</a>
-							</c:otherwise>
-						</c:choose>
-					</div>
+
+
+			<!-- 회원가입 -->
+			<div class="join">
+				<c:choose>
+					<c:when test="${not empty sessionScope.cname }">
+						<a href="cleave">
+							<h3>회원탈퇴</h3>
+						</a>
+					</c:when>
+					<c:when test="${not empty sessionScope. log}">
+						<a href="leave">
+							<h3>회원탈퇴</h3>
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a href="joinCorp">
+							<h3>기업 회원가입</h3>
+						</a>
+					</c:otherwise>
+				</c:choose>
+			</div>
        
 			<!-- 채용공고조회/이력서관리 -->
 			<div class="scrap">
@@ -188,7 +203,7 @@
 					</c:when>
 
 					<c:otherwise>
-						<a href="makers.jsp">
+						<a href="maker">
 							<h3>만든이들</h3>
 						</a>
 					</c:otherwise>

@@ -30,59 +30,11 @@
         <div class="main_con">
             <div class="main_resume">
                 <!-- 이름, 생년월일, 연락처, 이메일, 주소 -->
-                <form action="ReviewCreate" method="post">
-                
-                	<!--  테스토 : 황인규 작성
-                	<div calss="test">
-                		<span>세션값을 뽑아와보자 : </span>
-                		<span>${sessionScope.puserIdx}</span>
-                	</div> -->
-                	
+                <form action="ReviewCreate" method="post">                                	                	
                     <ul>
                     	<li>
-                   			<label for="corporation">기업</label>                        				
-                   				<%
-                   				Connection conn = null;
-                   				PreparedStatement pstmt=null;
-                   				ResultSet rs=null;
-                   				
-                   				try{
-                   					conn=DBManager.getConnection();
-                   					String sql="select corp_id, corp_name from corporation_tb group by corp_name order by corp_id ASC";
-                   					
-                   					pstmt=conn.prepareStatement(sql);
-                   					rs=pstmt.executeQuery();
-                   				%>
-                   					<select name="corporation" id="corporation" size="1">
-                   						<option value="" selected></option>
-                   				<% 
-                   					while(rs.next()){
-                   						int corp_id=rs.getInt("corp_id");
-                   						String corp_name=rs.getString("corp_name");
-                   				%>
-                   						<option value="<%= corp_id%>"><%= corp_name%></option>		
-                   				<%
-                   					}
-                   				}catch(Exception e){
-                   					e.printStackTrace();
-                   					System.out.println("직업 데이터 연동 및 출력 실패");
-                   				}finally{
-                   					try{
-                   						if(rs!=null){
-                   							rs.close();
-                   						}
-                   						if(pstmt!=null){
-                   							pstmt.close();
-                   						}
-                   						if(conn!=null){
-                   							conn.close();
-                   						}
-                   					}catch(Exception e){
-                   						e.printStackTrace();
-                   					}
-                   				}
-                   				%>
-                   			</select>
+                   			<label for="corporation">기업</label>                        				                  			
+                            <input type="text" name="corp_name" id="corp_name">                
                    		</li>
                    		                                                                                                 
                         <li>
