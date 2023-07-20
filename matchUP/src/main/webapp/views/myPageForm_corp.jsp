@@ -24,7 +24,7 @@
                 <c:redirect url="login"></c:redirect>
             </c:if>
             <!-- 기업회원 마이페이지 -->
-            <div id="wrap">
+            <div class="container">
                 <div class="section">
                     <div class="section_box">
 				<form action="Cupdate" method="post">

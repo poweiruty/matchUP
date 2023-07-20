@@ -78,9 +78,11 @@ public class LoginCuserAction extends HttpServlet {
 //	        JobPostSearchDao jobPostSearchDao = new JobPostSearchDao();
 //	        JobPostDto jobPostDto = jobPostSearchDao.getPostByCorpName(cname);
 	        
+	        System.out.println(session.getAttribute("ceo"));
+	        System.out.println(session.getAttribute("staffs"));
 			System.out.println(session.getAttribute("log"));
 			System.out.println(session.getAttribute("cpassword"));
-			System.out.println(session.getAttribute("cname"));
+			System.out.println(session.getAttribute("cname"));			
 			System.out.println(session.getAttribute("mgr_name"));
 			System.out.println(session.getAttribute("phone"));
 			System.out.println(session.getAttribute("email"));

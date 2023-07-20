@@ -5,13 +5,18 @@
 	    font-weight: 400;
 	    font-style: normal;
 	} */
-	.section{
+	.container{
 		display: flex;
 		justify-content: center;
+		text-align: center;
+	}
+
+	.section{
 	    padding: 0 10px;
 	    border: 1px solid gainsboro;
 		width: 40%;
         padding: 30px;
+		height: 90%;
 	}
 	
 	.start{
@@ -61,7 +66,7 @@
 	#btn1:hover{
 	    cursor: pointer;
 	    color: #fff;
-	    background-color: gray;
+		background-color:cornflowerblue;
 	}
 	/* 비밀번호 부분 */
 	.pwd{
@@ -96,7 +101,7 @@
 	}
 	#btn2:hover{
 	    color: #fff;
-	    background-color: gray;
+	    	background-color: cornflowerblue;;
 	}
 	/* 인증번호 입력 부분 */
 	.number{
@@ -117,7 +122,7 @@
 	#btn3:hover{
 	    cursor: pointer;
 	    color: #fff;
-	    background-color: gray;
+	    	background-color: cornflowerblue;;
 	}
 		
 	/* 이메일 부분 */
@@ -162,8 +167,8 @@
 	#address_btn:hover{
 	    cursor: pointer;
 	    color: #fff;
-	    background-color: gray;
-	}
+		background-color:cornflowerblue;
+		}
 	
 	#address_detail{
 	    width: 100%;
@@ -193,7 +198,7 @@
 	#submit-btn:hover, #index:hover, .postcode_find:hover{
 	    cursor: pointer;
 	    color: #fff;
-	    background-color: gray;  
+		background-color:cornflowerblue;  
 	}
 	#index{
 		width: 200px;
@@ -222,7 +227,7 @@
 	}
 	
 	.join_sub_btn:hover{
-	    background-color: gray;
+		background-color:cornflowerblue;
 		cursor: pointer;
 	}
 	
@@ -261,7 +266,7 @@
 	}
 
 	#password, #passwordChk{
-		width: 160px;
+		width: 200px;
 	}
 
 	.password_title{

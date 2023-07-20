@@ -16,7 +16,7 @@
     <jsp:include page="header_form"></jsp:include>
     <!-- header 끝 -->
 
-    <div id="wrap">
+    <div class="container">
         <div class="section">
             <ul class="join_main">
                 <li>

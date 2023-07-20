@@ -9,19 +9,27 @@
     <title>Document</title>
     <link rel="stylesheet" href="resources/style/corpReview.css">
     <link rel="shortcut icon" href="resources/img/favicon.png">
+ 
     
 </head>
 
 <body>
     <!-- header 시작 -->
     <jsp:include page="header"></jsp:include>
-
+<style>
+    .container div{
+        margin-top: 20px;
+    }
+    div.main{
+        margin-top: 0;
+    }
+</style>
     <!-- header 끝 -->
     <!-- body 시작 -->
     <section class="container">
         <form action="Review" method="post" name="corpReview" class="corpReview" enctype="multipart/form-data">
-
             <div class="msg">
+
                 <p id="msg_title">기업리뷰</p>
                 <p>현직자들의 생생한 증언!</p>
                 <p>원하시는 기업을 검색해 보세요.</p>
@@ -35,15 +43,13 @@
                             </label>
                             <input type="text" id="search_bar" placeholder="회사명">
                         </li>
-                    </ul>
-                </div>
-                <ul>
+                        </div>
                     <li class="search_btn">
                         <input type="button" value="검색" id="search_btn">
                     </li>
                     
-                    <li>
-						<a class="btn_join" href="reviewCreate">리뷰 작성</a>
+                    <li class="search_btn">
+						<a href="reviewCreate"><input type="button" id="create_btn" value="리뷰작성"></a>
 					</li>
                 </ul>
             </div>
@@ -51,10 +57,10 @@
     <!-- body 끝 -->
 
     <!-- footer 시작 -->
+    </section>
       	<jsp:include page="footer"></jsp:include>
 
     <!-- footer 끝 -->
-    </section>
     </body>
 
 

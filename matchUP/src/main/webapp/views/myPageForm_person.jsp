@@ -21,7 +21,7 @@
 	<c:if test="${empty sessionScope.log }">
 		<c:redirect url="login"></c:redirect>
 	</c:if>
-	<div id="wrap">
+	<div class="container">
 		<div class="section">
 			<div class="section_box">
 				<form action="Update" method="POST">

@@ -9,6 +9,8 @@
 
 </head>
 <body>
+	<div class="container">
 	기업 회원만 접근 가능합니다.
+	</div>
 </body>
 </html>

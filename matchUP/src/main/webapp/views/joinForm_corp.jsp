@@ -33,7 +33,7 @@
 
 	<!-- header 끝 -->
 
-	<div id="wrap">
+	<section class="container">
 		<div class="section">
 			<div class="section_box">
 				<form action="UserIdCheck" method="POST" name="idForm" id="idForm" style="display: none;">
@@ -171,7 +171,7 @@
 				</form>
 			</div>
 		</div>
-	</div>   	
+	</section>   	
 	<%
 		session.removeAttribute("cid");
 		session.removeAttribute("idDupl");

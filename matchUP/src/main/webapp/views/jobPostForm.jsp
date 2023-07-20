@@ -27,7 +27,8 @@
 			margin: 3% 0;
 		}
 		section{
-			font-size:1.5rem;
+			font-size:1.2rem;
+			margin-bottom: 50px;
 		}
 	</style>
 	<!-- header 끝 -->

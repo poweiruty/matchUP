@@ -17,6 +17,7 @@ import model.region.SemiRegionRequestDto;
 /**
  * Servlet implementation class SemibyMainAction
  */
+
 public class SemibyMainAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="resources/style/corpSearch.css">
 </head>
 <body>
+<section class="container">
 <% 
 if(request.getParameter("post_id") != null){
 	int post_id = Integer.parseInt(request.getParameter("post_id")); 
@@ -88,7 +89,7 @@ if(request.getParameter("post_id") != null){
 }
 		
 %>
-	
+	</section>
 	
 </body>
 </html>

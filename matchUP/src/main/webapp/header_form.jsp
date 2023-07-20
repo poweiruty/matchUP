@@ -18,19 +18,30 @@
     
 <!-- 로고 css -->
 <style>
-	.logo{
-		 width: 150px;
-		 height: 150px;
-	 }
-	 
-	 .Rlogo{
-        width: 300px;
+	.logo {
+		width: 150px;
+		height: 150px;
+	}
+
+	.Rlogo {
+		width: 300px;
 		height: 300px;
-    }
-	 
- </style>
+	}
+	.nav {
+	height: 30px;
+	display: flex;
+	align-items: center;
+	background-color: cadetblue;
+}
+</style>
     <!-- js -->
     <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- favicon image -->
+	<link rel="shortcut icon" href="resources/img/favicon.png">
+
+	<meta property="og:title" content="Match-UP">
+	<meta property="og:description" content="사람과 사람을 사이를 잇습니다. 구인구직 사이트, 매치업">
+	<meta property="og:image" content="resource/img/Rlogo.png">
 </head>
 <body>
 	<!-- header 시작 -->
@@ -130,44 +141,55 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-            <!-- 관심채용정보(스크랩) -->
-            <div class="scrap">              
-                <c:choose>
+          
+			<!-- 채용공고조회/이력서관리 -->
+			<div class="scrap">
+				<c:choose>
 					<c:when test="${not empty sessionScope.cname }">
-						<a href="jobPostUpdate"><h3>채용공고조회</h3></a>
+						<a href="jobPostUpdate">
+							<h3>채용공고조회</h3>
+						</a>
 					</c:when>
 					
+					<c:when test="${not empty sessionScope.log }">
+						<a href="resumeRead">
+							<h3>이력서 관리</h3>
+						</a>
+					</c:when>
+
 					<c:otherwise>
-						<a href="scrap"><h3>관심채용정보</h3></a>
+						<a href="login">
+							<h3>이력서 관리</h3>
+						</a>
 					</c:otherwise>
 				</c:choose>
-            </div>
-            <!-- 이력서 / 채용관리 -->
+			</div>
+			<!-- 이력서 / 채용작성 -->
 			<div class="resumeForm">
-				<div class="resumeForm">
+				<!-- 로그인 상태에서는 이력서관리 페이지 이동 불가 -->
 				<c:choose>
 					<c:when test="${not empty sessionScope.cname }">
 						<a href="jobPost">
 							<h3>채용공고등록</h3>
 						</a>
 					</c:when>
-					
+
 					<c:when test="${not empty sessionScope.pname }">
-						<a href="resumeRead">
-							<h3>이력서 관리</h3>
+						<a href="resumeCreate">
+							<h3>이력서 작성</h3>
 						</a>
 					</c:when>
-							
+
 					<c:otherwise>
-						<a href="login">								
-							<h3>이력서 관리</h3>
+						<a href="makers.jsp">
+							<h3>만든이들</h3>
 						</a>
-					</c:otherwise>			
+					</c:otherwise>
 				</c:choose>
 			</div>
-		
-        </div>
-    </header>
-    <!-- header 끝 -->
+
+		</div>
+	</header>
+	<!-- header 끝 -->
 </body>
 </html>
