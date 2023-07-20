@@ -1,3 +1,5 @@
+<%@page import="model.user_corp.CorpUser"%>
+<%@page import="model.user_corp.CorpUserDao"%>
 <%@page import="model.job.JobRequestDto"%>
 <%@page import="model.job.JobDao"%>
 <%@page import="model.job.Job"%>
@@ -24,9 +26,9 @@ if(request.getParameter("post_id") != null){
 	int post_id = Integer.parseInt(request.getParameter("post_id")); 
 	JobPostDao pdao = JobPostDao.getInstance();
 	JobPostDto dto = pdao.getJobPostbyId(post_id);
-	RegionDao rdao = RegionDao.getInstance();
-	
+	RegionDao rdao = RegionDao.getInstance();	
 	JobDao jdao = JobDao.getInstance();
+	CorpUserDao cdao = CorpUserDao.getInstance();
 	
 	int job_id = Integer.parseInt(dto.getJob());	
 	int main_id = Integer.parseInt(dto.getRegion());
@@ -44,20 +46,27 @@ if(request.getParameter("post_id") != null){
 	dto.setRegion(main_region);
 	dto.setRegionDetail(semi_region);
 	
-	String title = dto.getTitle();//
-	String cname = dto.getCorp_name();//
-	String staffs = dto.getStaffs();//
+	String title = dto.getTitle();
+	String cname = dto.getCorp_name();
+	String staffs = dto.getStaffs();
 	String ceo = dto.getCeo();
-	jobName = dto.getJob();//
+	
+	CorpUser cuser = cdao.getUserbyCname(cname);	
+	
+	jobName = dto.getJob();
 	main_region = dto.getRegion();
 	semi_region = dto.getRegionDetail();
-	String region = main_region + " " + semi_region;//
-	String people = dto.getPeople();//
-	String postDate = dto.getPostDate();//
-	String salary = dto.getSalary();//
+	
+	String region = main_region + " " + semi_region;
+	String people = dto.getPeople();
+	String postDate = dto.getPostDate();
+	String salary = dto.getSalary();
 	String welfare = dto.getWelfare();
-	String jobDetail = dto.getJobDetail();//
-	String create_post = dto.getCreate_post().substring(0,10);//
+	String jobDetail = dto.getJobDetail();
+	String create_post = dto.getCreate_post().substring(0,10);
+	
+	String mgr_name = cuser.getMgr_name();
+	String mgr_tel = cuser.getMgr_tel().substring(0, 3) + "-" + cuser.getMgr_tel().substring(3, 7) + "-" + cuser.getMgr_tel().substring(7);	
 	
 	%>
 		<div class="post_detail_con1">
@@ -73,11 +82,8 @@ if(request.getParameter("post_id") != null){
 			<p class="salary">연봉 : <%=salary %></p>
 			<p class="welfare">복지 : <%=welfare %></p>
 			<p class="description">직무 내용 : <%=jobDetail %></p>	
-		</div>
-		<div class="post_detail_con3">
-			<button type="button" class="apply-btn" name="apply" id="apply">지원하기</button>
-		</div>
-		
+			<p class="mgr_info">담당자 : <%=mgr_name %>(<%=mgr_tel %>)</p>
+		</div>		
 	<%
 }
 		

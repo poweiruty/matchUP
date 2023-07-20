@@ -47,7 +47,7 @@
 					<p>Email: terrylee61@naver.com</p>
 				</div>
 				<div>
-					<p><img src="resources/img/Rlogo.png"></p>
+					<p><img src="resources/img/3.jpg"></p>
 					<span>Gyu-Tae Park</span>
 					<p>Git: https://github.com/poweiruty</p>
 					<p>Email: qkrrb0032@naver.com</p>

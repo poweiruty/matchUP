@@ -60,35 +60,25 @@ public class SearchAction extends HttpServlet {
 			semi_region = jpsDao.getSemibySearch(region_detail);
 		
 		
-		if (cname != null && main_region != null && semi_region == null) { 			
+		if (cname != null && main_region != null && semi_region == null)  			
 			list = jpsDao.getPostbyCnameAndMain(cname, main_region);		
-			System.out.println(1);
-		}else if (cname != null && semi_region != null) { 
+		else if (cname != null && semi_region != null)  
 			list = jpsDao.getPostbyCnameAndSemi(cname, semi_region);
-			System.out.println(2);
-		}else if (main_region != null && semi_region == null) { 
+		else if (main_region != null && semi_region == null)  
 			list = jpsDao.getPostbyMainRegion(main_region);
-			System.out.println(3);
-			System.out.println("job : " + job);
-		}else if (jobName != null && main_region != null && semi_region == null) {
+		else if (jobName != null && main_region != null && semi_region == null) 
 			list = jpsDao.getPostbyJobNameAndMain(jobName, main_region);
-			System.out.println(4);
-		}else if(jobName != null && semi_region != null) {
+		else if(jobName != null && semi_region != null) 
 		 	list = jpsDao.getPostbyJobNameAndSemi(jobName, semi_region);
-		 	System.out.println(5);
-		}else if (semi_region != null) { 
+		else if (semi_region != null)  
 			list = jpsDao.getPostbySemiRegion(semi_region);
-			System.out.println(6);
-		}else if (cname != null) {
+		else if (cname != null) 
 			list = jpsDao.getPostbyCname(job);
-			System.out.println(7);
-		}else if (jobName != null) {
-			list = jpsDao.getPostbyJobName(jobName);
-			System.out.println(8);
-		}else if(cname == null && jobName == null && main_region == null && semi_region == null) {
+		else if (jobName != null) 
+			list = jpsDao.getPostbyJobName(jobName);		
+		else if(cname == null && jobName == null && main_region == null && semi_region == null) 
 			list = jpsDao.getPostbyAll();
-			System.out.println(9);
-		}
+		
 		
 		if(list != null) {
 			ArrayList<JobPostDto> postList = new ArrayList<JobPostDto>();
@@ -107,7 +97,6 @@ public class SearchAction extends HttpServlet {
 			response.getWriter().append(responseList.toString());
 		}else	
 			response.sendRedirect("search");
-
 	}
 
 	/**

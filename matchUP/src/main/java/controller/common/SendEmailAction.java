@@ -47,7 +47,8 @@ public class SendEmailAction extends HttpServlet {
 		PrintWriter script = null;
 		System.out.println(email);
 
-		String host = "/";
+		String host = "http://localhost:8080/";
+		//String host = "http://matchup.store/";
 		String from = "rbxo0032@gmail.com";
 		String to = email;
 		String subject = "Match-UP 이메일인증 메일";
@@ -94,7 +95,6 @@ public class SendEmailAction extends HttpServlet {
 			script.close();
 		}
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -103,5 +103,4 @@ public class SendEmailAction extends HttpServlet {
 			throws ServletException, IOException {
 
 	}
-
 }

@@ -65,7 +65,7 @@ function search(){
 			$('#jobpost-list').empty();			
 			$('#detail_tab').empty();
 			const list = response;
-			//console.log('typeof list : ', typeof list);
+			console.log('typeof list(search) : ', typeof list);
 			
 			if(typeof list === 'object'){
 				$('#detail_tab').append(
@@ -76,8 +76,9 @@ function search(){
 					const title = post.title;
 					const corp_name = post.corp_name;
 					const postDate = post.postDate;
-					const desc = post.jobDetail;
+					const desc = post.jobDetail;	
 					
+					console.log("회사명 : ", corp_name);				
 					if (corp_name !== "") {
 						$('#jobpost-list').append(
 							`<li class="post">		

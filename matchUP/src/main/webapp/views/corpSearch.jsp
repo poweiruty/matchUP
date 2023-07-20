@@ -68,39 +68,8 @@
                    				}
                    				%>
                    			</select>                   			
-							<select name="region_detail" id="region_detail" size="1">							
-                   				<option value="" selected>선택</option>
-                   				<%-- <%  
-	               				String main = request.getParameter("main");
-	               				//if(main != null){
-	                   				try{
-	                   					//System.out.println(main);
-	                   					conn = DBManager.getConnection();
-	                   					//String sql="select semi_region from semi_region_tb group by semi_region order by semi_region_id ASC;";	                   						                   					
-	                   					
-		                   				String sql="select semi_region from semi_region_tb semi join main_region_tb main on semi.main_region_id = main.main_region_id where main.main_region=? group by semi.semi_region order by semi.semi_region_id ASC";	                   					
-	                   					
-	                   					
-	                   					pstmt=conn.prepareStatement(sql);
-                   					
-	                   					pstmt.setString(1, main);
-
-	                   					rs=pstmt.executeQuery();
-	                   					while(rs.next()){                   							
-	                   						String semi_region = rs.getString("semi_region");
-	                   						System.out.println(semi_region);
-                   						%>
-                   							<option value=""><%=rs.getString("semi_region") %></option> 
-                   						<%
-                   						}
-	                   				}catch(Exception e){
-	                   					e.printStackTrace();
-	                   					System.out.println("직업 데이터 연동 및 출력 실패");
-	                   				}finally{	                   					
-	                   					DBManager.close(conn, pstmt, rs);
-	                   				} 
-                   				//}
-                   				%>--%>
+							<select name="region_detail" id="region_detail" size="1">           				
+                   			
                    			</select>
                    			<input type="hidden" name="myHiddenInput" id="myHiddenInput" value="">
 						</li>
