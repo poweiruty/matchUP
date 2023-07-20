@@ -41,7 +41,6 @@
 				<li class ="region_li" style="width: 1000px;">
 							<label for="region">지역</label>							
 							<select name="region" id="region" size="1" onchange="updateValue()">
-
                    				<option value="" selected>선택</option>
                    				<%                   				
                    				Connection conn = null;
@@ -123,8 +122,8 @@
 					<ul id="jobpost-list">
 					</ul>
 				</div>
-				<div id="detail_tab">			
-			 		<iframe src="viewDtail" name="detail_post" id="detail_post"></iframe>
+				<div id="detail_tab">	
+						
 			 	</div>
 			</div>
 		</div>
