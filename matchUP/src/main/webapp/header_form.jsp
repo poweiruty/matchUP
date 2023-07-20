@@ -135,22 +135,7 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-            <!-- 채용공고조히/이력서관리 -->
-			<div class="scrap">
-				<c:choose>
-					<c:when test="${not empty sessionScope.cname }">
-						<a href="jobPostUpdate">
-							<h3>채용공고조회</h3>
-						</a>
-					</c:when>
-
-					<c:otherwise>
-						<a href="resumeRead">
-							<h3>이력서 관리</h3>
-						</a>
-					</c:otherwise>
-				</c:choose>
-			</div>
+          
 			<!-- 채용공고조회/이력서관리 -->
 			<div class="scrap">
 				<c:choose>

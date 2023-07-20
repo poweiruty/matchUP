@@ -1,0 +1,64 @@
+.msg, .main{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#msg_title{
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.main{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* 저장됨 */
+
+.saved, .completed{
+    padding: 5px;
+    height: 800px;
+}
+
+.saved_con, .completed_con{
+    border: solid 1px gray;
+    height: 95%;
+}
+
+#saved_title{
+    margin-bottom: 35px;
+}
+
+#saved_title, #completed_title{
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+#if{
+	font-size:0.8rem;
+	font-weight:700;
+	color:red;
+}
+
+.saved_con_detail{
+    display: flex;
+    flex-direction: row;
+}
+
+.hr{
+    padding: 5% 0;
+}
+
+.li_title_1:hover{
+    cursor: pointer;
+    background: linear-gradient(lightblue, white);
+}
+
+.li_title_2:hover{
+    cursor: pointer;
+    background: linear-gradient(lightcoral, white);
+}
+
+p{
+    font-weight: 700;
+}
