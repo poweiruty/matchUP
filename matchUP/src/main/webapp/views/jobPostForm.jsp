@@ -52,30 +52,25 @@
 											
 						<li>
 							<span>회사명: </span>
-							<input type = "text" name ="corp_name" id="corp_name" value="${sessionScope.cname }"></span>
+							<input type = "text" name ="corp_name" id="corp_name" value="${sessionScope.cname }" readonly>
 						</li>
 						
-						
+						<li>
+							<span>채용 담당자: </span>
+							<input type="text" name="ceo" id="ceo" value="${sessionScope.mgr_name }">
+						</li>
 						
 						<li>
-							<span class="phone">담당자 연락처: </span> 
+							<span class="phone">채용 담당자 연락처: </span> 
 							<input type="text" id="phone" value="${sessionScope.phone }">
 						</li>
 						<li>
-							<span class="email">담당자 이메일: </span> 
+							<span class="email">채용 담당자 이메일: </span> 
 							<input type="text" id="email" value="${sessionScope.email }">
 						</li>
 						<li>
 							<span class="map">본사 소재지: </span> 
-							<input type="text" id="map" value="${sessionScope.map }">
-						</li>
-						<li>
-							<span>대표자명: </span>
-							<input type="text" name="ceo" id="ceo" value="${sessionScope.ceo }" readonly>
-						</li>
-						<li> 
-							<span>사원 수</span>
-							<input type="text" name="staffs" id="staffs" value="${sessionScope.staffs }"> 
+							<input type="text" id="map" value="${sessionScope.map }" readonly>
 						</li>
 					</div>
 						<hr class="line">
