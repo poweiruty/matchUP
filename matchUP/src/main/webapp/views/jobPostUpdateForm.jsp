@@ -86,7 +86,7 @@
 	<section class="container">
         <div class="msg">
             <p id="msg_title">채용공고관리</p>
-            <span class="if">*가장 오래된 공고부터 표시됩니다.</span>
+            <span class="if">*등록일이 가장 오래된 공고부터 표시됩니다.</span>
         </div>
         <div class="main">
             <div class="saved">

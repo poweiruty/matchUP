@@ -47,19 +47,28 @@ label, span{
 
 .bottom{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 10%;
 }
 
 .bottom>.cancel{
     border: solid 1px gray;
     border-radius: 10px;
+	background-color: #F0F0F0;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #submit:hover, .cancel:hover{
 	background-color:cornflowerblue;
     cursor: pointer;
     color: black;
+}
+
+#submit, .cancel{
+	font-size:0.9rem;
 }
 
 textarea{

@@ -45,6 +45,12 @@
         });
     });
 </script>
+<!-- favicon image -->
+	<link rel="shortcut icon" href="resources/img/favicon.png">
+
+	<meta property="og:title" content="Match-UP">
+	<meta property="og:description" content="사람과 사람을 사이를 잇습니다. 구인구직 사이트, 매치업">
+	<meta property="og:image" content="resource/img/Rlogo.png">
 </head>
 <body>
  <!-- header 시작 -->

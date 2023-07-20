@@ -25,10 +25,7 @@
 /* 검색 탭 전체 */
 #tab_search{
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    align-items: center;
-    /* background-color: aqua; */
 }
 
 /* 검색 버튼 */
