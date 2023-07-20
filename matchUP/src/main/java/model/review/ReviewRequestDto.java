@@ -3,9 +3,9 @@ package model.review;
 import java.sql.Timestamp;
 
 public class ReviewRequestDto {
-	private int review_id;
-	private int pusers_id;
-	private int corp_id;
+	private int reviewId;
+	private int pusersId;
+	private String corpName;
 	private int star;
 	private String summary;
 	private String review;
@@ -13,71 +13,54 @@ public class ReviewRequestDto {
 	private String period;
 	private Timestamp review_created;
 	private Timestamp review_modified;
-	private int review_created_num;
-	private int review_modified_num;
-	
-	public ReviewRequestDto(int pusersId, int corpId,int star,String summary, String review, 
-			  String position, String period) {
-		this.pusers_id=pusersId;
-		this.corp_id=corpId;
-		this.star=star;
-		this.summary=summary;
-		this.review=review;	
-		this.position=position;
-		this.period=period;
+
+	public ReviewRequestDto(int reviewId, String corpName, int star, String summary, String con, String position,
+			String period) {
+		this.reviewId = reviewId;
+		this.corpName = corpName;
+		this.star = star;
+		this.summary = summary;
+		this.review = con;
+		this.position = position;
+		this.period = period;
 	}
-	
-	public ReviewRequestDto(int reviewId, int pusersId, int corpId, int star, String summary,
-			  				String review, String position, String period,
-			  				Timestamp reviewCreated, Timestamp reviewModified) {
-		this.review_id=reviewId;
-		this.pusers_id=pusersId;
-		this.corp_id=corpId;
-		this.star=star;
-		this.summary=summary;
-		this.review=review;
-		this.position=position;
-		this.period=period;
-		this.review_created=reviewCreated;
-		this.review_modified=reviewModified;
-	}
-	
-	public ReviewRequestDto(int reviewId, int pusersId, int corpId, int star, String summary,
-				String review, String position, String period,
-				int reviewCreatedNum, int reviewModifiedNum) {
-		this.review_id=reviewId;
-		this.pusers_id=pusersId;
-		this.corp_id=corpId;
-		this.star=star;
-		this.summary=summary;
-		this.review=review;
-		this.position=position;
-		this.period=period;
-		this.review_created_num=reviewCreatedNum;
-		this.review_modified_num=reviewModifiedNum;
+
+	public ReviewRequestDto(int reviewId, int pusersId, String corpName, int star, String summary, String review,
+			String position, String period, Timestamp reviewCreatedNum, Timestamp reviewModifiedNum) {
+		this.reviewId = reviewId;
+		this.pusersId = pusersId;
+		this.corpName = corpName;
+		this.star = star;
+		this.summary = summary;
+		this.review = review;
+		this.position = position;
+		this.period = period;
+		this.review_created = reviewCreatedNum;
+		this.review_modified = reviewModifiedNum;
 	}
 
 	public int getReviewId() {
-		return review_id;
+		return reviewId;
 	}
+
 	public void setReviewId(int reviewId) {
-		this.review_id = reviewId;
+		this.reviewId = reviewId;
 	}
 
 	public int getPusersId() {
-		return pusers_id;
+		return pusersId;
 	}
 
 	public void setPusersId(int pusersId) {
-		this.pusers_id = pusersId;
+		this.pusersId = pusersId;
 	}
 
-	public int getCorpId() {
-		return corp_id;
+	public String getCorpName() {
+		return corpName;
 	}
 
-	public void setCorpId(int corpId) {
-		this.corp_id = corpId;
+	public void setCorpName(String corpName) {
+		this.corpName = corpName;
 	}
 
 	public int getStar() {
@@ -120,33 +103,19 @@ public class ReviewRequestDto {
 		this.period = period;
 	}
 
-	
 	public Timestamp getReviewCreated() {
 		return review_created;
 	}
+
 	public void setReviewCreated(Timestamp reviewCreated) {
 		this.review_created = reviewCreated;
-	}	
-	public int getReviewCreatedNum() {
-		return review_created_num;
-	}
-	public void setReviewCreatedNum(int reviewCreatedNum) {
-		this.review_created_num = reviewCreatedNum;
 	}
 
-	
 	public Timestamp getReviewModified() {
 		return review_modified;
 	}
+
 	public void setReviewModified(Timestamp reviewModified) {
 		this.review_modified = reviewModified;
-	}	
-	public int getReviewModifiedNum() {
-		return review_modified_num;
-	}	
-	public void setReviewModifiedNum(int reviewModifiedNum) {
-		this.review_modified_num = reviewModifiedNum;
 	}
-
-	
 }

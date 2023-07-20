@@ -90,6 +90,7 @@ function search(){
 		});	
 	}	
 }
+
 function detail(){
 	$('#detail_tab').show();
 }

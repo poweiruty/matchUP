@@ -19,8 +19,6 @@
     <!-- header 끝 -->
     <!-- body 시작 -->
     <section class="container">
-        <form action="Review" method="post" name="corpReview" class="corpReview" enctype="multipart/form-data">
-
             <div class="msg">
                 <p id="msg_title">기업리뷰</p>
                 <p>현직자들의 생생한 증언!</p>
@@ -37,17 +35,23 @@
                         </li>
                     </ul>
                 </div>
+                
                 <ul>
-                    <li class="search_btn">
-                        <input type="button" value="검색" id="search_btn">
-                    </li>
-                    
-                    <li>
+                    <li class="search_btn_li">
+						<button class="search_btn" onclick="search()">검색</button>
 						<a class="btn_join" href="reviewCreate">리뷰 작성</a>
-					</li>
+					</li>                                       								
                 </ul>
             </div>
-        </form>
+        
+        <!-- 검색 내역 부분 -->
+		<div class="con_wrap">
+			<div class="contents-container">
+				<ul id="review_list">
+				</ul>
+			</div>
+		</div>
+		
     <!-- body 끝 -->
 
     <!-- footer 시작 -->
@@ -55,7 +59,6 @@
 
     <!-- footer 끝 -->
     </section>
+    	<script src="resources/script/search_review.js"></script>   
     </body>
-
-
 </html>

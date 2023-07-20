@@ -1,5 +1,3 @@
-// MissingFormatException 발생
-
 package model.resume;
 
 public class Resume {
@@ -27,9 +25,9 @@ public class Resume {
 		this.certificate=certificate;
 		this.intro=intro;
 	}
-	public Resume(int puserIdx,String resumeTitle,int jobId,String graduation,String degree, 
-				  String career, String activity, String certificate, String intro) {
-		this.pusers_id=puserIdx;
+	public Resume(int resumeIdx,String resumeTitle,int jobId,String graduation,String degree, 
+			  String career, String activity, String certificate, String intro) {
+		this.resume_id=resumeIdx;
 		this.resume_title=resumeTitle;
 		this.job_id=jobId;
 		this.graduation=graduation;
@@ -38,7 +36,16 @@ public class Resume {
 		this.activity=activity;
 		this.certificate=certificate;
 		this.intro=intro;
-	} 
+	}
+
+	/*
+	 * public Resume(int puserIdx,String resumeTitle,int jobId,String
+	 * graduation,String degree, String career, String activity, String certificate,
+	 * String intro) { this.pusers_id=puserIdx; this.resume_title=resumeTitle;
+	 * this.job_id=jobId; this.graduation=graduation; this.degree=degree;
+	 * this.career=career; this.activity=activity; this.certificate=certificate;
+	 * this.intro=intro; }
+	 */ 
 	public Resume(int resumeId, int pusersId, String resumeTitle, int jobId, 
 		  	  	  String graduation, String degree, String career, 
 		  	      String activity, String certificate, String intro, int resumeCreated, int resumeModified) {

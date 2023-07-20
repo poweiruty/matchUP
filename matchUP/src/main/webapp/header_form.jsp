@@ -85,11 +85,32 @@
                 </a>
             </div>
             <!-- 기업리뷰 -->
-            <div class="corpReview">
+            <!-- <div class="corpReview">
                 <a href="review">
                     <h3>기업리뷰</h3>
                 </a>
-            </div>
+            </div> -->
+            
+            <div class="corpReview">
+            	<c:choose>
+					<c:when test="${not empty sessionScope.cname }">
+						<a href="review">
+							<h3>기업리뷰</h3>
+						</a>
+					</c:when>
+					<c:when test="${not empty sessionScope.log}">
+						<a href="review">
+							<h3>기업리뷰</h3>
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a href="login">
+							<h3>기업리뷰</h3>
+						</a>
+					</c:otherwise>
+				</c:choose>
+			</div>
+			
 			<!-- 마이페이지 -->
 			<c:choose>
 				<c:when test="${not empty sessionScope.cname }">

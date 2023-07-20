@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class Review {
 	private int review_id;
 	private int pusers_id;
-	private int corp_id;
+	private String corp_name;
 	private int star;
 	private String summary;
 	private String review;
@@ -13,13 +13,11 @@ public class Review {
 	private String period;
 	private Timestamp review_created;
 	private Timestamp review_modified;
-	private int review_created_num;
-	private int review_modified_num;
 	
-	public Review(int pusersId, int corpId,int star,String summary, String review, 
+	public Review(int pusersId, String corpName,int star,String summary, String review, 
 				  String position, String period) {
 		this.pusers_id=pusersId;
-		this.corp_id=corpId;
+		this.corp_name=corpName;
 		this.star=star;
 		this.summary=summary;
 		this.review=review;	
@@ -27,34 +25,31 @@ public class Review {
 		this.period=period;
 	}
 	
-	public Review(int reviewId, int pusersId, int corpId, int star, String summary,
-				  String review, String position, String period,
-				  Timestamp reviewCreated, Timestamp reviewModified) {
+	public Review(int reviewId, int pusersId, String corpName, int star, String summary,
+			String review, String position, String period) {
 		this.review_id=reviewId;
 		this.pusers_id=pusersId;
-		this.corp_id=corpId;
+		this.corp_name=corpName;
 		this.star=star;
 		this.summary=summary;
 		this.review=review;
 		this.position=position;
-		this.period=period;
-		this.review_created=reviewCreated;
-		this.review_modified=reviewModified;
+		this.period=period;		
 	}
 	
-	public Review(int reviewId, int pusersId, int corpId, int star, String summary,
+	public Review(int reviewId, int pusersId, String corpName, int star, String summary,
 			String review, String position, String period,
-			int reviewCreatedNum, int reviewModifiedNum) {
+			Timestamp reviewCreatedNum, Timestamp reviewModifiedNum) {
 		this.review_id=reviewId;
 		this.pusers_id=pusersId;
-		this.corp_id=corpId;
+		this.corp_name=corpName;
 		this.star=star;
 		this.summary=summary;
 		this.review=review;
 		this.position=position;
 		this.period=period;
-		this.review_created_num=reviewCreatedNum;
-		this.review_modified_num=reviewModifiedNum;
+		this.review_created=reviewCreatedNum;
+		this.review_modified=reviewModifiedNum;
 	}
 	
 	
@@ -67,8 +62,8 @@ public class Review {
 		return pusers_id;
 	}
 	
-	public int getCorpId() {
-		return corp_id;
+	public String getCorpName() {
+		return corp_name;
 	}
 	
 	public int getStar() {
@@ -95,19 +90,10 @@ public class Review {
 		return review_created;
 	}
 	
-	public Timestamp getUpdated() {
+	public Timestamp getModified() {
 		return review_modified;
 	}
 	
-	public int getCreatedNum() {
-		return review_created_num;
-	}
-	
-	public int getModifiedNum() {
-		return review_modified_num;
-	}
-
-
 	/*
 	 * @Override public String toString() { return String.format(
 	 * "리뷰 인덱스:%d\n개인유저 인덱스:%d \n기업정보 인덱스:%d \n별점:%d \n리뷰:%s \n작성시간:%d \n수정시간:%d\n",

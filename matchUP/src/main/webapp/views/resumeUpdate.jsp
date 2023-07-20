@@ -231,8 +231,8 @@ span{
                     </ul>
                     
                     <div class="bottom">
-                		<input type="submit" name="submit" id="submit" value="이력서 등록">
-                		<a href="index"><input type="button" value="메인 페이지로 돌아가기"></a>
+                		<input type="submit" name="submit" id="submit" value="수정하기">
+                		<a href="index"><input type="button" value="뒤로가기"></a>
             		</div>
             		
                 </form>
