@@ -183,7 +183,7 @@
 					</c:when>
 
 					<c:otherwise>
-						<a href="makers.jsp">
+						<a href="maker">
 							<h3>만든이들</h3>
 						</a>
 					</c:otherwise>

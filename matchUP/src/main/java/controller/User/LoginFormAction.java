@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.SHA256;
 import model.user_general.User;
 import model.user_general.UserDao;
 
@@ -38,16 +39,21 @@ public class LoginFormAction extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String password = request.getParameter("pwd");
-				
+		HttpSession session = request.getSession();
 		UserDao userDao = UserDao.getInstance();
 		User user = userDao.getUserbyId(id);
 		
-		String url = "login";
+		String pwd = "";
 		
-		if(user != null && user.getPpassword().equals(password)) {
+		if(user != null) {
+			pwd = user.getPpassword();
+		}
+		String url = "login";
+				
+		if(user != null && SHA256.verifyPassword(password, pwd)) {
 			url = "index";
 			
-			HttpSession session = request.getSession();
+			
 			session.setAttribute("log", id);
 			
 			session.setAttribute("ppassword",user.getPpassword());
@@ -69,6 +75,8 @@ public class LoginFormAction extends HttpServlet {
 			System.out.println(session.getAttribute("address"));
 			
 			System.out.println(session.getAttribute("log"));
+		}else{
+			session.setAttribute("res", "실패");
 		}
 		response.sendRedirect(url);
 	}

@@ -4,29 +4,29 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	version="4.0">
 	<display-name>matchUP</display-name>
-	
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>default.html</welcome-file>
 		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file> 
+		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<!-- 1. 서블릿 페이지 맵핑 -->
-	
+
 	<!-- id중복체크 -->
 	<servlet>
 		<servlet-name>UserIdCheckAction</servlet-name>
-		<servlet-class>controller.User.UserIdCheckAction</servlet-class>		
+		<servlet-class>controller.User.UserIdCheckAction</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>UserIdCheckAction</servlet-name>
 		<url-pattern>/UserIdCheck</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- Puser_Join -->
 	<servlet>
 		<servlet-name>JoinFormAction</servlet-name>
@@ -37,7 +37,7 @@
 		<servlet-name>JoinFormAction</servlet-name>
 		<url-pattern>/PJoin</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- Puser 탈퇴 -->
 	<servlet>
 		<servlet-name>DeletePuserFormAction</servlet-name>
@@ -48,7 +48,7 @@
 		<servlet-name>DeletePuserFormAction</servlet-name>
 		<url-pattern>/PLeave</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- Cuser 탈퇴 -->
 	<servlet>
 		<servlet-name>DeleteCuserFormAction</servlet-name>
@@ -59,7 +59,7 @@
 		<servlet-name>DeleteCuserFormAction</servlet-name>
 		<url-pattern>/CLeave</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- Cuser_Join -->
 	<servlet>
 		<servlet-name>JoinCuserAction</servlet-name>
@@ -70,7 +70,7 @@
 		<servlet-name>JoinCuserAction</servlet-name>
 		<url-pattern>/CJoin</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- Login -->
 	<servlet>
 		<servlet-name>LoginFormAction</servlet-name>
@@ -81,7 +81,7 @@
 		<servlet-name>LoginFormAction</servlet-name>
 		<url-pattern>/PLogin</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- Job Posting -->
 	<servlet>
 		<servlet-name>JobPostFormAction</servlet-name>
@@ -92,7 +92,7 @@
 		<servlet-name>JobPostFormAction</servlet-name>
 		<url-pattern>/JobPost</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- Cuser_Login -->
 	<servlet>
 		<servlet-name>LoginCuserAction</servlet-name>
@@ -103,7 +103,7 @@
 		<servlet-name>LoginCuserAction</servlet-name>
 		<url-pattern>/CLogin</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- 기업 Logout -->
 	<servlet>
 		<servlet-name>CorpLogoutRequestAction</servlet-name>
@@ -114,7 +114,7 @@
 		<servlet-name>CorpLogoutRequestAction</servlet-name>
 		<url-pattern>/Clogout</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- 개인 Logout -->
 	<servlet>
 		<servlet-name>UserLogoutRequestAction</servlet-name>
@@ -135,7 +135,7 @@
 		<servlet-name>ResumeCreateFormAction</servlet-name>
 		<url-pattern>/ResumeCreate</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- 이력서 불러오기 -->
 	<servlet>
 		<servlet-name>ResumeReadFormAction</servlet-name>
@@ -145,17 +145,17 @@
 		<servlet-name>ResumeReadFormAction</servlet-name>
 		<url-pattern>/ResumeRead</url-pattern>
 	</servlet-mapping>
-	
-	<!--  이력서 삭제 양식 -->
+
+	<!-- 이력서 삭제 양식 -->
 	<servlet>
 		<servlet-name>ResumeDeleteFormAction</servlet-name>
 		<servlet-class>controller.resume.ResumeDeleteFormAction</servlet-class>
-	</servlet>	
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>ResumeDeleteFormAction</servlet-name>
 		<url-pattern>/ResumeDelete</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- 개인 정보수정 -->
 	<servlet>
 		<servlet-name>UserUpdateAction</servlet-name>
@@ -166,7 +166,7 @@
 		<servlet-name>UserUpdateAction</servlet-name>
 		<url-pattern>/Update</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>UserUpdateRequest</servlet-name>
 		<servlet-class>controller.User.UserUpdateRequest</servlet-class>
@@ -176,7 +176,7 @@
 		<servlet-name>UserUpdateRequest</servlet-name>
 		<url-pattern>/UserUpdateRequest</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- 기업 정보수정 -->
 	<servlet>
 		<servlet-name>CorpUpdateAction</servlet-name>
@@ -187,7 +187,7 @@
 		<servlet-name>CorpUpdateAction</servlet-name>
 		<url-pattern>/Cupdate</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>CorpUpdateRequest</servlet-name>
 		<servlet-class>controller.corp.CorpUpdateRequest</servlet-class>
@@ -197,71 +197,70 @@
 		<servlet-name>CorpUpdateRequest</servlet-name>
 		<url-pattern>/CUpdateRequest</url-pattern>
 	</servlet-mapping>
-	
-	<!--  리뷰 양식 -->
+
+	<!-- 리뷰 양식 -->
 	<servlet>
 		<servlet-name>ReviewFormAction</servlet-name>
 		<servlet-class>controller.review.ReviewFormAction</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>ReviewFormAction</servlet-name>
 		<url-pattern>/Review</url-pattern>
 	</servlet-mapping>
-	
-	<!--  리뷰 작성 양식 -->
+
+	<!-- 리뷰 작성 양식 -->
 	<servlet>
 		<servlet-name>ReviewCreateAction</servlet-name>
 		<servlet-class>controller.review.ReviewCreateAction</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>ReviewCreateAction</servlet-name>
 		<url-pattern>/ReviewCreate</url-pattern>
 	</servlet-mapping>
-		
-	<!--  이메일 인증메일 전송 -->
+
+	<!-- 이메일 인증메일 전송 -->
 	<servlet>
 		<servlet-name>SendEmailAction</servlet-name>
 		<servlet-class>controller.common.SendEmailAction</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>SendEmailAction</servlet-name>
 		<url-pattern>/SendEmail</url-pattern>
 	</servlet-mapping>
-	<!--  채용공고 검색 -->
+	<!-- 채용공고 검색 -->
 	<servlet>
 		<servlet-name>SearchAction</servlet-name>
 		<servlet-class>controller.corp.SearchAction</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>SearchAction</servlet-name>
 		<url-pattern>/Search</url-pattern>
-	</servlet-mapping>	
-	<!--  채용공고 검색(세부지역 리스트) -->
+	</servlet-mapping>
+	<!-- 채용공고 검색(세부지역 리스트) -->
 	<servlet>
 		<servlet-name>SemibyMainAction</servlet-name>
 		<servlet-class>controller.corp.SemibyMainAction</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>SemibyMainAction</servlet-name>
 		<url-pattern>/Semi</url-pattern>
-	</servlet-mapping>	
-	<!--  이메일 인증메일 확인 -->
-<!-- 	<servlet>
-		<servlet-name>EmailCheckAction</servlet-name>
-		<servlet-class>controller.common.EmailCheckAction</servlet-class>
+	</servlet-mapping>
+	<!-- 리뷰 검색 -->
+	<servlet>
+		<servlet-name>ReviewSearchAction</servlet-name>
+		<servlet-class>controller.corp.ReviewSearchAction</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
-		<servlet-name>EmailCheckAction</servlet-name>
-		<url-pattern>/EmailCheck</url-pattern>
-	</servlet-mapping> -->
-	<!-- 2. JSP 페이지 맵핑 -->
-	
+		<servlet-name>ReviewSearchAction</servlet-name>
+		<url-pattern>/ReviewSearch</url-pattern>
+	</servlet-mapping>
+
 	<!-- index -->
 	<servlet>
 		<servlet-name>index</servlet-name>
@@ -272,7 +271,7 @@
 		<servlet-name>index</servlet-name>
 		<url-pattern>/index</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- header -->
 	<servlet>
 		<servlet-name>header</servlet-name>
@@ -283,7 +282,7 @@
 		<servlet-name>header</servlet-name>
 		<url-pattern>/header</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- header_login -->
 	<servlet>
 		<servlet-name>headerLogin</servlet-name>
@@ -294,7 +293,7 @@
 		<servlet-name>headerLogin</servlet-name>
 		<url-pattern>/header_login</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- header_form -->
 	<servlet>
 		<servlet-name>headerForm</servlet-name>
@@ -316,7 +315,7 @@
 		<servlet-name>footer</servlet-name>
 		<url-pattern>/footer</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- search -->
 	<servlet>
 		<servlet-name>corpSearch</servlet-name>
@@ -327,8 +326,8 @@
 		<servlet-name>corpSearch</servlet-name>
 		<url-pattern>/search</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 	<!-- jobPost -->
 	<servlet>
 		<servlet-name>jobPostForm</servlet-name>
@@ -339,7 +338,7 @@
 		<servlet-name>jobPostForm</servlet-name>
 		<url-pattern>/jobPost</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- jobPostUpdate -->
 	<servlet>
 		<servlet-name>jobPostUpdateForm</servlet-name>
@@ -350,42 +349,42 @@
 		<servlet-name>jobPostUpdateForm</servlet-name>
 		<url-pattern>/jobPostUpdate</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 	<!-- join main 페이지 -->
 	<servlet>
 		<servlet-name>joinForm</servlet-name>
 		<jsp-file>/views/joinForm.jsp</jsp-file>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>joinForm</servlet-name>
 		<url-pattern>/join</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- join 개인 페이지 -->
 	<servlet>
 		<servlet-name>joinPersonForm</servlet-name>
 		<jsp-file>/views/joinForm_person.jsp</jsp-file>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>joinPersonForm</servlet-name>
 		<url-pattern>/joinPerson</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- join 기업 페이지 -->
 	<servlet>
 		<servlet-name>joinCorpForm</servlet-name>
 		<jsp-file>/views/joinForm_corp.jsp</jsp-file>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>joinCorpForm</servlet-name>
 		<url-pattern>/joinCorp</url-pattern>
-	</servlet-mapping>	
+	</servlet-mapping>
 
-	
+
 	<!-- login -->
 	<servlet>
 		<servlet-name>loginForm</servlet-name>
@@ -395,8 +394,8 @@
 	<servlet-mapping>
 		<servlet-name>loginForm</servlet-name>
 		<url-pattern>/login</url-pattern>
-	</servlet-mapping>	
-	
+	</servlet-mapping>
+
 	<!-- mypage 기업회원 -->
 	<servlet>
 		<servlet-name>myPageCorpForm</servlet-name>
@@ -406,8 +405,8 @@
 	<servlet-mapping>
 		<servlet-name>myPageCorpForm</servlet-name>
 		<url-pattern>/mypageCorp</url-pattern>
-	</servlet-mapping>	
-	
+	</servlet-mapping>
+
 	<!-- mypage 개인회원 -->
 	<servlet>
 		<servlet-name>myPagePersonForm</servlet-name>
@@ -417,8 +416,8 @@
 	<servlet-mapping>
 		<servlet-name>myPagePersonForm</servlet-name>
 		<url-pattern>/mypagePerson</url-pattern>
-	</servlet-mapping>	
-	
+	</servlet-mapping>
+
 	<!-- 개인 회원탈퇴 -->
 	<servlet>
 		<servlet-name>deleteUserForm</servlet-name>
@@ -429,7 +428,7 @@
 		<servlet-name>deleteUserForm</servlet-name>
 		<url-pattern>/leave</url-pattern>
 	</servlet-mapping>
-		
+
 	<!-- 기업 회원탈퇴 -->
 	<servlet>
 		<servlet-name>deleteCuserForm</servlet-name>
@@ -439,8 +438,8 @@
 	<servlet-mapping>
 		<servlet-name>deleteCuserForm</servlet-name>
 		<url-pattern>/cleave</url-pattern>
-	</servlet-mapping>	
-	
+	</servlet-mapping>
+
 	<!-- resumeCreate -->
 	<servlet>
 		<servlet-name>resumeCreateForm</servlet-name>
@@ -451,7 +450,7 @@
 		<servlet-name>resumeCreateForm</servlet-name>
 		<url-pattern>/resumeCreate</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- resumeRead -->
 	<servlet>
 		<servlet-name>resumeReadForm</servlet-name>
@@ -462,8 +461,8 @@
 		<servlet-name>resumeReadForm</servlet-name>
 		<url-pattern>/resumeRead</url-pattern>
 	</servlet-mapping>
-	
-	<!--  review -->
+
+	<!-- review -->
 	<servlet>
 		<servlet-name>reviewForm</servlet-name>
 		<jsp-file>/views/reviewForm.jsp</jsp-file>
@@ -473,8 +472,8 @@
 		<servlet-name>reviewForm</servlet-name>
 		<url-pattern>/review</url-pattern>
 	</servlet-mapping>
-	
-	<!--  review create -->
+
+	<!-- review create -->
 	<servlet>
 		<servlet-name>reviewCreateForm</servlet-name>
 		<jsp-file>/views/reviewCreateForm.jsp</jsp-file>
@@ -484,7 +483,7 @@
 		<servlet-name>reviewCreateForm</servlet-name>
 		<url-pattern>/reviewCreate</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- scrap -->
 	<servlet>
 		<servlet-name>scrapForm</servlet-name>
@@ -494,8 +493,8 @@
 	<servlet-mapping>
 		<servlet-name>scrapForm</servlet-name>
 		<url-pattern>/scrap</url-pattern>
-	</servlet-mapping>	
-	
+	</servlet-mapping>
+
 	<!-- term -->
 	<servlet>
 		<servlet-name>term</servlet-name>
@@ -505,8 +504,8 @@
 	<servlet-mapping>
 		<servlet-name>term</servlet-name>
 		<url-pattern>/term</url-pattern>
-	</servlet-mapping>	
-	
+	</servlet-mapping>
+
 	<!-- term2 -->
 	<servlet>
 		<servlet-name>term2</servlet-name>
@@ -516,7 +515,7 @@
 	<servlet-mapping>
 		<servlet-name>term2</servlet-name>
 		<url-pattern>/term2</url-pattern>
-	</servlet-mapping>	
+	</servlet-mapping>
 	<!-- emailCheck -->
 	<servlet>
 		<servlet-name>emailCheckAction</servlet-name>
@@ -526,7 +525,7 @@
 	<servlet-mapping>
 		<servlet-name>emailCheckAction</servlet-name>
 		<url-pattern>/emailCheck</url-pattern>
-	</servlet-mapping>	
+	</servlet-mapping>
 	<!-- viewDtail -->
 	<servlet>
 		<servlet-name>viewDtailForm</servlet-name>
@@ -536,5 +535,25 @@
 	<servlet-mapping>
 		<servlet-name>viewDtailForm</servlet-name>
 		<url-pattern>/viewDtail</url-pattern>
+	</servlet-mapping>
+	<!-- makers -->
+	<servlet>
+		<servlet-name>makers</servlet-name>
+		<jsp-file>/makers.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>makers</servlet-name>
+		<url-pattern>/maker</url-pattern>
+	</servlet-mapping>
+	<!-- reviewForm -->
+	<servlet>
+		<servlet-name>viewReviewDetail</servlet-name>
+		<jsp-file>/views/viewReviewDetail.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>viewReviewDetail</servlet-name>
+		<url-pattern>/viewReview</url-pattern>
 	</servlet-mapping>
 </web-app>

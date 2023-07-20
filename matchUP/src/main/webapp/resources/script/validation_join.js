@@ -181,9 +181,7 @@ function cJoinCheckValue(){
 	const chk3 = $('input:checkbox[name="chk3"]').is(':checked');
 	const chk4 = $('input:checkbox[name="chk4"]').is(':checked');
 	const emailChk = $('#emailchk').val();
-	const address = $('#address').val() +$('#detailAddress').val() + $('#extraAddress').val();
-	
-	
+	const address = $('#address').val() +$('#detailAddress').val() + $('#extraAddress').val();	
 	
 	let check = true;
 	

@@ -51,7 +51,7 @@ public class ReviewCreateAction extends HttpServlet{
 				}
 				
 				// 그 이외의 값들 파라미터로 불러오기
-				int corpId = Integer.parseInt(request.getParameter("corporation"));
+				String corpId = request.getParameter("corporation");
 				int star = Integer.parseInt(request.getParameter("star"));
 				String summary = request.getParameter("summary");
 				String review = request.getParameter("review");

@@ -29,30 +29,20 @@ $('#cpwd').on('change', e => {
 	}
 });
 
-function checkValue(htmlform) {	
+function checkValue(htmlform) {		
 	const id = htmlform.id.value
 	const pwd = htmlform.pwd.value;
 	
 	let check = true;
 	
 	if(id === "") {
-		$('#error-pid').show();
 		check = false;
 	} else if(pwd === "") {
-		$('#error-ppwd').show();
 		check = false;
 	}
-	
-	if(id === "") {
-		$('#error-cid').show();
-		check = false;
-	} else if(pwd === "") {
-		$('#error-cpwd').show();
-		check = false;
-	}
-	
 	
 	if(check === true) {
+		alert('로그인 성공');
 		htmlform.submit();
 	}
 }

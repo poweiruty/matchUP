@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.SHA256;
 import model.user_general.UserDao;
 import model.user_general.UserRequestDto;
 
@@ -44,6 +45,8 @@ public class JoinFormAction extends HttpServlet {
 
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
+		String hashPass = SHA256.getSHA256(password);
+		
 		String name = request.getParameter("name");
 		String birth = request.getParameter("year") + request.getParameter("month") + request.getParameter("date");
 		int birthNum = Integer.parseInt(birth);
@@ -54,6 +57,7 @@ public class JoinFormAction extends HttpServlet {
 			
 		System.out.println("id : " + id);
 		System.out.println("password : " + password);
+		System.out.println("hashPass : " + hashPass);
 		System.out.println("name : " + name);
 		System.out.println("birthNum : " + birthNum);
 		System.out.println("tel : " + tel);
@@ -61,7 +65,7 @@ public class JoinFormAction extends HttpServlet {
 		System.out.println("address : " + address);
 		System.out.println("emailChk : " + emailChk);
 
-		UserRequestDto user = new UserRequestDto(id, password, name, birthNum, tel, email, address, emailChk);
+		UserRequestDto user = new UserRequestDto(id, hashPass, name, birthNum, tel, email, address, emailChk);
 
 		UserDao userDao = UserDao.getInstance();
 		boolean result = userDao.createUser(user);
