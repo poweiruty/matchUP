@@ -8,8 +8,7 @@
             <meta charset="UTF-8">
             <title>마이페이지(기업)</title>
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<link rel="shortcut icon" href="resources/img/favicon.png">
-
+			<link rel="shortcut icon" href="resources/img/favicon.png">
             <link rel="stylesheet" href="resources/style/join.css">
 
         </head>

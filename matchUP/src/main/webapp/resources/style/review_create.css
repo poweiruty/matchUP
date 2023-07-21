@@ -19,7 +19,7 @@ ul{
 
 .main_con{
 	width: 75%;
-    height: 800px;
+    height: 500px;
     border: solid 1px gray;
     margin: 5% 10%;
     padding: 5%;
@@ -82,12 +82,12 @@ span{
 	cursor:pointer;	
 }
 
-.bottom> a> #back{
+.bottom> a> #back_btn{
 	width:30%;
 	color:black;
 }
 
-.bottom> a> #back:hover{
+.bottom> a> #back_btn:hover{
 	background:white;
 	color:black;
 	cursor:pointer;	

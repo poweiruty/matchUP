@@ -14,6 +14,7 @@
 .main_con{
     display: flex;
     justify-content: center;
+    overflow : auto;
 }
 
 /* 검색 탭 전체 */
@@ -66,3 +67,14 @@ h2{
     font-weight: 700;
     cursor: pointer;
 }
+
+/* 검색 결과 */
+.con_wrap{
+	margin:0 auto;
+	display:flex;
+	justify-content:center;
+	width:80%;
+	border:none;
+	overflow:auto;		
+}
+

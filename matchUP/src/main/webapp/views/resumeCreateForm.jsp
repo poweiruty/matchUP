@@ -12,93 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 	<link rel="shortcut icon" href="resources/img/favicon.png">
-
-    <!-- <link rel="stylesheet" href="resources/style/resume.css"> -->
+    <link rel="stylesheet" href="resources/style/resume.css">
 </head>
 
-<style>
-.msg, .main_con{
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.msg_title, .resume_title{
-    font-size: 1.8rem;
-    font-weight: 700;
-}
-
-.resume_title{
-    margin-bottom: 20px;
-}
-
-ul{
-    display: flex;
-    flex-direction: column;
-}
-
-.main_con{
-	width: 75%;
-    height: 800px;
-    border: solid 1px gray;
-    margin: 5% 10%;
-    padding: 5%;
-}
-
-/* li{
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
-input, textarea{
-	border : 1px solid gray;
-    border-radius: 10px;   
-}
-
-input{
-    border: solid 1px gray;
-    width: 40%;
-    padding: 4px;
-}
-
-input:hover{
-    cursor: pointer;
-    background-color: gray;
-}
-
-textarea{
-	border: solid 1px gray;
-    width: 40%;
-    height: 100px;
-    resize: none;
-}
-
-.bottom{	
-    margin-top: 10%;	
-}
-
-.bottom a:hover, .bottom>span:hover{
-    background-color: gray;
-    cursor: pointer;
-    color: black;
-}
-
-select{
-    border-radius: 10px;
-}
-
-label{
-    font-weight: 700;
-    margin-right: 10px;
-}
-
-span{
-    font-weight: 700;
-}
-
-	
-</style>
 
 <body>
     <!-- header 시작 -->
@@ -123,27 +39,28 @@ span{
                         
                         <li>
                             <label for="pname">이름 </label>
-                            <span>${sessionScope.pname}</span>
+                            <input type="text" name="pname" id="pname" value="${sessionScope.pname}" readonly>
+                            <!-- <span></span> -->
                         </li>
                         
                         <li>
                             <label for="birth">생년월일 </label>
-                            <span>${sessionScope.birth}</span>
+                            <input type="text" name="birth" id="birth" value="${sessionScope.birth}" readonly>                      
                         </li>
                         
                         <li>                   
                             <label for="tel">연락처 </label>
-                            <span>${sessionScope.phone}</span>
+                            <input type="text" name="tel" id="tel" value="${sessionScope.phone}" readonly>
                         </li>
                         
                         <li>
                             <label for="email_resume">이메일 </label>
-                            <span>${sessionScope.email}</span>
+                            <input type="text" name="birth" id="birth" value="${sessionScope.email}" readonly>
                         </li>
                         
                         <li>
                             <label for="user_address">주소 </label>
-                            <span>${sessionScope.address}</span>
+                            <input type="text" name="birth" id="birth" value="${sessionScope.address}" readonly>                           
                         </li> 
                    		
                    		<li>
@@ -193,7 +110,7 @@ span{
                    		</li>
                    		            
                         <li>
-                            <label for="graduation">최종학력</label>
+                            <label for="graduation">학력</label>
                             <select name="graduation" id="graduation">
                                 <option value="sel">옵션 선택</option>
                                 <option value="1">초졸</option>
@@ -202,34 +119,45 @@ span{
                                 <option value="4">대졸(2~3년제)</option>
                                 <option value="5">대졸(4년제)</option>
                                 <option value="6">대학원졸</option>                             
-                            </select>
-                            <textarea name="degree" id="degree" cols="30" rows="10" placeholder="그 밖의 학력에 관련된 세부사항을 적어주세요."></textarea>
+                            </select>                      
                         </li>
                         
                         <li>
-                            <label for="career">경력</label>
-                            <textarea name="career" id="career" cols="30" rows="10"></textarea>
+                        	<textarea name="degree" id="degree" cols="30" rows="10" placeholder="그 밖의 학력에 관련된 세부사항을 적어주세요."></textarea>
                         </li>
                         
                         <li>
-                            <label for="activity">대외활동/수상이력</label>
+                        	<div class=label_input>
+                            	<label for="career">경력</label>
+                            </div>	
+                            <textarea name="career" id="career" cols="30" rows="10"></textarea>                            
+                        </li>
+                        
+                        <li>
+                        	<div class=label_input>                           
+                            	<label for="activity">대외활동/수상이력</label>
+                            </div>
                             <textarea name="activity" id="activity" cols="30" rows="10"></textarea>
                         </li>
                         
                         <li>
-                            <label for="certificate">보유자격증</label>
-                            <textarea name="certificate" id="certificate" cols="30" rows="10"></textarea>
+                        <div class=label_input>
+                        	<label for="certificate">보유자격증</label>
+                        </div>                           
+                        <textarea name="certificate" id="certificate" cols="30" rows="10"></textarea>
                         </li>
                         
                         <li>
-                            <label for="intro">자기소개 </label>
-                            <textarea name="intro" id="intro" cols="30" rows="10"></textarea>
+                        <div class=label_input>
+                        	<label for="intro">자기소개 </label>
+                        </div>
+                          	<textarea name="intro" id="intro" cols="30" rows="10"></textarea>
                         </li>
                     </ul>
                     
                     <div class="bottom">
-                		<input type="submit" name="submit" id="submit" value="이력서 등록">
-                		<a href="index"><input type="button" value="메인 페이지로 돌아가기"></a>
+                		<input type="submit" name="submit" id="submit" value="등록">
+                		<a href="index"><input type="button" id="back" value="메인이동"></a>
             		</div>
             		
                 </form>

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@page import="model.review.ReviewRequestDto"%>
 <%@page import="model.review.ReviewDao"%>
 <%@page import="model.review.Review"%>
@@ -35,11 +34,9 @@ if(request.getParameter("reviewId") != null){
 			<p class="review"><%=review %></p>			
 			<p class="position"><%=position %></p>			
 			<p class="period"><%=period %></p>			
+			<br>
 		</div>
 		
-		<div class="review_detail_con2">
-			<button type="button" class="apply-btn" name="apply" id="apply">지원하기</button>
-		</div>
 		
 	<%
 }

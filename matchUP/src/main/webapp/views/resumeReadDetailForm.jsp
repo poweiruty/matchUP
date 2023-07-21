@@ -18,7 +18,7 @@
     <title>Document</title>
     
 	<link rel="shortcut icon" href="resources/img/favicon.png">
-    <link rel="stylesheet" href="resources/style/resume.css">
+    <link rel="stylesheet" href="resources/style/resume_read_detail.css">
 </head>
 
 <body>
@@ -45,73 +45,100 @@
     			        JobDao jobDao = JobDao.getInstance();
     					Job job = jobDao.getJobByJobId(resume.getJobId());
 					%>
-                   
-                    
-                    <ul>                   	                   	
-                    	<li>
-                            <label for="resume_title">제목</label>
-                            <span><%= resume.getResumeTitle() %></span>                   
-                        </li>
+                                    
+                    <ul>
+                    	<div class="title_con">                   	                   	
+                    		<li>                           
+                            	<span class="title"><%= resume.getResumeTitle() %></span>                   
+                        	</li>
+                        </div>
                         
-                        <li>
-                            <label for="pname">이름 </label>
-                            <span>${sessionScope.pname}</span>
-                        </li>
+                        <div class="element_con">
+                        	<li>
+                            	<label for="pname">이름 </label>
+                            	<span>${sessionScope.pname}</span>                   
+                        	</li>
+                        </div>
                         
-                        <li>
-                            <label for="birth">생년월일 </label>
-                            <span>${sessionScope.birth}</span>	
-                        </li>
+                        <div class="element_con">
+                        	<li>
+                            	<label for="birth">생년월일 </label>
+                            	<span>${sessionScope.birth}</span>                             	
+                        	</li>
+                        </div>
                         
+                        <div class="element_con">
                         <li>                   
                             <label for="tel">연락처 </label>
                             <span>${sessionScope.phone}</span>
                         </li>
-                        
+                        </div>
+                                               
+                        <div class="element_con">
                         <li>
                             <label for="email_resume">이메일 </label>
                             <span>${sessionScope.email}</span>
                         </li>
-                        
+                        </div>
+                                                
+                        <div class="element_con">
                         <li>
                             <label for="user_address">주소 </label>
                             <span>${sessionScope.address}</span>
-                        </li> 
+                        </li>
+                        </div>
+                         
                    		
+                   		<div class="element_con">
                    		<li>
-                   			<label for="job">희망직종</label>                        				
+                   			<label for="job">희망직종</label>                                   				
                    			<span><%= job.getJob()%></span>
                    		</li>
-                   		            
-                        <li>
-                            <label for="graduation">최종학력</label>
-                            <span><%= resume.getGraduation()%></span>
+                   		</div>
+                   		
+                   		
+                   		<div class="element_con">
+                   		<li>
+                            <label for="graduation">학력</label>                            
+                            <span><%= resume.getGraduation()%></span><br>
+                            <span><%= resume.getDegree()%></span>
                         </li>
-                        
+                   		</div>            
+                                              
+                        <div class="element_con">
                         <li>
                             <label for="career">경력</label>
                             <span><%= resume.getCareer()%></span>
                         </li>
+                        </div> 
                         
+                        
+                        <div class="element_con">
                         <li>
                             <label for="activity">대외활동/수상이력</label>
                             <span><%= resume.getActivity()%></span>
                         </li>
+                        </div>
                         
-                        <li>
-                            <label for="certificate">보유자격증</label>
-                            <span><%= resume.getCertificate()%></span>
-                        </li>
                         
-                        <li>
-                            <label for="intro">자기소개 </label>
-                            <span><%= resume.getIntro()%></span>
-                        </li>
+                        <div class="element_con">
+                        	<li>
+                            	<label for="certificate">보유자격증</label>
+                            	<span><%= resume.getCertificate()%></span>
+                        	</li>
+                        </div>
+                        
+                        
+                        <div class="element_con">
+                        	<li>
+                            	<label for="intro">자기소개 </label>
+                            	<span><%= resume.getIntro()%></span>
+                        	</li>
+                        </div>
                     </ul>
                     
-                    <div class="bottom">
-                    	<a href="resumeCreate"><input type="button" value="수정하기"></a>               
-                		<a href="resumeRead"><input type="button" value="뒤로가기"></a>
+                    <div class="bottom">                  	               
+                		<a href="resumeRead"><input type="button"  id="back" value="뒤로가기"></a>
             		</div>
                 </form>
             </div>           
