@@ -42,7 +42,7 @@
 
 							<!-- 비밀번호 부분 -->
 							<li>
-								<h2 class="password_title">비밀번호</h2> <input type="text" id="cpassword" name="cpassword"
+								<h2 class="password_title">비밀번호</h2> <input type="password" id="cpassword" name="cpassword"
 								autofocus>
 							</li>
 							<ul>
@@ -52,7 +52,7 @@
 									변경할 비밀번호<br>
 								</h2></li>
 
-							<li class="new-password"><input type="text"
+							<li class="new-password"><input type="password"
 								name="new-password" id="new-password"></li>
 
 							<!-- 회사명 부분 -->
@@ -77,20 +77,20 @@
 								<h2>채용 담당자 연락처</h2>
 							</li>
 							<li class="mgr_tel"><input type="text" name="mgr_tel"
-								id="mgr_tel" value=0${sessionScope.phone}></li>
+								id="mgr_tel" value="${sessionScope.phone}"></li>
 
 							<!-- 이메일 부분 -->
 							<li>
 									<h2>이메일</h2>
 							</li>
-							<li class="mgr_email"><input type="text" 
+							<li class="mgr_email"><input type="text" name="mgr_email"
 								id="mgr_email" value="${sessionScope.email}"></li>
 
 							<!-- 주소 부분 시작 -->
 							<div class="add_wrap">
 								<h2 id="caddress">주소</h2>
 								<input type="text" name="caddress" id="caddress"
-									value="${sessionScope.map}">
+									value="${sessionScope.map}" readonly>
 							</div>
 							<!-- 주소 끝 -->
 

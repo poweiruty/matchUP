@@ -39,7 +39,7 @@
 
 							<!-- 비밀번호 부분 -->
 							<li>
-								<h2 class="password_title">비밀번호</h2> <input type="text" id="password"
+								<h2 class="password_title">비밀번호</h2> <input type="password" id="password"
 								name="password" autofocus>
 							</li>
 								<ul>
@@ -49,7 +49,7 @@
 									변경할 비밀번호<br>
 								</h2></li>
 
-							<li class="new-password"><input type="text" name="new-password"
+							<li class="new-password"><input type="password" name="new-password"
 								id="new-password"> </li>
 							<!-- 이름 부분 -->
 							<li class="pname"><label for="pname">

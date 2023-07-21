@@ -265,8 +265,8 @@
 		width: 200px;
 	}
 
-	#password, #passwordChk{
-		width: 200px;
+	#password, #new-password{
+		width: 175px;
 	}
 
 	.password_title{

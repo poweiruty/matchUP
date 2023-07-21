@@ -33,7 +33,7 @@
             </div>
              <div class="main_con">
                 <div class="main">
-                    <ul>
+                    <ul> 
                           <li class="main_search">
                             <label for="search_bar">
                                 <h2>기업명</h2>

@@ -92,7 +92,7 @@
         <div class="nav">
             <div class="corpSearch">
                 <a href="search">
-                    <h3>기업검색</h3>
+                    <h3>채용공고검색</h3>
                 </a>
             </div>
 			<!-- 기업리뷰 -->

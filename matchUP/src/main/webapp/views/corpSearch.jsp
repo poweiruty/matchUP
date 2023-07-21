@@ -27,7 +27,7 @@
     <!-- body 시작 -->
 	<section class="container">
 		<div class="msg">
-			<p id="msg_title">기업검색</p>
+			<p id="msg_title">채용공고검색</p>
 			<p>당신을 기다리고 있습니다!</p>
 		</div>
 		<div id="tab_search">
@@ -89,10 +89,11 @@
 			<div class="search_con">
 				<div class="contents-container">
 					<ul id="jobpost-list">
+					
 					</ul>
 				</div>
 				<div id="detail_tab">	
-						
+					
 			 	</div>
 			</div>
 		</div>

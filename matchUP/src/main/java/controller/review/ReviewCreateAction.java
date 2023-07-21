@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import model.review.Review;
 import model.review.ReviewDao;
 import model.review.ReviewRequestDto;
 
@@ -85,7 +86,7 @@ public class ReviewCreateAction extends HttpServlet{
 				System.out.println("기간 : " + period);
 				
 				// DTO 객체 생성
-				ReviewRequestDto reviews = new ReviewRequestDto(pusersId,corpName,star,summary,review,position,period);
+				Review reviews = new Review(pusersId,corpName,star,summary,review,position,period);
 
 				// DAO 객체 생성
 				ReviewDao dao = ReviewDao.getInstance();

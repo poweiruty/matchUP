@@ -17,9 +17,13 @@ ul{
     flex-direction: column;
 }
 
+li{
+	margin-bottom:15px;
+}
+
 .main_con{
 	width: 75%;
-    height: 800px;
+    height: 600px;
     border: solid 1px gray;
     margin: 5% 10%;
     padding: 5%;
@@ -66,8 +70,16 @@ span{
     font-weight: 700;
 }
 
-.label_input{
-	vertical-align: middle;
+.title_con{
+	margin-bottom:30px;	
+}
+
+.title{
+	font-size:3rem;
+}
+
+.element_con{
+	margin-bottom:10px;
 }
 
 .bottom> #submit{

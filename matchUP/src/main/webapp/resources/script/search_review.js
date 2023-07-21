@@ -1,3 +1,17 @@
+// CSS 파일 적용 
+function loadCSSFile(url) {
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = url;
+  document.head.appendChild(link);
+}
+
+const cssFileURL = '/style/corpReview_detail.css';
+
+loadCSSFile(cssFileURL);
+
+
+// 검색한 항목의 데이터 불러오기
 function search(){
 	const cname = $('#search_bar').val();
 	
@@ -26,15 +40,12 @@ function search(){
 					
 					if (corpName !== "") {
 						$('#review_list').append(
-							`<li class="reviews">		
-								<a href="viewReview?reviewId=${reviewId}" class="detail_btn" id="detail_btn" target="detail_post" onclick="detail()">	
-									<h2 class="reviewId">${corpName}</h2>				                  
-				                 	<p class="star">${star}</p>				                 					                    
-				                    <p class="summary">${summary}</p>
-				                    <p class="review">~${review}</p>
-				                    <p class="position">~${position}</p>
-				                    <p class="period">~${period}</p>
-				                </a>
+							`<li class="reviews">										
+								<h2 class="corpName">${corpName} &nbsp&nbsp <span>★</span>&nbsp${star}</h2>				                  				                					                 					                    
+				                <p class="summary">기업 한줄평:${summary}</p>
+				                <p class="review">기업 리뷰:${review}</p>
+				                <p class="position">근무직함:${position}&nbsp${period} 근무</p>
+				                <br><br>                 
 	                    	 </li>
 	                    	 `
 						);

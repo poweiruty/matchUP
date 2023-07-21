@@ -19,6 +19,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/style/corpSearch.css">
+<link rel="stylesheet" href="resources/style/grid.css">
 </head>
 <body>
 <section class="container">
@@ -70,12 +71,12 @@ if(request.getParameter("post_id") != null){
 	
 	%>
 		<div class="post_detail_con1">
-			<h2 class="title"><%=title %>(<%=jobName %>)</h2>
+			<h2 class="title" style="margin-bottom: 20px"><%=title %>(<%=jobName %>)</h2>
 			<p class="cname"><%=cname %></p>
-			<p class="post_region"><%=region %></p>			
+			<p class="post_region" style="margin-bottom: 10px"><%=region %></p>			
 		</div>
-		<div class="post_detail_con2">
-			<h4>기업 정보</h4>						
+		<div class="post_detail_con2" style="margin-top: 15px">
+			<h3 style="margin-bottom: 10px">기업 정보</h3>						
 			<p class="staffs">직원수 : <%=staffs %>명</p>		
 			<p class="postDate">지원 기간 : <%=create_post %> ~ <%=postDate %></p>
 			<p class="people">모집인원 : <%=people %>명</p>

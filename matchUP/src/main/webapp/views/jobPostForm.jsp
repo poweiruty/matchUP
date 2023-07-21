@@ -42,7 +42,7 @@
 				<p>채용 공고 등록</p>
 			</div>
 			<div class="main_con">
-				<form action="JobPost" method="post">
+				<form action="JobPost" id="postForm" method="post">
 					<ul>
 					<li>
 						<span>회사정보</span><br>
@@ -248,7 +248,7 @@
 					</div>
 					</ul>
 					<div class="bottom">
-						<input type="button" name="submit" id="submit" value="등록" onclick="postIt(form)">
+						<input type="button" name="submit_btn" id="submit_btn" value="등록" onclick="postIt(form)">
 						<a class="cancel" href="index">취소</a>
 					</div>
 				</form>

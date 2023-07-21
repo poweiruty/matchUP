@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.user_corp.CorpUserRequestDto;
 import model.user_corp.CorpUserDao;
@@ -30,12 +31,12 @@ public class CorpUpdateAction extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		request.setCharacterEncoding("UTF-8");
-		
+		HttpSession session = request.getSession();
 		CorpUserRequestDto corpUserDto = null;
 		
 		String cid = request.getParameter("cid");
 		String cpassword = request.getParameter("cpassword");
-		String newCpassword = request.getParameter("new-cpassword");
+		String newCpassword = request.getParameter("new-password");
 		String cname = request.getParameter("cname");
 		int cnum = request.getIntHeader("cnum");
 		String mgr_name = request.getParameter("mgr_name");
@@ -43,6 +44,10 @@ public class CorpUpdateAction extends HttpServlet {
 		String mgr_email = request.getParameter("mgr_email");
 		String caddress = request.getParameter("caddress");
 		
+		
+		if(newCpassword == null || newCpassword.equals("")) {
+			newCpassword = cpassword;
+		}
 		
 		System.out.println("cid " + cid);
 		System.out.println("cpassword " + cpassword);
@@ -54,12 +59,17 @@ public class CorpUpdateAction extends HttpServlet {
 		System.out.println("mgr_email " + mgr_email);
 		System.out.println("caddress " + caddress);
 		
+		
 		corpUserDto = new CorpUserRequestDto(cid, newCpassword, cname, cnum, mgr_name, mgr_tel, mgr_email, caddress);
 		
 		CorpUserDao corpUserDao = CorpUserDao.getInstance();
 		corpUserDao.updateCorpUser(corpUserDto, cpassword);
+		session.setAttribute("email", mgr_email);
+		session.setAttribute("phone", mgr_tel);
+		session.setAttribute("mgr_name", mgr_name);
 		
-		String url = "CUpdateRequest"; //수정
+		String url = "mypageCorp"; //수정
+		
 		response.sendRedirect(url);	
 		
 	}

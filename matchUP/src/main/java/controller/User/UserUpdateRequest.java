@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.user_general.User;
 import model.user_general.UserDao;
@@ -28,7 +29,7 @@ public class UserUpdateRequest extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		response.getWriter().append("UpdateUserRequest.doGet()");
-		
+		HttpSession session = request.getSession();
 		UserDao userDao = UserDao.getInstance(); 
 
 		String id = (String) request.getSession().getAttribute("log");
@@ -49,13 +50,12 @@ public class UserUpdateRequest extends HttpServlet {
 			
 			request.setAttribute("email", email);
 			request.setAttribute("birth", birth);
-			request.setAttribute("tel", tel);
+			request.setAttribute("phone", tel);
 			request.setAttribute("user_address", user_address);
 			
 			url = "mypagePerson";
 		}
 		request.getRequestDispatcher(url).forward(request, response);
-		
+		//response.sendRedirect(url);		
 	}
-
 }

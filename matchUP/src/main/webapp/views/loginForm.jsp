@@ -11,13 +11,6 @@
 			<link rel="shortcut icon" href="resources/img/favicon.png">
 		
 	</head>
-<%-- 	<%
-		String res="";
-		if(session.getAttribute("res") != null){
-			res = session.getAttribute("res").toString();
-		}
-	
-	%> --%>
 	<body>
 		<!-- header 시작 -->
 		<jsp:include page="header_login"></jsp:include>
@@ -26,7 +19,6 @@
 		<!-- body 시작 -->
 
 		<div class="container">
-			<input type="hidden" name="res" id="res" value="${not empty sessionScope.res}">
 			<div class="login_box">
 				<ul class="login_tab">
 					<li class="login_person on"><a href="#">개인 로그인</a></li>

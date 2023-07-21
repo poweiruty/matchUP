@@ -63,7 +63,7 @@
   padding-top: 10px;
   } 
 .saved_con_detail, .completed{
-	height:80%;	
+	height:700px;	
 	overflow : auto;
 }
 .if{

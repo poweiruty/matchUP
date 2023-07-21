@@ -64,6 +64,6 @@ function postIt(htmlform) {
 	
 	if(check === true) {
 		alert("채용 공고 등록에 성공하였습니다 :)")
-		htmlform.submit();
+		$('#postForm').submit();
 	}
 }

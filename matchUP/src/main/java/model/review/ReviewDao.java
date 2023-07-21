@@ -23,7 +23,7 @@ public class ReviewDao {
 	
 	
 	// CREATE
-	public boolean createReview(ReviewRequestDto dto) {
+	public boolean createReview(Review dto) {
 					
 		int pusersId = dto.getPusersId();
 		String corpName=dto.getCorpName();

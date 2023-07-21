@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.user_general.UserDao;
 import model.user_general.UserRequestDto;
@@ -41,6 +42,9 @@ public class UserUpdateAction extends HttpServlet {
 		String tel = request.getParameter("tel");
 		String user_address = request.getParameter("user_address");
 		
+		if(newPassword == null || newPassword.equals("")) {
+			newPassword = password;
+		}
 		
 		System.out.println("pid " + pid);
 		System.out.println("password " + password);
@@ -54,8 +58,13 @@ public class UserUpdateAction extends HttpServlet {
 		
 		UserDao userDao = UserDao.getInstance();
 		userDao.updateUser(userDto, password);
+		HttpSession session = request.getSession();
 		
-		String url = "UserUpdateRequest";
+		session.setAttribute("email", email);
+		session.setAttribute("phone", tel);
+		session.setAttribute("user_address", user_address);
+		
+		String url = "mypagePerson";
 		response.sendRedirect(url);	
 	}
 }

@@ -13,7 +13,7 @@
     <title>Document</title>
 <link rel="shortcut icon" href="resources/img/favicon.png">
 
-    <link rel="stylesheet" href="resources/style/resume.css">
+    <link rel="stylesheet" href="resources/style/review_create.css">
 </head>
 
 <body>
@@ -56,7 +56,7 @@
                         
                         <li>
                             <label for="review">기업리뷰</label>
-                            <textarea name="review" id="review" cols="30" rows="10"></textarea>
+                            <textarea name="review" id="review" cols="30" rows="10" placeholder="저희 MatchUP은 회원님의 정보를 노출하지 않습니다.&#13;&#10;익명성을 보장하지 않는 정보의 입력은 지양하시기 바랍니다."></textarea>
                         </li>
                                                                                                                                 
                         <li>
@@ -79,7 +79,7 @@
                     </ul>
                     <div class="bottom">
                 		<input type="submit" name="submit" id="submit" value="등록">
-                		<span><a href="index"> 메인 페이지로 돌아가기</a></span> 
+                		<a href="review"><input type="button" id="back_btn" value="뒤로가기"></a> 
             		</div>
                 </form>
             </div>           

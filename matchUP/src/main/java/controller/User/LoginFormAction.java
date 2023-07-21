@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import model.SHA256;
 import model.user_general.User;
 import model.user_general.UserDao;
@@ -44,15 +47,14 @@ public class LoginFormAction extends HttpServlet {
 		User user = userDao.getUserbyId(id);
 		
 		String pwd = "";
-		
 		if(user != null) {
-			pwd = user.getPpassword();
-		}
+			pwd = user.getPpassword();	
+		}		
+		
 		String url = "login";
 				
 		if(user != null && password.equals(pwd)) {
-			url = "index";
-			
+			url = "index";		
 			
 			session.setAttribute("log", id);
 			
@@ -75,9 +77,7 @@ public class LoginFormAction extends HttpServlet {
 			System.out.println(session.getAttribute("address"));
 			
 			System.out.println(session.getAttribute("log"));
-		}else{
-			session.setAttribute("res", "실패");
-		}
+		}		
 		response.sendRedirect(url);
 	}
 }

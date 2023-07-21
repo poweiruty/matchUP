@@ -146,14 +146,24 @@ function pJoinCheckValue(){
 		$('#name').focus();	
 		check = false;
 	}else if(birth === "" || birth.length !== 8){
-		$('#error-birth').show();
-		$('#birth').focus();			
+		$('#error-birth').show();		
+		if($('#year').val() === ""){
+			$('#year').focus();
+		}else if($('#month').val() === ""){
+			$('#month').focus();
+		}else if($('#date').val() === ""){
+			$('#date').focus();
+		}				
 		check = false;
 	}else if(tel.length !== 11){
 		$('#error-tel').show();	
-		$('#phone1').focus();				
+		if($('#phone1').val() === ""){
+			$('#phone1').focus();
+		}else if($('#phone2').val() === ""){
+			$('#phone2').focus();
+		}				
 		check = false;
-	}else if(email === ""){
+	}else if($('#email').val() === ""){		
 		$('#error-email').show();	
 		$('#email').focus();		
 		check = false;

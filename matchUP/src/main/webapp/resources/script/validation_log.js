@@ -36,15 +36,16 @@ function checkValue(htmlform) {
 	let check = true;
 	
 	if(id === "") {
-
+		alert("아이디를 입력하세요.");
+		htmlform.id.focus();
 		check = false;
 	} else if(pwd === "") {
 		alert("비밀번호를 입력하세요.");
+		htmlform.pwd.focus();
 		check = false;
 	}
 	
-	if(check === true) {
-		alert("로그인에 성공하였습니다.");
+	if(check === true) {		
 		htmlform.submit();
 	}
 }

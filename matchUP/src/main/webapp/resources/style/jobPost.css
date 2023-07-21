@@ -61,13 +61,13 @@ label, span{
     align-items: center;
 }
 
-#submit:hover, .cancel:hover{
+#submit_btn:hover, .cancel:hover{
 	background-color:cornflowerblue;
     cursor: pointer;
     color: black;
 }
 
-#submit, .cancel{
+#submit_btn, .cancel{
 	font-size:0.9rem;
 }
 
@@ -87,7 +87,7 @@ hr{
     color: gray;
 }
 
-#submit{
+#submit_btn{
     margin-bottom: 10px;
 }
 
